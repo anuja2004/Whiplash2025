@@ -68,8 +68,12 @@ const RegisterPage = () => {
     className="w-full"
   >
     <div className="min-h-[280px]"> {/* Add min height to reduce height flickering */}
-      {activeTab === 'signin' && <SignInForm />}
-      {activeTab === 'signup' && <SignUpForm />}
+      {activeTab === 'signin' && <SignInForm 
+        onSwitchToSignUp={()=> setActiveTab('signup')}  
+      />}
+      {activeTab === 'signup' && <SignUpForm 
+        onSwitchToSignIn={()=> setActiveTab('signin')} 
+      />}
     </div>
   </motion.div>
 </AnimatePresence>

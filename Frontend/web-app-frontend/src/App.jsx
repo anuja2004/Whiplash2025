@@ -4,7 +4,7 @@ function App() {
 
   return (
     <>
-        {/*  Ro routing and protected rROutes + Outlet System + Route Guard */}
+        {/*  Do routing and protected rROutes + Outlet System + Route Guard */}
 
         <RegisterPage/>
     </>

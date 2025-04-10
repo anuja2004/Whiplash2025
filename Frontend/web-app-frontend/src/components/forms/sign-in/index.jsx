@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const SignInForm = () => {
+const SignInForm = ({onSwitchToSignUp}) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -52,7 +52,18 @@ const SignInForm = () => {
           <a href="#" className="hover:underline">Forgot your password?</a>
         </p>
         <p>
-          Don’t have an account? <a href="#" className="font-medium text-black hover:underline">Sign up</a>
+          Don’t have an account? 
+          <button
+            onClick={onSwitchToSignUp}
+            className="text-black font-semibold hover:underline
+            transition-all duration-200
+            ml-1"
+    
+
+            type="button"
+          >
+            Sign Up
+          </button>
         </p>
       </div>
     </form>
