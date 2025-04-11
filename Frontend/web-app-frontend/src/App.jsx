@@ -1,17 +1,12 @@
 import React from 'react'
-import RegisterPage from './pages/register';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
+import AppRoutes from './reactRouting';
 
 const App = () => {
   return (
     <div>
       <Router>
-        <Routes>
-          <Route path='/register' element={
-            <RegisterPage/>
-          } />
-        </Routes>
+        <AppRoutes/>
       </Router>
     </div>
   )
