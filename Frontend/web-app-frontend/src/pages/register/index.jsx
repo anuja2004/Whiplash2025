@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import SignInForm from '../../components/forms/sign-in'
 import SignUpForm from '../../components/forms/sign-up'
-import { motion,AnimatePresence } from 'framer-motion'
+import {motion,AnimatePresence } from 'framer-motion'
 
 
 const RegisterPage = () => {
@@ -82,7 +82,11 @@ const RegisterPage = () => {
             {/* Close Button */}
             <button
               onClick={toggleModal}
-              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-xl"
+              className="absolute
+              m-2
+              top-2 right-2
+            rounded-full   
+            text-gray-400 hover:text-gray-600 text-4xl cursor-pointer"
             >
               &times;
             </button>

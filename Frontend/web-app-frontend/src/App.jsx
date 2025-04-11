@@ -1,13 +1,19 @@
-import RegisterPage from "./pages/register"
+import React from 'react'
+import RegisterPage from './pages/register';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-function App() {
 
+const App = () => {
   return (
-    <>
-        {/*  Do routing and protected rROutes + Outlet System + Route Guard */}
-
-        <RegisterPage/>
-    </>
+    <div>
+      <Router>
+        <Routes>
+          <Route path='/register' element={
+            <RegisterPage/>
+          } />
+        </Routes>
+      </Router>
+    </div>
   )
 }
 
