@@ -1,0 +1,35 @@
+/* src/styles/quizStyles.css - Optional additional styling */
+
+.quiz-option {
+    transition: all 0.2s ease;
+  }
+  
+  .quiz-option:hover {
+    transform: translateX(5px);
+  }
+  
+  .quiz-timer-warning {
+    animation: pulse 1.5s infinite;
+  }
+  
+  @keyframes pulse {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  .progress-bar-transition {
+    transition: width 0.5s ease;
+  }
+  
+  .circle-progress {
+    transition: stroke-dashoffset 0.8s ease;
+    transform: rotate(-90deg);
+    transform-origin: center;
+  }

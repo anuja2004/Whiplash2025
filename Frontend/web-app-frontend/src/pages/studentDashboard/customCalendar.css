@@ -1,0 +1,47 @@
+/* Highlighted event date */
+.react-calendar__tile.highlight {
+    background-color: #38bdf8 !important; /* sky-400 */
+    color: #fff !important;
+    font-weight: 600;
+    border-radius: 0.75rem;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  /* Hover & focus styles */
+  .react-calendar__tile.highlight:hover,
+  .react-calendar__tile.highlight:focus {
+    background-color: #0ea5e9 !important; /* sky-500 */
+    color: #fff !important;
+    transform: scale(1.05);
+  }
+  
+  /* Disabled event date */
+  .react-calendar__tile.highlight:disabled {
+    background-color: #e5e7eb !important; /* gray-200 */
+    color: #9ca3af !important; /* gray-400 */
+    pointer-events: none;
+    font-weight: 500;
+  }
+  
+  /* Highlight today with a distinct style */
+  .react-calendar__tile--now {
+    background-color: #facc15 !important; /* yellow-400 */
+    color: black !important;
+    font-weight: bold;
+    border-radius: 0.75rem;
+    border: 2px solid #fbbf24; /* yellow-300 */
+  }
+  
+  /* Hover & focus for today */
+  .react-calendar__tile--now:hover,
+  .react-calendar__tile--now:focus {
+    background-color: #fbbf24 !important; /* yellow-300 */
+    color: black !important;
+    transform: scale(1.05);
+  }
+  
+  /* Smooth transitions */
+  .react-calendar__tile {
+    transition: all 0.2s ease-in-out;
+  }
+  
