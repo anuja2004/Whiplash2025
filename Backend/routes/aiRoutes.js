@@ -16,7 +16,7 @@ const router = express.Router();
  * @route   POST /api/ai/recommendation
  * @desc    Get AI-based course recommendations for the authenticated user
  * @access  Protected
- */
+*/
 router.post('/recommendation', protect, async (req, res, next) => {
   try {
     console.log('[AIRoutes] POST /api/ai/recommendation - User ID:', req.user.id);

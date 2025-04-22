@@ -1,14 +1,15 @@
 // controllers/aiController.js
-const Course = require('../models/Course');
-const Topic = require('../models/Topic');
-const Quiz = require('../models/Quiz');
-const Question = require('../models/Question');
-const QuizAttempt = require('../models/QuizAttempt');
-const Assignment = require('../models/Assignment');
-const Submission = require('../models/Submission');
-const Note = require('../models/Note');
-const Enrollment = require('../models/Enrollment');
-const aiService = require('../services/aiService');
+import Course from '../models/Course.js';
+import Topic from '../models/Topic.js';
+import Quiz from '../models/Quiz.js';
+import Question from '../models/Question.js';
+import QuizAttempt from '../models/QuizAttempt.js';
+import Assignment from '../models/Assignment.js';
+import Submission from '../models/Submission.js';
+import Note from '../models/Note.js';
+import Enrollment from '../models/Enrollment.js';
+import * as aiService from '../services/aiService.js';
+
 
 // @desc    Get personalized recommendations
 // @route   POST /api/ai/recommendation

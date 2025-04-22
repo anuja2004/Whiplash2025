@@ -1,7 +1,8 @@
 // server.js - Main Entry Point (ES Module)
 // --------------------------
 // Uses ES module syntax, detailed comments, and enhanced error logging
-
+import dotenv from 'dotenv';
+dotenv.config(); // Load environment variables from .env file
 import express from 'express';                           // HTTP server framework
 import cors from 'cors';                                 // Cross-origin requests
 import morgan from 'morgan';                             // HTTP request logger
@@ -9,7 +10,7 @@ import colors from 'colors';                             // ANSI colors in conso
 import mongoose from 'mongoose';                         // MongoDB ODM
 
 // Database connection utility
-import connectDB from './config/config.js';
+import connectDB from './config/db.js';
 // Centralized configuration values
 import config from './config/config.js';
 // Global error-handling middleware (uncomment when implemented)
@@ -69,18 +70,47 @@ app.use('/api/ai', aiRoutes);
 // 4. Health Check Endpoint
 // --------------------------
 app.get('/health', (req, res) => {
-  try {
-    const dbState = mongoose.connection.readyState === 1 ? 'connected' : 'disconnected';
-    res.status(200).json({
-      status: 'OK',
-      timestamp: new Date().toISOString(),
-      uptime: process.uptime(),
-      database: dbState
-    });
-  } catch (err) {
-    console.error(colors.red('[HealthCheck] Error in /health handler:'), err);
-    res.status(500).json({ error: 'Health check failed' });
-  }
+  const dbState = mongoose.connection.readyState === 1 ? 'connected' : 'disconnected';
+  const uptime = process.uptime();
+  const timestamp = new Date().toISOString();
+
+  const healthData = {
+    status: 'OK',
+    timestamp,
+    uptime,
+    database: dbState
+  };
+
+  res.format({
+    'application/json': () => {
+      res.status(200).json(healthData);
+    },
+    'text/html': () => {
+      res.status(200).send(`
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <title>Health Check</title>
+            <style>
+              body { font-family: Arial, sans-serif; margin: 20px; }
+              h1 { color: #2c3e50; }
+              p { font-size: 1.1em; }
+            </style>
+          </head>
+          <body>
+            <h1>Health Check</h1>
+            <p><strong>Status:</strong> ${healthData.status}</p>
+            <p><strong>Timestamp:</strong> ${healthData.timestamp}</p>
+            <p><strong>Uptime:</strong> ${healthData.uptime.toFixed(2)} seconds</p>
+            <p><strong>Database:</strong> ${healthData.database}</p>
+          </body>
+        </html>
+      `);
+    },
+    'default': () => {
+      res.status(406).send('Not Acceptable');
+    }
+  });
 });
 
 // --------------------------
@@ -133,7 +163,7 @@ async function startServer() {
 
     // 2. Launch HTTP server
     const server = app.listen(config.PORT, () => {
-      console.log(colors.green(`🚀 Server running in ${config.NODE_ENV} mode on port ${config.PORT}`));
+      console.log(colors.blue(`🚀 Server running in ${config.NODE_ENV} mode on port ${config.PORT}`));
       console.log(colors.green(`🔗 MongoDB host: ${mongoose.connection.host}`));
     });
 

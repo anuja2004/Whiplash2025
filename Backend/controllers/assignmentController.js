@@ -1,6 +1,6 @@
 // controllers/assignmentController.js
-const Assignment = require('../models/Assignment');
-const Submission = require('../models/Submission');
+import Assignment from '../models/Assignment.js';
+import Submission from '../models/Submission.js';
 
 // @desc    Get assignments by course
 // @route   GET /api/assignments?courseId=xxx
