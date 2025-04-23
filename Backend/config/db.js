@@ -1,20 +1,23 @@
-// config/db.js
 import mongoose from 'mongoose';
-import config from './config.js'; // Assuming config.js is in the same directory
 
-const connectDB = async () => {
-  try {
-    console.log('Connecting to MongoDB.../n');
-    console.log(`MongoDB URI: ${config.MONGO_URI}`);
-    await mongoose.connect(config.MONGO_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-    console.log('MongoDB connected...');
-  } catch (err) {
-    console.error('Database connection error:', err.message);
-    process.exit(1);
-  }
+// Load environment variables from .env file
+// This is a common practice to keep sensitive information out of the codebase
+
+import dotenv from 'dotenv';
+
+
+export const connectDB = async () => {
+    console.log('Connecting to MongoDB...');
+    console.log(`MongoDB URI: ${process.env.MONGO_URI}`); // Log the MongoDB URI for debugging
+    try {
+
+        const conn = await mongoose.connect(process.env.MONGO_URI, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
+        console.log(`MongoDB Connected: ${conn.connection.host}`);
+    } catch (error) {
+        console.error(`Error: ${error.message}`);
+        process.exit(1); // Exit process with failure
+    }
 };
-
-export default connectDB;

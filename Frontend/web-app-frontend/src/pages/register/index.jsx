@@ -2,13 +2,49 @@ import React, { useState } from 'react'
 import SignInForm from '../../components/forms/sign-in'
 import SignUpForm from '../../components/forms/sign-up'
 import {motion,AnimatePresence } from 'framer-motion'
-
+import { signIn,signUp } from '../../api/auth'
+import { useNavigate } from 'react-router-dom'
 
 const RegisterPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [activeTab, setActiveTab] = useState('signin')
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+
 
   const toggleModal = () => setIsModalOpen(!isModalOpen)
+  const navigate = useNavigate();
+  // Function to handle sign-in/up api 
+  const handleSignInSubmit = async (credentials) => {
+    setLoading(true);
+    setError(null);
+    try {
+      const data = await signIn(credentials);
+      // Store token in localStorage or context
+      localStorage.setItem('authToken', data.token);
+      navigate('/dashboard');
+    } catch (err) {
+      setError(err.message || 'Failed to sign in');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSignUpSubmit = async (userData) => {
+    setLoading(true);
+    setError(null);
+    try {
+      const data = await signUp(userData);
+      // Automatically log in user after registration
+      localStorage.setItem('authToken', data.token);
+      navigate('/dashboard');
+    } catch (err) {
+      setError(err.message || 'Failed to sign up');
+    } finally {
+      setLoading(false);
+    }
+  };
+
 
   return (
     <div className="h-screen w-full flex items-center justify-center bg-gray-50 relative">
@@ -68,12 +104,28 @@ const RegisterPage = () => {
     className="w-full"
   >
     <div className="min-h-[280px]"> {/* Add min height to reduce height flickering */}
-      {activeTab === 'signin' && <SignInForm 
-        onSwitchToSignUp={()=> setActiveTab('signup')}  
-      />}
-      {activeTab === 'signup' && <SignUpForm 
-        onSwitchToSignIn={()=> setActiveTab('signin')} 
-      />}
+    {activeTab === 'signin' && (
+  <SignInForm
+    onSwitchToSignUp={() => setActiveTab('signup')}
+    onSubmit={handleSignInSubmit}
+    isLoading={loading}
+    error={error}
+    setError={setError}
+    setLoading={setLoading}
+    
+  />
+)}
+{activeTab === 'signup' && (
+  <SignUpForm
+    onSwitchToSignIn={() => setActiveTab('signin')}
+    onSubmit={handleSignUpSubmit}
+    isLoading={loading}
+    error={error}
+    setError={setError}
+    setLoading={setLoading}
+  />
+)}
+
     </div>
   </motion.div>
 </AnimatePresence>

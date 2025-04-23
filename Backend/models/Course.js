@@ -1,46 +1,57 @@
 // models/Course.js
-// ----------------
-// Defines the Course schema and model for course details
-
 import mongoose from 'mongoose';
 
-const { Schema, model } = mongoose;
-
-// Define the schema for a Course
-const CourseSchema = new Schema({
+const CourseSchema = new mongoose.Schema({
+  courseId: {
+    type: String,
+    required: true,
+    unique: true
+  },
   title: {
     type: String,
-    required: [true, 'Please add a course title'],
-    trim: true,
-    maxlength: [100, 'Title cannot be more than 100 characters']
-  },
-  description: {
-    type: String,
-    required: [true, 'Please add a description']
-  },
-  youtubePlaylistId: {
-    type: String
-  },
-  videos: [
-    {
-      title: String,
-      youtubeVideoId: String,
-      duration: String,
-      position: Number,
-      description: String
-    }
-  ],
-  instructor: {
-    type: Schema.Types.ObjectId,
-    ref: 'User',
     required: true
   },
+  subject: {
+    type: String,
+    required: true
+  },
+  description: String,
+  syllabus: {
+    nodes: [{
+      id: String,
+      data: {
+        label: String,
+        description: String
+      }
+    }],
+    edges: [{
+      source: String,
+      target: String,
+      data: {
+        label: String
+      }
+    }]
+  },
+  topics: [{
+    topicId: String,
+    name: String,
+    description: String,
+    resources: [{
+      resourceId: String,
+      type: {
+        type: String,
+        enum: ['video', 'article', 'quiz', 'exercise']
+      },
+      url: String,
+      title: String,
+      description: String,
+      duration: Number
+    }]
+  }],
   createdAt: {
     type: Date,
     default: Date.now
   }
-}, { timestamps: true });
+});
 
-const Course = model('Course', CourseSchema);
-
-export default Course;
+export default mongoose.model('Course', CourseSchema);
