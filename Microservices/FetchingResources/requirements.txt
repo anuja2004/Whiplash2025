@@ -1,0 +1,11 @@
+Flask
+flask-cors
+yt-dlp
+moviepy
+vosk
+Pillow
+pytesseract
+fpdf
+google-generativeai
+dotenv
+werkzeug
