@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Outlet, NavLink } from 'react-router-dom';
+import { Outlet, NavLink, useNavigate } from 'react-router-dom';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import './customCalendar.css';
@@ -10,8 +10,6 @@ import useCourseStore from '../../store/courseStore';
 const StudentDashboard = () => {
   const [open, setOpen] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [topic, setTopic] = useState('');
-  const [frequency, setFrequency] = useState('');
   const [date, setDate] = useState(new Date());
   const [courseModal, setCourseModal] = useState({ open: false, selectedCourse: null });
   const [selectedTopic, setSelectedTopic] = useState(null);
@@ -19,8 +17,18 @@ const StudentDashboard = () => {
   const [navOpen, setNavOpen] = useState(true);
   const [calendarOpen, setCalendarOpen] = useState(true);
   const [upcomingOpen, setUpcomingOpen] = useState(true);
+  const [uploadMode, setUploadMode] = useState('upload');
+  const [ocrLoading, setOcrLoading] = useState(false);
+  const [ocrError, setOcrError] = useState(null);
+  const [ocrTopics, setOcrTopics] = useState([]);
+  const [manualTopics, setManualTopics] = useState('');
+  const [targetDays, setTargetDays] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
 
-  const { courses, fetchCourses, setCurrentCourse, setCurrentTopic, currentCourse } = useCourseStore();
+  const navigate = useNavigate();
+  const { courses, fetchCourses, fetchCourseDetails, setCurrentCourse, setCurrentTopic, currentCourse } = useCourseStore();
 
   useEffect(() => {
     fetchCourses();
@@ -38,22 +46,23 @@ const StudentDashboard = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const frequencies = ['Daily', 'Weekly', 'Monthly'];
-
-  // Demo Events
-  const importantEvents = [
-    { date: new Date(2025, 3, 15), label: 'AI/ML Mid Exam' },
-    { date: new Date(2025, 3, 18), label: 'Web Dev Project Review' },
-    { date: new Date(2025, 3, 20), label: 'Hackathon' },
-    { date: new Date(), label: 'Today: Prep for DBMS' }
-  ];
-
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
 
-  const handleSave = () => {
-    console.log('Topic:', topic, 'Frequency:', frequency, 'Selected Date:', date);
+  const handleImageUpload = (e) => {
+    setOcrLoading(true);
+    setOcrError(null);
+    setOcrTopics([]);
+    // TO DO: implement image upload and OCR logic
+    setTimeout(() => {
+      setOcrLoading(false);
+      setOcrTopics(['Topic 1', 'Topic 2', 'Topic 3']);
+    }, 2000);
+  };
+
+  const handleSaveSyllabus = () => {
+    console.log('Manual Topics:', manualTopics, 'Target Days:', targetDays, 'Start Date:', startDate, 'End Date:', endDate);
     handleClose();
   };
 
@@ -80,6 +89,20 @@ const StudentDashboard = () => {
       ...prev,
       [courseId]: !prev[courseId]
     }));
+  };
+
+  // Demo Events
+  const importantEvents = [
+    { date: new Date(2025, 3, 15), label: 'AI/ML Mid Exam' },
+    { date: new Date(2025, 3, 18), label: 'Web Dev Project Review' },
+    { date: new Date(2025, 3, 20), label: 'Hackathon' },
+    { date: new Date(), label: 'Today: Prep for DBMS' }
+  ];
+
+  // Handler to go to syllabus page for a course
+  const handleGoToSyllabus = async (courseId) => {
+    await fetchCourseDetails(courseId); // This will set currentCourse with syllabus
+    navigate('/syllabus');
   };
 
   return (
@@ -200,6 +223,12 @@ const StudentDashboard = () => {
                         <ChevronRight className="h-5 w-5 inline" />
                       )}
                     </button>
+                    <button
+                      className="ml-2 px-3 py-1 bg-indigo-600 text-white rounded hover:bg-indigo-700 text-xs"
+                      onClick={() => handleGoToSyllabus(course._id)}
+                    >
+                      Syllabus
+                    </button>
                   </li>
                 ))
               ) : (
@@ -235,21 +264,28 @@ const StudentDashboard = () => {
       {/* Right Content */}
       <div className="flex-1 p-4 md:p-6 pt-16 md:pt-6 overflow-y-auto">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-3xl font-bold mb-6">What do you want to learn today? 🤔</h1>
+          <h1 className="text-6xl m-7 font-bold mb-6">What do you want to learn today? 🤔</h1>
           
           <div className="flex gap-2 mb-6">
             <input
               type="text"
               placeholder="Search or Add a New Topic..."
               className="w-full p-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-black"
-              onClick={() => setCourseModal({ open: true, selectedCourse: currentCourse })}
-              readOnly
+              value={searchQuery}
+              onChange={e => setSearchQuery(e.target.value)}
+              onKeyDown={e => { if (e.key === 'Enter') handleOpen(); }}
             />
             <button
               className="bg-black text-white py-2 px-6 rounded-xl hover:bg-gray-800 transition-colors shadow-sm"
               onClick={handleOpen}
             >
               Search
+            </button>
+            <button
+              className="bg-gray-200 text-black py-2 px-4 rounded-xl hover:bg-gray-300 transition-colors shadow-sm"
+              onClick={() => setCourseModal({ open: true, selectedCourse: currentCourse })}
+            >
+              Change Course
             </button>
           </div>
 
@@ -324,12 +360,12 @@ const StudentDashboard = () => {
         </div>
       )}
 
-      {/* Add Topic Modal */}
+      {/* Add Syllabus Modal */}
       {open && (
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-60 backdrop-blur-sm">
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 mx-4">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-xl font-bold">Add Learning Topic</h2>
+              <h2 className="text-xl font-bold">Add Course Syllabus</h2>
               <button 
                 onClick={handleClose}
                 className="text-gray-400 hover:text-black transition-colors"
@@ -339,47 +375,101 @@ const StudentDashboard = () => {
             </div>
 
             <div className="space-y-4">
+              {/* Toggle between Upload or Manual Entry */}
+              <div className="flex space-x-4 justify-center mb-2">
+                <button
+                  className={`px-4 py-2 rounded-xl border transition-colors ${uploadMode === 'upload' ? 'bg-black text-white' : 'bg-gray-100 text-black'}`}
+                  onClick={() => setUploadMode('upload')}
+                >
+                  Upload Syllabus Pic (OCR)
+                </button>
+                <button
+                  className={`px-4 py-2 rounded-xl border transition-colors ${uploadMode === 'manual' ? 'bg-black text-white' : 'bg-gray-100 text-black'}`}
+                  onClick={() => setUploadMode('manual')}
+                >
+                  Enter Topics Manually
+                </button>
+              </div>
+
+              {/* Upload Syllabus Pic */}
+              {uploadMode === 'upload' && (
+                <div>
+                  <label className="block mb-2 font-medium text-sm">Upload Syllabus Image</label>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageUpload}
+                    className="w-full border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-black"
+                  />
+                  {ocrLoading && <div className="text-sm text-gray-500 mt-2">Processing image...</div>}
+                  {ocrError && <div className="text-sm text-red-500 mt-2">{ocrError}</div>}
+                  {ocrTopics.length > 0 && (
+                    <div className="mt-2">
+                      <label className="block mb-1 text-xs font-medium">Extracted Topics:</label>
+                      <ul className="list-disc pl-5 text-sm">
+                        {ocrTopics.map((topic, idx) => (
+                          <li key={idx}>{topic}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* Manual Topic Entry */}
+              {uploadMode === 'manual' && (
+                <div>
+                  <label className="block mb-2 font-medium text-sm">Enter Topic Names (comma separated)</label>
+                  <input
+                    type="text"
+                    value={manualTopics}
+                    onChange={e => setManualTopics(e.target.value)}
+                    className="w-full border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-black"
+                    placeholder="e.g. Algebra, Calculus, Geometry"
+                  />
+                </div>
+              )}
+
+              {/* Target Days to Complete */}
               <div>
-                <label className="block mb-2 font-medium text-sm">Topic or Subject</label>
+                <label className="block mb-2 font-medium text-sm">Target Days to Complete</label>
                 <input
-                  type="text"
-                  value={topic}
-                  onChange={(e) => setTopic(e.target.value)}
+                  type="number"
+                  min="1"
+                  value={targetDays}
+                  onChange={e => setTargetDays(e.target.value)}
                   className="w-full border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-black"
-                  placeholder="Enter topic name"
+                  placeholder="Enter number of days"
                 />
               </div>
 
-              <div>
-                <label className="block mb-2 font-medium text-sm">Study Frequency</label>
-                <select
-                  value={frequency}
-                  onChange={(e) => setFrequency(e.target.value)}
-                  className="w-full border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-black"
-                >
-                  <option value="" disabled>Select Frequency</option>
-                  {frequencies.map((option) => (
-                    <option key={option} value={option}>{option}</option>
-                  ))}
-                </select>
-              </div>
-
+              {/* Start Date */}
               <div>
                 <label className="block mb-2 font-medium text-sm">Start Date</label>
-                <div className="border border-gray-200 rounded-xl overflow-hidden">
-                  <Calendar
-                    onChange={setDate}
-                    value={date}
-                    className="rounded-xl"
-                  />
-                </div>
+                <input
+                  type="date"
+                  value={startDate}
+                  onChange={e => setStartDate(e.target.value)}
+                  className="w-full border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-black"
+                />
+              </div>
+
+              {/* End Date */}
+              <div>
+                <label className="block mb-2 font-medium text-sm">End Date</label>
+                <input
+                  type="date"
+                  value={endDate}
+                  onChange={e => setEndDate(e.target.value)}
+                  className="w-full border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-black"
+                />
               </div>
 
               <button
                 className="bg-black hover:bg-gray-800 text-white py-3 px-4 rounded-xl w-full mt-4 transition-colors shadow-sm"
-                onClick={handleSave}
+                onClick={handleSaveSyllabus}
               >
-                Save Topic
+                Save Syllabus
               </button>
             </div>
           </div>

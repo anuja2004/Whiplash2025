@@ -3,7 +3,6 @@ import bcrypt from "bcrypt";
 import dotenv from "dotenv";
 import { v4 as uuidv4 } from "uuid";
 
-
 // Import models
 import User from '../models/User.js';
 import Course from '../models/Course.js';
@@ -12,7 +11,6 @@ import Quiz from '../models/general/Quiz.js';
 import Note from '../models//general/Note.js';
 import UserProgress from '../models/UserProgress.js';
 import Submission from '../models//general/Submission.js';
-
 
 dotenv.config();
 
@@ -241,6 +239,88 @@ const resourceData = {
   }
 };
 
+// --- BEGIN DUMMY SYLLABUS DATA ADDITION ---
+const syllabusData = {
+  'Web Development': {
+    nodes: [
+      { id: 'wd-1', data: { label: 'HTML Basics', description: 'Learn the fundamentals of HTML markup' } },
+      { id: 'wd-2', data: { label: 'CSS Fundamentals', description: 'Style your web pages with CSS' } },
+      { id: 'wd-3', data: { label: 'JavaScript Core', description: 'Make your pages interactive with JavaScript' } },
+      { id: 'wd-4', data: { label: 'DOM Manipulation', description: 'Interact with page elements dynamically' } },
+      { id: 'wd-5', data: { label: 'Frontend Framework (React/Vue/Angular)', description: 'Build scalable UIs with modern frameworks' } },
+      { id: 'wd-6', data: { label: 'State Management', description: 'Manage application state effectively' } },
+      { id: 'wd-7', data: { label: 'Node.js Backend', description: 'Server-side JavaScript development' } },
+      { id: 'wd-8', data: { label: 'Express.js Framework', description: 'Build web APIs with Express' } },
+      { id: 'wd-9', data: { label: 'Databases (SQL/NoSQL)', description: 'Store and retrieve data efficiently' } },
+      { id: 'wd-10', data: { label: 'Authentication & Authorization', description: 'Secure your web applications' } },
+    ],
+    edges: [
+      { source: 'wd-1', target: 'wd-2', data: { label: 'Next' } },
+      { source: 'wd-2', target: 'wd-3', data: { label: 'Next' } },
+      { source: 'wd-3', target: 'wd-4', data: { label: 'Next' } },
+      { source: 'wd-4', target: 'wd-5', data: { label: 'Next' } },
+      { source: 'wd-5', target: 'wd-6', data: { label: 'Next' } },
+      { source: 'wd-3', target: 'wd-7', data: { label: 'Alternative' } },
+      { source: 'wd-7', target: 'wd-8', data: { label: 'Next' } },
+      { source: 'wd-8', target: 'wd-9', data: { label: 'Next' } },
+      { source: 'wd-9', target: 'wd-10', data: { label: 'Next' } },
+    ]
+  },
+  'Operating Systems': {
+    nodes: [
+      { id: 'os-1', data: { label: 'Introduction & History', description: 'Evolution of operating systems and basic concepts' } },
+      { id: 'os-2', data: { label: 'Process Management', description: 'How OS manages and schedules processes' } },
+      { id: 'os-3', data: { label: 'Threads & Concurrency', description: 'Multi-threaded programming and synchronization' } },
+      { id: 'os-4', data: { label: 'CPU Scheduling Algorithms', description: 'Different approaches to CPU scheduling' } },
+      { id: 'os-5', data: { label: 'Memory Management (Paging, Segmentation)', description: 'How memory is allocated and managed' } },
+      { id: 'os-6', data: { label: 'Virtual Memory', description: 'Extending physical memory using disk space' } },
+      { id: 'os-7', data: { label: 'File Systems', description: 'Organization and management of files' } },
+      { id: 'os-8', data: { label: 'I/O Management', description: 'Handling input/output operations efficiently' } },
+    ],
+    edges: [
+      { source: 'os-1', target: 'os-2', data: { label: 'Next' } },
+      { source: 'os-2', target: 'os-3', data: { label: 'Next' } },
+      { source: 'os-2', target: 'os-4', data: { label: 'Related' } },
+      { source: 'os-3', target: 'os-4', data: { label: 'Next' } },
+      { source: 'os-4', target: 'os-5', data: { label: 'Next' } },
+      { source: 'os-5', target: 'os-6', data: { label: 'Next' } },
+      { source: 'os-6', target: 'os-7', data: { label: 'Next' } },
+      { source: 'os-7', target: 'os-8', data: { label: 'Next' } },
+    ]
+  },
+  'Quantum Computing': {
+    nodes: [
+      { id: 'qc-1', data: { label: 'Qubits', description: 'Quantum bits basics' } },
+      { id: 'qc-2', data: { label: 'Superposition', description: 'Quantum state superposition' } },
+      { id: 'qc-3', data: { label: 'Entanglement', description: 'Quantum entanglement explained' } },
+      { id: 'qc-4', data: { label: 'Quantum Gates', description: 'Quantum logic gates' } },
+      { id: 'qc-5', data: { label: 'Quantum Algorithms', description: 'Shor’s and Grover’s algorithms' } }
+    ],
+    edges: [
+      { source: 'qc-1', target: 'qc-2', data: { label: 'Next' } },
+      { source: 'qc-2', target: 'qc-3', data: { label: 'Next' } },
+      { source: 'qc-3', target: 'qc-4', data: { label: 'Next' } },
+      { source: 'qc-4', target: 'qc-5', data: { label: 'Next' } }
+    ]
+  },
+  'Game Development': {
+    nodes: [
+      { id: 'gd-1', data: { label: 'Game Design Basics', description: 'Principles of game design' } },
+      { id: 'gd-2', data: { label: '2D Engines', description: 'Working with 2D game engines' } },
+      { id: 'gd-3', data: { label: '3D Engines', description: 'Working with 3D game engines' } },
+      { id: 'gd-4', data: { label: 'Physics in Games', description: 'Physics simulation in games' } },
+      { id: 'gd-5', data: { label: 'Game Publishing', description: 'Publishing your game' } }
+    ],
+    edges: [
+      { source: 'gd-1', target: 'gd-2', data: { label: 'Next' } },
+      { source: 'gd-2', target: 'gd-3', data: { label: 'Next' } },
+      { source: 'gd-3', target: 'gd-4', data: { label: 'Next' } },
+      { source: 'gd-4', target: 'gd-5', data: { label: 'Next' } }
+    ]
+  }
+};
+// --- END DUMMY SYLLABUS DATA ADDITION ---
+
 // Quiz data
 const quizData = {
   'React Fundamentals': {
@@ -331,57 +411,6 @@ const seedCourses = async (users) => {
   const studentUser = users.find(user => user.role === 'student');
 
   // Syllabus data for courses
-  const syllabusData = {
-    'Web Development': {
-      nodes: [
-        { id: 'wd-1', data: { label: 'HTML Basics', description: 'Learn the fundamentals of HTML markup' } },
-        { id: 'wd-2', data: { label: 'CSS Fundamentals', description: 'Style your web pages with CSS' } },
-        { id: 'wd-3', data: { label: 'JavaScript Core', description: 'Make your pages interactive with JavaScript' } },
-        { id: 'wd-4', data: { label: 'DOM Manipulation', description: 'Interact with page elements dynamically' } },
-        { id: 'wd-5', data: { label: 'Frontend Framework (React/Vue/Angular)', description: 'Build scalable UIs with modern frameworks' } },
-        { id: 'wd-6', data: { label: 'State Management', description: 'Manage application state effectively' } },
-        { id: 'wd-7', data: { label: 'Node.js Backend', description: 'Server-side JavaScript development' } },
-        { id: 'wd-8', data: { label: 'Express.js Framework', description: 'Build web APIs with Express' } },
-        { id: 'wd-9', data: { label: 'Databases (SQL/NoSQL)', description: 'Store and retrieve data efficiently' } },
-        { id: 'wd-10', data: { label: 'Authentication & Authorization', description: 'Secure your web applications' } },
-      ],
-      edges: [
-        { source: 'wd-1', target: 'wd-2', data: { label: 'Next' } },
-        { source: 'wd-2', target: 'wd-3', data: { label: 'Next' } },
-        { source: 'wd-3', target: 'wd-4', data: { label: 'Next' } },
-        { source: 'wd-4', target: 'wd-5', data: { label: 'Next' } },
-        { source: 'wd-5', target: 'wd-6', data: { label: 'Next' } },
-        { source: 'wd-3', target: 'wd-7', data: { label: 'Alternative' } },
-        { source: 'wd-7', target: 'wd-8', data: { label: 'Next' } },
-        { source: 'wd-8', target: 'wd-9', data: { label: 'Next' } },
-        { source: 'wd-9', target: 'wd-10', data: { label: 'Next' } },
-      ]
-    },
-    'Operating Systems': {
-      nodes: [
-        { id: 'os-1', data: { label: 'Introduction & History', description: 'Evolution of operating systems and basic concepts' } },
-        { id: 'os-2', data: { label: 'Process Management', description: 'How OS manages and schedules processes' } },
-        { id: 'os-3', data: { label: 'Threads & Concurrency', description: 'Multi-threaded programming and synchronization' } },
-        { id: 'os-4', data: { label: 'CPU Scheduling Algorithms', description: 'Different approaches to CPU scheduling' } },
-        { id: 'os-5', data: { label: 'Memory Management (Paging, Segmentation)', description: 'How memory is allocated and managed' } },
-        { id: 'os-6', data: { label: 'Virtual Memory', description: 'Extending physical memory using disk space' } },
-        { id: 'os-7', data: { label: 'File Systems', description: 'Organization and management of files' } },
-        { id: 'os-8', data: { label: 'I/O Management', description: 'Handling input/output operations efficiently' } },
-      ],
-      edges: [
-        { source: 'os-1', target: 'os-2', data: { label: 'Next' } },
-        { source: 'os-2', target: 'os-3', data: { label: 'Next' } },
-        { source: 'os-2', target: 'os-4', data: { label: 'Related' } },
-        { source: 'os-3', target: 'os-4', data: { label: 'Next' } },
-        { source: 'os-4', target: 'os-5', data: { label: 'Next' } },
-        { source: 'os-5', target: 'os-6', data: { label: 'Next' } },
-        { source: 'os-6', target: 'os-7', data: { label: 'Next' } },
-        { source: 'os-7', target: 'os-8', data: { label: 'Next' } },
-      ]
-    }
-  };
-
-  // Create course topics with resources
   const createTopicsWithResources = (subject) => {
     const nodes = syllabusData[subject].nodes;
     return nodes.map((node, index) => {
@@ -456,6 +485,37 @@ const seedCourses = async (users) => {
       accessList: [],
       syllabus: syllabusData['Operating Systems'],
       topics: createTopicsWithResources('Operating Systems'),
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
+    {
+      courseId: 'qc-intro',
+      owner: instructorUser._id,
+      title: 'Introduction to Quantum Computing',
+      subject: 'Quantum Computing',
+      description: 'Learn the basics of quantum computing and its applications',
+      isPrivate: false,
+      accessList: [
+        {
+          user: studentUser._id,
+          accessLevel: 'view'
+        }
+      ],
+      syllabus: syllabusData['Quantum Computing'],
+      topics: createTopicsWithResources('Quantum Computing'),
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
+    {
+      courseId: 'gd-fundamentals',
+      owner: instructorUser._id,
+      title: 'Game Development Fundamentals',
+      subject: 'Game Development',
+      description: 'Learn the basics of game development and game design',
+      isPrivate: true,
+      accessList: [],
+      syllabus: syllabusData['Game Development'],
+      topics: createTopicsWithResources('Game Development'),
       createdAt: new Date(),
       updatedAt: new Date()
     }

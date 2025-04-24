@@ -4,13 +4,13 @@ import SignUpForm from '../../components/forms/sign-up'
 import {motion,AnimatePresence } from 'framer-motion'
 import { signIn,signUp } from '../../api/auth'
 import { useNavigate } from 'react-router-dom'
+import ProjectFlow from './ProjectFlow';
 
 const RegisterPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [activeTab, setActiveTab] = useState('signin')
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-
 
   const toggleModal = () => setIsModalOpen(!isModalOpen)
   const navigate = useNavigate();
@@ -46,107 +46,123 @@ const RegisterPage = () => {
 
 
   return (
-    <div className="h-screen w-full flex items-center justify-center bg-gray-50 relative">
-      <div className="text-center max-w-xl">
-        <h1 className="text-4xl font-bold mb-4">Think. Plan. Track.</h1>
-        <p className="text-lg text-gray-600 mb-6">All in one place with Whiplash.</p>
-        <button
-          onClick={toggleModal}
-          className="px-6 py-3 bg-black text-white rounded-md hover:bg-neutral-800 transition"
+    <div className="min-h-screen w-full flex flex-col items-center justify-center bg-gradient-to-br from-yellow-100 via-blue-50 to-pink-100 relative overflow-x-hidden">
+      {/* Top Banner with animated images */}
+      <motion.div
+        className="w-full flex flex-col md:flex-row items-center justify-center px-4 pt-16 mb-4 gap-4"
+        initial={{ opacity: 0, y: -60 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, type: 'spring' }}
+      >
+        <motion.img
+          src="/LearningVisIMG.png"
+          alt="Learning Visual"
+          className="w-60 md:w-[340px] mb-6 md:mb-0 drop-shadow-2xl hidden md:block ml-[100px]"
+          initial={{ scale: 0.8, rotate: -10 }}
+          animate={{ scale: 1.1, rotate: 0 }}
+          transition={{ delay: 0.2, duration: 0.7, type: 'spring' }}
+        />
+        <div className="flex-1 mx-2 md:mx-8 text-center flex flex-col items-center justify-center">
+          <motion.h1
+            className="text-4xl md:text-6xl font-extrabold text-gray-900 mb-4 tracking-tight drop-shadow-lg"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.7 }}
+          >
+            Welcome to <span className="text-yellow-400 drop-shadow-md text-[60px] md:text-[150px]">Whiplash</span>
+          </motion.h1>
+          <motion.p
+            className="text-lg md:text-2xl text-gray-700 mb-8 max-w-2xl"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.7 }}
+          >
+            Supercharge your learning journey.<br />Plan, track, and achieve your study goals with <span className="text-sky-500 font-semibold">AI-powered topic extraction</span> and <span className="text-pink-500 font-semibold">personalized scheduling</span>.
+          </motion.p>
+          <motion.button
+            onClick={toggleModal}
+            className="px-8 py-4 bg-black text-white rounded-xl shadow-lg hover:bg-gray-800 transition text-lg font-semibold mb-2"
+            whileHover={{ scale: 1.08 }}
+            whileTap={{ scale: 0.96 }}
+          >
+            Get Started
+          </motion.button>
+        </div>
+        <motion.img
+          src="/PeopleWithCalendar.png"
+          alt="People with Calendar"
+          className="w-60 md:w-[340px] mb-6 md:mb-0 drop-shadow-2xl hidden md:block mr-[100px]"
+          initial={{ scale: 0.8, rotate: 10 }}
+          animate={{ scale: 1.1, rotate: 0 }}
+          transition={{ delay: 0.2, duration: 0.7, type: 'spring' }}
+        />
+      </motion.div>
+
+      {/* Project Flow with React Flow */}
+      <motion.div
+        className="max-w-5xl w-full px-2 md:px-4 mt-2 md:mt-8 mb-8 md:mb-12"
+        initial={{ opacity: 0, y: 60 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.6, duration: 0.8 }}
+      >
+        <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center text-blue-900 tracking-tight">How Whiplash Works</h2>
+        <motion.div
+          initial={{ scale: 0.92, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ delay: 0.7, duration: 0.7, type: 'spring' }}
         >
-          Get Whiplash
-        </button>
-      </div>
+          <ProjectFlow />
+        </motion.div>
+        <div className="text-center text-gray-600 mt-4 text-base md:text-lg">
+          <span className="font-semibold text-blue-700">Register</span> → <span className="font-semibold text-sky-500">Upload Syllabus</span> → <span className="font-semibold text-indigo-500">AI Extracts Topics</span> → <span className="font-semibold text-green-500">Personalized Plan</span> → <span className="font-semibold text-pink-500">Track &amp; Learn</span>
+        </div>
+      </motion.div>
 
-      {/* MODAL */}
+      {/* Modal for Sign In / Sign Up */}
       <AnimatePresence>
-      {isModalOpen && (
- <motion.div
- className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50"
- initial={{ y: '100%', opacity: 0 }}
- animate={{ y: 0, opacity: 1 }}
- exit={{ y: '100%', opacity: 0 }}
- transition={{ duration: 0.4, ease: 'easeOut' }}
->
- <div
-   className="bg-white rounded-[25px] w-[90%] max-w-md p-6 shadow-2xl relative mx-auto"
- >
-   
-            {/* Tab Headers */}
-            <div className="flex border-b mb-4">
-              <button
-                onClick={() => setActiveTab('signin')}
-                className={`flex-1 py-2 text-center ${
-                  activeTab === 'signin' ? 'border-b-2 border-black font-semibold' : 'text-gray-500'
-                }`}
-              >
-                Sign In
-              </button>
-              <button
-                onClick={() => setActiveTab('signup')}
-                className={`flex-1 py-2 text-center ${
-                  activeTab === 'signup' ? 'border-b-2 border-black font-semibold' : 'text-gray-500'
-                }`}
-              >
-                Sign Up
-              </button>
-            </div>
-
-            {/* Tab Content */}
-            <AnimatePresence mode="wait">
-  <motion.div
-    key={activeTab}
-    initial={{ opacity: 0, y: 10 }}
-    animate={{ opacity: 1, y: 0 }}
-    exit={{ opacity: 0, y: -10 }}
-    transition={{ duration: 0.3, ease: 'easeInOut' }}
-    className="w-full"
-  >
-    <div className="min-h-[280px]"> {/* Add min height to reduce height flickering */}
-    {activeTab === 'signin' && (
-  <SignInForm
-    onSwitchToSignUp={() => setActiveTab('signup')}
-    onSubmit={handleSignInSubmit}
-    isLoading={loading}
-    error={error}
-    setError={setError}
-    setLoading={setLoading}
-    
-  />
-)}
-{activeTab === 'signup' && (
-  <SignUpForm
-    onSwitchToSignIn={() => setActiveTab('signin')}
-    onSubmit={handleSignUpSubmit}
-    isLoading={loading}
-    error={error}
-    setError={setError}
-    setLoading={setLoading}
-  />
-)}
-
-    </div>
-  </motion.div>
-</AnimatePresence>
-
-
-            {/* Close Button */}
-            <button
-              onClick={toggleModal}
-              className="absolute
-              m-2
-              top-2 right-2
-            rounded-full   
-            text-gray-400 hover:text-gray-600 text-4xl cursor-pointer"
+        {isModalOpen && (
+          <motion.div
+            className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50"
+            initial={{ y: '100%', opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: '100%', opacity: 0 }}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
+          >
+            <div
+              className="bg-white rounded-[25px] w-[95%] max-w-md p-6 shadow-2xl relative mx-auto"
             >
-              &times;
-            </button>
+              {/* Tab Headers */}
+              <div className="flex border-b mb-4">
+                <button
+                  onClick={() => setActiveTab('signin')}
+                  className={`flex-1 py-2 text-center ${
+                    activeTab === 'signin' ? 'border-b-2 border-black font-semibold' : 'text-gray-500'
+                  }`}
+                >
+                  Sign In
+                </button>
+                <button
+                  onClick={() => setActiveTab('signup')}
+                  className={`flex-1 py-2 text-center ${
+                    activeTab === 'signup' ? 'border-b-2 border-black font-semibold' : 'text-gray-500'
+                  }`}
+                >
+                  Sign Up
+                </button>
+              </div>
+              {error && <div className="text-red-500 mb-2 text-center">{error}</div>}
+              {/* Forms */}
+              {activeTab === 'signin' ? (
+                <SignInForm onSubmit={handleSignInSubmit} loading={loading} />
+              ) : (
+                <SignUpForm onSubmit={handleSignUpSubmit} loading={loading} />
+              )}
             </div>
-            </motion.div>
-      )}
+          </motion.div>
+        )}
       </AnimatePresence>
     </div>
-  )
+  );
 }
 
 export default RegisterPage
