@@ -20,8 +20,7 @@ const RegisterPage = () => {
     setError(null);
     try {
       const data = await signIn(credentials);
-      // Store token in localStorage or context
-      localStorage.setItem('authToken', data.token);
+      // No need to set localStorage here as it's already done in signIn function
       navigate('/dashboard');
     } catch (err) {
       setError(err.message || 'Failed to sign in');
@@ -29,14 +28,14 @@ const RegisterPage = () => {
       setLoading(false);
     }
   };
-
+  
   const handleSignUpSubmit = async (userData) => {
     setLoading(true);
     setError(null);
     try {
       const data = await signUp(userData);
-      // Automatically log in user after registration
-      localStorage.setItem('authToken', data.token);
+      // No need to manually set token here either
+      // The signUp function should handle token storage if needed
       navigate('/dashboard');
     } catch (err) {
       setError(err.message || 'Failed to sign up');

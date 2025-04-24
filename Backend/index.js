@@ -9,7 +9,7 @@ dotenv.config();
 
 //import Routes 
 import authRoutes from './routes/auth.js'
-
+import studentRoutes from './routes/studentRoutes.js'
 // Initialize express
 const app = express();
 
@@ -36,6 +36,7 @@ app.use('/health', (req, res) => {
 });
 
 app.use('/api/auth',authRoutes)
+app.use('/api/student',studentRoutes)
 
 // Start server
 const PORT = process.env.PORT || 5000;

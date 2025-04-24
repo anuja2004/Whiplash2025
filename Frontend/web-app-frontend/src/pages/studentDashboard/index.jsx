@@ -1,14 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Outlet, NavLink } from 'react-router-dom';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import './customCalendar.css';
+import { ChevronDown, ChevronRight } from 'lucide-react';
+
+import useCourseStore from '../../store/courseStore';
 
 const StudentDashboard = () => {
   const [open, setOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [topic, setTopic] = useState('');
   const [frequency, setFrequency] = useState('');
   const [date, setDate] = useState(new Date());
+  const [courseModal, setCourseModal] = useState({ open: false, selectedCourse: null });
+  const [selectedTopic, setSelectedTopic] = useState(null);
+  const [expandedCourses, setExpandedCourses] = useState({});
+  const [navOpen, setNavOpen] = useState(true);
+  const [calendarOpen, setCalendarOpen] = useState(true);
+  const [upcomingOpen, setUpcomingOpen] = useState(true);
+
+  const { courses, fetchCourses, setCurrentCourse, setCurrentTopic, currentCourse } = useCourseStore();
+
+  useEffect(() => {
+    fetchCourses();
+  }, [fetchCourses]);
+
+  // Close sidebar when screen resizes to larger size
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setSidebarOpen(false);
+      }
+    };
+    
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const frequencies = ['Daily', 'Weekly', 'Monthly'];
 
@@ -22,6 +50,7 @@ const StudentDashboard = () => {
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
 
   const handleSave = () => {
     console.log('Topic:', topic, 'Frequency:', frequency, 'Selected Date:', date);
@@ -42,135 +71,317 @@ const StudentDashboard = () => {
   // Active link style for navigation
   const navLinkStyle = ({ isActive }) => {
     return isActive 
-      ? "bg-blue-100 text-blue-700 p-2 rounded font-medium flex items-center"
-      : "text-gray-700 hover:bg-gray-100 p-2 rounded flex items-center";
+      ? "bg-black text-white p-3 rounded-xl font-medium flex items-center transition-all"
+      : "text-gray-700 hover:bg-gray-100 p-3 rounded-xl flex items-center transition-all";
+  };
+
+  const toggleCourseTopics = (courseId) => {
+    setExpandedCourses((prev) => ({
+      ...prev,
+      [courseId]: !prev[courseId]
+    }));
   };
 
   return (
-    <div className="flex flex-col md:flex-row h-screen w-full">
-      {/* Left Sidebar */}
-      <div className="w-full md:w-1/3 bg-gray-100 p-4 overflow-y-auto">
-        <h2 className="text-lg font-bold mb-4">📅 Calendar</h2>
-        <div className="bg-white rounded-xl shadow mb-4 p-2">
-          <Calendar
-            onChange={setDate}
-            value={date}
-            tileClassName={tileClassName}
-          />
-        </div>
+    <div className="flex flex-col md:flex-row h-screen bg-gray-50 overflow-hidden">
+      {/* Mobile Hamburger Button */}
+      <button 
+        onClick={toggleSidebar}
+        className="md:hidden fixed top-4 left-4 z-30 bg-black text-white p-3 rounded-full shadow-lg"
+      >
+        {sidebarOpen ? '✕' : '☰'}
+      </button>
 
-        <h3 className="text-md font-semibold mb-2">📌 Upcoming Events:</h3>
-        <ul className="space-y-2 mb-6">
-          {importantEvents.map((event, idx) => (
-            <li key={idx} className="bg-white p-2 rounded shadow text-sm">
-              <strong>{event.date.toDateString()}</strong>: {event.label}
-            </li>
-          ))}
-        </ul>
+      {/* Left Sidebar - Hidden on mobile unless toggled */}
+      <div 
+        className={`fixed md:static inset-0 z-20 bg-white md:bg-transparent transition-transform duration-300 ease-in-out transform md:transform-none p-4 ${
+          sidebarOpen ? 'translate-x-0' : '-translate-x-full'
+        } md:translate-x-0 md:w-1/3 lg:w-1/4 overflow-y-auto md:border-r border-gray-200 pt-14 md:pt-4`}
+      >
+        <div className="space-y-6">
+          <div className="flex justify-between items-center">
+            <h2 className="text-xl font-bold">Whiplash</h2>
+            <div className="h-10 w-10 rounded-full bg-black text-white flex items-center justify-center">
+              <span>JD</span>
+            </div>
+          </div>
 
-        <h2 className="text-lg font-bold mb-2">📚 My Courses</h2>
-        <ul className="space-y-2">
-          <li className="bg-white p-2 rounded shadow">AI/ML</li>
-          <li className="bg-white p-2 rounded shadow">Web Dev</li>
-        </ul>
-        
-        {/* Dashboard Navigation */}
-        <div className="mt-6">
-          <h2 className="text-lg font-bold mb-2">🧭 Navigation</h2>
-          <nav className="space-y-1">
-            <NavLink to="/dashboard" end className={navLinkStyle}>
-              🏠 Dashboard Home
-            </NavLink>
-            <NavLink to="/dashboard/assignments" className={navLinkStyle}>
-              📝 Assignments
-            </NavLink>
-            <NavLink to="/dashboard/learning" className={navLinkStyle}>
-              🧠 Learning
-            </NavLink>
-            <NavLink to="/dashboard/notes" className={navLinkStyle}>
-              📓 Notes
-            </NavLink>
-            <NavLink to="/dashboard/quizzes" className={navLinkStyle}>
-              ✅ Quizzes
-            </NavLink>
-            <NavLink to="/dashboard/syllabus" className={navLinkStyle}>
-              📑 Syllabus
-            </NavLink>
-          </nav>
+          <div className="bg-white rounded-2xl shadow-md p-3">
+            <div className="flex justify-between items-center cursor-pointer" onClick={() => setCalendarOpen(v => !v)}>
+              <h2 className="text-lg font-bold mb-2 flex items-center">
+                <span className="mr-2">📅</span> Calendar
+              </h2>
+              {calendarOpen ? <ChevronDown className="h-5 w-5" /> : <ChevronRight className="h-5 w-5" />}
+            </div>
+            {calendarOpen && (
+              <Calendar
+                onChange={setDate}
+                value={date}
+                tileClassName={tileClassName}
+                className="rounded-xl"
+              />
+            )}
+          </div>
+
+          <div className="bg-white rounded-2xl shadow-md p-4">
+            <div className="flex justify-between items-center cursor-pointer" onClick={() => setUpcomingOpen(v => !v)}>
+              <h3 className="text-md font-semibold mb-3 flex items-center">
+                <span className="mr-2">📌</span> Upcoming
+              </h3>
+              {upcomingOpen ? <ChevronDown className="h-5 w-5" /> : <ChevronRight className="h-5 w-5" />}
+            </div>
+            {upcomingOpen && (
+              <ul className="space-y-2">
+                {importantEvents.map((event, idx) => (
+                  <li key={idx} className="p-2 rounded-xl bg-gray-50 text-sm hover:bg-gray-100 transition-all">
+                    <div className="font-medium">{event.label}</div>
+                    <div className="text-xs text-gray-500">{event.date.toDateString()}</div>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+          
+          <div className="bg-white rounded-2xl shadow-md p-4">
+            <div className="flex justify-between items-center cursor-pointer" onClick={() => setNavOpen(v => !v)}>
+              <h2 className="text-lg font-semibold mb-3 flex items-center">
+                <span className="mr-2">🧭</span> Navigation
+              </h2>
+              {navOpen ? <ChevronDown className="h-5 w-5" /> : <ChevronRight className="h-5 w-5" />}
+            </div>
+            {navOpen && (
+              <nav className="space-y-2">
+                <NavLink to="/dashboard" end className={navLinkStyle}>
+                  🏠 Dashboard
+                </NavLink>
+                <NavLink to="/dashboard/assignments" className={navLinkStyle}>
+                  📝 Assignments
+                </NavLink>
+                <NavLink to="/dashboard/learning" className={navLinkStyle}>
+                  🧠 Learning
+                </NavLink>
+                <NavLink to="/dashboard/notes" className={navLinkStyle}>
+                  📓 Notes
+                </NavLink>
+                <NavLink to="/dashboard/quizzes" className={navLinkStyle}>
+                  ✅ Quizzes
+                </NavLink>
+                <NavLink to="/dashboard/syllabus" className={navLinkStyle}>
+                  📑 Syllabus
+                </NavLink>
+              </nav>
+            )}
+          </div>
+
+          <div className="bg-white rounded-2xl shadow-md p-4">
+            <h2 className="text-lg font-semibold mb-3 flex items-center">
+              <span className="mr-2">📚</span> My Courses
+            </h2>
+            <ul className="space-y-2">
+              {courses && courses.length > 0 ? (
+                courses.map((course) => (
+                  <li
+                    key={course._id}
+                    className={`p-3 rounded-xl cursor-pointer font-medium flex items-center justify-between ${
+                      currentCourse && currentCourse._id === course._id
+                        ? 'bg-blue-500 text-white'
+                        : 'bg-gray-50 text-gray-700 hover:bg-blue-100'
+                    }`}
+                    onClick={() => setCourseModal({ open: true, selectedCourse: course })}
+                  >
+                    <span>{course.title}</span>
+                    <button
+                      className="ml-2 focus:outline-none"
+                      onClick={e => { e.stopPropagation(); toggleCourseTopics(course._id); }}
+                    >
+                      {expandedCourses[course._id] ? (
+                        <ChevronDown className="h-5 w-5 inline" />
+                      ) : (
+                        <ChevronRight className="h-5 w-5 inline" />
+                      )}
+                    </button>
+                  </li>
+                ))
+              ) : (
+                <li className="text-gray-400">No courses found.</li>
+              )}
+            </ul>
+            {courses && courses.map(course => (
+              expandedCourses[course._id] && course.topics && course.topics.length > 0 && (
+                <ul key={course._id + '-topics'} className="ml-6 mb-2">
+                  {course.topics.map(topic => (
+                    <li
+                      key={topic.topicId}
+                      className={`p-2 rounded cursor-pointer text-sm ${
+                        currentCourse && currentCourse._id === course._id && currentCourse.currentTopic && currentCourse.currentTopic.topicId === topic.topicId
+                          ? 'bg-blue-200 text-blue-900'
+                          : 'bg-gray-100 text-gray-700 hover:bg-blue-50'
+                      }`}
+                      onClick={() => {
+                        setCurrentCourse(course);
+                        setCurrentTopic(topic);
+                      }}
+                    >
+                      {topic.name}
+                    </li>
+                  ))}
+                </ul>
+              )
+            ))}
+          </div>
         </div>
       </div>
 
       {/* Right Content */}
-      <div className="w-full md:w-2/3 p-6">
-        <h1 className="text-2xl font-bold mb-4">What do you want to learn? 🤔</h1>
-        <div className="flex gap-2 mb-6">
-          <input
-            type="text"
-            placeholder="Search or Add a New Topic..."
-            className="w-full p-2 border border-gray-300 rounded cursor-pointer"
-            onClick={handleOpen}
-            readOnly
-          />
-          <button
-            className="bg-black text-white py-2 px-4 rounded"
-            onClick={handleOpen}
-          >
-            Search
-          </button>
-        </div>
+      <div className="flex-1 p-4 md:p-6 pt-16 md:pt-6 overflow-y-auto">
+        <div className="max-w-4xl mx-auto">
+          <h1 className="text-3xl font-bold mb-6">What do you want to learn today? 🤔</h1>
+          
+          <div className="flex gap-2 mb-6">
+            <input
+              type="text"
+              placeholder="Search or Add a New Topic..."
+              className="w-full p-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-black"
+              onClick={() => setCourseModal({ open: true, selectedCourse: currentCourse })}
+              readOnly
+            />
+            <button
+              className="bg-black text-white py-2 px-6 rounded-xl hover:bg-gray-800 transition-colors shadow-sm"
+              onClick={handleOpen}
+            >
+              Search
+            </button>
+          </div>
 
-        {/* This is where nested routes will render */}
-        <div className="mt-2 bg-white rounded-lg shadow p-4">
-          <Outlet />
+          {/* Content area */}
+          <div className="mt-4 bg-white rounded-2xl shadow-md p-6">
+            <Outlet />
+          </div>
         </div>
       </div>
 
-      {/* Modal */}
+      {/* Course Selection Modal */}
+      {courseModal.open && (
+        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-60 backdrop-blur-sm">
+          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 mx-4">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-xl font-bold">Change Course & Topic</h2>
+              <button onClick={() => setCourseModal({ open: false, selectedCourse: null })} className="text-gray-400 hover:text-black transition-colors">✕</button>
+            </div>
+            <div className="space-y-4">
+              <div>
+                <label className="block mb-2 font-medium text-sm">Select Course</label>
+                <select
+                  value={courseModal.selectedCourse?._id || ''}
+                  onChange={e => {
+                    const course = courses.find(c => c._id === e.target.value);
+                    setCourseModal({ ...courseModal, selectedCourse: course });
+                    setSelectedTopic(null);
+                  }}
+                  className="w-full border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-black"
+                >
+                  <option value="" disabled>Select Course</option>
+                  {courses.map(course => (
+                    <option key={course._id} value={course._id}>{course.title}</option>
+                  ))}
+                </select>
+              </div>
+              {courseModal.selectedCourse && courseModal.selectedCourse.topics && (
+                <div>
+                  <label className="block mb-2 font-medium text-sm">Select Topic</label>
+                  <select
+                    value={selectedTopic?.topicId || ''}
+                    onChange={e => {
+                      const topic = courseModal.selectedCourse.topics.find(t => t.topicId === e.target.value);
+                      setSelectedTopic(topic);
+                    }}
+                    className="w-full border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-black"
+                  >
+                    <option value="" disabled>Select Topic</option>
+                    {courseModal.selectedCourse.topics.map(topic => (
+                      <option key={topic.topicId} value={topic.topicId}>{topic.name}</option>
+                    ))}
+                  </select>
+                </div>
+              )}
+              <button
+                className="bg-black hover:bg-gray-800 text-white py-3 px-4 rounded-xl w-full mt-4 transition-colors shadow-sm"
+                onClick={() => {
+                  if (courseModal.selectedCourse) {
+                    setCurrentCourse(courseModal.selectedCourse);
+                    if (selectedTopic) {
+                      setCurrentTopic(selectedTopic);
+                    }
+                  }
+                  setCourseModal({ open: false, selectedCourse: null });
+                  setSelectedTopic(null);
+                }}
+              >
+                Confirm
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Add Topic Modal */}
       {open && (
-        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-40">
-          <div className="bg-white rounded-xl shadow-xl w-full max-w-md p-6">
-            <h2 className="text-xl font-semibold mb-4">Add Learning Topic</h2>
+        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-60 backdrop-blur-sm">
+          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 mx-4">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-xl font-bold">Add Learning Topic</h2>
+              <button 
+                onClick={handleClose}
+                className="text-gray-400 hover:text-black transition-colors"
+              >
+                ✕
+              </button>
+            </div>
 
-            <label className="block mb-2 font-medium text-sm">Topic or Subject</label>
-            <input
-              type="text"
-              value={topic}
-              onChange={(e) => setTopic(e.target.value)}
-              className="w-full border border-gray-300 rounded p-2 mb-4"
-              placeholder="Enter topic name"
-            />
+            <div className="space-y-4">
+              <div>
+                <label className="block mb-2 font-medium text-sm">Topic or Subject</label>
+                <input
+                  type="text"
+                  value={topic}
+                  onChange={(e) => setTopic(e.target.value)}
+                  className="w-full border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-black"
+                  placeholder="Enter topic name"
+                />
+              </div>
 
-            <label className="block mb-2 font-medium text-sm">Study Frequency</label>
-            <select
-              value={frequency}
-              onChange={(e) => setFrequency(e.target.value)}
-              className="w-full border border-gray-300 rounded p-2 mb-4"
-            >
-              <option value="" disabled>Select Frequency</option>
-              {frequencies.map((option) => (
-                <option key={option} value={option}>{option}</option>
-              ))}
-            </select>
+              <div>
+                <label className="block mb-2 font-medium text-sm">Study Frequency</label>
+                <select
+                  value={frequency}
+                  onChange={(e) => setFrequency(e.target.value)}
+                  className="w-full border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-black"
+                >
+                  <option value="" disabled>Select Frequency</option>
+                  {frequencies.map((option) => (
+                    <option key={option} value={option}>{option}</option>
+                  ))}
+                </select>
+              </div>
 
-            <label className="block mb-2 font-medium text-sm">Start Date</label>
-            <Calendar
-              onChange={setDate}
-              value={date}
-            />
+              <div>
+                <label className="block mb-2 font-medium text-sm">Start Date</label>
+                <div className="border border-gray-200 rounded-xl overflow-hidden">
+                  <Calendar
+                    onChange={setDate}
+                    value={date}
+                    className="rounded-xl"
+                  />
+                </div>
+              </div>
 
-            <button
-              className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded w-full mt-4"
-              onClick={handleSave}
-            >
-              Save
-            </button>
-
-            <button
-              className="mt-3 text-sm text-gray-500 hover:text-gray-700 w-full"
-              onClick={handleClose}
-            >
-              Cancel
-            </button>
+              <button
+                className="bg-black hover:bg-gray-800 text-white py-3 px-4 rounded-xl w-full mt-4 transition-colors shadow-sm"
+                onClick={handleSave}
+              >
+                Save Topic
+              </button>
+            </div>
           </div>
         </div>
       )}

@@ -1,5 +1,6 @@
 // models/UserProgress.js
 import mongoose from "mongoose";
+
 const UserProgressSchema = new mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
@@ -7,9 +8,31 @@ const UserProgressSchema = new mongoose.Schema({
     required: true
   },
   courseProgress: [{
-    courseId: String,
+    courseId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Course'
+    },
     completedTopics: [String],
+    completedVideos: [String], // Track completion at resource/video level
     currentTopic: String,
+    completedAssignments: [{
+      assignmentId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Assignment'
+      },
+      submittedAt: Date,
+      grade: Number,
+      feedback: String
+    }],
+    completedQuizzes: [{
+      quizId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Quiz'
+      },
+      score: Number,
+      completedAt: Date,
+      attempts: Number
+    }],
     startDate: {
       type: Date,
       default: Date.now
@@ -36,5 +59,8 @@ const UserProgressSchema = new mongoose.Schema({
     default: 0
   }
 });
+
+// Create an index for efficient user progress lookups
+UserProgressSchema.index({ userId: 1 });
 
 export default mongoose.model('UserProgress', UserProgressSchema);

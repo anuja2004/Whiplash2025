@@ -1,5 +1,6 @@
 import React from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, Link, Navigate } from 'react-router-dom';
+import { useAuth } from './context/AuthContext'; // Import your existing auth context
 import RegisterPage from './pages/register';
 import StudentDashboard from './pages/studentDashboard';
 import AssignmentsPage from './pages/assignmentsPage';
@@ -8,6 +9,23 @@ import NotesPage from './pages/notesPage';
 import QuizesPage from './pages/quizesPage';
 import SyllabusPage from './pages/syllabusPage';
 import DashboardHome from './pages/dashboardHome';
+import DebugPage from './pages/DebugPage';
+import useCourseStore from './store/courseStore';
+
+// Protected Route component
+const ProtectedRoute = ({ children }) => {
+  const { isAuthenticated, loading } = useAuth();
+  
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+  
+  if (!isAuthenticated) {
+    return <Navigate to="/register" replace />;
+  }
+  
+  return children;
+};
 
 // NotFound component for unmatched routes
 const NotFound = () => {
@@ -40,26 +58,49 @@ const NotFound = () => {
   );
 };
 
+const getDefaultCourseId = () => {
+  // Try to get the first course from the store (if available)
+  const courses = JSON.parse(localStorage.getItem('courses'));
+  if (courses && courses.length > 0) {
+    return courses[0].courseId || courses[0].id || courses[0]._id;
+  }
+  // fallback: null or hardcoded
+  return null;
+};
+
 const AppRoutes = () => {
   return (
     <Routes>
-      {/* Fallback route for 404 */}
-      <Route path="*" element={<NotFound />} />
-
+      {/* Redirect root to login or dashboard */}
+      <Route path="/" element={<Navigate to="/register" replace />} />
+      
       {/* Public routes */}
       <Route path="/register" element={<RegisterPage />} />
-      <Route path="/learningDashboard" element={<LearningDashboard />} />
 
       {/* Protected dashboard with nested routes */}
-      <Route path="/dashboard" element={<StudentDashboard />}> 
+      <Route 
+        path="/dashboard" 
+        element={
+          <ProtectedRoute>
+            <StudentDashboard />
+          </ProtectedRoute>
+        }
+      > 
+
+      {/* Debugg */}
+      <Route path="debug" element={<DebugPage/>} />
+
         {/* Default index route */}
         <Route index element={<DashboardHome />} />
-        <Route path="assignments" element={<AssignmentsPage />} />
-        <Route path="learning" element={<LearningDashboard />} />
-        <Route path="notes" element={<NotesPage />} />
         <Route path="quizzes" element={<QuizesPage />} />
+        <Route path="assignments" element={<AssignmentsPage />} />
+        <Route path="learning" element={<LearningDashboard courseId={getDefaultCourseId()} />} />
+        <Route path="notes" element={<NotesPage />} />
         <Route path="syllabus" element={<SyllabusPage />} />
       </Route>
+
+      {/* Fallback route for 404 */}
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };
