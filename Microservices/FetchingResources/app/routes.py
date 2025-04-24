@@ -1,15 +1,53 @@
-from flask import Blueprint, request, jsonify, send_file
+from flask import Blueprint, request, jsonify, send_file, render_template_string
 from .services import (
     extract_text_from_image, search_youtube, download_audio, convert_audio_to_wav,
     transcribe_audio, generate_content, generate_pdf, process_topics_full
 )
 import os
+import socket
+import time
+from datetime import datetime
 
 bp = Blueprint('api', __name__)
 
-@bp.route('/health', methods=['GET'])
+# Track service start time
+SERVICE_START = time.time()
+
+@bp.route('/health')
+@bp.route('/heath')
 def health_check():
-    return jsonify({'status': 'ok'})
+    uptime = int(time.time() - SERVICE_START)
+    hostname = socket.gethostname()
+    ip = socket.gethostbyname(hostname)
+    now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    env = os.environ.get('FLASK_ENV', 'development')
+    status = {
+        'status': 'ok',
+        'service': 'FetchingResources Microservice',
+        'uptime_seconds': uptime,
+        'hostname': hostname,
+        'ip': ip,
+        'current_time': now,
+        'environment': env
+    }
+    if 'application/json' in request.headers.get('Accept', ''):
+        return jsonify(status)
+    # HTML template
+    html = f"""
+    <html><head><title>Service Health</title>
+    <style>body{{font-family:sans-serif;background:#f9f9f9;margin:30px;}}.card{{background:#fff;padding:20px;border-radius:8px;box-shadow:0 2px 8px #0001;max-width:400px;margin:auto;}}</style>
+    </head><body><div class='card'>
+    <h2>✅ FetchingResources Microservice</h2>
+    <ul style='list-style:none;padding:0;'>
+        <li><b>Status:</b> <span style='color:green;'>OK</span></li>
+        <li><b>Uptime:</b> {uptime} seconds</li>
+        <li><b>Host:</b> {hostname} ({ip})</li>
+        <li><b>Current Time:</b> {now}</li>
+        <li><b>Environment:</b> {env}</li>
+    </ul>
+    </div></body></html>
+    """
+    return render_template_string(html)
 
 @bp.route('/process_image', methods=['POST'])
 def process_image():

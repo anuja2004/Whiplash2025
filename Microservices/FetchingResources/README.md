@@ -13,6 +13,10 @@ A microservice for:
    ```bash
    pip install -r requirements.txt
    ```
+   **Important:** This version works only with `moviepy==1.0.3`. If you face import errors, run:
+   ```bash
+   pip install moviepy==1.0.3
+   ```
 3. Set up `.env` with your `GOOGLE_API_KEY` and (optionally) `VOSK_MODEL_PATH`.
 
 ## Running
