@@ -2,7 +2,8 @@
 
 import axios from 'axios'
 
-const API_BASE = 'http://localhost:5000/api/auth' // replace with actual base URL
+// Use correct backend endpoints
+const API_BASE = 'http://localhost:5000/api/auth' // fixed: /api/auth (matches backend)
 
 export const signIn = async (credentials) => {
   try {
@@ -15,7 +16,8 @@ export const signIn = async (credentials) => {
     return response.data
   } catch (error) {
     console.log('Error in signIn:', error)
-    throw error.response?.data || error.message
+    // Surface backend error message if available
+    throw error.response?.data?.message || error.message || 'Failed to sign in'
   }
 }
 
@@ -29,6 +31,7 @@ export const signUp = async (userInfo) => {
     }
     return response.data
   } catch (error) {
-    throw error.response?.data || error.message
+    // Surface backend error message if available
+    throw error.response?.data?.message || error.message || 'Failed to sign up'
   }
 }
