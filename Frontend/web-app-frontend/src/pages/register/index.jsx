@@ -64,7 +64,7 @@ const RegisterPage = () => {
           alt="Learning Visual"
           className="w-60 md:w-[340px] mb-6 md:mb-0 drop-shadow-2xl hidden md:block ml-[100px]"
           initial={{ scale: 0.8, rotate: -10 }}
-          animate={{ scale: 1.1, rotate: 0 }}
+          animate={{ scale: 1.8, rotate: 28}}
           transition={{ delay: 0.2, duration: 0.7, type: 'spring' }}
         />
         <div className="flex-1 mx-2 md:mx-8 text-center flex flex-col items-center justify-center">
@@ -87,7 +87,7 @@ const RegisterPage = () => {
           <motion.button
             onClick={toggleModal}
             className="px-8 py-4 bg-black text-white rounded-xl shadow-lg hover:bg-gray-800 transition text-lg font-semibold mb-2"
-            whileHover={{ scale: 1.08 }}
+            whileHover={{ scale: 2.08 }}
             whileTap={{ scale: 0.96 }}
           >
             Get Started
@@ -96,9 +96,9 @@ const RegisterPage = () => {
         <motion.img
           src="/PeopleWithCalendar.png"
           alt="People with Calendar"
-          className="w-60 md:w-[340px] mb-6 md:mb-0 drop-shadow-2xl hidden md:block mr-[100px]"
+          className="w-60 md:w-[340px] mb-6 md:mb-0 drop-shadow-2xl hidden md:block mr-[100px] mt-[300px]"
           initial={{ scale: 0.8, rotate: 10 }}
-          animate={{ scale: 1.1, rotate: 0 }}
+          animate={{ scale: 2.5, rotate: 0 }}
           transition={{ delay: 0.2, duration: 0.7, type: 'spring' }}
         />
       </motion.div>

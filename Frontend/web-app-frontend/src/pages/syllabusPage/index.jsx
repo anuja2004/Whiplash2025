@@ -96,6 +96,7 @@ const SyllabusPage = () => {
   const [selectedTopic, setSelectedTopic] = useState(null);
   const [modalResources, setModalResources] = useState([]);
   const nodeTypes = { topic: TopicNode };
+  const navigate = useNavigate();
 
   // Helper: find topic by label (name)
   const findTopicByLabel = useCallback((label, course) => {
@@ -174,6 +175,11 @@ const SyllabusPage = () => {
     setEdges((eds) => addEdge(rest, eds));
   }, [setEdges]);
 
+  const handlePlayVideo = (videoId) => {
+    setSelectedTopic(null); // Close modal if desired
+    navigate('/dashboard/learning', { state: { videoId } });
+  };
+
   // Show topic resources in modal, including mapped YouTube links with thumbnails
   const onNodeClick = useCallback((event, node) => {
     setSelectedTopic(node.data.label);
@@ -190,15 +196,15 @@ const SyllabusPage = () => {
           return (
             <div key={res.resourceId} className="flex items-center gap-3 mb-2">
               {thumbnailUrl && (
-                <a href={res.url} target="_blank" rel="noopener noreferrer">
+                <button onClick={() => handlePlayVideo(videoId)} className="block" style={{cursor:'pointer',background:'none',border:'none',padding:0}}>
                   <img src={thumbnailUrl} alt="YouTube Thumbnail" className="w-16 h-10 rounded border shadow" />
-                </a>
+                </button>
               )}
               <div className="flex flex-col">
-                <a href={res.url} target="_blank" rel="noopener noreferrer" className="text-blue-700 font-semibold hover:underline flex items-center gap-1">
+                <button onClick={() => handlePlayVideo(videoId)} className="text-blue-700 font-semibold hover:underline flex items-center gap-1" style={{background:'none',border:'none',padding:0,cursor:'pointer'}}>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="16" height="16"><path d="M21.8 8.001a2.752 2.752 0 0 0-1.936-1.947C18.003 5.5 12 5.5 12 5.5s-6.003 0-7.864.554A2.752 2.752 0 0 0 2.2 8.001 28.936 28.936 0 0 0 1.5 12a28.936 28.936 0 0 0 .7 3.999 2.752 2.752 0 0 0 1.936 1.947C5.997 18.5 12 18.5 12 18.5s6.003 0 7.864-.554A2.752 2.752 0 0 0 21.8 15.999 28.936 28.936 0 0 0 22.5 12a28.936 28.936 0 0 0-.7-3.999zM10 15.5v-7l6 3.5-6 3.5z"/></svg>
                   YouTube Video
-                </a>
+                </button>
                 <span className="text-xs text-gray-500">YouTube Video</span>
               </div>
             </div>

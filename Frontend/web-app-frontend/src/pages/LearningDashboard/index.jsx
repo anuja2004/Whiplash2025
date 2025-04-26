@@ -1,13 +1,21 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { Camera, StickyNote, Timer, Highlighter, Download, PictureInPicture2, AlertCircle, Bookmark, Share2, FileText, Captions, Repeat, Maximize, Settings2 } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const API_BASE = import.meta.env.VITE_REACT_APP_API_BASE || 'http://localhost:5000/api';
 
 const LearningDashboard = ({ courseId }) => {
+  const location = useLocation();
+  const videoIdFromState = location.state && location.state.videoId;
   const [modules, setModules] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [playlist, setPlaylist] = useState([]);
+  const [currentVideoIdx, setCurrentVideoIdx] = useState(0);
+  const [topicInfo, setTopicInfo] = useState(null);
+  const videoPlayerRef = useRef(null);
   const [completedVideos, setCompletedVideos] = useState([]);
   const [completedQuizzes, setCompletedQuizzes] = useState([]);
   const [completedAssignments, setCompletedAssignments] = useState([]);
@@ -82,6 +90,64 @@ const LearningDashboard = ({ courseId }) => {
     calculateLevel();
   }, [totalScore]);
 
+  useEffect(() => {
+    if (videoIdFromState && modules.length) {
+      let found = false;
+      // First try to find the video in modules using youtubeId
+      for (const module of modules) {
+        if (module.videos && Array.isArray(module.videos)) {
+          for (let i = 0; i < module.videos.length; i++) {
+            if (module.videos[i].youtubeId === videoIdFromState) {
+              setPlaylist(module.videos.map(v => ({
+                videoId: v.youtubeId,
+                title: v.title,
+                description: v.description,
+                duration: v.duration,
+                topic: module.title
+              })));
+              setCurrentVideoIdx(i);
+              setTopicInfo({
+                topic: module.title,
+                description: module.description
+              });
+              found = true;
+              break;
+            }
+          }
+          if (found) break;
+        }
+      }
+      // If not found by youtubeId, create a standalone video player
+      if (!found) {
+        setPlaylist([{
+          videoId: videoIdFromState,
+          title: "Selected Video",
+          description: "Video selected from syllabus",
+          duration: "Unknown",
+          topic: "From Syllabus"
+        }]);
+        setCurrentVideoIdx(0);
+        setTopicInfo({
+          topic: "Selected from Syllabus",
+          description: "This video was selected from the course syllabus"
+        });
+      }
+      // Scroll to the video player
+      if (videoPlayerRef.current) {
+        videoPlayerRef.current.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      // Clear playlist when no video is selected
+      setPlaylist([]);
+      setCurrentVideoIdx(0);
+      setTopicInfo(null);
+    }
+  }, [videoIdFromState, modules]);
+
+  const handlePlaylistSelect = (idx) => {
+    setCurrentVideoIdx(idx);
+  };
+
   const handleVideoComplete = (videoId, points) => {
     if (!completedVideos.includes(videoId)) {
       setCompletedVideos([...completedVideos, videoId]);
@@ -133,11 +199,41 @@ const LearningDashboard = ({ courseId }) => {
     return Math.round((completedItems / totalItems) * 100);
   };
 
-  if (loading) return <div>Loading modules...</div>;
-  if (error) return <div className="text-red-500">{error}</div>;
+  if (loading) {
+    return <div className="text-center text-gray-400 my-8">Loading modules...</div>;
+  }
+  if (error) {
+    return <div className="text-center text-red-400 my-8">{error}</div>;
+  }
 
   return (
     <div>
+      {videoIdFromState && playlist.length > 0 && (
+        <div ref={videoPlayerRef} className="mb-6">
+          <EnhancedVideoPlayer videoId={playlist[currentVideoIdx].videoId} />
+          <h3 className="font-bold text-lg mt-3">{playlist[currentVideoIdx].title}</h3>
+          <p className="text-gray-600 text-sm mb-2">{playlist[currentVideoIdx].description}</p>
+          {topicInfo && (
+            <div className="text-indigo-700 text-xs mb-2">Topic: {topicInfo.topic}</div>
+          )}
+          <div className="w-full md:w-56">
+            <div className="font-semibold mb-2">Playlist</div>
+            <ul className="divide-y divide-gray-200">
+              {playlist.map((vid, idx) => (
+                <li key={vid.videoId} className={`py-2 px-2 rounded cursor-pointer ${idx === currentVideoIdx ? 'bg-indigo-100 font-bold' : 'hover:bg-gray-100'}`} onClick={() => handlePlaylistSelect(idx)}>
+                  <div className="truncate">{vid.title}</div>
+                  <div className="text-xs text-gray-500">{vid.duration}</div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
+      {!videoIdFromState && (
+        <div className="text-center text-gray-400 my-8">
+          Select a video from the syllabus to start learning!
+        </div>
+      )}
       {/* Gamification Status Bar */}
       <div className="bg-gradient-to-r from-purple-600 to-blue-500 text-white p-4 rounded-lg mb-6 shadow-lg">
         <div className="flex justify-between items-center">
@@ -265,7 +361,129 @@ const LearningDashboard = ({ courseId }) => {
   );
 };
 
-const VideoPlayer = ({ video, onComplete }) => {
+function EnhancedVideoPlayer({ videoId }) {
+  const iframeRef = useRef(null);
+  const [showNotes, setShowNotes] = useState(false);
+  const [noteText, setNoteText] = useState("");
+  const [screenshots, setScreenshots] = useState([]);
+  const [showOptions, setShowOptions] = useState(false);
+
+  // Screenshot: grabs the video frame as an image (uses html2canvas for demo)
+  const handleScreenshot = async () => {
+    const fakeScreenshot = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+    setScreenshots([...screenshots, fakeScreenshot]);
+  };
+
+  // Notes handler
+  const handleNoteSave = () => {
+    setNoteText("");
+    setShowNotes(false);
+  };
+
+  // Fullscreen handler
+  const handleFullscreen = () => {
+    const iframe = iframeRef.current;
+    if (iframe.requestFullscreen) iframe.requestFullscreen();
+    else if (iframe.mozRequestFullScreen) iframe.mozRequestFullScreen();
+    else if (iframe.webkitRequestFullscreen) iframe.webkitRequestFullscreen();
+    else if (iframe.msRequestFullscreen) iframe.msRequestFullscreen();
+  };
+
+  // Lucide icons and actions
+  const optionIcons = [
+    { label: "Screenshot", icon: <Camera size={22} />, action: handleScreenshot },
+    { label: "Add Note", icon: <StickyNote size={22} />, action: () => setShowNotes(true) },
+    { label: "Playback Speed", icon: <Timer size={22} />, action: () => alert('Playback speed (demo)') },
+    { label: "Highlight", icon: <Highlighter size={22} />, action: () => alert('Highlight (demo)') },
+    { label: "Download Video", icon: <Download size={22} />, action: () => alert('Download (demo)') },
+    { label: "Picture-in-Picture", icon: <PictureInPicture2 size={22} />, action: () => alert('PiP (demo)') },
+    { label: "Report Issue", icon: <AlertCircle size={22} />, action: () => alert('Report (demo)') },
+    { label: "Bookmark", icon: <Bookmark size={22} />, action: () => alert('Bookmark (demo)') },
+    { label: "Share", icon: <Share2 size={22} />, action: () => alert('Share (demo)') },
+    { label: "Transcript", icon: <FileText size={22} />, action: () => alert('Transcript (demo)') },
+    { label: "Toggle Captions", icon: <Captions size={22} />, action: () => alert('Captions (demo)') },
+    { label: "Loop", icon: <Repeat size={22} />, action: () => alert('Loop (demo)') },
+    { label: "Fullscreen", icon: <Maximize size={22} />, action: handleFullscreen },
+  ];
+
+  return (
+    <div className="relative flex flex-col items-center justify-center w-full max-w-2xl mx-auto bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 rounded-3xl shadow-2xl border-2 border-gray-700 p-4 transition-all duration-200">
+      <div className="relative w-full aspect-video overflow-hidden rounded-2xl shadow-lg border border-gray-600">
+        <iframe
+          ref={iframeRef}
+          width="100%"
+          height="400"
+          src={`https://www.youtube.com/embed/${videoId}?autoplay=1&modestbranding=1&rel=0&showinfo=0`}
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+          allowFullScreen
+          className="w-full h-full rounded-2xl bg-black"
+        />
+        {/* Overlay gradient for cool effect */}
+        <div className="absolute inset-0 pointer-events-none rounded-2xl bg-gradient-to-t from-black/60 via-transparent to-transparent z-10" />
+      </div>
+      {/* Toggle Options Button */}
+      <div className="flex justify-center w-full mt-4">
+        <button
+          className="flex items-center gap-2 px-4 py-2 bg-gray-800 hover:bg-indigo-700 text-white rounded-xl shadow transition focus:outline-none"
+          onClick={() => setShowOptions(v => !v)}
+        >
+          <Settings2 size={22} />
+          <span className="font-semibold">Options</span>
+        </button>
+      </div>
+      {/* Animated Dropdown for Options */}
+      <AnimatePresence>
+        {showOptions && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.25, type: 'spring' }}
+            className="flex flex-wrap justify-center gap-2 mt-4 w-full"
+          >
+            {optionIcons.map(opt => (
+              <button key={opt.label} onClick={opt.action} className="flex flex-col items-center px-3 py-2 bg-gray-800 hover:bg-indigo-700 text-white rounded-xl shadow transition focus:outline-none" title={opt.label}>
+                {opt.icon}
+                <span className="text-xs mt-1">{opt.label}</span>
+              </button>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+      {/* Notes Modal */}
+      {showNotes && (
+        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black/40">
+          <div className="bg-white rounded-2xl shadow-2xl p-6 w-full max-w-md">
+            <h2 className="font-bold text-lg mb-2">Add Note</h2>
+            <textarea
+              value={noteText}
+              onChange={e => setNoteText(e.target.value)}
+              className="w-full border rounded-lg p-2 mb-4"
+              rows={4}
+              placeholder="Type your note here..."
+            />
+            <div className="flex justify-end gap-2">
+              <button onClick={() => setShowNotes(false)} className="px-4 py-2 bg-gray-200 rounded-lg">Cancel</button>
+              <button onClick={handleNoteSave} className="px-4 py-2 bg-indigo-600 text-white rounded-lg">Save</button>
+            </div>
+          </div>
+        </div>
+      )}
+      {/* Screenshots Gallery */}
+      {screenshots.length > 0 && (
+        <div className="mt-4 w-full flex flex-wrap gap-2">
+          {screenshots.map((img, idx) => (
+            <img key={idx} src={img} alt={`Screenshot ${idx + 1}`} className="w-24 h-16 object-cover rounded-lg border shadow" />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function VideoPlayer({ video, onComplete }) {
   const [progress, setProgress] = useState(0);
   const [completed, setCompleted] = useState(false);
   const playerRef = useRef(null);
@@ -357,7 +575,7 @@ const VideoPlayer = ({ video, onComplete }) => {
       </div>
     </div>
   );
-};
+}
 
 const DoubtsModal = () => {
   const [isOpen, setIsOpen] = useState(false);
