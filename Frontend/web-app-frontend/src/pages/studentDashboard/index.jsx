@@ -50,6 +50,10 @@ const StudentDashboard = () => {
   const handleClose = () => setOpen(false);
   const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
 
+  const closeSidebarIfMobile = () => {
+    if (window.innerWidth < 768) setSidebarOpen(false);
+  };
+
   const handleImageUpload = (e) => {
     setOcrLoading(true);
     setOcrError(null);
@@ -91,6 +95,12 @@ const StudentDashboard = () => {
     }));
   };
 
+  const closeAllDropdowns = () => {
+    setNavOpen(false);
+    setCalendarOpen(false);
+    setUpcomingOpen(false);
+  };
+
   // Demo Events
   const importantEvents = [
     { date: new Date(2025, 3, 15), label: 'AI/ML Mid Exam' },
@@ -130,7 +140,7 @@ const StudentDashboard = () => {
           </div>
 
           <div className="bg-white rounded-2xl shadow-md p-3">
-            <div className="flex justify-between items-center cursor-pointer" onClick={() => setCalendarOpen(v => !v)}>
+            <div className="flex justify-between items-center cursor-pointer" onClick={() => { closeAllDropdowns(); setCalendarOpen(v => !v); }}>
               <h2 className="text-lg font-bold mb-2 flex items-center">
                 <span className="mr-2">📅</span> Calendar
               </h2>
@@ -147,7 +157,7 @@ const StudentDashboard = () => {
           </div>
 
           <div className="bg-white rounded-2xl shadow-md p-4">
-            <div className="flex justify-between items-center cursor-pointer" onClick={() => setUpcomingOpen(v => !v)}>
+            <div className="flex justify-between items-center cursor-pointer" onClick={() => { closeAllDropdowns(); setUpcomingOpen(v => !v); }}>
               <h3 className="text-md font-semibold mb-3 flex items-center">
                 <span className="mr-2">📌</span> Upcoming
               </h3>
@@ -166,7 +176,7 @@ const StudentDashboard = () => {
           </div>
           
           <div className="bg-white rounded-2xl shadow-md p-4">
-            <div className="flex justify-between items-center cursor-pointer" onClick={() => setNavOpen(v => !v)}>
+            <div className="flex justify-between items-center cursor-pointer" onClick={() => { closeAllDropdowns(); setNavOpen(v => !v); }}>
               <h2 className="text-lg font-semibold mb-3 flex items-center">
                 <span className="mr-2">🧭</span> Navigation
               </h2>
@@ -174,22 +184,22 @@ const StudentDashboard = () => {
             </div>
             {navOpen && (
               <nav className="space-y-2">
-                <NavLink to="/dashboard" end className={navLinkStyle}>
+                <NavLink to="/dashboard" end className={navLinkStyle} onClick={closeSidebarIfMobile}>
                   🏠 Dashboard
                 </NavLink>
-                <NavLink to="/dashboard/assignments" className={navLinkStyle}>
+                <NavLink to="/dashboard/assignments" className={navLinkStyle} onClick={closeSidebarIfMobile}>
                   📝 Assignments
                 </NavLink>
-                <NavLink to="/dashboard/learning" className={navLinkStyle}>
+                <NavLink to="/dashboard/learning" className={navLinkStyle} onClick={closeSidebarIfMobile}>
                   🧠 Learning
                 </NavLink>
-                <NavLink to="/dashboard/notes" className={navLinkStyle}>
+                <NavLink to="/dashboard/notes" className={navLinkStyle} onClick={closeSidebarIfMobile}>
                   📓 Notes
                 </NavLink>
-                <NavLink to="/dashboard/quizzes" className={navLinkStyle}>
+                <NavLink to="/dashboard/quizzes" className={navLinkStyle} onClick={closeSidebarIfMobile}>
                   ✅ Quizzes
                 </NavLink>
-                <NavLink to="/dashboard/syllabus" className={navLinkStyle}>
+                <NavLink to="/dashboard/syllabus" className={navLinkStyle} onClick={closeSidebarIfMobile}>
                   📑 Syllabus
                 </NavLink>
               </nav>
@@ -210,7 +220,7 @@ const StudentDashboard = () => {
                         ? 'bg-blue-500 text-white'
                         : 'bg-gray-50 text-gray-700 hover:bg-blue-100'
                     }`}
-                    onClick={() => setCourseModal({ open: true, selectedCourse: course })}
+                    onClick={() => { closeSidebarIfMobile(); setCourseModal({ open: true, selectedCourse: course }); }}
                   >
                     <span>{course.title}</span>
                     <button
@@ -225,7 +235,7 @@ const StudentDashboard = () => {
                     </button>
                     <button
                       className="ml-2 px-3 py-1 bg-indigo-600 text-white rounded hover:bg-indigo-700 text-xs"
-                      onClick={() => handleGoToSyllabus(course._id)}
+                      onClick={() => { closeSidebarIfMobile(); handleGoToSyllabus(course._id); }}
                     >
                       Syllabus
                     </button>
@@ -246,10 +256,7 @@ const StudentDashboard = () => {
                           ? 'bg-blue-200 text-blue-900'
                           : 'bg-gray-100 text-gray-700 hover:bg-blue-50'
                       }`}
-                      onClick={() => {
-                        setCurrentCourse(course);
-                        setCurrentTopic(topic);
-                      }}
+                      onClick={() => { closeSidebarIfMobile(); setCurrentCourse(course); setCurrentTopic(topic); }}
                     >
                       {topic.name}
                     </li>
@@ -298,8 +305,8 @@ const StudentDashboard = () => {
 
       {/* Course Selection Modal */}
       {courseModal.open && (
-        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-60 backdrop-blur-sm">
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 mx-4">
+        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-60 backdrop-blur-sm" onClick={() => setCourseModal({ open: false, selectedCourse: null })}>
+          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 mx-4" onClick={e => e.stopPropagation()}>
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-xl font-bold">Change Course & Topic</h2>
               <button onClick={() => setCourseModal({ open: false, selectedCourse: null })} className="text-gray-400 hover:text-black transition-colors">✕</button>
@@ -362,8 +369,8 @@ const StudentDashboard = () => {
 
       {/* Add Syllabus Modal */}
       {open && (
-        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-60 backdrop-blur-sm">
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 mx-4">
+        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-60 backdrop-blur-sm" onClick={handleClose}>
+          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 mx-4" onClick={e => e.stopPropagation()}>
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-xl font-bold">Add Course Syllabus</h2>
               <button 

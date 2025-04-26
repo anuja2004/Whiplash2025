@@ -168,7 +168,11 @@ const SyllabusPage = () => {
     setEdges(edgesArr);
   }, [courses, courseId, setNodes, setEdges]);
 
-  const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), [setEdges]);
+  const onConnect = useCallback((params) => {
+    // Remove handle fields if they are null to avoid React Flow error
+    const { sourceHandle, targetHandle, ...rest } = params;
+    setEdges((eds) => addEdge(rest, eds));
+  }, [setEdges]);
 
   // Show topic resources in modal, including mapped YouTube links with thumbnails
   const onNodeClick = useCallback((event, node) => {
