@@ -7,9 +7,19 @@ import Note from '../models/general/Note.js';
 import UserProgress from '../models/UserProgress.js';
 import Submission from '../models/general/Submission.js';
 
+// --- LOGGING DECORATOR ---
+function logFunctionHit(filename, fnName) {
+  return function (originalFn) {
+    return async function (...args) {
+      console.log(`[Backend]/controllers/${filename}/${fnName} HIT`);
+      return originalFn.apply(this, args);
+    };
+  };
+}
+
 const studentController = {
   // Get all courses the student is enrolled in
-  getEnrolledCourses: async (req, res) => {
+  getEnrolledCourses: logFunctionHit('studentController.js', 'getEnrolledCourses')(async (req, res) => {
     try {
       const userId = req.user.id; // Assuming authMiddleware sets req.user
       
@@ -35,10 +45,10 @@ const studentController = {
         message: 'Server error while fetching enrolled courses' 
       });
     }
-  },
+  }),
 
   // Get detailed information about a specific course
-  getCourseDetails: async (req, res) => {
+  getCourseDetails: logFunctionHit('studentController.js', 'getCourseDetails')(async (req, res) => {
     try {
       const { courseId } = req.params;
       const userId = req.user.id;
@@ -73,10 +83,10 @@ const studentController = {
         message: 'Server error while fetching course details' 
       });
     }
-  },
+  }),
 
   // Get assignments for a specific course
-  getCourseAssignments: async (req, res) => {
+  getCourseAssignments: logFunctionHit('studentController.js', 'getCourseAssignments')(async (req, res) => {
     try {
       const { courseId } = req.params;
       const userId = req.user.id;
@@ -131,10 +141,10 @@ const studentController = {
         message: 'Server error while fetching assignments' 
       });
     }
-  },
+  }),
 
   // Get quizzes for a specific course
-  getCourseQuizzes: async (req, res) => {
+  getCourseQuizzes: logFunctionHit('studentController.js', 'getCourseQuizzes')(async (req, res) => {
     try {
       const { courseId } = req.params;
       const userId = req.user.id;
@@ -190,10 +200,10 @@ const studentController = {
         message: 'Server error while fetching quizzes' 
       });
     }
-  },
+  }),
 
   // Get student's progress for a specific course
-  getCourseProgress: async (req, res) => {
+  getCourseProgress: logFunctionHit('studentController.js', 'getCourseProgress')(async (req, res) => {
     try {
       const { courseId } = req.params;
       const userId = req.user.id;
@@ -263,10 +273,10 @@ const studentController = {
         message: 'Server error while fetching progress' 
       });
     }
-  },
+  }),
 
   // Submit an assignment
-  submitAssignment: async (req, res) => {
+  submitAssignment: logFunctionHit('studentController.js', 'submitAssignment')(async (req, res) => {
     try {
       const { assignmentId } = req.params;
       const userId = req.user.id;
@@ -335,10 +345,10 @@ const studentController = {
         message: 'Server error while submitting assignment' 
       });
     }
-  },
+  }),
 
   // Submit a quiz attempt
-  submitQuiz: async (req, res) => {
+  submitQuiz: logFunctionHit('studentController.js', 'submitQuiz')(async (req, res) => {
     try {
       const { quizId } = req.params;
       const userId = req.user.id;
@@ -478,10 +488,10 @@ const studentController = {
         message: 'Server error while submitting quiz' 
       });
     }
-  },
+  }),
 
   // Create a note for a course topic
-  createNote: async (req, res) => {
+  createNote: logFunctionHit('studentController.js', 'createNote')(async (req, res) => {
     try {
       const { courseId, topicId } = req.params;
       const userId = req.user.id;
@@ -532,10 +542,10 @@ const studentController = {
         message: 'Server error while creating note' 
       });
     }
-  },
+  }),
 
   // Get notes for a course topic
-  getNotesByTopic: async (req, res) => {
+  getNotesByTopic: logFunctionHit('studentController.js', 'getNotesByTopic')(async (req, res) => {
     try {
       const { courseId, topicId } = req.params;
       const userId = req.user.id;
@@ -574,10 +584,10 @@ const studentController = {
         message: 'Server error while fetching notes' 
       });
     }
-  },
+  }),
 
   // Get all modules (videos, quizzes, assignments) for a course
-  getCourseModules: async (req, res) => {
+  getCourseModules: logFunctionHit('studentController.js', 'getCourseModules')(async (req, res) => {
     try {
       const { courseId } = req.params;
       const userId = req.user.id;
@@ -609,10 +619,10 @@ const studentController = {
       console.error('Error fetching course modules:', error);
       return res.status(500).json({ success: false, message: 'Server error while fetching modules' });
     }
-  },
+  }),
 
   // Mark a module as completed (video, quiz, assignment)
-  completeModule: async (req, res) => {
+  completeModule: logFunctionHit('studentController.js', 'completeModule')(async (req, res) => {
     try {
       const { courseId, moduleId } = req.params;
       const { type } = req.body;
@@ -659,7 +669,7 @@ const studentController = {
       console.error('Error completing module:', error);
       return res.status(500).json({ success: false, message: 'Server error while completing module' });
     }
-  },
+  }),
 };
 
 export default studentController;

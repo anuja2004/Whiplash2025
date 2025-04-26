@@ -4,11 +4,21 @@ import jwt from 'jsonwebtoken';
 import User from '../models/User.js';
 import UserProgress from '../models/UserProgress.js';
 
+// --- LOGGING DECORATOR ---
+function logFunctionHit(filename, fnName) {
+  return function (originalFn) {
+    return async function (...args) {
+      console.log(`[Backend]/controllers/${filename}/${fnName} HIT`);
+      return originalFn.apply(this, args);
+    };
+  };
+}
+
 /**
  * Register a new user
  * Creates user account and initial progress record
  */
-export const registerUser = async (req, res) => {
+export const registerUser = logFunctionHit('authController.js', 'registerUser')(async (req, res) => {
   const { name, email, password } = req.body;
 
   try {
@@ -69,13 +79,13 @@ export const registerUser = async (req, res) => {
       error: process.env.NODE_ENV === 'development' ? error.message : undefined
     });
   }
-};
+});
 
 /**
  * Log in an existing user
  * Verifies credentials and returns a JWT token
  */
-export const loginUser = async (req, res) => {
+export const loginUser = logFunctionHit('authController.js', 'loginUser')(async (req, res) => {
   const { email, password } = req.body;
   console.log(`Login attempt for email: ${email}`);
   
@@ -129,13 +139,13 @@ export const loginUser = async (req, res) => {
       error: process.env.NODE_ENV === 'development' ? error.message : undefined
     });
   }
-};
+});
 
 /**
  * Get current user's profile
  * Returns user data (without password)
  */
-export const getCurrentUser = async (req, res) => {
+export const getCurrentUser = logFunctionHit('authController.js', 'getCurrentUser')(async (req, res) => {
   try {
     // The user ID comes from the auth middleware (decoded JWT)
     const userId = req.user.id;
@@ -164,7 +174,7 @@ export const getCurrentUser = async (req, res) => {
       error: process.env.NODE_ENV === 'development' ? error.message : undefined
     });
   }
-};
+});
 
 /**
  * Helper function to generate JWT token

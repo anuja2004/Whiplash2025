@@ -2,7 +2,17 @@
 import jwt from 'jsonwebtoken';
 import User from '../models/User.js';
 
-export const authMiddleware = async (req, res, next) => {
+// --- LOGGING DECORATOR ---
+function logFunctionHit(filename, fnName) {
+  return function (originalFn) {
+    return async function (...args) {
+      console.log(`[Backend]/middleware/${filename}/${fnName} HIT`);
+      return originalFn.apply(this, args);
+    };
+  };
+}
+
+export const authMiddleware = logFunctionHit('auth.js', 'authMiddleware')(async (req, res, next) => {
   try {
     // Get token from header
     const token = req.header('x-auth-token');
@@ -42,11 +52,11 @@ export const authMiddleware = async (req, res, next) => {
       message: 'Token is not valid' 
     });
   }
-};
+});
 
 // Role-based middleware
-export const authorizeRoles = (...roles) => {
-  return (req, res, next) => {
+export const authorizeRoles = logFunctionHit('auth.js', 'authorizeRoles')(function (...roles) {
+  return function (req, res, next) {
     if (!roles.includes(req.user.role)) {
       return res.status(403).json({
         success: false,
@@ -55,4 +65,4 @@ export const authorizeRoles = (...roles) => {
     }
     next();
   };
-};
+});
