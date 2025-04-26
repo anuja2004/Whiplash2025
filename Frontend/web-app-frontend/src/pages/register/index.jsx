@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import SignInForm from '../../components/forms/sign-in'
 import SignUpForm from '../../components/forms/sign-up'
 import {motion,AnimatePresence } from 'framer-motion'
-import { signIn,signUp } from '../../api/auth'
 import { useNavigate } from 'react-router-dom'
 import ProjectFlow from './ProjectFlow';
+import { useAuth } from '../../context/AuthContext'
 
 const RegisterPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -14,16 +14,24 @@ const RegisterPage = () => {
 
   const toggleModal = () => setIsModalOpen(!isModalOpen)
   const navigate = useNavigate();
+  const { isAuthenticated, login, register } = useAuth();
+
+  // Redirect if already logged in
+  React.useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/dashboard', { replace: true });
+    }
+  }, [isAuthenticated, navigate]);
+
   // Function to handle sign-in/up api 
   const handleSignInSubmit = async (credentials) => {
     setLoading(true);
     setError(null);
     try {
-      const data = await signIn(credentials);
-      // No need to set localStorage here as it's already done in signIn function
-      navigate('/dashboard');
+      await login(credentials);
+      // AuthContext will rehydrate and redirect automatically
     } catch (err) {
-      setError(err.message || 'Failed to sign in');
+      setError(err.message || err || 'Failed to sign in');
     } finally {
       setLoading(false);
     }
@@ -33,17 +41,14 @@ const RegisterPage = () => {
     setLoading(true);
     setError(null);
     try {
-      const data = await signUp(userData);
-      // No need to manually set token here either
-      // The signUp function should handle token storage if needed
-      navigate('/dashboard');
+      await register(userData);
+      // AuthContext will rehydrate and redirect automatically
     } catch (err) {
-      setError(err.message || 'Failed to sign up');
+      setError(err.message || err || 'Failed to sign up');
     } finally {
       setLoading(false);
     }
   };
-
 
   return (
     <div className="min-h-screen w-full flex flex-col items-center justify-center bg-gradient-to-br from-yellow-100 via-blue-50 to-pink-100 relative overflow-x-hidden">

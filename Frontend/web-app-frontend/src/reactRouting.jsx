@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route, Link, Navigate } from 'react-router-dom';
-import { useAuth } from './context/AuthContext'; // Import your existing auth context
 import RegisterPage from './pages/register';
+import ProtectedRoute from './components/ProtectedRoute';
 import StudentDashboard from './pages/studentDashboard';
 import AssignmentsPage from './pages/assignmentsPage';
 import LearningDashboard from './pages/LearningDashboard';
@@ -11,21 +11,7 @@ import SyllabusPage from './pages/syllabusPage';
 import DashboardHome from './pages/dashboardHome';
 import DebugPage from './pages/DebugPage';
 import useCourseStore from './store/courseStore';
-
-// Protected Route component
-const ProtectedRoute = ({ children }) => {
-  const { isAuthenticated, loading } = useAuth();
-  
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-  
-  if (!isAuthenticated) {
-    return <Navigate to="/register" replace />;
-  }
-  
-  return children;
-};
+import GlobalUserBar from './components/GlobalUserBar';
 
 // NotFound component for unmatched routes
 const NotFound = () => {
@@ -70,38 +56,41 @@ const getDefaultCourseId = () => {
 
 const AppRoutes = () => {
   return (
-    <Routes>
-      {/* Redirect root to login or dashboard */}
-      <Route path="/" element={<Navigate to="/register" replace />} />
-      
-      {/* Public routes */}
-      <Route path="/register" element={<RegisterPage />} />
-
-      {/* Protected dashboard with nested routes */}
-      <Route 
-        path="/dashboard" 
-        element={
-          <ProtectedRoute>
-            <StudentDashboard />
-          </ProtectedRoute>
-        }
-      > 
-
-      {/* Debugg */}
-      <Route path="debug" element={<DebugPage/>} />
-
-        {/* Default index route */}
-        <Route index element={<DashboardHome />} />
-        <Route path="quizzes" element={<QuizesPage />} />
-        <Route path="assignments" element={<AssignmentsPage />} />
-        <Route path="learning" element={<LearningDashboard courseId={getDefaultCourseId()} />} />
-        <Route path="notes" element={<NotesPage />} />
-        <Route path="syllabus" element={<SyllabusPage />} />
-      </Route>
-
-      {/* Fallback route for 404 */}
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+    <>
+      <GlobalUserBar />
+      <Routes>
+        {/* Redirect root to login or dashboard */}
+        <Route path="/" element={<Navigate to="/register" replace />} />
+        {/* Public route: register only */}
+        <Route path="/register" element={<RegisterPage />} />
+        {/* All other routes are protected */}
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <StudentDashboard />
+            </ProtectedRoute>
+          }
+        >
+          <Route path="debug" element={<DebugPage />} />
+          <Route index element={<DashboardHome />} />
+          <Route path="quizzes" element={<QuizesPage />} />
+          <Route path="assignments" element={<AssignmentsPage />} />
+          <Route path="learning" element={<LearningDashboard courseId={getDefaultCourseId()} />} />
+          <Route path="notes" element={<NotesPage />} />
+          <Route path="syllabus" element={<SyllabusPage />} />
+        </Route>
+        {/* Catch-all: protect everything else */}
+        <Route
+          path="*"
+          element={
+            <ProtectedRoute>
+              <NotFound />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
+    </>
   );
 };
 

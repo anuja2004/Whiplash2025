@@ -14,42 +14,47 @@ function logFunctionHit(filename, fnName) {
 
 export const authMiddleware = logFunctionHit('auth.js', 'authMiddleware')(async (req, res, next) => {
   try {
-    // Get token from header
-    const token = req.header('x-auth-token');
+    // Try to get token from header or cookie
+    let token = req.header('x-auth-token') || req.headers['authorization'];
+    if (token && token.startsWith('Bearer ')) token = token.slice(7);
+    if (!token && req.cookies) token = req.cookies['token'];
 
-    // Check if no token
     if (!token) {
       return res.status(401).json({ 
         success: false, 
-        message: 'No authentication token, access denied' 
+        message: 'No authentication token provided. Access denied.'
       });
     }
 
     // Verify token
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    
-    // Add user from payload
-    const user = await User.findById(decoded.user.id);
+    let decoded;
+    try {
+      decoded = jwt.verify(token, process.env.JWT_SECRET);
+    } catch (err) {
+      return res.status(401).json({
+        success: false,
+        message: 'Invalid or expired token. Please log in again.'
+      });
+    }
 
-    
+    // Attach user
+    const user = await User.findById(decoded.user.id).select('_id email role');
     if (!user) {
       return res.status(401).json({ 
         success: false, 
-        message: 'User not found' 
+        message: 'User not found. Access denied.'
       });
     }
-    
     req.user = {
       id: user._id,
       email: user.email,
       role: user.role
     };
-    
     next();
   } catch (error) {
     return res.status(401).json({ 
       success: false, 
-      message: 'Token is not valid' 
+      message: 'Token is not valid or user not found.'
     });
   }
 });

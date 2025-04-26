@@ -1,16 +1,12 @@
 // src/components/ProtectedRoute.jsx
 import { Navigate } from 'react-router-dom'
+import { useAuth } from '../context/AuthContext'
 
 const ProtectedRoute = ({ children }) => {
+  const { isAuthenticated, loading } = useAuth()
 
-    // write logic later
-
-    //   const isAuthenticated = localStorage.getItem('user') // or however you track login
-
-//   if (!isAuthenticated) {
-//     return <Navigate to="/register" replace />
-//   }
-
+  if (loading) return null // or a spinner
+  if (!isAuthenticated) return <Navigate to="/register" replace />
   return children
 }
 

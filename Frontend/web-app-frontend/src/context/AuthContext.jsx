@@ -4,6 +4,23 @@ import axiosInstance from '../api/axiosConfig'
 
 const AuthContext = createContext()
 
+// --- Shared utility for fetching user profile ---
+const fetchUserProfile = async (token, setCurrentUser, setIsAuthenticated) => {
+  try {
+    const response = await axiosInstance.get('/auth/me', {
+      headers: { 'x-auth-token': token }
+    })
+    setCurrentUser(response.data.user)
+    setIsAuthenticated(true)
+    localStorage.setItem('user', JSON.stringify(response.data.user))
+  } catch (error) {
+    setCurrentUser(null)
+    setIsAuthenticated(false)
+    localStorage.removeItem('user')
+    localStorage.removeItem('token')
+  }
+}
+
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null)
   const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -12,76 +29,60 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     // Check if user is logged in on page load
     const checkLoggedIn = async () => {
-      try {
-        const token = localStorage.getItem('token')
-        const user = JSON.parse(localStorage.getItem('user'))
-        
-        if (token && user) {
-          setCurrentUser(user)
-          setIsAuthenticated(true)
-        } else {
-          setIsAuthenticated(false)
-        }
-      } catch (error) {
-        console.error('Error checking authentication status:', error)
-        localStorage.removeItem('token')
-        localStorage.removeItem('user')
+      const token = localStorage.getItem('token')
+      if (token) {
+        await fetchUserProfile(token, setCurrentUser, setIsAuthenticated)
+      } else {
         setIsAuthenticated(false)
-      } finally {
-        setLoading(false)
+        setCurrentUser(null)
       }
+      setLoading(false)
     }
-    
     checkLoggedIn()
   }, [])
 
   const login = async (credentials) => {
-    try {
-      const data = await signIn(credentials)
-      
-      // Save token and user data to localStorage
-      localStorage.setItem('token', data.token)
-      localStorage.setItem('user', JSON.stringify(data.user))
-      
-      setCurrentUser(data.user)
-      setIsAuthenticated(true)
-      return data
-    } catch (error) {
-      throw error
-    }
+    const data = await signIn(credentials)
+    localStorage.setItem('token', data.token)
+    await fetchUserProfile(data.token, setCurrentUser, setIsAuthenticated)
+    return data
   }
 
   const register = async (userInfo) => {
-    try {
-      const data = await signUp(userInfo)
-      // You may want to automatically log the user in after a successful registration.
-      return data
-    } catch (error) {
-      throw error
+    const data = await signUp(userInfo)
+    if (data.token) {
+      localStorage.setItem('token', data.token)
+      await fetchUserProfile(data.token, setCurrentUser, setIsAuthenticated)
     }
+    return data
   }
 
   const logout = () => {
-    // Clear localStorage
     localStorage.removeItem('token')
     localStorage.removeItem('user')
-    
     setCurrentUser(null)
     setIsAuthenticated(false)
   }
 
+  // Auto-logout on 401/403 from any API call
+  useEffect(() => {
+    const interceptor = axiosInstance.interceptors.response.use(
+      (response) => response,
+      (error) => {
+        if ([401, 403].includes(error.response?.status)) {
+          logout()
+        }
+        return Promise.reject(error)
+      }
+    )
+    return () => axiosInstance.interceptors.response.eject(interceptor)
+  }, [])
+
   return (
-    <AuthContext.Provider value={{ 
-      currentUser, 
-      isAuthenticated, 
-      loading,
-      login,
-      register,
-      logout
-    }}>
+    <AuthContext.Provider value={{ currentUser, isAuthenticated, loading, login, register, logout }}>
       {children}
     </AuthContext.Provider>
-  );
+  )
 }
 
 export const useAuth = () => useContext(AuthContext)
