@@ -1,17 +1,56 @@
 """
-Material Generator Service: Consumes material.generate.request, generates study material/notes for each topic, and publishes to material.generate.response.
+Material Generator Service: HTTP microservice to generate study material/notes for each topic using Gemini.
 """
-from confluent_kafka import Consumer, Producer
-import json
-import time
-from common.config import GEMINI_API_KEY, KAFKA_BOOTSTRAP_SERVERS
-from common.kafka_utils import get_kafka_consumer, get_kafka_producer
-
+from flask import Flask, request, jsonify
 from common.gemini_utils import call_gemini
+import json
+import re
 
-def generate_study_material(topic):
-    prompt = f"Write concise study notes for the topic: {topic}."
-    return call_gemini(prompt)
+app = Flask(__name__)
+
+STUDY_PLAN_PROMPT = (
+    "You are a study planner assistant. Given a topic, number of days, start date, and daily hours, "
+    "distribute the key subtopics to study for the topic, assigning each day a subtopic. "
+    "Respond ONLY as a JSON object mapping dates (YYYY-MM-DD) to the subtopic(s) to study on that day. "
+    "Do not include any explanation or extra text. Example: {\"2025-04-27\": \"Intro to ML\", \"2025-04-28\": \"Supervised Learning\"}"
+)
+
+@app.route('/generate_material', methods=['POST'])
+def generate_material():
+    data = request.json
+    topic_name = data.get('topic_name')
+    no_of_days = data.get('no_of_days')
+    start_date = data.get('start_date')
+    daily_hours = data.get('daily_hours')
+
+    # Validate input
+    if not all([topic_name, no_of_days, start_date, daily_hours]):
+        return jsonify({'error': 'Missing required fields'}), 400
+
+    prompt = (
+        f"Topic: {topic_name}. Number of days: {no_of_days}. Start date: {start_date}. Daily hours: {daily_hours}. "
+        + STUDY_PLAN_PROMPT
+    )
+    try:
+        plan_str = call_gemini(prompt)
+        # Remove Markdown code block formatting if present
+        cleaned = re.sub(r'^```(?:json)?\s*|\s*```$', '', plan_str.strip(), flags=re.IGNORECASE | re.MULTILINE).strip()
+        plan = json.loads(cleaned)
+    except Exception as e:
+        return jsonify({'error': str(e), 'gemini_response': plan_str if 'plan_str' in locals() else None}), 500
+
+    response = {
+        "daily_hours": daily_hours,
+        "no_of_days": no_of_days,
+        "start_date": start_date,
+        "topic_name": topic_name,
+        "plan": plan,
+        "status": "Gemini study plan generated"
+    }
+    return jsonify(response)
+
+if __name__ == '__main__':
+    app.run(port=5002, debug=True)
 
 def main():
     consumer = get_kafka_consumer('material_generator_group', ['material.generate.request'])

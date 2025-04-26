@@ -15,7 +15,7 @@ def call_gemini(prompt, model="models/gemini-1.5-pro-latest"):
     print("[Gemini] Sending prompt:", prompt)
     start = time.time()
     try:
-        response = requests.post(url, headers=headers, json=data, timeout=15)
+        response = requests.post(url, headers=headers, json=data, timeout=60)
         response.raise_for_status()
         result = response.json()["candidates"][0]["content"]["parts"][0]["text"]
         print(f"[Gemini] Response received in {time.time() - start:.2f}s:", result)

@@ -1,18 +1,83 @@
 """
-Quiz Generator Service: Consumes quiz.generate.request, generates quizzes/assignments for each topic, and publishes to quiz.generate.response.
+Quiz & Assignment Generator Service: HTTP microservice to generate quizzes (MCQ) and theory assignments using Gemini.
 """
-from confluent_kafka import Consumer, Producer
-import json
-import time
-from common.config import GEMINI_API_KEY, KAFKA_BOOTSTRAP_SERVERS
-from common.kafka_utils import get_kafka_consumer, get_kafka_producer
-
+from flask import Flask, request, jsonify
 from common.gemini_utils import call_gemini
+import json
+import re
 
-def generate_quiz(topic):
-    prompt = f"Generate a multiple-choice quiz question for the topic: {topic}. Respond as a Python list of dicts with keys 'question', 'options', 'answer'."
-    quiz_str = call_gemini(prompt)
-    return eval(quiz_str)  # Caution: Use a safer parser in production!
+app = Flask(__name__)
+
+@app.route('/generate_quiz_and_assignments', methods=['POST'])
+def generate_quiz_and_assignments():
+    data = request.json
+    subtopic = data.get('subtopic')
+    timestamp = data.get('timestamp')
+    youtube_link = data.get('youtube_link')
+    study_notes = data.get('study_notes')
+
+    if not all([subtopic, timestamp, youtube_link, study_notes]):
+        return jsonify({'error': 'Missing required fields'}), 400
+
+    # Prompt for MCQ quiz
+    quiz_prompt = (
+        f"Given the following study notes, generate 5 multiple-choice quiz (MCQ) questions with 4 options each and the correct answer marked. "
+        f"Respond ONLY as a JSON list of objects with keys: 'question', 'options', 'answer'. "
+        f"Study notes: {study_notes}"
+    )
+
+    # Prompt for theory assignments
+    assignment_prompt = (
+        f"Given the following study notes, generate 5 theory assignment questions (open-ended, descriptive). "
+        f"Respond ONLY as a JSON list of strings. "
+        f"Study notes: {study_notes}"
+    )
+
+    try:
+        quiz_str = call_gemini(quiz_prompt)
+        assignment_str = call_gemini(assignment_prompt)
+        # Remove markdown formatting if present
+        quiz_clean = re.sub(r'^```(?:json)?\s*|\s*```$', '', quiz_str.strip(), flags=re.IGNORECASE | re.MULTILINE).strip()
+        assignment_clean = re.sub(r'^```(?:json)?\s*|\s*```$', '', assignment_str.strip(), flags=re.IGNORECASE | re.MULTILINE).strip()
+        quizzes_raw = json.loads(quiz_clean)
+        assignments_raw = json.loads(assignment_clean)
+        # Format quizzes to desired structure
+        quizzes = []
+        for q in quizzes_raw:
+            options = []
+            correct = q['answer'] if 'answer' in q else None
+            for opt in q['options']:
+                options.append({
+                    'text': opt,
+                    'isCorrect': (opt == correct)
+                })
+            quizzes.append({
+                'questionText': q['question'],
+                'questionType': 'multiple-choice',
+                'options': options,
+                'points': 1
+            })
+        # Format assignments
+        assignments = []
+        for a in assignments_raw:
+            assignments.append({
+                'questionText': a,
+                'questionType': 'theory',
+                'points': 5
+            })
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+    return jsonify({
+        'subtopic': subtopic,
+        'timestamp': timestamp,
+        'youtube_link': youtube_link,
+        'quizzes': quizzes,
+        'assignments': assignments
+    })
+
+if __name__ == '__main__':
+    app.run(port=5004, debug=True)
 
 def main():
     consumer = get_kafka_consumer('quiz_generator_group', ['quiz.generate.request'])
