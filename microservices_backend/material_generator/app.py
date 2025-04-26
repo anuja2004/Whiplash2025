@@ -7,9 +7,11 @@ import time
 from common.config import GEMINI_API_KEY, KAFKA_BOOTSTRAP_SERVERS
 from common.kafka_utils import get_kafka_consumer, get_kafka_producer
 
-# Mock Gemini API call for notes (replace with real API call)
+from common.gemini_utils import call_gemini
+
 def generate_study_material(topic):
-    return f"Concise notes for {topic} (mocked)"
+    prompt = f"Write concise study notes for the topic: {topic}."
+    return call_gemini(prompt)
 
 def main():
     consumer = get_kafka_consumer('material_generator_group', ['material.generate.request'])

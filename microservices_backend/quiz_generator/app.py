@@ -7,13 +7,12 @@ import time
 from common.config import GEMINI_API_KEY, KAFKA_BOOTSTRAP_SERVERS
 from common.kafka_utils import get_kafka_consumer, get_kafka_producer
 
-# Mock Gemini API call for quiz (replace with real API call)
+from common.gemini_utils import call_gemini
+
 def generate_quiz(topic):
-    return [{
-        'question': f"Sample question for {topic} (mocked)",
-        'options': ["A", "B", "C", "D"],
-        'answer': "A"
-    }]
+    prompt = f"Generate a multiple-choice quiz question for the topic: {topic}. Respond as a Python list of dicts with keys 'question', 'options', 'answer'."
+    quiz_str = call_gemini(prompt)
+    return eval(quiz_str)  # Caution: Use a safer parser in production!
 
 def main():
     consumer = get_kafka_consumer('quiz_generator_group', ['quiz.generate.request'])

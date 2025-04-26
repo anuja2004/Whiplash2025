@@ -9,16 +9,12 @@ import json
 app = Flask(__name__)
 producer = get_kafka_producer()
 
-# Mock Gemini API call (replace with actual Gemini API integration)
+from common.gemini_utils import call_gemini
+
 def get_study_topics(subject, target_time, target_days):
-    # In production, call Gemini API here
-    # For now, return static topics
-    return [
-        "What is ML?",
-        "Supervised vs Unsupervised",
-        "Linear Regression",
-        "Decision Trees"
-    ]
+    prompt = f"List the key subtopics to learn for {subject} in {target_time} hours over {target_days} days. Respond as a Python list of strings."
+    topics_str = call_gemini(prompt)
+    return eval(topics_str)  # Caution: Use a safer parser in production!
 
 @app.route('/generate_plan', methods=['POST'])
 def generate_plan():
