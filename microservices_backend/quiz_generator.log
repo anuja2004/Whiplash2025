@@ -1,0 +1,695 @@
+ * Serving Flask app 'app'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5004
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 110-348-877
+127.0.0.1 - - [27/Apr/2025 05:36:50] "GET / HTTP/1.1" 404 -
+127.0.0.1 - - [27/Apr/2025 05:38:12] "GET / HTTP/1.1" 404 -
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 110-348-877
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 110-348-877
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 110-348-877
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 110-348-877
+127.0.0.1 - - [27/Apr/2025 07:40:02] "POST /generate_quiz_and_assignments HTTP/1.1" 400 -
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 110-348-877
+127.0.0.1 - - [27/Apr/2025 07:41:58] "POST /generate_quiz_and_assignments HTTP/1.1" 200 -
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+[Gemini] Sending prompt: Given the following study notes, generate 5 multiple-choice quiz (MCQ) questions with 4 options each and the correct answer marked. Respond ONLY as a JSON list of objects with keys: 'question', 'options', 'answer'. Study notes: ## Python Setup & Basics
+
+**Environment:**
+* Download Python installer (python.org)
+* Choose appropriate version (3.7+ recommended)
+* Add Python to PATH during installation
+* IDEs: VS Code, PyCharm, Thonny (beginners)
+* Package manager: pip (install libraries, e.g., `pip install numpy`)
+
+**Basic Syntax:**
+* Indentation crucial (4 spaces recommended)
+* Comments: `# single line`, `''' multiline '''`
+* `print()` for output
+* Variables: `name = "value"` (dynamically typed)
+
+**Data Types:**
+* `int`: whole numbers (e.g., 10, -5)
+* `float`: decimal numbers (e.g., 3.14, -2.5)
+* `str`: text (e.g., "hello", 'Python') - enclosed in single or double quotes
+* `bool`: True/False (logical values)
+
+[Gemini] Response received in 6.76s: ```json
+[
+  {
+    "question": "Which of the following is the recommended way to install external libraries in Python?",
+    "options": [
+      "Using the `conda` command",
+      "Using the `pip` command",
+      "Manually downloading and copying files",
+      "Through the IDE's built-in library manager"
+    ],
+    "answer": "Using the `pip` command"
+  },
+  {
+    "question": "What is the recommended minimum Python version for starting new projects?",
+    "options": [
+      "2.7",
+      "3.6",
+      "3.7",
+      "Any version will work"
+    ],
+    "answer": "3.7"
+  },
+  {
+    "question": "Which of the following is NOT a valid way to represent a string in Python?",
+    "options": [
+      "'Hello'",
+      "\"Hello\"",
+      "`Hello`",
+      "'''Hello'''"
+    ],
+    "answer": "`Hello`"
+  },
+  {
+    "question": "What is the significance of indentation in Python code?",
+    "options": [
+      "It makes the code more readable.",
+      "It defines code blocks (e.g., inside loops, functions).",
+      "It has no significance, it's purely for aesthetics.",
+      "It's used for commenting purposes."
+    ],
+    "answer": "It defines code blocks (e.g., inside loops, functions)."
+  },
+  {
+    "question": "Which data type would you use to store the value of pi (3.14159...)?",
+    "options": [
+      "`int`",
+      "`str`",
+      "`bool`",
+      "`float`"
+    ],
+    "answer": "`float`"
+  }
+]
+```
+[Gemini] Sending prompt: Given the following study notes, generate 5 theory assignment questions (open-ended, descriptive). Respond ONLY as a JSON list of strings. Study notes: ## Python Setup & Basics
+
+**Environment:**
+* Download Python installer (python.org)
+* Choose appropriate version (3.7+ recommended)
+* Add Python to PATH during installation
+* IDEs: VS Code, PyCharm, Thonny (beginners)
+* Package manager: pip (install libraries, e.g., `pip install numpy`)
+
+**Basic Syntax:**
+* Indentation crucial (4 spaces recommended)
+* Comments: `# single line`, `''' multiline '''`
+* `print()` for output
+* Variables: `name = "value"` (dynamically typed)
+
+**Data Types:**
+* `int`: whole numbers (e.g., 10, -5)
+* `float`: decimal numbers (e.g., 3.14, -2.5)
+* `str`: text (e.g., "hello", 'Python') - enclosed in single or double quotes
+* `bool`: True/False (logical values)
+
+[Gemini] Response received in 4.81s: [
+"Describe the process of setting up a Python development environment on your computer, including the steps for installing Python and choosing an appropriate IDE.",
+"Explain the significance of indentation in Python syntax and how it differs from other programming languages. Provide examples to illustrate your points.",
+"Discuss the different data types available in Python, providing examples of each and explaining how they are used in a program.",
+"Compare and contrast three different Python IDEs, highlighting their strengths and weaknesses for various types of Python development (e.g., beginners, data science, web development).",
+"Explain the role of pip in Python development and provide a practical example of how to use it to install a specific library and manage its dependencies."
+]
+
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 110-348-877
+127.0.0.1 - - [27/Apr/2025 07:46:12] "POST /generate_quiz_and_assignments HTTP/1.1" 200 -
+127.0.0.1 - - [27/Apr/2025 07:46:26] "POST /generate_quiz_and_assignments HTTP/1.1" 500 -
+[Gemini] Sending prompt: Given the following study notes, generate 5 multiple-choice quiz (MCQ) questions with 4 options each and the correct answer marked. Respond ONLY as a JSON list of objects with keys: 'question', 'options', 'answer'. Study notes: Java Fundamentals: Data Types, Variables, Operators
+
+**Data Types:**
+* **Primitive:** Store simple values directly (e.g., int, double, boolean, char).  `int age = 30;`
+* **Reference:** Store memory addresses of objects.  `String name = "John";`
+
+**Variables:**
+* Named storage locations. Must be declared with type and optionally initialized. `double price;  price = 99.99;`
+* Naming conventions: camelCase (e.g., myVariable).
+
+**Operators:**
+* **Arithmetic:** `+ - * / %`
+* **Assignment:** `= += -= *= /= %= ++ --`
+* **Comparison:** `== != < > <= >=`
+* **Logical:** `&& || !`  Used for boolean expressions.
+
+Remember type casting: `int x = (int) 3.14;`  (narrowing conversion).
+
+[Gemini] Response received in 7.07s: ```json
+[
+  {
+    "question": "Which of the following is a primitive data type in Java?",
+    "options": ["String", "Array", "double", "Object"],
+    "answer": "double"
+  },
+  {
+    "question": "What is the correct way to declare and initialize an integer variable in Java?",
+    "options": ["int myVar = 10;", "Integer myVar = 10;", "var myVar = 10;", "myVar = 10;"],
+    "answer": "int myVar = 10;"
+  },
+  {
+    "question": "Which operator is used for the modulo operation (remainder of a division) in Java?",
+    "options": ["*", "/", "%", "^"],
+    "answer": "%"
+  },
+  {
+    "question": "What does the following Java code do: `int x = (int) 3.14;`",
+    "options": ["Converts 3.14 to a string.", "Rounds 3.14 to the nearest integer.", "Casts 3.14 to an integer, resulting in a loss of precision.", "Throws a type mismatch error."],
+    "answer": "Casts 3.14 to an integer, resulting in a loss of precision."
+  },
+  {
+    "question": "Which of the following is NOT a valid comparison operator in Java?",
+    "options": ["==", "!=", "<>", "<="],
+    "answer": "<>"
+  }
+]
+```
+[Gemini] Sending prompt: Given the following study notes, generate 5 theory assignment questions (open-ended, descriptive). Respond ONLY as a JSON list of strings. Study notes: Java Fundamentals: Data Types, Variables, Operators
+
+**Data Types:**
+* **Primitive:** Store simple values directly (e.g., int, double, boolean, char).  `int age = 30;`
+* **Reference:** Store memory addresses of objects.  `String name = "John";`
+
+**Variables:**
+* Named storage locations. Must be declared with type and optionally initialized. `double price;  price = 99.99;`
+* Naming conventions: camelCase (e.g., myVariable).
+
+**Operators:**
+* **Arithmetic:** `+ - * / %`
+* **Assignment:** `= += -= *= /= %= ++ --`
+* **Comparison:** `== != < > <= >=`
+* **Logical:** `&& || !`  Used for boolean expressions.
+
+Remember type casting: `int x = (int) 3.14;`  (narrowing conversion).
+
+[Gemini] Response received in 4.91s: [
+"Explain the difference between primitive and reference data types in Java, providing examples of each and describing how they are stored in memory.",
+"Describe the process of declaring and initializing variables in Java. Include details on naming conventions and the importance of data types.",
+"Discuss the various arithmetic operators available in Java, explaining their functionality and providing examples of their usage in expressions.",
+"Compare and contrast the different types of comparison and logical operators used in Java. Provide examples of how these operators are used to form boolean expressions and control program flow.",
+"Explain the concept of type casting in Java, differentiating between widening and narrowing conversions. Discuss potential issues that might arise from narrowing conversions and illustrate with an example."
+]
+
+[Gemini] Sending prompt: Given the following study notes, generate 5 multiple-choice quiz (MCQ) questions with 4 options each and the correct answer marked. Respond ONLY as a JSON list of objects with keys: 'question', 'options', 'answer'. Study notes: **Control Flow:**
+
+* **Conditional Statements:**  `if`, `elif`, `else` control execution based on boolean conditions.  Indentation defines code blocks. Example: checking if a number is positive, negative, or zero.
+* **Loops:** `for` iterates over sequences (lists, strings). `while` repeats until a condition is false.  `break` exits the loop prematurely. `continue` skips to the next iteration.  Example: printing numbers 1 to 10.
+
+**Object-Oriented Programming (OOP):**
+
+* **Classes:** Blueprints for creating objects. Define attributes (data) and methods (functions). Example: a `Dog` class with attributes `name`, `breed` and a method `bark()`.
+* **Objects:** Instances of a class.  Each object has its own set of attribute values.  Example: creating two `Dog` objects, `dog1` and `dog2`, each with different names and breeds.
+
+[Gemini] Response received in 6.45s: ```json
+[
+  {
+    "question": "Which keyword is used to introduce a conditional statement in Python?",
+    "options": ["loop", "if", "class", "def"],
+    "answer": "if"
+  },
+  {
+    "question": "What does the `continue` keyword do in a loop?",
+    "options": ["Exits the loop entirely", "Skips to the next iteration", "Repeats the current iteration", "Pauses the loop"],
+    "answer": "Skips to the next iteration"
+  },
+  {
+    "question": "What is the purpose of a `class` in object-oriented programming?",
+    "options": ["To create a variable", "To define a function", "To serve as a blueprint for creating objects", "To execute a block of code repeatedly"],
+    "answer": "To serve as a blueprint for creating objects"
+  },
+  {
+    "question": "Which loop is best suited for iterating over a list of items?",
+    "options": ["while", "for", "do-while", "repeat-until"],
+    "answer": "for"
+  },
+  {
+    "question": "In OOP, what is an object?",
+    "options": ["A blueprint for creating classes", "A keyword for defining functions",  "An instance of a class", "A type of loop"],
+    "answer": "An instance of a class"
+  }
+]
+```
+[Gemini] Sending prompt: Given the following study notes, generate 5 theory assignment questions (open-ended, descriptive). Respond ONLY as a JSON list of strings. Study notes: **Control Flow:**
+
+* **Conditional Statements:**  `if`, `elif`, `else` control execution based on boolean conditions.  Indentation defines code blocks. Example: checking if a number is positive, negative, or zero.
+* **Loops:** `for` iterates over sequences (lists, strings). `while` repeats until a condition is false.  `break` exits the loop prematurely. `continue` skips to the next iteration.  Example: printing numbers 1 to 10.
+
+**Object-Oriented Programming (OOP):**
+
+* **Classes:** Blueprints for creating objects. Define attributes (data) and methods (functions). Example: a `Dog` class with attributes `name`, `breed` and a method `bark()`.
+* **Objects:** Instances of a class.  Each object has its own set of attribute values.  Example: creating two `Dog` objects, `dog1` and `dog2`, each with different names and breeds.
+
+[Gemini] Error after 1.74s: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCHbhiXnBZf9xKWGJmcyarsc7p7YPpLpLg
+[Gemini] Sending prompt: 127.0.0.1 - - [27/Apr/2025 07:46:34] "POST /generate_quiz_and_assignments HTTP/1.1" 500 -
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+Given the following study notes, generate 5 multiple-choice quiz (MCQ) questions with 4 options each and the correct answer marked. Respond ONLY as a JSON list of objects with keys: 'question', 'options', 'answer'. Study notes: **Inheritance:**  Establishes "is-a" relationships between classes.  Base class (superclass) provides common attributes/methods. Derived class (subclass) inherits and can extend/override.  `extends` keyword used. Promotes code reuse and organization.
+
+**Polymorphism:** Enables objects of different classes to be treated as objects of a common type.  Method overriding (same method signature, different implementation in subclass) is key. Achieved via interfaces or inheritance.  Facilitates flexibility and dynamic behavior.
+
+**Exception Handling:** Mechanism for managing runtime errors.  `try-catch` blocks isolate potentially problematic code.  `try` contains code that might throw an exception.  `catch` handles specific exception types.  `finally` block executes regardless of exception occurrence. Ensures program stability and graceful error handling.
+
+[Gemini] Error after 1.90s: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCHbhiXnBZf9xKWGJmcyarsc7p7YPpLpLg
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 110-348-877
+127.0.0.1 - - [27/Apr/2025 07:49:17] "POST /generate_quiz_and_assignments HTTP/1.1" 200 -
+127.0.0.1 - - [27/Apr/2025 07:49:25] "POST /generate_quiz_and_assignments HTTP/1.1" 500 -
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+[Gemini] Sending prompt: Given the following study notes, generate 5 multiple-choice quiz (MCQ) questions with 4 options each and the correct answer marked. Respond ONLY as a JSON list of objects with keys: 'question', 'options', 'answer'. Study notes: Java Fundamentals: Data Types, Variables, Operators
+
+**Data Types:**  Primitive (store simple values): `int`, `float`, `double`, `char`, `boolean`.  Reference (store memory addresses): Strings, Arrays, Objects.
+
+**Variables:** Named memory locations to store data. Declaration: `dataType variableName;`  Initialization: `variableName = value;`  Combined: `int age = 30;`  Naming conventions: camelCase, descriptive.
+
+**Operators:**
+* Arithmetic: `+`, `-`, `*`, `/`, `%` (modulo).
+* Assignment: `=`, `+=`, `-=`, etc.
+* Comparison: `==`, `!=`, `>`, `<`, `>=`, `<=`.
+* Logical: `&&` (and), `||` (or), `!` (not).
+* Increment/Decrement: `++`, `--`.
+
+[Gemini] Response received in 5.11s: ```json
+[
+  {
+    "question": "Which of the following is NOT a primitive data type in Java?",
+    "options": ["int", "boolean", "String", "double"],
+    "answer": "String"
+  },
+  {
+    "question": "What is the correct way to declare and initialize an integer variable named 'count' in Java?",
+    "options": ["int count = 10;", "count = 10;", "integer count = 10;", "int count; count = '10';"],
+    "answer": "int count = 10;"
+  },
+  {
+    "question": "What is the result of the expression 15 % 4?",
+    "options": ["3", "3.75", "1", "0"],
+    "answer": "3"
+  },
+  {
+    "question": "Which operator is used for comparing two values for inequality in Java?",
+    "options": ["!=", "==", ">=", "||"],
+    "answer": "!="
+  },
+  {
+    "question": "What does the '++' operator do in Java?",
+    "options": ["Multiplies a variable by itself", "Divides a variable by itself", "Increments a variable by 1", "Decrements a variable by 1"],
+    "answer": "Increments a variable by 1"
+  }
+]
+```
+[Gemini] Sending prompt: Given the following study notes, generate 5 theory assignment questions (open-ended, descriptive). Respond ONLY as a JSON list of strings. Study notes: Java Fundamentals: Data Types, Variables, Operators
+
+**Data Types:**  Primitive (store simple values): `int`, `float`, `double`, `char`, `boolean`.  Reference (store memory addresses): Strings, Arrays, Objects.
+
+**Variables:** Named memory locations to store data. Declaration: `dataType variableName;`  Initialization: `variableName = value;`  Combined: `int age = 30;`  Naming conventions: camelCase, descriptive.
+
+**Operators:**
+* Arithmetic: `+`, `-`, `*`, `/`, `%` (modulo).
+* Assignment: `=`, `+=`, `-=`, etc.
+* Comparison: `==`, `!=`, `>`, `<`, `>=`, `<=`.
+* Logical: `&&` (and), `||` (or), `!` (not).
+* Increment/Decrement: `++`, `--`.
+
+[Gemini] Response received in 5.01s: ["Explain the difference between primitive and reference data types in Java, providing examples of each and describing how they are stored in memory.", "Describe the process of declaring, initializing, and using variables in Java. Include best practices for naming variables and provide examples of different data types.", "Discuss the various arithmetic operators available in Java. Explain the concept of operator precedence and provide examples demonstrating their usage in calculations.", "Compare and contrast the different comparison and logical operators in Java.  Provide examples illustrating how these operators can be used to control the flow of execution within a program.", "Explain the functionality of the increment and decrement operators in Java.  Describe the difference between prefix and postfix notation and provide examples of how these operators can be used in loops or other programming constructs."]
+
+[Gemini] Sending prompt: Given the following study notes, generate 5 multiple-choice quiz (MCQ) questions with 4 options each and the correct answer marked. Respond ONLY as a JSON list of objects with keys: 'question', 'options', 'answer'. Study notes: **Control Flow:**
+
+* **Conditional Statements:**  `if`, `elif`, `else` control code execution based on boolean conditions.  Demonstrated with examples checking numerical comparisons (e.g., `if temperature > 30:`).  Nested conditionals shown for more complex logic.
+* **Loops:** `for` iterates over sequences (lists, strings). Example shows printing each character in a string. `while` loops continue as long as a condition is true, demonstrated with a counter example. `break` keyword exits a loop prematurely.
+
+
+**Object-Oriented Programming (OOP):**
+
+* **Classes:** Blueprints for creating objects.  Define attributes (data) and methods (behavior). Example: `Dog` class with attributes `name`, `breed` and method `bark()`.
+* **Objects:** Instances of a class. Example: `my_dog = Dog("Buddy", "Golden Retriever")` creates an object named `my_dog` of type `Dog`. Access attributes with dot notation (e.g., `my_dog.name`).  Call methods with parentheses (e.g., `my_dog.bark()`).
+
+[Gemini] Error after 1.73s: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCHbhiXnBZf9xKWGJmcyarsc7p7YPpLpLg
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 110-348-877
+127.0.0.1 - - [27/Apr/2025 07:53:17] "POST /generate_quiz_and_assignments HTTP/1.1" 200 -
+127.0.0.1 - - [27/Apr/2025 07:53:20] "POST /generate_quiz_and_assignments HTTP/1.1" 500 -
+127.0.0.1 - - [27/Apr/2025 07:53:23] "POST /generate_quiz_and_assignments HTTP/1.1" 500 -
+127.0.0.1 - - [27/Apr/2025 07:55:26] "POST /generate_quiz_and_assignments HTTP/1.1" 500 -
+[Gemini] Sending prompt: Given the following study notes, generate 5 multiple-choice quiz (MCQ) questions with 4 options each and the correct answer marked. Respond ONLY as a JSON list of objects with keys: 'question', 'options', 'answer'. Study notes: **Java Fundamentals: Data Types, Variables, Operators**
+
+**Data Types:**  Primitive (store simple values directly): `int`, `float`, `double`, `char`, `boolean`. Reference (store memory addresses of objects):  String, arrays, classes.
+
+**Variables:** Named memory locations to store data. Declaration: `dataType variableName;` Initialization: `variableName = value;`  Combined: `int age = 30;` Naming conventions: camelCase, descriptive names.
+
+**Operators:**
+* Arithmetic: +, -, *, /, %, ++, --
+* Relational: ==, !=, >, <, >=, <=
+* Logical: && (AND), || (OR), ! (NOT)
+* Assignment: =, +=, -=, *=, /=, %=
+* Bitwise (not covered in video intro segment): &, |, ^, ~, <<, >>, >>>
+Example: `int result = x + y;`
+
+[Gemini] Response received in 6.36s: ```json
+[
+  {
+    "question": "Which of the following is NOT a primitive data type in Java?",
+    "options": ["int", "String", "double", "boolean"],
+    "answer": "String"
+  },
+  {
+    "question": "What is the correct way to declare and initialize an integer variable named 'count' in Java?",
+    "options": ["int count = 10;", "count = 10;", "integer count = 10;", "int count; count = '10';"],
+    "answer": "int count = 10;"
+  },
+  {
+    "question": "Which operator is used for modulo division in Java?",
+    "options": ["/", "*", "%", "+"],
+    "answer": "%"
+  },
+  {
+    "question": "What does the '&&' operator represent in Java?",
+    "options": ["OR", "AND", "NOT", "XOR"],
+    "answer": "AND"
+  },
+  {
+    "question": "Which of the following is a valid example of using the '+=' assignment operator in Java?",
+    "options": ["x =+ 5;", "x += 5;", "x = +5;", "x ++ 5;"],
+    "answer": "x += 5;"
+  }
+]
+```
+[Gemini] Sending prompt: Given the following study notes, generate 5 theory assignment questions (open-ended, descriptive). Respond ONLY as a JSON list of strings. Study notes: **Java Fundamentals: Data Types, Variables, Operators**
+
+**Data Types:**  Primitive (store simple values directly): `int`, `float`, `double`, `char`, `boolean`. Reference (store memory addresses of objects):  String, arrays, classes.
+
+**Variables:** Named memory locations to store data. Declaration: `dataType variableName;` Initialization: `variableName = value;`  Combined: `int age = 30;` Naming conventions: camelCase, descriptive names.
+
+**Operators:**
+* Arithmetic: +, -, *, /, %, ++, --
+* Relational: ==, !=, >, <, >=, <=
+* Logical: && (AND), || (OR), ! (NOT)
+* Assignment: =, +=, -=, *=, /=, %=
+* Bitwise (not covered in video intro segment): &, |, ^, ~, <<, >>, >>>
+Example: `int result = x + y;`
+
+[Gemini] Response received in 4.09s: [
+"Explain the difference between primitive and reference data types in Java, providing examples of each and describing how they are stored in memory.",
+"Describe the process of declaring and initializing variables in Java, including the syntax and best practices for naming variables.  Illustrate with examples of different data types.",
+"Discuss the various arithmetic operators available in Java, explaining their functionality and providing examples of their use in expressions.  Include a discussion of operator precedence.",
+"Compare and contrast the relational and logical operators in Java. Provide examples demonstrating how they are used to form boolean expressions and control program flow.",
+"Explain the concept of assignment operators in Java, highlighting their shorthand notation and demonstrating how they can simplify code. Provide examples using different assignment operators."
+]
+
+[Gemini] Sending prompt: Given the following study notes, generate 5 multiple-choice quiz (MCQ) questions with 4 options each and the correct answer marked. Respond ONLY as a JSON list of objects with keys: 'question', 'options', 'answer'. Study notes: No notes available.
+[Gemini] Error after 0.45s: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCHbhiXnBZf9xKWGJmcyarsc7p7YPpLpLg
+[Gemini] Sending prompt: Given the following study notes, generate 5 multiple-choice quiz (MCQ) questions with 4 options each and the correct answer marked. Respond ONLY as a JSON list of objects with keys: 'question', 'options', 'answer'. Study notes: No notes available.
+[Gemini] Error after 1.73s: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCHbhiXnBZf9xKWGJmcyarsc7p7YPpLpLg
+[Gemini] Sending prompt: Given the following study notes, generate 5 multiple-choice quiz (MCQ) questions with 4 options each and the correct answer marked. Respond ONLY as a JSON list of objects with keys: 'question', 'options', 'answer'. Study notes: Java Fundamentals (0:00-2:05:30)
+
+**Data Types:** Primitive (hold raw values): `byte`, `short`, `int`, `long`, `float`, `double`, `char`, `boolean`. Reference (hold memory addresses): String, arrays, classes.
+
+**Variables:** Named storage locations. Declaration: `dataType variableName;` Initialization: `variableName = value;`  Example: `int age = 30;` Naming conventions: camelCase, descriptive.
+
+**Operators:**
+* Arithmetic: `+`, `-`, `*`, `/`, `%` (modulo).
+* Assignment: `=`, `+=`, `-=`, `*=`, `/=`, `%=`.
+* Comparison: `==` (equals), `!=` (not equals), `>`, `<`, `>=`, `<=`.
+* Logical: `&&` (and), `||` (or), `!` (not).
+* Increment/Decrement: `++`, `--`.
+Type casting: Converting between data types (e.g., `int` to `double`).  Example: `double myDouble = (double) myInt;`
+
+[Gemini] Response received in 6.49s: ```json
+[
+  {
+    "question": "Which of the following is NOT a primitive data type in Java?",
+    "options": ["int", "String", "boolean", "float"],
+    "answer": "String"
+  },
+  {
+    "question": "What is the correct way to declare and initialize an integer variable named 'count' in Java?",
+    "options": ["int count = 10;", "count = 10;", "integer count = 10;", "int count; count == 10;"],
+    "answer": "int count = 10;"
+  },
+  {
+    "question": "What does the modulo operator (%) return in Java?",
+    "options": ["The sum of two numbers", "The remainder of a division", "The quotient of a division", "The product of two numbers"],
+    "answer": "The remainder of a division"
+  },
+  {
+    "question": "Which operator is used for comparing two values for equality in Java?",
+    "options": ["=", "==", "!=", ">="],
+    "answer": "=="
+  },
+  {
+    "question": "What is the purpose of type casting in Java?",
+    "options": ["To change the value of a variable", "To convert between different data types", "To declare a new variable", "To perform arithmetic operations"],
+    "answer": "To convert between different data types"
+  }
+]
+```
+[Gemini] Sending prompt: Given the following study notes, generate 5 theory assignment questions (open-ended, descriptive). Respond ONLY as a JSON list of strings. Study notes: Java Fundamentals (0:00-2:05:30)
+
+**Data Types:** Primitive (hold raw values): `byte`, `short`, `int`, `long`, `float`, `double`, `char`, `boolean`. Reference (hold memory addresses): String, arrays, classes.
+
+**Variables:** Named storage locations. Declaration: `dataType variableName;` Initialization: `variableName = value;`  Example: `int age = 30;` Naming conventions: camelCase, descriptive.
+
+**Operators:**
+* Arithmetic: `+`, `-`, `*`, `/`, `%` (modulo).
+* Assignment: `=`, `+=`, `-=`, `*=`, `/=`, `%=`.
+* Comparison: `==` (equals), `!=` (not equals), `>`, `<`, `>=`, `<=`.
+* Logical: `&&` (and), `||` (or), `!` (not).
+* Increment/Decrement: `++`, `--`.
+Type casting: Converting between data types (e.g., `int` to `double`).  Example: `double myDouble = (double) myInt;`
+
+[Gemini] Error after 1.79s: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCHbhiXnBZf9xKWGJmcyarsc7p7YPpLpLg
+[Gemini] Sending prompt: 127.0.0.1 - - [27/Apr/2025 07:55:30] "POST /generate_quiz_and_assignments HTTP/1.1" 500 -
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+Given the following study notes, generate 5 multiple-choice quiz (MCQ) questions with 4 options each and the correct answer marked. Respond ONLY as a JSON list of objects with keys: 'question', 'options', 'answer'. Study notes: No notes available.
+[Gemini] Error after 1.74s: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCHbhiXnBZf9xKWGJmcyarsc7p7YPpLpLg
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 110-348-877
+127.0.0.1 - - [27/Apr/2025 07:58:50] "POST /generate_quiz_and_assignments HTTP/1.1" 200 -
+[Gemini] Sending prompt: Given the following study notes, generate 5 multiple-choice quiz (MCQ) questions with 4 options each and the correct answer marked. Respond ONLY as a JSON list of objects with keys: 'question', 'options', 'answer'. Study notes: Java Fundamentals: Data Types, Variables, Operators
+
+**Data Types:** Primitive (store simple values directly): 
+* `int`: integers (whole numbers)
+* `double`: floating-point numbers (decimals)
+* `char`: single characters
+* `boolean`: true/false
+
+Reference (store memory addresses of objects).
+
+**Variables:** Named storage locations for data. Declaration:  `dataType variableName;`  Initialization: `variableName = value;` Combined: `dataType variableName = value;`  Naming conventions: camelCase.
+
+**Operators:**
+* Arithmetic: +, -, *, /, %, ++, --
+* Assignment: =, +=, -=, *=, /=, %=
+* Comparison: ==, !=, <, >, <=, >=
+* Logical: && (AND), || (OR), ! (NOT)
+[Gemini] Response received in 5.92s: ```json
+[
+  {
+    "question": "Which of the following is NOT a primitive data type in Java?",
+    "options": ["int", "double", "String", "boolean"],
+    "answer": "String"
+  },
+  {
+    "question": "What is the correct way to declare and initialize an integer variable named 'count' to 10 in Java?",
+    "options": ["int count = 10;", "count = 10;", "integer count = 10;", "int count == 10;"],
+    "answer": "int count = 10;"
+  },
+  {
+    "question": "Which operator is used for the modulo operation (remainder of a division) in Java?",
+    "options": ["/", "*", "%", "+"],
+    "answer": "%"
+  },
+  {
+    "question": "What does the '&&' operator represent in Java?",
+    "options": ["OR", "AND", "NOT", "XOR"],
+    "answer": "AND"
+  },
+  {
+    "question": "Which of the following is a valid variable name in Java following standard conventions?",
+    "options": ["my-variable", "123variable", "myVariable", "My Variable"],
+    "answer": "myVariable"
+  }
+]
+```
+[Gemini] Sending prompt: Given the following study notes, generate 5 theory assignment questions (open-ended, descriptive). Respond ONLY as a JSON list of strings. Study notes: Java Fundamentals: Data Types, Variables, Operators
+
+**Data Types:** Primitive (store simple values directly): 
+* `int`: integers (whole numbers)
+* `double`: floating-point numbers (decimals)
+* `char`: single characters
+* `boolean`: true/false
+
+Reference (store memory addresses of objects).
+
+**Variables:** Named storage locations for data. Declaration:  `dataType variableName;`  Initialization: `variableName = value;` Combined: `dataType variableName = value;`  Naming conventions: camelCase.
+
+**Operators:**
+* Arithmetic: +, -, *, /, %, ++, --
+* Assignment: =, +=, -=, *=, /=, %=
+* Comparison: ==, !=, <, >, <=, >=
+* Logical: && (AND), || (OR), ! (NOT)
+[Gemini] Response received in 5.10s: [
+  "Describe the difference between primitive and reference data types in Java, providing examples of each and explaining how they are stored in memory.",
+  "Explain the process of declaring, initializing, and using variables in Java. Include a discussion on naming conventions and best practices.",
+  "Detail the various arithmetic operators available in Java, providing examples of their usage and explaining the concept of operator precedence.",
+  "Discuss the role of comparison and logical operators in Java, explaining how they are used to control program flow and create complex conditional statements.  Provide examples illustrating their usage in different scenarios.",
+  "Using examples, illustrate the differences between the assignment operator (=) and the combined assignment operators (+=, -=, *=, /=, %=). Explain how these operators contribute to code efficiency and readability."
+]
+
+[Gemini] Sending prompt: Given the following study notes, generate 5 multiple-choice quiz (MCQ) questions with 4 options each and the correct answer marked. Respond ONLY as a JSON list of objects with keys: 'question', 'options', 'answer'. Study notes: **Control Flow:**
+
+* **Conditional Statements:**  `if`, `elif`, `else` control code execution based on boolean conditions.  Demonstrated with examples checking number parity and comparing values.  Nested conditionals allow for more complex logic.
+* **Loops:** `for` loops iterate over sequences (lists, strings). `while` loops execute as long as a condition is true.  Examples include printing list elements and calculating factorials.  `break` and `continue` control loop execution.
+
+**Object-Oriented Programming (OOP):**
+
+* **Classes:** Blueprints for creating objects. Define attributes (data) and methods (behavior). Example: `Dog` class with attributes `name` and `breed`, and method `bark()`.
+* **Objects:** Instances of a class. Each dog object has its own unique `name` and `breed`.
+* **Inheritance:**  Creating new classes (child classes) based on existing ones (parent classes). Child class inherits parent's attributes and methods, and can add its own. Example: `Poodle` class inheriting from `Dog` class.
+[Gemini] Response received in 5.83s: ```json
+[
+  {
+    "question": "Which keyword is NOT used in conditional statements in Python?",
+    "options": ["if", "elif", "else", "for"],
+    "answer": "for"
+  },
+  {
+    "question": "What type of loop is best suited for iterating a fixed number of times?",
+    "options": ["for", "while", "do-while", "repeat-until"],
+    "answer": "for"
+  },
+  {
+    "question": "Which keywords are used to alter the flow of execution within a loop?",
+    "options": ["try-except", "if-else", "break-continue", "raise-assert"],
+    "answer": "break-continue"
+  },
+  {
+    "question": "In OOP, what is a class?",
+    "options": ["An instance of an object", "A blueprint for creating objects", "A specific object", "A type of variable"],
+    "answer": "A blueprint for creating objects"
+  },
+  {
+    "question": "What is the concept of creating a new class from an existing one called?",
+    "options": ["Polymorphism", "Encapsulation", "Inheritance", "Abstraction"],
+    "answer": "Inheritance"
+  }
+]
+```
+[Gemini] Sending prompt: Given the following study notes, generate 5 theory assignment questions (open-ended, descriptive). Respond ONLY as a JSON list of strings. Study notes: **Control Flow:**
+
+* **Conditional Statements:**  `if`, `elif`, `else` control code execution based on boolean conditions.  Demonstrated with examples checking number parity and comparing values.  Nested conditionals allow for more complex logic.
+* **Loops:** `for` loops iterate over sequences (lists, strings). `while` loops execute as long as a condition is true.  Examples include printing list elements and calculating factorials.  `break` and `continue` control loop execution.
+
+**Object-Oriented Programming (OOP):**
+
+* **Classes:** Blueprints for creating objects. Define attributes (data) and methods (behavior). Example: `Dog` class with attributes `name` and `breed`, and method `bark()`.
+* **Objects:** Instances of a class. Each dog object has its own unique `name` and `breed`.
+* **Inheritance:**  Creating new classes (child classes) based on existing ones (parent classes). Child class inherits parent's attributes and methods, and can add its own. Example: `Poodle` class inheriting from `Dog` class.
+[Gemini] Response received in 5.64s: 127.0.0.1 - - [27/Apr/2025 07:59:11] "POST /generate_quiz_and_assignments HTTP/1.1" 200 -
+127.0.0.1 - - [27/Apr/2025 07:59:19] "POST /generate_quiz_and_assignments HTTP/1.1" 500 -
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+[
+  "Explain the difference between `if`, `elif`, and `else` statements, providing examples of how they are used to control the flow of execution in a program.",
+  "Describe the two main types of loops in Python (`for` and `while`) and explain how they differ in their usage.  Provide examples of scenarios where each type of loop would be most appropriate, including the use of `break` and `continue` statements.",
+  "Define the concept of a class in object-oriented programming and explain how it serves as a blueprint for creating objects.  Illustrate your explanation with an example, including attributes and methods.",
+  "Explain the relationship between a class and an object in object-oriented programming.  Use an example to clarify the distinction and explain how multiple objects can be instantiated from the same class.",
+  "Describe the concept of inheritance in object-oriented programming and explain how it promotes code reusability and reduces redundancy. Provide an example illustrating the relationship between a parent class and a child class, including the inheritance of attributes and methods."
+]
+
+[Gemini] Sending prompt: Given the following study notes, generate 5 multiple-choice quiz (MCQ) questions with 4 options each and the correct answer marked. Respond ONLY as a JSON list of objects with keys: 'question', 'options', 'answer'. Study notes: **Exception Handling & I/O in Python**
+
+**Exceptions:** Errors detected during execution. Handle with `try-except` blocks.  `try` contains code that might raise an exception. `except` specifies how to handle a specific exception type (e.g., `FileNotFoundError`, `TypeError`).  Use `finally` for cleanup (e.g., closing files) regardless of exceptions.  Can raise exceptions manually with `raise`.
+
+**Input/Output:**
+* **Reading files:** `open("filename.txt", "r")` opens a file for reading. Methods like `.read()`, `.readline()`, `.readlines()` read file content.  Use `with open(...) as f:` to automatically close the file.
+* **Writing files:** `open("filename.txt", "w")` opens a file for writing (overwrites existing content).  `"a"` appends to an existing file. Use `.write()` to write data.
+*  Handle potential `IOError` (e.g., file not found) with `try-except`.
+[Gemini] Error after 1.82s: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCHbhiXnBZf9xKWGJmcyarsc7p7YPpLpLg
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 110-348-877
+127.0.0.1 - - [27/Apr/2025 08:03:13] "POST /generate_quiz_and_assignments HTTP/1.1" 500 -
+127.0.0.1 - - [27/Apr/2025 08:03:27] "POST /generate_quiz_and_assignments HTTP/1.1" 500 -
+127.0.0.1 - - [27/Apr/2025 08:03:33] "POST /generate_quiz_and_assignments HTTP/1.1" 500 -
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+[Gemini] Sending prompt: Given the following study notes, generate 5 multiple-choice quiz (MCQ) questions with 4 options each and the correct answer marked. Respond ONLY as a JSON list of objects with keys: 'question', 'options', 'answer'. Study notes: Java Fundamentals:
+
+**Data Types:** Primitive (int, float, double, char, boolean) store simple values directly.  Reference (String, arrays, objects) store memory addresses.
+
+**Variables:** Named memory locations holding data. Declare using `type variableName;`  Initialize with `= value;` e.g., `int age = 30;`
+
+**Operators:** Arithmetic (+, -, *, /, %), assignment (=), comparison (==, !=, <, >, <=, >=), logical (&&, ||, !), increment/decrement (++/--).
+
+**Control Flow:**
+* **if-else:** Conditional execution based on boolean expressions.
+* **switch:** Multi-way branching based on variable value.
+* **for loop:** Repeats code block a fixed number of times.
+* **while loop:** Repeats as long as a condition is true.
+* **do-while:** Executes at least once, then repeats based on condition.
+[Gemini] Error after 0.51s: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCHbhiXnBZf9xKWGJmcyarsc7p7YPpLpLg
+[Gemini] Sending prompt: Given the following study notes, generate 5 multiple-choice quiz (MCQ) questions with 4 options each and the correct answer marked. Respond ONLY as a JSON list of objects with keys: 'question', 'options', 'answer'. Study notes: No notes available.
+[Gemini] Response received in 5.11s: ```json
+[
+  {
+    "question": "What is the capital of France?",
+    "options": ["Berlin", "Paris", "Madrid", "Rome"],
+    "answer": "Paris"
+  },
+  {
+    "question": "How many continents are there?",
+    "options": ["5", "6", "7", "8"],
+    "answer": "7"
+  },
+  {
+    "question": "What is the largest planet in our solar system?",
+    "options": ["Mars", "Jupiter", "Earth", "Venus"],
+    "answer": "Jupiter"
+  },
+  {
+    "question": "What is the chemical symbol for water?",
+    "options": ["CO2", "H2O", "NaCl", "O2"],
+    "answer": "H2O"
+  },
+  {
+    "question": "In what year did World War II begin?",
+    "options": ["1914", "1939", "1945", "1929"],
+    "answer": "1939"
+  }
+]
+```
+
+[Gemini] Sending prompt: Given the following study notes, generate 5 theory assignment questions (open-ended, descriptive). Respond ONLY as a JSON list of strings. Study notes: No notes available.
+[Gemini] Error after 1.74s: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCHbhiXnBZf9xKWGJmcyarsc7p7YPpLpLg
+[Gemini] Sending prompt: Given the following study notes, generate 5 multiple-choice quiz (MCQ) questions with 4 options each and the correct answer marked. Respond ONLY as a JSON list of objects with keys: 'question', 'options', 'answer'. Study notes: No notes available.
+[Gemini] Error after 0.47s: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCHbhiXnBZf9xKWGJmcyarsc7p7YPpLpLg
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 110-348-877
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 110-348-877

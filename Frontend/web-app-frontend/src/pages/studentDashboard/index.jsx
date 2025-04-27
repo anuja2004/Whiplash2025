@@ -6,6 +6,7 @@ import './customCalendar.css';
 import { ChevronDown, ChevronRight } from 'lucide-react';
 
 import useCourseStore from '../../store/courseStore';
+import { generateLearningPath } from '../../api/mcp';
 
 const StudentDashboard = () => {
   const [open, setOpen] = useState(false);
@@ -24,7 +25,7 @@ const StudentDashboard = () => {
   const [manualTopics, setManualTopics] = useState('');
   const [targetDays, setTargetDays] = useState('');
   const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
+  const [dailyHours, setDailyHours] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
 
   const navigate = useNavigate();
@@ -65,9 +66,32 @@ const StudentDashboard = () => {
     }, 2000);
   };
 
-  const handleSaveSyllabus = () => {
-    console.log('Manual Topics:', manualTopics, 'Target Days:', targetDays, 'Start Date:', startDate, 'End Date:', endDate);
-    handleClose();
+  const [learningPath, setLearningPath] = useState(null);
+  const [lpLoading, setLpLoading] = useState(false);
+  const [lpError, setLpError] = useState(null);
+
+  const handleSaveSyllabus = async () => {
+    console.log('[handleSaveSyllabus] called');
+    setLpLoading(true);
+    setLpError(null);
+    try {
+      console.log('[handleSaveSyllabus] Sending data:', { manualTopics, targetDays, dailyHours, startDate });
+      const data = await generateLearningPath({
+        manualTopics,
+        targetDays,
+        dailyHours,
+        startDate
+      });
+      console.log('[handleSaveSyllabus] Received response:', data);
+      setLearningPath(data);
+      handleClose();
+    } catch (err) {
+      console.error('[handleSaveSyllabus] Error:', err);
+      setLpError(err);
+    } finally {
+      setLpLoading(false);
+      console.log('[handleSaveSyllabus] Done');
+    }
   };
 
   // Check if a date has an event
@@ -298,6 +322,150 @@ const StudentDashboard = () => {
 
           {/* Content area */}
           <div className="mt-4 bg-white rounded-2xl shadow-md p-6">
+            {/* Learning Path Generation Status */}
+            {lpLoading && (
+              <div className="text-blue-600 font-semibold mb-4">Generating your personalized learning path...</div>
+            )}
+            {lpError && (
+              <div className="text-red-600 font-semibold mb-4">Error: {lpError.toString()}</div>
+            )}
+            {/* Display Generated Learning Path */}
+            {learningPath && (
+              <div className="mb-6">
+                <h2 className="text-2xl font-bold mb-4">Your Personalized Learning Path</h2>
+                {learningPath.modules && learningPath.modules.length > 0 ? (
+                  <div className="space-y-6">
+                    {learningPath.modules.map((module, idx) => (
+                      <div key={idx} className="border rounded-xl p-4 bg-gray-50">
+                        <h3 className="text-xl font-semibold mb-2">Module {idx + 1}: {module.name}</h3>
+                        {/* Subtopics */}
+                        {module.subtopics && (
+                          <ul className="mb-2 list-disc list-inside">
+                            {module.subtopics.map((sub, subIdx) => (
+                              <li key={subIdx} className="mb-1">
+                                <span className="font-medium">{sub.name}</span>
+                                {/* YouTube Video Links */}
+                                {sub.videos && sub.videos.length > 0 && (
+                                  <ul className="ml-4 list-decimal">
+                                    {sub.videos.map((vid, vidIdx) => (
+                                      <li key={vidIdx}>
+                                        <a href={vid.url} target="_blank" rel="noopener noreferrer" className="text-blue-700 underline">
+                                          {vid.title || vid.url}
+                                        </a>
+                                        {vid.timestamp && (
+                                          <span className="ml-2 text-xs text-gray-500">[{vid.timestamp}]</span>
+                                        )}
+                                      </li>
+                                    ))}
+                                  </ul>
+                                )}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                        {/* Study Notes */}
+                        {module.notes && (
+                          <div className="mb-2">
+                            <span className="font-semibold">Notes:</span>
+                            <div className="prose max-w-none bg-white rounded p-2 border mt-1">{module.notes}</div>
+                          </div>
+                        )}
+                        {/* Quizzes */}
+                        {module.quizzes && module.quizzes.length > 0 && (
+                          <div className="mb-2">
+                            <span className="font-semibold">Quizzes:</span>
+                            <ul className="ml-4 list-decimal">
+                              {module.quizzes.map((quiz, quizIdx) => (
+                                <li key={quizIdx}>{quiz.question}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                        {/* Assignments */}
+                        {module.assignments && module.assignments.length > 0 && (
+                          <div className="mb-2">
+                            <span className="font-semibold">Assignments:</span>
+                            <ul className="ml-4 list-decimal">
+                              {module.assignments.map((assn, assnIdx) => (
+                                <li key={assnIdx}>{assn.title || assn.description}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                ) : (learningPath.plan && Object.keys(learningPath.plan).length > 0) ? (
+                  <div className="space-y-6">
+                    {Object.entries(learningPath.plan).map(([date, value], idx) => (
+                      <div key={idx} className="border rounded-xl p-4 bg-gray-50">
+                        <h3 className="text-xl font-semibold mb-2">Day {idx + 1}: {date}</h3>
+                        <ul className="mb-2 list-disc list-inside">
+                          {/* Handle array of subtopics or enriched object */}
+                          {Array.isArray(value) ? value.map((s, subIdx) => (
+                            <li key={subIdx} className="mb-1">
+                              <span className="font-medium">{s}</span>
+                            </li>
+                          )) : (typeof value === 'object' && value !== null ? (
+                            <li className="mb-1">
+                              {/* Subtopic name */}
+                              <span className="font-medium">{value.subtopic || value.name || ''}</span>
+                              {/* YouTube Video Link */}
+                              {value.youtube_link && (
+                                <div className="ml-4 mt-1">
+                                  <a href={value.youtube_link} target="_blank" rel="noopener noreferrer" className="text-blue-700 underline">
+                                    Watch Video
+                                  </a>
+                                  {value.timestamp && (
+                                    <span className="ml-2 text-xs text-gray-500">[{value.timestamp}]</span>
+                                  )}
+                                </div>
+                              )}
+                              {/* Study Notes */}
+                              {value.notes && (
+                                <div className="mb-2 mt-2">
+                                  <span className="font-semibold">Notes:</span>
+                                  <div className="prose max-w-none bg-white rounded p-2 border mt-1">{value.notes}</div>
+                                </div>
+                              )}
+                              {/* Quizzes */}
+                              {value.quizzes && value.quizzes.length > 0 && (
+                                <div className="mb-2">
+                                  <span className="font-semibold">Quizzes:</span>
+                                  <ul className="ml-4 list-decimal">
+                                    {value.quizzes.map((quiz, quizIdx) => (
+                                      <li key={quizIdx}>{quiz.question || quiz.questionText}</li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              )}
+                              {/* Assignments */}
+                              {value.assignments && value.assignments.length > 0 && (
+                                <div className="mb-2">
+                                  <span className="font-semibold">Assignments:</span>
+                                  <ul className="ml-4 list-decimal">
+                                    {value.assignments.map((assn, assnIdx) => (
+                                      <li key={assnIdx}>{assn.title || assn.description || assn.questionText}</li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              )}
+                            </li>
+                          ) : (
+                            <li className="mb-1">
+                              <span className="font-medium">{value}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div>No modules found in the generated learning path.</div>
+                )}
+              </div>
+            )}
+
             <Outlet />
           </div>
         </div>
@@ -461,14 +629,16 @@ const StudentDashboard = () => {
                 />
               </div>
 
-              {/* End Date */}
+              {/* Daily Hours */}
               <div>
-                <label className="block mb-2 font-medium text-sm">End Date</label>
+                <label className="block mb-2 font-medium text-sm">Daily Hours</label>
                 <input
-                  type="date"
-                  value={endDate}
-                  onChange={e => setEndDate(e.target.value)}
+                  type="number"
+                  min="1"
+                  value={dailyHours}
+                  onChange={e => setDailyHours(e.target.value)}
                   className="w-full border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-black"
+                  placeholder="Enter daily study hours"
                 />
               </div>
 

@@ -1,0 +1,80 @@
+ * Serving Flask app 'app'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5002
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 110-348-877
+127.0.0.1 - - [27/Apr/2025 05:36:50] "GET / HTTP/1.1" 404 -
+127.0.0.1 - - [27/Apr/2025 05:38:04] "GET / HTTP/1.1" 404 -
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 110-348-877
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 110-348-877
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 110-348-877
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 110-348-877
+127.0.0.1 - - [27/Apr/2025 07:38:30] "POST /generate_material HTTP/1.1" 200 -
+127.0.0.1 - - [27/Apr/2025 07:39:58] "POST /generate_material HTTP/1.1" 200 -
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+[Gemini] Sending prompt: Topic: Python. Number of days: 4. Start date: 2025-04-28. Daily hours: 2. You are a study planner assistant. Given a topic, number of days, start date, and daily hours, distribute the key subtopics to study for the topic, assigning each day a subtopic. Respond ONLY as a JSON object mapping dates (YYYY-MM-DD) to the subtopic(s) to study on that day. Do not include any explanation or extra text. Example: {"2025-04-27": "Intro to ML", "2025-04-28": "Supervised Learning"}
+[Gemini] Response received in 4.29s: ```json
+{
+  "2025-04-28": "Setting up Python environment (installation, IDEs, package managers)",
+  "2025-04-29": "Basic Syntax and Data Types (variables, operators, numbers, strings, lists, dictionaries)",
+  "2025-04-30": "Control Flow and Functions (conditional statements, loops, function definition and calls)",
+  "2025-05-01": "Modules and Libraries (built-in modules, external libraries, working with files)"
+}
+```
+
+[Gemini] Sending prompt: Topic: Python Basics. Number of days: 4. Start date: 2025-04-28. Daily hours: 2. You are a study planner assistant. Given a topic, number of days, start date, and daily hours, distribute the key subtopics to study for the topic, assigning each day a subtopic. Respond ONLY as a JSON object mapping dates (YYYY-MM-DD) to the subtopic(s) to study on that day. Do not include any explanation or extra text. Example: {"2025-04-27": "Intro to ML", "2025-04-28": "Supervised Learning"}
+[Gemini] Response received in 3.38s: ```json
+{
+  "2025-04-28": "Data Types and Variables",
+  "2025-04-29": "Operators and Expressions",
+  "2025-04-30": "Control Flow (if/else, loops)",
+  "2025-05-01": "Functions and Modules"
+}
+```
+
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 110-348-877
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 110-348-877
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 110-348-877
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 110-348-877
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 110-348-877
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 110-348-877
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 110-348-877
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 110-348-877

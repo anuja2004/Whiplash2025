@@ -1,0 +1,100 @@
+ * Serving Flask app 'app'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5003
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 110-348-877
+127.0.0.1 - - [27/Apr/2025 05:36:50] "GET / HTTP/1.1" 404 -
+127.0.0.1 - - [27/Apr/2025 05:38:07] "GET / HTTP/1.1" 404 -
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 110-348-877
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 110-348-877
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 110-348-877
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 110-348-877
+127.0.0.1 - - [27/Apr/2025 07:38:25] "POST /fetch_videos HTTP/1.1" 200 -
+127.0.0.1 - - [27/Apr/2025 07:39:50] "POST /fetch_videos HTTP/1.1" 200 -
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+[DEBUG] Candidate videos: [{'video_id': '_uQrJ0TkZlc', 'duration_sec': 22447, 'link': 'https://youtube.com/watch?v=_uQrJ0TkZlc'}, {'video_id': 'UrsmFxEIp5k', 'duration_sec': 39235, 'link': 'https://youtube.com/watch?v=UrsmFxEIp5k'}, {'video_id': 'K5KVEU3aaeQ', 'duration_sec': 7341, 'link': 'https://youtube.com/watch?v=K5KVEU3aaeQ'}, {'video_id': 'yBcfzZJ-gS8', 'duration_sec': 927, 'link': 'https://youtube.com/watch?v=yBcfzZJ-gS8'}, {'video_id': 'eWRfhZUzrAc', 'duration_sec': 16800, 'link': 'https://youtube.com/watch?v=eWRfhZUzrAc'}, {'video_id': 'rfscVS0vtbw', 'duration_sec': 16012, 'link': 'https://youtube.com/watch?v=rfscVS0vtbw'}, {'video_id': 'H2EJuAcrZYU', 'duration_sec': 31136, 'link': 'https://youtube.com/watch?v=H2EJuAcrZYU'}, {'video_id': 'ix9cRaBkVe0', 'duration_sec': 43200, 'link': 'https://youtube.com/watch?v=ix9cRaBkVe0'}]
+[DEBUG] Using in-range video: https://youtube.com/watch?v=H2EJuAcrZYU (31136 sec)
+[DEBUG] Topic full video: https://youtube.com/watch?v=H2EJuAcrZYU, duration (sec): 31136, target (sec): 28800
+[DEBUG] Candidate videos: [{'video_id': 'fr1f84rg4Nw', 'duration_sec': 1057, 'link': 'https://youtube.com/watch?v=fr1f84rg4Nw'}, {'video_id': 'kqtD5dpn9C8', 'duration_sec': 3606, 'link': 'https://youtube.com/watch?v=kqtD5dpn9C8'}, {'video_id': 'K5KVEU3aaeQ', 'duration_sec': 7341, 'link': 'https://youtube.com/watch?v=K5KVEU3aaeQ'}, {'video_id': 'q2-pnQffZik', 'duration_sec': 22, 'link': 'https://youtube.com/watch?v=q2-pnQffZik'}, {'video_id': 'vMV1s-1BKvc', 'duration_sec': 13, 'link': 'https://youtube.com/watch?v=vMV1s-1BKvc'}, {'video_id': '_uQrJ0TkZlc', 'duration_sec': 22447, 'link': 'https://youtube.com/watch?v=_uQrJ0TkZlc'}, {'video_id': 'UrsmFxEIp5k', 'duration_sec': 39235, 'link': 'https://youtube.com/watch?v=UrsmFxEIp5k'}, {'video_id': 'Sl4zqWLC9Xw', 'duration_sec': 50, 'link': 'https://youtube.com/watch?v=Sl4zqWLC9Xw'}]
+[DEBUG] No in-range topic video found.
+[DEBUG] Topic full video: None, duration (sec): None, target (sec): 28800
+[DEBUG] No in-range topic video found, falling back to per-subtopic videos.
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 110-348-877
+127.0.0.1 - - [27/Apr/2025 07:41:41] "POST /fetch_videos HTTP/1.1" 200 -
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+[DEBUG] Candidate videos: [{'video_id': '_uQrJ0TkZlc', 'duration_sec': 22447, 'link': 'https://youtube.com/watch?v=_uQrJ0TkZlc'}, {'video_id': 'UrsmFxEIp5k', 'duration_sec': 39235, 'link': 'https://youtube.com/watch?v=UrsmFxEIp5k'}, {'video_id': 'K5KVEU3aaeQ', 'duration_sec': 7341, 'link': 'https://youtube.com/watch?v=K5KVEU3aaeQ'}, {'video_id': 'yBcfzZJ-gS8', 'duration_sec': 927, 'link': 'https://youtube.com/watch?v=yBcfzZJ-gS8'}, {'video_id': 'eWRfhZUzrAc', 'duration_sec': 16800, 'link': 'https://youtube.com/watch?v=eWRfhZUzrAc'}, {'video_id': 'rfscVS0vtbw', 'duration_sec': 16012, 'link': 'https://youtube.com/watch?v=rfscVS0vtbw'}, {'video_id': 'H2EJuAcrZYU', 'duration_sec': 31136, 'link': 'https://youtube.com/watch?v=H2EJuAcrZYU'}, {'video_id': 'ix9cRaBkVe0', 'duration_sec': 43200, 'link': 'https://youtube.com/watch?v=ix9cRaBkVe0'}]
+[DEBUG] Using in-range video: https://youtube.com/watch?v=H2EJuAcrZYU (31136 sec)
+[DEBUG] Topic full video: https://youtube.com/watch?v=H2EJuAcrZYU, duration (sec): 31136, target (sec): 28800
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 110-348-877
+127.0.0.1 - - [27/Apr/2025 07:45:56] "POST /fetch_videos HTTP/1.1" 200 -
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+[DEBUG] Candidate videos: [{'video_id': 'eIrMbAQSU34', 'duration_sec': 9048, 'link': 'https://youtube.com/watch?v=eIrMbAQSU34'}, {'video_id': 'xk4_1vDrzzo', 'duration_sec': 43200, 'link': 'https://youtube.com/watch?v=xk4_1vDrzzo'}, {'video_id': 'hBh_CC5y8-s', 'duration_sec': 36658, 'link': 'https://youtube.com/watch?v=hBh_CC5y8-s'}, {'video_id': 'A74TOX803D0', 'duration_sec': 15060, 'link': 'https://youtube.com/watch?v=A74TOX803D0'}, {'video_id': 'BGTx91t8q50', 'duration_sec': 44603, 'link': 'https://youtube.com/watch?v=BGTx91t8q50'}, {'video_id': 'xTtL8E4LzTQ', 'duration_sec': 43200, 'link': 'https://youtube.com/watch?v=xTtL8E4LzTQ'}, {'video_id': 'bm0OyhwFDuY', 'duration_sec': 297, 'link': 'https://youtube.com/watch?v=bm0OyhwFDuY'}, {'video_id': 'yRpLlJmRo2w', 'duration_sec': 1126, 'link': 'https://youtube.com/watch?v=yRpLlJmRo2w'}]
+[DEBUG] No in-range topic video found.
+[DEBUG] Topic full video: None, duration (sec): None, target (sec): 21600
+[DEBUG] No in-range topic video found, falling back to per-subtopic videos.
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 110-348-877
+127.0.0.1 - - [27/Apr/2025 07:49:03] "POST /fetch_videos HTTP/1.1" 200 -
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+[DEBUG] Candidate videos: [{'video_id': 'eIrMbAQSU34', 'duration_sec': 9048, 'link': 'https://youtube.com/watch?v=eIrMbAQSU34'}, {'video_id': 'xk4_1vDrzzo', 'duration_sec': 43200, 'link': 'https://youtube.com/watch?v=xk4_1vDrzzo'}, {'video_id': 'hBh_CC5y8-s', 'duration_sec': 36658, 'link': 'https://youtube.com/watch?v=hBh_CC5y8-s'}, {'video_id': 'A74TOX803D0', 'duration_sec': 15060, 'link': 'https://youtube.com/watch?v=A74TOX803D0'}, {'video_id': 'BGTx91t8q50', 'duration_sec': 44603, 'link': 'https://youtube.com/watch?v=BGTx91t8q50'}, {'video_id': 'xTtL8E4LzTQ', 'duration_sec': 43200, 'link': 'https://youtube.com/watch?v=xTtL8E4LzTQ'}, {'video_id': 'bm0OyhwFDuY', 'duration_sec': 297, 'link': 'https://youtube.com/watch?v=bm0OyhwFDuY'}, {'video_id': 'yRpLlJmRo2w', 'duration_sec': 1126, 'link': 'https://youtube.com/watch?v=yRpLlJmRo2w'}]
+[DEBUG] No in-range topic video found.
+[DEBUG] Topic full video: None, duration (sec): None, target (sec): 21600
+[DEBUG] No in-range topic video found, falling back to per-subtopic videos.
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 110-348-877
+127.0.0.1 - - [27/Apr/2025 07:53:01] "POST /fetch_videos HTTP/1.1" 200 -
+127.0.0.1 - - [27/Apr/2025 07:55:12] "POST /fetch_videos HTTP/1.1" 200 -
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+[DEBUG] Candidate videos: [{'video_id': 'eIrMbAQSU34', 'duration_sec': 9048, 'link': 'https://youtube.com/watch?v=eIrMbAQSU34'}, {'video_id': 'xk4_1vDrzzo', 'duration_sec': 43200, 'link': 'https://youtube.com/watch?v=xk4_1vDrzzo'}, {'video_id': 'hBh_CC5y8-s', 'duration_sec': 36658, 'link': 'https://youtube.com/watch?v=hBh_CC5y8-s'}, {'video_id': 'A74TOX803D0', 'duration_sec': 15060, 'link': 'https://youtube.com/watch?v=A74TOX803D0'}, {'video_id': 'xTtL8E4LzTQ', 'duration_sec': 43200, 'link': 'https://youtube.com/watch?v=xTtL8E4LzTQ'}, {'video_id': 'bm0OyhwFDuY', 'duration_sec': 297, 'link': 'https://youtube.com/watch?v=bm0OyhwFDuY'}, {'video_id': 'yRpLlJmRo2w', 'duration_sec': 1126, 'link': 'https://youtube.com/watch?v=yRpLlJmRo2w'}, {'video_id': 'SK5KOWzWywQ', 'duration_sec': 36585, 'link': 'https://youtube.com/watch?v=SK5KOWzWywQ'}]
+[DEBUG] No in-range topic video found.
+[DEBUG] Topic full video: None, duration (sec): None, target (sec): 21600
+[DEBUG] No in-range topic video found, falling back to per-subtopic videos.
+[DEBUG] Candidate videos: [{'video_id': 'eIrMbAQSU34', 'duration_sec': 9048, 'link': 'https://youtube.com/watch?v=eIrMbAQSU34'}, {'video_id': 'xk4_1vDrzzo', 'duration_sec': 43200, 'link': 'https://youtube.com/watch?v=xk4_1vDrzzo'}, {'video_id': 'hBh_CC5y8-s', 'duration_sec': 36658, 'link': 'https://youtube.com/watch?v=hBh_CC5y8-s'}, {'video_id': 'A74TOX803D0', 'duration_sec': 15060, 'link': 'https://youtube.com/watch?v=A74TOX803D0'}, {'video_id': 'xTtL8E4LzTQ', 'duration_sec': 43200, 'link': 'https://youtube.com/watch?v=xTtL8E4LzTQ'}, {'video_id': 'bm0OyhwFDuY', 'duration_sec': 297, 'link': 'https://youtube.com/watch?v=bm0OyhwFDuY'}, {'video_id': 'yRpLlJmRo2w', 'duration_sec': 1126, 'link': 'https://youtube.com/watch?v=yRpLlJmRo2w'}, {'video_id': 'SK5KOWzWywQ', 'duration_sec': 36585, 'link': 'https://youtube.com/watch?v=SK5KOWzWywQ'}]
+[DEBUG] Using in-range video: https://youtube.com/watch?v=A74TOX803D0 (15060 sec)
+[DEBUG] Topic full video: https://youtube.com/watch?v=A74TOX803D0, duration (sec): 15060, target (sec): 14400
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 110-348-877
+127.0.0.1 - - [27/Apr/2025 07:58:34] "POST /fetch_videos HTTP/1.1" 200 -
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+[DEBUG] Candidate videos: [{'video_id': 'eIrMbAQSU34', 'duration_sec': 9048, 'link': 'https://youtube.com/watch?v=eIrMbAQSU34'}, {'video_id': 'xk4_1vDrzzo', 'duration_sec': 43200, 'link': 'https://youtube.com/watch?v=xk4_1vDrzzo'}, {'video_id': 'hBh_CC5y8-s', 'duration_sec': 36658, 'link': 'https://youtube.com/watch?v=hBh_CC5y8-s'}, {'video_id': 'xTtL8E4LzTQ', 'duration_sec': 43200, 'link': 'https://youtube.com/watch?v=xTtL8E4LzTQ'}, {'video_id': 'A74TOX803D0', 'duration_sec': 15060, 'link': 'https://youtube.com/watch?v=A74TOX803D0'}, {'video_id': 'Qgl81fPcLc8', 'duration_sec': 12911, 'link': 'https://youtube.com/watch?v=Qgl81fPcLc8'}, {'video_id': 'x1RCEvYRTz0', 'duration_sec': 42178, 'link': 'https://youtube.com/watch?v=x1RCEvYRTz0'}, {'video_id': 'kGxSyqKbzsc', 'duration_sec': 30649, 'link': 'https://youtube.com/watch?v=kGxSyqKbzsc'}]
+[DEBUG] No in-range topic video found.
+[DEBUG] Topic full video: None, duration (sec): None, target (sec): 21600
+[DEBUG] No in-range topic video found, falling back to per-subtopic videos.
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 110-348-877
+127.0.0.1 - - [27/Apr/2025 08:03:04] "POST /fetch_videos HTTP/1.1" 200 -
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+[DEBUG] Candidate videos: [{'video_id': 'IGygZ4dErQ0', 'duration_sec': 17, 'link': 'https://youtube.com/watch?v=IGygZ4dErQ0'}, {'video_id': 'eIrMbAQSU34', 'duration_sec': 9048, 'link': 'https://youtube.com/watch?v=eIrMbAQSU34'}, {'video_id': 'xk4_1vDrzzo', 'duration_sec': 43200, 'link': 'https://youtube.com/watch?v=xk4_1vDrzzo'}, {'video_id': 'hBh_CC5y8-s', 'duration_sec': 36658, 'link': 'https://youtube.com/watch?v=hBh_CC5y8-s'}, {'video_id': 'A74TOX803D0', 'duration_sec': 15060, 'link': 'https://youtube.com/watch?v=A74TOX803D0'}, {'video_id': 'xTtL8E4LzTQ', 'duration_sec': 43200, 'link': 'https://youtube.com/watch?v=xTtL8E4LzTQ'}, {'video_id': 'BGTx91t8q50', 'duration_sec': 44603, 'link': 'https://youtube.com/watch?v=BGTx91t8q50'}, {'video_id': 'bm0OyhwFDuY', 'duration_sec': 297, 'link': 'https://youtube.com/watch?v=bm0OyhwFDuY'}]
+[DEBUG] No in-range topic video found.
+[DEBUG] Topic full video: None, duration (sec): None, target (sec): 21600
+[DEBUG] No in-range topic video found, falling back to per-subtopic videos.
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 110-348-877
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 110-348-877
