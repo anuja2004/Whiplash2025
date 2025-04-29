@@ -6,3 +6,441 @@ Press CTRL+C to quit
  * Restarting with stat
  * Debugger is active!
  * Debugger PIN: 110-348-877
+ * Serving Flask app 'app'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5001
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 113-518-156
+Traceback (most recent call last):
+  File "/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py", line 175, in <module>
+    app.run(port=5001, debug=True)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 889, in run
+    run_simple(t.cast(str, host), port, self, **options)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/serving.py", line 1097, in run_simple
+    run_with_reloader(
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/_reloader.py", line 446, in run_with_reloader
+    ensure_echo_on()
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/_reloader.py", line 426, in ensure_echo_on
+    termios.tcsetattr(sys.stdin, termios.TCSANOW, attributes)
+termios.error: (5, 'Input/output error')
+ * Serving Flask app 'app'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5001
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 113-518-156
+Received request: {'topic_name': 'Machine Learning', 'no_of_days': 3, 'start_date': '2025-05-01', 'daily_hours': 2}
+Calling Gemini API with prompt:
+ Topic: Machine Learning. Number of days: 3. Start date: 2025-05-01. Daily hours: 2. You are a study planner assistant. Given a topic, number of days, start date, and daily hours, distribute the key subtopics to study for the topic, assigning each day a subtopic. Respond ONLY as a JSON object mapping dates (YYYY-MM-DD) to the subtopic(s) to study on that day. Do not include any explanation or extra text. Example: {"2025-04-27": "Intro to ML", "2025-04-28": "Supervised Learning"}
+[Gemini] Sending prompt: Topic: Machine Learning. Number of days: 3. Start date: 2025-05-01. Daily hours: 2. You are a study planner assistant. Given a topic, number of days, start date, and daily hours, distribute the key subtopics to study for the topic, assigning each day a subtopic. Respond ONLY as a JSON object mapping dates (YYYY-MM-DD) to the subtopic(s) to study on that day. Do not include any explanation or extra text. Example: {"2025-04-27": "Intro to ML", "2025-04-28": "Supervised Learning"}
+[Gemini] Response received in 2.06s: ```json
+{
+  "2025-05-01": "Introduction to Machine Learning & Data Preprocessing",
+  "2025-05-02": "Supervised Learning (Regression & Classification)",
+  "2025-05-03": "Unsupervised Learning & Model Evaluation"
+}
+```
+
+Gemini API raw response: '```json\n{\n  "2025-05-01": "Introduction to Machine Learning & Data Preprocessing",\n  "2025-05-02": "Supervised Learning (Regression & Classification)",\n  "2025-05-03": "Unsupervised Learning & Model Evaluation"\n}\n```\n'
+Cleaned Gemini response: '{\n  "2025-05-01": "Introduction to Machine Learning & Data Preprocessing",\n  "2025-05-02": "Supervised Learning (Regression & Classification)",\n  "2025-05-03": "Unsupervised Learning & Model Evaluation"\n}'
+Gemini call took 2.06 seconds
+Calling Video Fetcher service...
+[Gemini] Attempt 1 for notes on Introduction to Machine Learning & Data Preprocessing (2025-05-01)
+[Gemini] Prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [00:00:00-02:07:11] of this YouTube video: https://youtube.com/watch?v=9f-GarcDY58.  Subtopic: Introduction to Machine Learning & Data Preprocessing. Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Sending prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [00:00:00-02:07:11] of this YouTube video: https://youtube.com/watch?v=9f-GarcDY58.  Subtopic: Introduction to Machine Learning & Data Preprocessing. Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Response received in 4.89s: **Machine Learning & Data Preprocessing Intro (0:00-2:07)**
+
+Machine Learning: Algorithms learning from data without explicit programming.  Two main types: Supervised (labeled data, prediction) and Unsupervised (unlabeled data, pattern discovery).  Example: Predicting customer churn (supervised).
+
+Data Preprocessing crucial for accurate models.  Steps include:
+1. **Handling Missing Values:** Deletion (rows/columns), imputation (mean/median).
+2. **Categorical Feature Encoding:** Converting text to numbers. One-Hot Encoding for nominal data (no order), Label Encoding for ordinal data (ordered categories).
+3. **Feature Scaling:**  Bringing features to similar scales prevents features with larger values dominating. Two common methods: Normalization (0-1 range) and Standardization (mean 0, standard deviation 1).
+4. **Data Splitting:**  Training set (model learning), Testing set (evaluation).
+These steps improve model performance and prevent biases.
+
+[Gemini] Response: **Machine Learning & Data Preprocessing Intro (0:00-2:07)**
+
+Machine Learning: Algorithms learning from data without exp...
+[DEBUG] Day: 2025-05-01
+  subtopic: 'Introduction to Machine Learning & Data Preprocessing'
+  youtube_link: 'https://youtube.com/watch?v=9f-GarcDY58'
+  timestamp: '00:00:00-02:07:11'
+  notes: '**Machine Learning & Data Preprocessing Intro (0:00-2:07)**\n\nMachine Learning...
+Calling Quiz Generator for Introduction to Machine Learning & Data Preprocessing (2025-05-01)...
+Quiz generator service error for Introduction to Machine Learning & Data Preprocessing (2025-05-01): 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5004/generate_quiz_and_assignments
+[Gemini] Attempt 1 for notes on Supervised Learning (Regression & Classification) (2025-05-02)
+[Gemini] Prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [02:07:11-04:14:22] of this YouTube video: https://youtube.com/watch?v=9f-GarcDY58.  Subtopic: Supervised Learning (Regression & Classification). Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Sending prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [02:07:11-04:14:22] of this YouTube video: https://youtube.com/watch?v=9f-GarcDY58.  Subtopic: Supervised Learning (Regression & Classification). Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Error after 0.70s: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Error on attempt 1 for Supervised Learning (Regression & Classification) (2025-05-02): 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Attempt 2 for notes on Supervised Learning (Regression & Classification) (2025-05-02)
+[Gemini] Prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [02:07:11-04:14:22] of this YouTube video: https://youtube.com/watch?v=9f-GarcDY58.  Subtopic: Supervised Learning (Regression & Classification). Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Sending prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [02:07:11-04:14:22] of this YouTube video: https://youtube.com/watch?v=9f-GarcDY58.  Subtopic: Supervised Learning (Regression & Classification). Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Response received in 3.79s: Supervised Learning uses labeled data to train algorithms.  Regression predicts continuous values (e.g., house prices).  Cost function measures prediction error.  Gradient descent minimizes cost by iteratively adjusting model parameters.  Learning rate controls step size.  Classification predicts discrete categories (e.g., spam/not spam). Logistic regression uses sigmoid function to output probability.  Decision boundary separates classes.  Support Vector Machines (SVMs) find optimal hyperplane maximizing margin. Kernel trick handles non-linearly separable data by mapping to higher dimensions.  K-Nearest Neighbors (KNN) classifies based on proximity to labeled data points.  Overfitting occurs when model performs well on training data but poorly on new data.  Regularization (L1/L2) penalizes large weights to prevent overfitting.
+
+[Gemini] Response: Supervised Learning uses labeled data to train algorithms.  Regression predicts continuous values (e.g., house prices). ...
+[DEBUG] Day: 2025-05-02
+  subtopic: 'Supervised Learning (Regression & Classification)'
+  youtube_link: 'https://youtube.com/watch?v=9f-GarcDY58'
+  timestamp: '02:07:11-04:14:22'
+  notes: 'Supervised Learning uses labeled data to train algorithms.  Regression predicts...
+Calling Quiz Generator for Supervised Learning (Regression & Classification) (2025-05-02)...
+Quiz generator service error for Supervised Learning (Regression & Classification) (2025-05-02): 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5004/generate_quiz_and_assignments
+[Gemini] Attempt 1 for notes on Unsupervised Learning & Model Evaluation (2025-05-03)
+127.0.0.1 - - [29/Apr/2025 21:04:19] "POST /generate_plan HTTP/1.1" 200 -
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/run_all.py', reloading
+[Gemini] Prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [04:14:22-06:21:33] of this YouTube video: https://youtube.com/watch?v=9f-GarcDY58.  Subtopic: Unsupervised Learning & Model Evaluation. Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Sending prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [04:14:22-06:21:33] of this YouTube video: https://youtube.com/watch?v=9f-GarcDY58.  Subtopic: Unsupervised Learning & Model Evaluation. Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Response received in 5.22s: Unsupervised Learning & Model Evaluation (04:14:22-06:21:33)
+
+**Clustering:** Grouping similar data points. K-Means: iterative algorithm, minimizes within-cluster variance.  Elbow method and silhouette analysis help determine optimal 'k'. Challenges include specifying 'k', sensitivity to initialization, and varying cluster shapes.
+
+**Dimensionality Reduction:** Reduces data complexity while preserving essential information. Principal Component Analysis (PCA): finds orthogonal components maximizing variance. Explained variance ratio helps determine number of components to keep.  Useful for visualization, noise reduction, and feature engineering.
+
+**Model Evaluation (Unsupervised):** Lack of ground truth makes evaluation complex. Internal measures like silhouette coefficient assess cluster cohesion and separation. External measures require labeled data (partially labeled datasets can be used).  Visualizations aid qualitative assessment.  Focus on stability, interpretability, and downstream task performance.
+
+[Gemini] Response: Unsupervised Learning & Model Evaluation (04:14:22-06:21:33)
+
+**Clustering:** Grouping similar data points. K-Means: ite...
+[DEBUG] Day: 2025-05-03
+  subtopic: 'Unsupervised Learning & Model Evaluation'
+  youtube_link: 'https://youtube.com/watch?v=9f-GarcDY58'
+  timestamp: '04:14:22-06:21:33'
+  notes: "Unsupervised Learning & Model Evaluation (04:14:22-06:21:33)\n\n**Clustering:**...
+Calling Quiz Generator for Unsupervised Learning & Model Evaluation (2025-05-03)...
+Quiz generator service error for Unsupervised Learning & Model Evaluation (2025-05-03): 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5004/generate_quiz_and_assignments
+Returning enriched response: {'status': 'Enriched study plan generated', 'topic_name': 'Machine Learning', 'no_of_days': 3, 'start_date': '2025-05-01', 'daily_hours': 2, 'plan': {'2025-05-01': {'subtopic': 'Introduction to Machine Learning & Data Preprocessing', 'youtube_link': 'https://youtube.com/watch?v=9f-GarcDY58', 'timestamp': '00:00:00-02:07:11', 'notes': '**Machine Learning & Data Preprocessing Intro (0:00-2:07)**\n\nMachine Learning: Algorithms learning from data without explicit programming.  Two main types: Supervised (labeled data, prediction) and Unsupervised (unlabeled data, pattern discovery).  Example: Predicting customer churn (supervised).\n\nData Preprocessing crucial for accurate models.  Steps include:\n1. **Handling Missing Values:** Deletion (rows/columns), imputation (mean/median).\n2. **Categorical Feature Encoding:** Converting text to numbers. One-Hot Encoding for nominal data (no order), Label Encoding for ordinal data (ordered categories).\n3. **Feature Scaling:**  Bringing features to similar scales prevents features with larger values dominating. Two common methods: Normalization (0-1 range) and Standardization (mean 0, standard deviation 1).\n4. **Data Splitting:**  Training set (model learning), Testing set (evaluation).\nThese steps improve model performance and prevent biases.', 'quizzes': [], 'assignments': []}, '2025-05-02': {'subtopic': 'Supervised Learning (Regression & Classification)', 'youtube_link': 'https://youtube.com/watch?v=9f-GarcDY58', 'timestamp': '02:07:11-04:14:22', 'notes': 'Supervised Learning uses labeled data to train algorithms.  Regression predicts continuous values (e.g., house prices).  Cost function measures prediction error.  Gradient descent minimizes cost by iteratively adjusting model parameters.  Learning rate controls step size.  Classification predicts discrete categories (e.g., spam/not spam). Logistic regression uses sigmoid function to output probability.  Decision boundary separates classes.  Support Vector Machines (SVMs) find optimal hyperplane maximizing margin. Kernel trick handles non-linearly separable data by mapping to higher dimensions.  K-Nearest Neighbors (KNN) classifies based on proximity to labeled data points.  Overfitting occurs when model performs well on training data but poorly on new data.  Regularization (L1/L2) penalizes large weights to prevent overfitting.', 'quizzes': [], 'assignments': []}, '2025-05-03': {'subtopic': 'Unsupervised Learning & Model Evaluation', 'youtube_link': 'https://youtube.com/watch?v=9f-GarcDY58', 'timestamp': '04:14:22-06:21:33', 'notes': "Unsupervised Learning & Model Evaluation (04:14:22-06:21:33)\n\n**Clustering:** Grouping similar data points. K-Means: iterative algorithm, minimizes within-cluster variance.  Elbow method and silhouette analysis help determine optimal 'k'. Challenges include specifying 'k', sensitivity to initialization, and varying cluster shapes.\n\n**Dimensionality Reduction:** Reduces data complexity while preserving essential information. Principal Component Analysis (PCA): finds orthogonal components maximizing variance. Explained variance ratio helps determine number of components to keep.  Useful for visualization, noise reduction, and feature engineering.\n\n**Model Evaluation (Unsupervised):** Lack of ground truth makes evaluation complex. Internal measures like silhouette coefficient assess cluster cohesion and separation. External measures require labeled data (partially labeled datasets can be used).  Visualizations aid qualitative assessment.  Focus on stability, interpretability, and downstream task performance.", 'quizzes': [], 'assignments': []}}}
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 113-518-156
+Traceback (most recent call last):
+  File "/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py", line 175, in <module>
+    app.run(port=5001, debug=True)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 889, in run
+    run_simple(t.cast(str, host), port, self, **options)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/serving.py", line 1097, in run_simple
+    run_with_reloader(
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/_reloader.py", line 446, in run_with_reloader
+    ensure_echo_on()
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/_reloader.py", line 426, in ensure_echo_on
+    termios.tcsetattr(sys.stdin, termios.TCSANOW, attributes)
+termios.error: (5, 'Input/output error')
+ * Serving Flask app 'app'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5001
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 113-518-156
+127.0.0.1 - - [29/Apr/2025 21:14:49] "GET / HTTP/1.1" 404 -
+Received request: {'topic_name': 'Machine Learning', 'no_of_days': 3, 'start_date': '2025-05-01', 'daily_hours': 2}
+Calling Gemini API with prompt:
+ Topic: Machine Learning. Number of days: 3. Start date: 2025-05-01. Daily hours: 2. You are a study planner assistant. Given a topic, number of days, start date, and daily hours, distribute the key subtopics to study for the topic, assigning each day a subtopic. Respond ONLY as a JSON object mapping dates (YYYY-MM-DD) to the subtopic(s) to study on that day. Do not include any explanation or extra text. Example: {"2025-04-27": "Intro to ML", "2025-04-28": "Supervised Learning"}
+[Gemini] Sending prompt: Topic: Machine Learning. Number of days: 3. Start date: 2025-05-01. Daily hours: 2. You are a study planner assistant. Given a topic, number of days, start date, and daily hours, distribute the key subtopics to study for the topic, assigning each day a subtopic. Respond ONLY as a JSON object mapping dates (YYYY-MM-DD) to the subtopic(s) to study on that day. Do not include any explanation or extra text. Example: {"2025-04-27": "Intro to ML", "2025-04-28": "Supervised Learning"}
+[Gemini] Response received in 2.24s: ```json
+{
+  "2025-05-01": "Introduction to Machine Learning & Data Preprocessing",
+  "2025-05-02": "Supervised Learning (Regression & Classification)",
+  "2025-05-03": "Unsupervised Learning & Model Evaluation"
+}
+```
+
+Gemini API raw response: '```json\n{\n  "2025-05-01": "Introduction to Machine Learning & Data Preprocessing",\n  "2025-05-02": "Supervised Learning (Regression & Classification)",\n  "2025-05-03": "Unsupervised Learning & Model Evaluation"\n}\n```\n'
+Cleaned Gemini response: '{\n  "2025-05-01": "Introduction to Machine Learning & Data Preprocessing",\n  "2025-05-02": "Supervised Learning (Regression & Classification)",\n  "2025-05-03": "Unsupervised Learning & Model Evaluation"\n}'
+Gemini call took 2.25 seconds
+Calling Video Fetcher service...
+[Gemini] Attempt 1 for notes on Introduction to Machine Learning & Data Preprocessing (2025-05-01)
+[Gemini] Prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [00:00:00-02:07:11] of this YouTube video: https://youtube.com/watch?v=9f-GarcDY58.  Subtopic: Introduction to Machine Learning & Data Preprocessing. Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Sending prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [00:00:00-02:07:11] of this YouTube video: https://youtube.com/watch?v=9f-GarcDY58.  Subtopic: Introduction to Machine Learning & Data Preprocessing. Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Response received in 4.34s: Machine Learning (ML) teaches computers to learn from data without explicit programming.  Two main types: Supervised (labeled data, predicting outcomes like spam/not spam) and Unsupervised (unlabeled data, finding patterns like customer segmentation). Data preprocessing is crucial for effective ML.  It involves: 1) Importing libraries (e.g., pandas, numpy). 2) Importing the dataset (e.g., CSV file). 3) Handling missing data (replace with mean/median or delete rows/columns).  4) Encoding categorical data (convert text categories to numbers using Label Encoding or One-Hot Encoding). 5) Splitting data into training and test sets (e.g., 80/20 split). 6) Feature scaling (standardization or normalization to bring features to a similar scale).  These steps prepare data for optimal model training.
+
+[Gemini] Response: Machine Learning (ML) teaches computers to learn from data without explicit programming.  Two main types: Supervised (la...
+[DEBUG] Day: 2025-05-01
+  subtopic: 'Introduction to Machine Learning & Data Preprocessing'
+  youtube_link: 'https://youtube.com/watch?v=9f-GarcDY58'
+  timestamp: '00:00:00-02:07:11'
+  notes: 'Machine Learning (ML) teaches computers to learn from data without explicit pro...
+Calling Quiz Generator for Introduction to Machine Learning & Data Preprocessing (2025-05-01)...
+Quiz generator service error for Introduction to Machine Learning & Data Preprocessing (2025-05-01): 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5004/generate_quiz_and_assignments
+[Gemini] Attempt 1 for notes on Supervised Learning (Regression & Classification) (2025-05-02)
+[Gemini] Prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [02:07:11-04:14:22] of this YouTube video: https://youtube.com/watch?v=9f-GarcDY58.  Subtopic: Supervised Learning (Regression & Classification). Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Sending prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [02:07:11-04:14:22] of this YouTube video: https://youtube.com/watch?v=9f-GarcDY58.  Subtopic: Supervised Learning (Regression & Classification). Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Response received in 5.42s: Supervised Learning uses labeled data (input-output pairs) to train models.  Regression predicts continuous output values. Example: predicting house prices based on features like size, location.  Cost function measures prediction error (e.g., Mean Squared Error). Gradient descent iteratively adjusts model parameters to minimize cost.  Classification predicts discrete categories. Example: classifying emails as spam/not spam. Logistic regression uses a sigmoid function to output probabilities for each class.  Decision boundary separates different classes.  Evaluation metrics for classification include accuracy, precision, recall, and F1-score.  Overfitting occurs when the model performs well on training data but poorly on unseen data. Regularization techniques (L1, L2) help prevent overfitting by penalizing large model parameters.
+
+[Gemini] Response: Supervised Learning uses labeled data (input-output pairs) to train models.  Regression predicts continuous output value...
+[DEBUG] Day: 2025-05-02
+  subtopic: 'Supervised Learning (Regression & Classification)'
+  youtube_link: 'https://youtube.com/watch?v=9f-GarcDY58'
+  timestamp: '02:07:11-04:14:22'
+  notes: 'Supervised Learning uses labeled data (input-output pairs) to train models.  Re...
+Calling Quiz Generator for Supervised Learning (Regression & Classification) (2025-05-02)...
+Quiz generator service error for Supervised Learning (Regression & Classification) (2025-05-02): 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5004/generate_quiz_and_assignments
+[Gemini] Attempt 1 for notes on Unsupervised Learning & Model Evaluation (2025-05-03)
+[Gemini] Prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [04:14:22-06:21:33] of this YouTube video: https://youtube.com/watch?v=9f-GarcDY58.  Subtopic: Unsupervised Learning & Model Evaluation. Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Sending prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [04:14:22-06:21:33] of this YouTube video: https://youtube.com/watch?v=9f-GarcDY58.  Subtopic: Unsupervised Learning & Model Evaluation. Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Error after 0.48s: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Error on attempt 1 for Unsupervised Learning & Model Evaluation (2025-05-03): 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Attempt 2 for notes on Unsupervised Learning & Model Evaluation (2025-05-03)
+127.0.0.1 - - [29/Apr/2025 21:15:56] "POST /generate_plan HTTP/1.1" 200 -
+127.0.0.1 - - [29/Apr/2025 21:17:37] "OPTIONS /generate_plan HTTP/1.1" 200 -
+[Gemini] Prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [04:14:22-06:21:33] of this YouTube video: https://youtube.com/watch?v=9f-GarcDY58.  Subtopic: Unsupervised Learning & Model Evaluation. Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Sending prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [04:14:22-06:21:33] of this YouTube video: https://youtube.com/watch?v=9f-GarcDY58.  Subtopic: Unsupervised Learning & Model Evaluation. Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Error after 0.58s: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Error on attempt 2 for Unsupervised Learning & Model Evaluation (2025-05-03): 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Attempt 3 for notes on Unsupervised Learning & Model Evaluation (2025-05-03)
+[Gemini] Prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [04:14:22-06:21:33] of this YouTube video: https://youtube.com/watch?v=9f-GarcDY58.  Subtopic: Unsupervised Learning & Model Evaluation. Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Sending prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [04:14:22-06:21:33] of this YouTube video: https://youtube.com/watch?v=9f-GarcDY58.  Subtopic: Unsupervised Learning & Model Evaluation. Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Error after 0.55s: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Error on attempt 3 for Unsupervised Learning & Model Evaluation (2025-05-03): 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Failed to generate notes for Unsupervised Learning & Model Evaluation (2025-05-03) after 3 attempts.
+[DEBUG] Day: 2025-05-03
+  subtopic: 'Unsupervised Learning & Model Evaluation'
+  youtube_link: 'https://youtube.com/watch?v=9f-GarcDY58'
+  timestamp: '04:14:22-06:21:33'
+  notes: 'No notes available.'
+[WARN] Attempting quiz/assignment generation for Unsupervised Learning & Model Evaluation (2025-05-03) with missing: notes
+Calling Quiz Generator for Unsupervised Learning & Model Evaluation (2025-05-03)...
+Quiz generator service error for Unsupervised Learning & Model Evaluation (2025-05-03): 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5004/generate_quiz_and_assignments
+Returning enriched response: {'status': 'Enriched study plan generated', 'topic_name': 'Machine Learning', 'no_of_days': 3, 'start_date': '2025-05-01', 'daily_hours': 2, 'plan': {'2025-05-01': {'subtopic': 'Introduction to Machine Learning & Data Preprocessing', 'youtube_link': 'https://youtube.com/watch?v=9f-GarcDY58', 'timestamp': '00:00:00-02:07:11', 'notes': 'Machine Learning (ML) teaches computers to learn from data without explicit programming.  Two main types: Supervised (labeled data, predicting outcomes like spam/not spam) and Unsupervised (unlabeled data, finding patterns like customer segmentation). Data preprocessing is crucial for effective ML.  It involves: 1) Importing libraries (e.g., pandas, numpy). 2) Importing the dataset (e.g., CSV file). 3) Handling missing data (replace with mean/median or delete rows/columns).  4) Encoding categorical data (convert text categories to numbers using Label Encoding or One-Hot Encoding). 5) Splitting data into training and test sets (e.g., 80/20 split). 6) Feature scaling (standardization or normalization to bring features to a similar scale).  These steps prepare data for optimal model training.', 'quizzes': [], 'assignments': []}, '2025-05-02': {'subtopic': 'Supervised Learning (Regression & Classification)', 'youtube_link': 'https://youtube.com/watch?v=9f-GarcDY58', 'timestamp': '02:07:11-04:14:22', 'notes': 'Supervised Learning uses labeled data (input-output pairs) to train models.  Regression predicts continuous output values. Example: predicting house prices based on features like size, location.  Cost function measures prediction error (e.g., Mean Squared Error). Gradient descent iteratively adjusts model parameters to minimize cost.  Classification predicts discrete categories. Example: classifying emails as spam/not spam. Logistic regression uses a sigmoid function to output probabilities for each class.  Decision boundary separates different classes.  Evaluation metrics for classification include accuracy, precision, recall, and F1-score.  Overfitting occurs when the model performs well on training data but poorly on unseen data. Regularization techniques (L1, L2) help prevent overfitting by penalizing large model parameters.', 'quizzes': [], 'assignments': []}, '2025-05-03': {'subtopic': 'Unsupervised Learning & Model Evaluation', 'youtube_link': 'https://youtube.com/watch?v=9f-GarcDY58', 'timestamp': '04:14:22-06:21:33', 'notes': 'No notes available.', 'quizzes': [], 'assignments': []}}}
+Received request: {'topic_name': 'Java', 'no_of_days': '3', 'daily_hours': '2', 'start_date': '2025-04-30'}
+Calling Gemini API with prompt:
+ Topic: Java. Number of days: 3. Start date: 2025-04-30. Daily hours: 2. You are a study planner assistant. Given a topic, number of days, start date, and daily hours, distribute the key subtopics to study for the topic, assigning each day a subtopic. Respond ONLY as a JSON object mapping dates (YYYY-MM-DD) to the subtopic(s) to study on that day. Do not include any explanation or extra text. Example: {"2025-04-27": "Intro to ML", "2025-04-28": "Supervised Learning"}
+[Gemini] Sending prompt: Topic: Java. Number of days: 3. Start date: 2025-04-30. Daily hours: 2. You are a study planner assistant. Given a topic, number of days, start date, and daily hours, distribute the key subtopics to study for the topic, assigning each day a subtopic. Respond ONLY as a JSON object mapping dates (YYYY-MM-DD) to the subtopic(s) to study on that day. Do not include any explanation or extra text. Example: {"2025-04-27": "Intro to ML", "2025-04-28": "Supervised Learning"}
+[Gemini] Response received in 2.36s: ```json
+{
+  "2025-04-30": "Java Fundamentals (Data Types, Variables, Operators)",
+  "2025-05-01": "Control Flow (Conditional Statements, Loops), Object-Oriented Programming Concepts (Classes, Objects, Inheritance)",
+  "2025-05-02": "Exception Handling, Input/Output, Collections Framework" 
+}
+```
+
+Gemini API raw response: '```json\n{\n  "2025-04-30": "Java Fundamentals (Data Types, Variables, Operators)",\n  "2025-05-01": "Control Flow (Conditional Statements, Loops), Object-Oriented Programming Concepts (Classes, Objects, Inheritance)",\n  "2025-05-02": "Exception Handling, Input/Output, Collections Framework" \n}\n```\n'
+Cleaned Gemini response: '{\n  "2025-04-30": "Java Fundamentals (Data Types, Variables, Operators)",\n  "2025-05-01": "Control Flow (Conditional Statements, Loops), Object-Oriented Programming Concepts (Classes, Objects, Inheritance)",\n  "2025-05-02": "Exception Handling, Input/Output, Collections Framework" \n}'
+Gemini call took 2.36 seconds
+Calling Video Fetcher service...
+[Gemini] Attempt 1 for notes on Java Fundamentals (Data Types, Variables, Operators) (2025-04-30)
+[Gemini] Prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [00:00:00-full] of this YouTube video: https://youtube.com/watch?v=KPqSd6sKNPE.  Subtopic: Java Fundamentals (Data Types, Variables, Operators). Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Sending prompt: 127.0.0.1 - - [29/Apr/2025 21:17:50] "OPTIONS /generate_plan HTTP/1.1" 200 -
+Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [00:00:00-full] of this YouTube video: https://youtube.com/watch?v=KPqSd6sKNPE.  Subtopic: Java Fundamentals (Data Types, Variables, Operators). Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Response received in 4.11s: **Java Fundamentals: Data Types, Variables, Operators**
+
+**Data Types:**  Primitive (store simple values directly): `int`, `float`, `double`, `char`, `boolean`.  Reference (store memory addresses of objects): String, arrays, etc.
+
+**Variables:** Named storage locations for data.  Declare with type, name, and optional initialization.  Example: `int age = 25;`  Follow naming conventions (camelCase).
+
+**Operators:**
+* **Arithmetic:** `+`, `-`, `*`, `/`, `%` (modulo).
+* **Assignment:** `=`, `+=`, `-=`, etc. (shorthand assignment).
+* **Comparison:** `==` (equality), `!=` (inequality), `>`, `<`, `>=`, `<=`.
+* **Logical:** `&&` (AND), `||` (OR), `!` (NOT).
+* **Increment/Decrement:** `++`, `--`.
+
+[Gemini] Response: **Java Fundamentals: Data Types, Variables, Operators**
+
+**Data Types:**  Primitive (store simple values directly): `int...
+[DEBUG] Day: 2025-04-30
+  subtopic: 'Java Fundamentals (Data Types, Variables, Operators)'
+  youtube_link: 'https://youtube.com/watch?v=KPqSd6sKNPE'
+  timestamp: '00:00:00-full'
+  notes: '**Java Fundamentals: Data Types, Variables, Operators**\n\n**Data Types:**  Pri...
+Calling Quiz Generator for Java Fundamentals (Data Types, Variables, Operators) (2025-04-30)...
+Received request: {'topic_name': 'Java', 'no_of_days': '3', 'daily_hours': '2', 'start_date': '2025-04-30'}
+Calling Gemini API with prompt:
+ Topic: Java. Number of days: 3. Start date: 2025-04-30. Daily hours: 2. You are a study planner assistant. Given a topic, number of days, start date, and daily hours, distribute the key subtopics to study for the topic, assigning each day a subtopic. Respond ONLY as a JSON object mapping dates (YYYY-MM-DD) to the subtopic(s) to study on that day. Do not include any explanation or extra text. Example: {"2025-04-27": "Intro to ML", "2025-04-28": "Supervised Learning"}
+[Gemini] Sending prompt: Topic: Java. Number of days: 3. Start date: 2025-04-30. Daily hours: 2. You are a study planner assistant. Given a topic, number of days, start date, and daily hours, distribute the key subtopics to study for the topic, assigning each day a subtopic. Respond ONLY as a JSON object mapping dates (YYYY-MM-DD) to the subtopic(s) to study on that day. Do not include any explanation or extra text. Example: {"2025-04-27": "Intro to ML", "2025-04-28": "Supervised Learning"}
+[Gemini] Response received in 2.33s: ```json
+{
+  "2025-04-30": "Java Fundamentals (Data Types, Variables, Operators)",
+  "2025-05-01": "Control Flow (Conditional Statements, Loops), Object-Oriented Programming Concepts",
+  "2025-05-02": "Classes, Objects, Methods, Inheritance, Polymorphism"
+}
+```
+
+Gemini API raw response: '```json\n{\n  "2025-04-30": "Java Fundamentals (Data Types, Variables, Operators)",\n  "2025-05-01": "Control Flow (Conditional Statements, Loops), Object-Oriented Programming Concepts",\n  "2025-05-02": "Classes, Objects, Methods, Inheritance, Polymorphism"\n}\n```\n'
+Cleaned Gemini response: '{\n  "2025-04-30": "Java Fundamentals (Data Types, Variables, Operators)",\n  "2025-05-01": "Control Flow (Conditional Statements, Loops), Object-Oriented Programming Concepts",\n  "2025-05-02": "Classes, Objects, Methods, Inheritance, Polymorphism"\n}'
+Gemini call took 2.33 seconds
+Calling Video Fetcher service...
+Quiz generator service error for Java Fundamentals (Data Types, Variables, Operators) (2025-04-30): 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5004/generate_quiz_and_assignments
+[Gemini] Attempt 1 for notes on Control Flow (Conditional Statements, Loops), Object-Oriented Programming Concepts (Classes, Objects, Inheritance) (2025-05-01)
+[Gemini] Prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [00:00:00-full] of this YouTube video: https://youtube.com/watch?v=2lxkX4_kHWo.  Subtopic: Control Flow (Conditional Statements, Loops), Object-Oriented Programming Concepts (Classes, Objects, Inheritance). Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Sending prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [00:00:00-full] of this YouTube video: https://youtube.com/watch?v=2lxkX4_kHWo.  Subtopic: Control Flow (Conditional Statements, Loops), Object-Oriented Programming Concepts (Classes, Objects, Inheritance). Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Error after 0.46s: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Error on attempt 1 for Control Flow (Conditional Statements, Loops), Object-Oriented Programming Concepts (Classes, Objects, Inheritance) (2025-05-01): 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Attempt 2 for notes on Control Flow (Conditional Statements, Loops), Object-Oriented Programming Concepts (Classes, Objects, Inheritance) (2025-05-01)
+[Gemini] Prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [00:00:00-full] of this YouTube video: https://youtube.com/watch?v=2lxkX4_kHWo.  Subtopic: Control Flow (Conditional Statements, Loops), Object-Oriented Programming Concepts (Classes, Objects, Inheritance). Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Sending prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [00:00:00-full] of this YouTube video: https://youtube.com/watch?v=2lxkX4_kHWo.  Subtopic: Control Flow (Conditional Statements, Loops), Object-Oriented Programming Concepts (Classes, Objects, Inheritance). Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Error after 0.43s: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Error on attempt 2 for Control Flow (Conditional Statements, Loops), Object-Oriented Programming Concepts (Classes, Objects, Inheritance) (2025-05-01): 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Attempt 3 for notes on Control Flow (Conditional Statements, Loops), Object-Oriented Programming Concepts (Classes, Objects, Inheritance) (2025-05-01)
+[Gemini] Prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [00:00:00-full] of this YouTube video: https://youtube.com/watch?v=2lxkX4_kHWo.  Subtopic: Control Flow (Conditional Statements, Loops), Object-Oriented Programming Concepts (Classes, Objects, Inheritance). Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Sending prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [00:00:00-full] of this YouTube video: https://youtube.com/watch?v=2lxkX4_kHWo.  Subtopic: Control Flow (Conditional Statements, Loops), Object-Oriented Programming Concepts (Classes, Objects, Inheritance). Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Attempt 1 for notes on Java Fundamentals (Data Types, Variables, Operators) (2025-04-30)
+[Gemini] Prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [00:00:00-full] of this YouTube video: https://youtube.com/watch?v=KPqSd6sKNPE.  Subtopic: Java Fundamentals (Data Types, Variables, Operators). Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Sending prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [00:00:00-full] of this YouTube video: https://youtube.com/watch?v=KPqSd6sKNPE.  Subtopic: Java Fundamentals (Data Types, Variables, Operators). Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Error after 0.42s: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Error on attempt 3 for Control Flow (Conditional Statements, Loops), Object-Oriented Programming Concepts (Classes, Objects, Inheritance) (2025-05-01): 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Failed to generate notes for Control Flow (Conditional Statements, Loops), Object-Oriented Programming Concepts (Classes, Objects, Inheritance) (2025-05-01) after 3 attempts.
+[DEBUG] Day: 2025-05-01
+  subtopic: 'Control Flow (Conditional Statements, Loops), Object-Oriented Programming Concepts (Classes, Objects, Inheritance)'
+  youtube_link: 'https://youtube.com/watch?v=2lxkX4_kHWo'
+  timestamp: '00:00:00-full'
+  notes: 'No notes available.'
+[WARN] Attempting quiz/assignment generation for Control Flow (Conditional Statements, Loops), Object-Oriented Programming Concepts (Classes, Objects, Inheritance) (2025-05-01) with missing: notes
+Calling Quiz Generator for Control Flow (Conditional Statements, Loops), Object-Oriented Programming Concepts (Classes, Objects, Inheritance) (2025-05-01)...
+[Gemini] Error after 0.42s: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Error on attempt 1 for Java Fundamentals (Data Types, Variables, Operators) (2025-04-30): 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Attempt 2 for notes on Java Fundamentals (Data Types, Variables, Operators) (2025-04-30)
+[Gemini] Prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [00:00:00-full] of this YouTube video: https://youtube.com/watch?v=KPqSd6sKNPE.  Subtopic: Java Fundamentals (Data Types, Variables, Operators). Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Sending prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [00:00:00-full] of this YouTube video: https://youtube.com/watch?v=KPqSd6sKNPE.  Subtopic: Java Fundamentals (Data Types, Variables, Operators). Respond ONLY with the notes as a string, no extra explanation.
+Quiz generator service error for Control Flow (Conditional Statements, Loops), Object-Oriented Programming Concepts (Classes, Objects, Inheritance) (2025-05-01): 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5004/generate_quiz_and_assignments
+[Gemini] Attempt 1 for notes on Exception Handling, Input/Output, Collections Framework (2025-05-02)
+[Gemini] Prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [00:00:00-full] of this YouTube video: https://youtube.com/watch?v=1XAfapkBQjk.  Subtopic: Exception Handling, Input/Output, Collections Framework. Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Sending prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [00:00:00-full] of this YouTube video: https://youtube.com/watch?v=1XAfapkBQjk.  Subtopic: Exception Handling, Input/Output, Collections Framework. Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Error after 0.44s: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Error on attempt 2 for Java Fundamentals (Data Types, Variables, Operators) (2025-04-30): 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Attempt 3 for notes on Java Fundamentals (Data Types, Variables, Operators) (2025-04-30)
+[Gemini] Prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [00:00:00-full] of this YouTube video: https://youtube.com/watch?v=KPqSd6sKNPE.  Subtopic: Java Fundamentals (Data Types, Variables, Operators). Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Sending prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [00:00:00-full] of this YouTube video: https://youtube.com/watch?v=KPqSd6sKNPE.  Subtopic: Java Fundamentals (Data Types, Variables, Operators). Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Error after 0.42s: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Error on attempt 1 for Exception Handling, Input/Output, Collections Framework (2025-05-02): 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Attempt 2 for notes on Exception Handling, Input/Output, Collections Framework (2025-05-02)
+[Gemini] Prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [00:00:00-full] of this YouTube video: https://youtube.com/watch?v=1XAfapkBQjk.  Subtopic: Exception Handling, Input/Output, Collections Framework. Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Sending prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [00:00:00-full] of this YouTube video: https://youtube.com/watch?v=1XAfapkBQjk.  Subtopic: Exception Handling, Input/Output, Collections Framework. Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Error after 0.43s: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Error on attempt 3 for Java Fundamentals (Data Types, Variables, Operators) (2025-04-30): 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Failed to generate notes for Java Fundamentals (Data Types, Variables, Operators) (2025-04-30) after 3 attempts.
+[DEBUG] Day: 2025-04-30
+  subtopic: 'Java Fundamentals (Data Types, Variables, Operators)'
+  youtube_link: 'https://youtube.com/watch?v=KPqSd6sKNPE'
+  timestamp: '00:00:00-full'
+  notes: 'No notes available.'
+[WARN] Attempting quiz/assignment generation for Java Fundamentals (Data Types, Variables, Operators) (2025-04-30) with missing: notes
+Calling Quiz Generator for Java Fundamentals (Data Types, Variables, Operators) (2025-04-30)...
+Quiz generator service error for Java Fundamentals (Data Types, Variables, Operators) (2025-04-30): 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5004/generate_quiz_and_assignments
+[Gemini] Attempt 1 for notes on Control Flow (Conditional Statements, Loops), Object-Oriented Programming Concepts (2025-05-01)
+[Gemini] Prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [00:00:00-full] of this YouTube video: https://youtube.com/watch?v=5QlCw1_N6xk.  Subtopic: Control Flow (Conditional Statements, Loops), Object-Oriented Programming Concepts. Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Sending prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [00:00:00-full] of this YouTube video: https://youtube.com/watch?v=5QlCw1_N6xk.  Subtopic: Control Flow (Conditional Statements, Loops), Object-Oriented Programming Concepts. Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Error after 0.48s: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Error on attempt 1 for Control Flow (Conditional Statements, Loops), Object-Oriented Programming Concepts (2025-05-01): 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Attempt 2 for notes on Control Flow (Conditional Statements, Loops), Object-Oriented Programming Concepts (2025-05-01)
+[Gemini] Prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [00:00:00-full] of this YouTube video: https://youtube.com/watch?v=5QlCw1_N6xk.  Subtopic: Control Flow (Conditional Statements, Loops), Object-Oriented Programming Concepts. Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Sending prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [00:00:00-full] of this YouTube video: https://youtube.com/watch?v=5QlCw1_N6xk.  Subtopic: Control Flow (Conditional Statements, Loops), Object-Oriented Programming Concepts. Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Error after 0.42s: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Error on attempt 2 for Control Flow (Conditional Statements, Loops), Object-Oriented Programming Concepts (2025-05-01): 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Attempt 3 for notes on Control Flow (Conditional Statements, Loops), Object-Oriented Programming Concepts (2025-05-01)
+[Gemini] Prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [00:00:00-full] of this YouTube video: https://youtube.com/watch?v=5QlCw1_N6xk.  Subtopic: Control Flow (Conditional Statements, Loops), Object-Oriented Programming Concepts. Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Sending prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [00:00:00-full] of this YouTube video: https://youtube.com/watch?v=5QlCw1_N6xk.  Subtopic: Control Flow (Conditional Statements, Loops), Object-Oriented Programming Concepts. Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Error after 0.48s: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Error on attempt 3 for Control Flow (Conditional Statements, Loops), Object-Oriented Programming Concepts (2025-05-01): 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Failed to generate notes for Control Flow (Conditional Statements, Loops), Object-Oriented Programming Concepts (2025-05-01) after 3 attempts.
+[DEBUG] Day: 2025-05-01
+  subtopic: 'Control Flow (Conditional Statements, Loops), Object-Oriented Programming Concepts'
+  youtube_link: 'https://youtube.com/watch?v=5QlCw1_N6xk'
+  timestamp: '00:00:00-full'
+  notes: 'No notes available.'
+[WARN] Attempting quiz/assignment generation for Control Flow (Conditional Statements, Loops), Object-Oriented Programming Concepts (2025-05-01) with missing: notes
+Calling Quiz Generator for Control Flow (Conditional Statements, Loops), Object-Oriented Programming Concepts (2025-05-01)...
+Quiz generator service error for Control Flow (Conditional Statements, Loops), Object-Oriented Programming Concepts (2025-05-01): 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5004/generate_quiz_and_assignments
+[Gemini] Attempt 1 for notes on Classes, Objects, Methods, Inheritance, Polymorphism (2025-05-02)
+[Gemini] Prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [00:00:00-full] of this YouTube video: https://youtube.com/watch?v=5RkikYKPvpc.  Subtopic: Classes, Objects, Methods, Inheritance, Polymorphism. Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Sending prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [00:00:00-full] of this YouTube video: https://youtube.com/watch?v=5RkikYKPvpc.  Subtopic: Classes, Objects, Methods, Inheritance, Polymorphism. Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Error after 0.40s: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Error on attempt 1 for Classes, Objects, Methods, Inheritance, Polymorphism (2025-05-02): 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Attempt 2 for notes on Classes, Objects, Methods, Inheritance, Polymorphism (2025-05-02)
+[Gemini] Prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [00:00:00-full] of this YouTube video: https://youtube.com/watch?v=5RkikYKPvpc.  Subtopic: Classes, Objects, Methods, Inheritance, Polymorphism. Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Sending prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [00:00:00-full] of this YouTube video: https://youtube.com/watch?v=5RkikYKPvpc.  Subtopic: Classes, Objects, Methods, Inheritance, Polymorphism. Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Error after 0.44s: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Error on attempt 2 for Classes, Objects, Methods, Inheritance, Polymorphism (2025-05-02): 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Attempt 3 for notes on Classes, Objects, Methods, Inheritance, Polymorphism (2025-05-02)
+[Gemini] Prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [00:00:00-full] of this YouTube video: https://youtube.com/watch?v=5RkikYKPvpc.  Subtopic: Classes, Objects, Methods, Inheritance, Polymorphism. Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Sending prompt: 127.0.0.1 - - [29/Apr/2025 21:18:02] "POST /generate_plan HTTP/1.1" 200 -
+127.0.0.1 - - [29/Apr/2025 21:18:02] "POST /generate_plan HTTP/1.1" 200 -
+Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [00:00:00-full] of this YouTube video: https://youtube.com/watch?v=5RkikYKPvpc.  Subtopic: Classes, Objects, Methods, Inheritance, Polymorphism. Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Error after 0.42s: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Error on attempt 3 for Classes, Objects, Methods, Inheritance, Polymorphism (2025-05-02): 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Failed to generate notes for Classes, Objects, Methods, Inheritance, Polymorphism (2025-05-02) after 3 attempts.
+[DEBUG] Day: 2025-05-02
+  subtopic: 'Classes, Objects, Methods, Inheritance, Polymorphism'
+  youtube_link: 'https://youtube.com/watch?v=5RkikYKPvpc'
+  timestamp: '00:00:00-full'
+  notes: 'No notes available.'
+[WARN] Attempting quiz/assignment generation for Classes, Objects, Methods, Inheritance, Polymorphism (2025-05-02) with missing: notes
+Calling Quiz Generator for Classes, Objects, Methods, Inheritance, Polymorphism (2025-05-02)...
+Quiz generator service error for Classes, Objects, Methods, Inheritance, Polymorphism (2025-05-02): 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5004/generate_quiz_and_assignments
+Returning enriched response: {'status': 'Enriched study plan generated', 'topic_name': 'Java', 'no_of_days': '3', 'start_date': '2025-04-30', 'daily_hours': '2', 'plan': {'2025-04-30': {'subtopic': 'Java Fundamentals (Data Types, Variables, Operators)', 'youtube_link': 'https://youtube.com/watch?v=KPqSd6sKNPE', 'timestamp': '00:00:00-full', 'notes': 'No notes available.', 'quizzes': [], 'assignments': []}, '2025-05-01': {'subtopic': 'Control Flow (Conditional Statements, Loops), Object-Oriented Programming Concepts', 'youtube_link': 'https://youtube.com/watch?v=5QlCw1_N6xk', 'timestamp': '00:00:00-full', 'notes': 'No notes available.', 'quizzes': [], 'assignments': []}, '2025-05-02': {'subtopic': 'Classes, Objects, Methods, Inheritance, Polymorphism', 'youtube_link': 'https://youtube.com/watch?v=5RkikYKPvpc', 'timestamp': '00:00:00-full', 'notes': 'No notes available.', 'quizzes': [], 'assignments': []}}}
+[Gemini] Response received in 4.51s: **Exception Handling:** Java uses `try-catch` blocks to handle exceptions.  `try` contains code that might throw an exception, `catch` handles specific exception types.  `finally` block executes regardless of exceptions, useful for cleanup (e.g., closing files).  Checked exceptions are handled at compile time, unchecked at runtime.
+
+**Input/Output:** Java uses streams for I/O.  `FileInputStream` and `FileOutputStream` for file operations.  `BufferedReader` and `BufferedWriter` for buffered reading/writing, improving efficiency.  `Scanner` class simplifies input from various sources.
+
+**Collections Framework:**  Provides interfaces and classes for working with groups of objects.  `List` (ordered, allows duplicates), `Set` (no duplicates), `Map` (key-value pairs).  `ArrayList`, `HashSet`, `HashMap` are common implementations.  Iterators used to traverse collections.
+
+[Gemini] Response: **Exception Handling:** Java uses `try-catch` blocks to handle exceptions.  `try` contains code that might throw an exce...
+[DEBUG] Day: 2025-05-02
+  subtopic: 'Exception Handling, Input/Output, Collections Framework'
+  youtube_link: 'https://youtube.com/watch?v=1XAfapkBQjk'
+  timestamp: '00:00:00-full'
+  notes: '**Exception Handling:** Java uses `try-catch` blocks to handle exceptions.  `tr...
+Calling Quiz Generator for Exception Handling, Input/Output, Collections Framework (2025-05-02)...
+Quiz generator service error for Exception Handling, Input/Output, Collections Framework (2025-05-02): 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5004/generate_quiz_and_assignments
+Returning enriched response: {'status': 'Enriched study plan generated', 'topic_name': 'Java', 'no_of_days': '3', 'start_date': '2025-04-30', 'daily_hours': '2', 'plan': {'2025-04-30': {'subtopic': 'Java Fundamentals (Data Types, Variables, Operators)', 'youtube_link': 'https://youtube.com/watch?v=KPqSd6sKNPE', 'timestamp': '00:00:00-full', 'notes': '**Java Fundamentals: Data Types, Variables, Operators**\n\n**Data Types:**  Primitive (store simple values directly): `int`, `float`, `double`, `char`, `boolean`.  Reference (store memory addresses of objects): String, arrays, etc.\n\n**Variables:** Named storage locations for data.  Declare with type, name, and optional initialization.  Example: `int age = 25;`  Follow naming conventions (camelCase).\n\n**Operators:**\n* **Arithmetic:** `+`, `-`, `*`, `/`, `%` (modulo).\n* **Assignment:** `=`, `+=`, `-=`, etc. (shorthand assignment).\n* **Comparison:** `==` (equality), `!=` (inequality), `>`, `<`, `>=`, `<=`.\n* **Logical:** `&&` (AND), `||` (OR), `!` (NOT).\n* **Increment/Decrement:** `++`, `--`.', 'quizzes': [], 'assignments': []}, '2025-05-01': {'subtopic': 'Control Flow (Conditional Statements, Loops), Object-Oriented Programming Concepts (Classes, Objects, Inheritance)', 'youtube_link': 'https://youtube.com/watch?v=2lxkX4_kHWo', 'timestamp': '00:00:00-full', 'notes': 'No notes available.', 'quizzes': [], 'assignments': []}, '2025-05-02': {'subtopic': 'Exception Handling, Input/Output, Collections Framework', 'youtube_link': 'https://youtube.com/watch?v=1XAfapkBQjk', 'timestamp': '00:00:00-full', 'notes': '**Exception Handling:** Java uses `try-catch` blocks to handle exceptions.  `try` contains code that might throw an exception, `catch` handles specific exception types.  `finally` block executes regardless of exceptions, useful for cleanup (e.g., closing files).  Checked exceptions are handled at compile time, unchecked at runtime.\n\n**Input/Output:** Java uses streams for I/O.  `FileInputStream` and `FileOutputStream` for file operations.  `BufferedReader` and `BufferedWriter` for buffered reading/writing, improving efficiency.  `Scanner` class simplifies input from various sources.\n\n**Collections Framework:**  Provides interfaces and classes for working with groups of objects.  `List` (ordered, allows duplicates), `Set` (no duplicates), `Map` (key-value pairs).  `ArrayList`, `HashSet`, `HashMap` are common implementations.  Iterators used to traverse collections.', 'quizzes': [], 'assignments': []}}}
+Received request: {'topic_name': 'Machine Learning', 'no_of_days': 3, 'start_date': '2025-05-01', 'daily_hours': 2}
+Calling Gemini API with prompt:
+ Topic: Machine Learning. Number of days: 3. Start date: 2025-05-01. Daily hours: 2. You are a study planner assistant. Given a topic, number of days, start date, and daily hours, distribute the key subtopics to study for the topic, assigning each day a subtopic. Respond ONLY as a JSON object mapping dates (YYYY-MM-DD) to the subtopic(s) to study on that day. Do not include any explanation or extra text. Example: {"2025-04-27": "Intro to ML", "2025-04-28": "Supervised Learning"}
+[Gemini] Sending prompt: Topic: Machine Learning. Number of days: 3. Start date: 2025-05-01. Daily hours: 2. You are a study planner assistant. Given a topic, number of days, start date, and daily hours, distribute the key subtopics to study for the topic, assigning each day a subtopic. Respond ONLY as a JSON object mapping dates (YYYY-MM-DD) to the subtopic(s) to study on that day. Do not include any explanation or extra text. Example: {"2025-04-27": "Intro to ML", "2025-04-28": "Supervised Learning"}
+[Gemini] Response received in 1.92s: ```json
+{
+  "2025-05-01": "Introduction to Machine Learning & Data Preprocessing",
+  "2025-05-02": "Supervised Learning (Regression & Classification)",
+  "2025-05-03": "Unsupervised Learning & Model Evaluation"
+}
+```
+
+Gemini API raw response: '```json\n{\n  "2025-05-01": "Introduction to Machine Learning & Data Preprocessing",\n  "2025-05-02": "Supervised Learning (Regression & Classification)",\n  "2025-05-03": "Unsupervised Learning & Model Evaluation"\n}\n```\n'
+Cleaned Gemini response: '{\n  "2025-05-01": "Introduction to Machine Learning & Data Preprocessing",\n  "2025-05-02": "Supervised Learning (Regression & Classification)",\n  "2025-05-03": "Unsupervised Learning & Model Evaluation"\n}'
+Gemini call took 1.92 seconds
+Calling Video Fetcher service...
+[Gemini] Attempt 1 for notes on Introduction to Machine Learning & Data Preprocessing (2025-05-01)
+[Gemini] Prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [00:00:00-02:07:11] of this YouTube video: https://youtube.com/watch?v=9f-GarcDY58.  Subtopic: Introduction to Machine Learning & Data Preprocessing. Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Sending prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [00:00:00-02:07:11] of this YouTube video: https://youtube.com/watch?v=9f-GarcDY58.  Subtopic: Introduction to Machine Learning & Data Preprocessing. Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Response received in 3.93s: Machine learning teaches computers to learn from data without explicit programming.  Two main types: supervised (labeled data, predicting outcomes) and unsupervised (unlabeled data, finding patterns). Data preprocessing is crucial.  Steps include: 1) Importing libraries (e.g., pandas, numpy). 2) Importing dataset, handling missing data (deletion, imputation with mean/median). 3) Encoding categorical data (converting text to numbers using OneHotEncoder or LabelEncoder). 4) Splitting dataset into training and test sets (e.g., 80/20 split using train_test_split). 5) Feature scaling: standardizing or normalizing data to a similar range (important for some algorithms) using StandardScaler or MinMaxScaler. This prepares the data for effective model training.
+
+[Gemini] Response: Machine learning teaches computers to learn from data without explicit programming.  Two main types: supervised (labeled...
+[DEBUG] Day: 2025-05-01
+  subtopic: 'Introduction to Machine Learning & Data Preprocessing'
+  youtube_link: 'https://youtube.com/watch?v=9f-GarcDY58'
+  timestamp: '00:00:00-02:07:11'
+  notes: 'Machine learning teaches computers to learn from data without explicit programm...
+Calling Quiz Generator for Introduction to Machine Learning & Data Preprocessing (2025-05-01)...
+[Gemini] Attempt 1 for notes on Supervised Learning (Regression & Classification) (2025-05-02)
+[Gemini] Prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [02:07:11-04:14:22] of this YouTube video: https://youtube.com/watch?v=9f-GarcDY58.  Subtopic: Supervised Learning (Regression & Classification). Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Sending prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [02:07:11-04:14:22] of this YouTube video: https://youtube.com/watch?v=9f-GarcDY58.  Subtopic: Supervised Learning (Regression & Classification). Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Error after 0.60s: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Error on attempt 1 for Supervised Learning (Regression & Classification) (2025-05-02): 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Attempt 2 for notes on Supervised Learning (Regression & Classification) (2025-05-02)
+[Gemini] Prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [02:07:11-04:14:22] of this YouTube video: https://youtube.com/watch?v=9f-GarcDY58.  Subtopic: Supervised Learning (Regression & Classification). Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Sending prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [02:07:11-04:14:22] of this YouTube video: https://youtube.com/watch?v=9f-GarcDY58.  Subtopic: Supervised Learning (Regression & Classification). Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Response received in 4.09s: Supervised Learning uses labeled data to train algorithms to predict outputs for new inputs.  Regression predicts continuous outputs (like price, temperature).  Linear Regression finds the best-fit line minimizing error between predicted and actual values using methods like Ordinary Least Squares.  Cost functions measure this error.  Gradient Descent iteratively adjusts model parameters (slope, intercept) to minimize the cost function.  Classification predicts discrete categories (like spam/not spam, cat/dog).  Logistic Regression uses a sigmoid function to output probabilities of belonging to a class, assigning to the class with the highest probability.  Support Vector Machines (SVMs) find the optimal hyperplane maximizing the margin between classes.  Kernels in SVMs handle non-linearly separable data. K-Nearest Neighbors (KNN) classifies based on proximity to labeled data points.
+
+[Gemini] Response: Supervised Learning uses labeled data to train algorithms to predict outputs for new inputs.  Regression predicts contin...
+[DEBUG] Day: 2025-05-02
+  subtopic: 'Supervised Learning (Regression & Classification)'
+  youtube_link: 'https://youtube.com/watch?v=9f-GarcDY58'
+  timestamp: '02:07:11-04:14:22'
+  notes: 'Supervised Learning uses labeled data to train algorithms to predict outputs fo...
+Calling Quiz Generator for Supervised Learning (Regression & Classification) (2025-05-02)...
+Quiz generator service error for Supervised Learning (Regression & Classification) (2025-05-02): 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5004/generate_quiz_and_assignments
+[Gemini] Attempt 1 for notes on Unsupervised Learning & Model Evaluation (2025-05-03)
+[Gemini] Prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [04:14:22-06:21:33] of this YouTube video: https://youtube.com/watch?v=9f-GarcDY58.  Subtopic: Unsupervised Learning & Model Evaluation. Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Sending prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [04:14:22-06:21:33] of this YouTube video: https://youtube.com/watch?v=9f-GarcDY58.  Subtopic: Unsupervised Learning & Model Evaluation. Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Error after 0.49s: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Error on attempt 1 for Unsupervised Learning & Model Evaluation (2025-05-03): 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Attempt 2 for notes on Unsupervised Learning & Model Evaluation (2025-05-03)
+[Gemini] Prompt: Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment [04:14:22-06:21:33] of this YouTube video: https://youtube.com/watch?v=9f-GarcDY58.  Subtopic: Unsupervised Learning & Model Evaluation. Respond ONLY with the notes as a string, no extra explanation.
+[Gemini] Sending prompt: 127.0.0.1 - - [29/Apr/2025 21:26:06] "POST /generate_plan HTTP/1.1" 200 -

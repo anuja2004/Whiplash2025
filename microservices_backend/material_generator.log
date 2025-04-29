@@ -78,3 +78,56 @@ Press CTRL+C to quit
  * Restarting with stat
  * Debugger is active!
  * Debugger PIN: 110-348-877
+ * Serving Flask app 'app'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5002
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 113-518-156
+Traceback (most recent call last):
+  File "/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/material_generator/app.py", line 53, in <module>
+    app.run(port=5002, debug=True)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 889, in run
+    run_simple(t.cast(str, host), port, self, **options)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/serving.py", line 1097, in run_simple
+    run_with_reloader(
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/_reloader.py", line 446, in run_with_reloader
+    ensure_echo_on()
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/_reloader.py", line 426, in ensure_echo_on
+    termios.tcsetattr(sys.stdin, termios.TCSANOW, attributes)
+termios.error: (5, 'Input/output error')
+ * Serving Flask app 'app'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5002
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 113-518-156
+127.0.0.1 - - [29/Apr/2025 21:04:19] "POST /generate_material HTTP/1.1" 400 -
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/run_all.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 113-518-156
+Traceback (most recent call last):
+  File "/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/material_generator/app.py", line 53, in <module>
+    app.run(port=5002, debug=True)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 889, in run
+    run_simple(t.cast(str, host), port, self, **options)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/serving.py", line 1097, in run_simple
+    run_with_reloader(
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/_reloader.py", line 446, in run_with_reloader
+    ensure_echo_on()
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/_reloader.py", line 426, in ensure_echo_on
+    termios.tcsetattr(sys.stdin, termios.TCSANOW, attributes)
+termios.error: (5, 'Input/output error')
+ * Serving Flask app 'app'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5002
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 113-518-156

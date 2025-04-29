@@ -98,3 +98,64 @@ Press CTRL+C to quit
  * Restarting with stat
  * Debugger is active!
  * Debugger PIN: 110-348-877
+ * Serving Flask app 'app'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5003
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 113-518-156
+Traceback (most recent call last):
+  File "/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/video_fetcher/app.py", line 190, in <module>
+    app.run(port=5003, debug=True)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 889, in run
+    run_simple(t.cast(str, host), port, self, **options)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/serving.py", line 1097, in run_simple
+    run_with_reloader(
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/_reloader.py", line 446, in run_with_reloader
+    ensure_echo_on()
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/_reloader.py", line 426, in ensure_echo_on
+    termios.tcsetattr(sys.stdin, termios.TCSANOW, attributes)
+termios.error: (5, 'Input/output error')
+ * Serving Flask app 'app'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5003
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 113-518-156
+127.0.0.1 - - [29/Apr/2025 21:03:56] "POST /fetch_videos HTTP/1.1" 200 -
+127.0.0.1 - - [29/Apr/2025 21:04:19] "POST /fetch_videos HTTP/1.1" 400 -
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/run_all.py', reloading
+[DEBUG] Candidate videos: [{'video_id': 'i_LwzRVP7bg', 'duration_sec': 14033, 'link': 'https://youtube.com/watch?v=i_LwzRVP7bg'}, {'video_id': 'GwIo3gDZCVQ', 'duration_sec': 34712, 'link': 'https://youtube.com/watch?v=GwIo3gDZCVQ'}, {'video_id': 'vdRp_w9f-qM', 'duration_sec': 26, 'link': 'https://youtube.com/watch?v=vdRp_w9f-qM'}, {'video_id': 'LvC68w9JS4Y', 'duration_sec': 37007, 'link': 'https://youtube.com/watch?v=LvC68w9JS4Y'}, {'video_id': 'V_xro1bcAuA', 'duration_sec': 92246, 'link': 'https://youtube.com/watch?v=V_xro1bcAuA'}, {'video_id': '9v7b8gOIkjw', 'duration_sec': 40, 'link': 'https://youtube.com/watch?v=9v7b8gOIkjw'}, {'video_id': 'po5qTPKBrRc', 'duration_sec': 36, 'link': 'https://youtube.com/watch?v=po5qTPKBrRc'}, {'video_id': '9f-GarcDY58', 'duration_sec': 22893, 'link': 'https://youtube.com/watch?v=9f-GarcDY58'}]
+[DEBUG] Using in-range video: https://youtube.com/watch?v=9f-GarcDY58 (22893 sec)
+[DEBUG] Topic full video: https://youtube.com/watch?v=9f-GarcDY58, duration (sec): 22893, target (sec): 21600
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 113-518-156
+Traceback (most recent call last):
+  File "/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/video_fetcher/app.py", line 190, in <module>
+    app.run(port=5003, debug=True)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 889, in run
+    run_simple(t.cast(str, host), port, self, **options)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/serving.py", line 1097, in run_simple
+    run_with_reloader(
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/_reloader.py", line 446, in run_with_reloader
+    ensure_echo_on()
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/_reloader.py", line 426, in ensure_echo_on
+    termios.tcsetattr(sys.stdin, termios.TCSANOW, attributes)
+termios.error: (5, 'Input/output error')
+ * Serving Flask app 'app'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5003
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 113-518-156
+127.0.0.1 - - [29/Apr/2025 21:15:31] "POST /fetch_videos HTTP/1.1" 200 -
+127.0.0.1 - - [29/Apr/2025 21:17:44] "POST /fetch_videos HTTP/1.1" 200 -
+127.0.0.1 - - [29/Apr/2025 21:17:57] "POST /fetch_videos HTTP/1.1" 200 -
+127.0.0.1 - - [29/Apr/2025 21:25:44] "POST /fetch_videos HTTP/1.1" 200 -

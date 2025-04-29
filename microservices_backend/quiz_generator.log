@@ -693,3 +693,350 @@ Reference (store memory addresses of objects).
  * Restarting with stat
  * Debugger is active!
  * Debugger PIN: 110-348-877
+ * Serving Flask app 'app'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5004
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 113-518-156
+Traceback (most recent call last):
+  File "/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/quiz_generator/app.py", line 80, in <module>
+    app.run(port=5004, debug=True)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 889, in run
+    run_simple(t.cast(str, host), port, self, **options)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/serving.py", line 1097, in run_simple
+    run_with_reloader(
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/_reloader.py", line 446, in run_with_reloader
+    ensure_echo_on()
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/_reloader.py", line 426, in ensure_echo_on
+    termios.tcsetattr(sys.stdin, termios.TCSANOW, attributes)
+termios.error: (5, 'Input/output error')
+ * Serving Flask app 'app'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5004
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 113-518-156
+127.0.0.1 - - [29/Apr/2025 21:04:08] "POST /generate_quiz_and_assignments HTTP/1.1" 500 -
+127.0.0.1 - - [29/Apr/2025 21:04:13] "POST /generate_quiz_and_assignments HTTP/1.1" 500 -
+127.0.0.1 - - [29/Apr/2025 21:04:19] "POST /generate_quiz_and_assignments HTTP/1.1" 500 -
+127.0.0.1 - - [29/Apr/2025 21:04:19] "POST /generate_quiz HTTP/1.1" 404 -
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/run_all.py', reloading
+[Gemini] Sending prompt: Given the following study notes, generate 5 multiple-choice quiz (MCQ) questions with 4 options each and the correct answer marked. Respond ONLY as a JSON list of objects with keys: 'question', 'options', 'answer'. Study notes: **Machine Learning & Data Preprocessing Intro (0:00-2:07)**
+
+Machine Learning: Algorithms learning from data without explicit programming.  Two main types: Supervised (labeled data, prediction) and Unsupervised (unlabeled data, pattern discovery).  Example: Predicting customer churn (supervised).
+
+Data Preprocessing crucial for accurate models.  Steps include:
+1. **Handling Missing Values:** Deletion (rows/columns), imputation (mean/median).
+2. **Categorical Feature Encoding:** Converting text to numbers. One-Hot Encoding for nominal data (no order), Label Encoding for ordinal data (ordered categories).
+3. **Feature Scaling:**  Bringing features to similar scales prevents features with larger values dominating. Two common methods: Normalization (0-1 range) and Standardization (mean 0, standard deviation 1).
+4. **Data Splitting:**  Training set (model learning), Testing set (evaluation).
+These steps improve model performance and prevent biases.
+[Gemini] Response received in 6.34s: ```json
+[
+  {
+    "question": "What are the two main types of machine learning?",
+    "options": [
+      "Regression and Classification",
+      "Supervised and Unsupervised",
+      "Deep Learning and Reinforcement Learning",
+      "Clustering and Association"
+    ],
+    "answer": "Supervised and Unsupervised"
+  },
+  {
+    "question": "Which data preprocessing step involves replacing missing values with statistical measures like mean or median?",
+    "options": [
+      "Categorical Feature Encoding",
+      "Feature Scaling",
+      "Handling Missing Values",
+      "Data Splitting"
+    ],
+    "answer": "Handling Missing Values"
+  },
+  {
+    "question": "What is the purpose of feature scaling in data preprocessing?",
+    "options": [
+      "To convert categorical data into numerical data",
+      "To split data into training and testing sets",
+      "To prevent features with larger values from dominating the model",
+      "To handle missing values in the dataset"
+    ],
+    "answer": "To prevent features with larger values from dominating the model"
+  },
+  {
+    "question": "Which encoding method is suitable for ordinal categorical features (e.g., 'Low', 'Medium', 'High')?",
+    "options": [
+      "One-Hot Encoding",
+      "Label Encoding",
+      "Binary Encoding",
+      "Hash Encoding"
+    ],
+    "answer": "Label Encoding"
+  },
+  {
+    "question": "Predicting customer churn, where you have labeled data indicating whether a customer left or stayed, is an example of which type of machine learning?",
+    "options": [
+      "Unsupervised Learning",
+      "Reinforcement Learning",
+      "Supervised Learning",
+      "Deep Learning"
+    ],
+    "answer": "Supervised Learning"
+  }
+]
+```
+[Gemini] Sending prompt: Given the following study notes, generate 5 theory assignment questions (open-ended, descriptive). Respond ONLY as a JSON list of strings. Study notes: **Machine Learning & Data Preprocessing Intro (0:00-2:07)**
+
+Machine Learning: Algorithms learning from data without explicit programming.  Two main types: Supervised (labeled data, prediction) and Unsupervised (unlabeled data, pattern discovery).  Example: Predicting customer churn (supervised).
+
+Data Preprocessing crucial for accurate models.  Steps include:
+1. **Handling Missing Values:** Deletion (rows/columns), imputation (mean/median).
+2. **Categorical Feature Encoding:** Converting text to numbers. One-Hot Encoding for nominal data (no order), Label Encoding for ordinal data (ordered categories).
+3. **Feature Scaling:**  Bringing features to similar scales prevents features with larger values dominating. Two common methods: Normalization (0-1 range) and Standardization (mean 0, standard deviation 1).
+4. **Data Splitting:**  Training set (model learning), Testing set (evaluation).
+These steps improve model performance and prevent biases.
+[Gemini] Error after 0.62s: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Sending prompt: Given the following study notes, generate 5 multiple-choice quiz (MCQ) questions with 4 options each and the correct answer marked. Respond ONLY as a JSON list of objects with keys: 'question', 'options', 'answer'. Study notes: Supervised Learning uses labeled data to train algorithms.  Regression predicts continuous values (e.g., house prices).  Cost function measures prediction error.  Gradient descent minimizes cost by iteratively adjusting model parameters.  Learning rate controls step size.  Classification predicts discrete categories (e.g., spam/not spam). Logistic regression uses sigmoid function to output probability.  Decision boundary separates classes.  Support Vector Machines (SVMs) find optimal hyperplane maximizing margin. Kernel trick handles non-linearly separable data by mapping to higher dimensions.  K-Nearest Neighbors (KNN) classifies based on proximity to labeled data points.  Overfitting occurs when model performs well on training data but poorly on new data.  Regularization (L1/L2) penalizes large weights to prevent overfitting.
+[Gemini] Error after 0.72s: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Sending prompt: Given the following study notes, generate 5 multiple-choice quiz (MCQ) questions with 4 options each and the correct answer marked. Respond ONLY as a JSON list of objects with keys: 'question', 'options', 'answer'. Study notes: Unsupervised Learning & Model Evaluation (04:14:22-06:21:33)
+
+**Clustering:** Grouping similar data points. K-Means: iterative algorithm, minimizes within-cluster variance.  Elbow method and silhouette analysis help determine optimal 'k'. Challenges include specifying 'k', sensitivity to initialization, and varying cluster shapes.
+
+**Dimensionality Reduction:** Reduces data complexity while preserving essential information. Principal Component Analysis (PCA): finds orthogonal components maximizing variance. Explained variance ratio helps determine number of components to keep.  Useful for visualization, noise reduction, and feature engineering.
+
+**Model Evaluation (Unsupervised):** Lack of ground truth makes evaluation complex. Internal measures like silhouette coefficient assess cluster cohesion and separation. External measures require labeled data (partially labeled datasets can be used).  Visualizations aid qualitative assessment.  Focus on stability, interpretability, and downstream task performance.
+[Gemini] Error after 0.44s: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 113-518-156
+Traceback (most recent call last):
+  File "/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/quiz_generator/app.py", line 80, in <module>
+    app.run(port=5004, debug=True)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 889, in run
+    run_simple(t.cast(str, host), port, self, **options)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/serving.py", line 1097, in run_simple
+    run_with_reloader(
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/_reloader.py", line 446, in run_with_reloader
+    ensure_echo_on()
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/_reloader.py", line 426, in ensure_echo_on
+    termios.tcsetattr(sys.stdin, termios.TCSANOW, attributes)
+termios.error: (5, 'Input/output error')
+ * Serving Flask app 'app'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5004
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 113-518-156
+127.0.0.1 - - [29/Apr/2025 21:15:43] "POST /generate_quiz_and_assignments HTTP/1.1" 500 -
+127.0.0.1 - - [29/Apr/2025 21:15:50] "POST /generate_quiz_and_assignments HTTP/1.1" 500 -
+127.0.0.1 - - [29/Apr/2025 21:15:56] "POST /generate_quiz_and_assignments HTTP/1.1" 500 -
+[Gemini] Sending prompt: Given the following study notes, generate 5 multiple-choice quiz (MCQ) questions with 4 options each and the correct answer marked. Respond ONLY as a JSON list of objects with keys: 'question', 'options', 'answer'. Study notes: Machine Learning (ML) teaches computers to learn from data without explicit programming.  Two main types: Supervised (labeled data, predicting outcomes like spam/not spam) and Unsupervised (unlabeled data, finding patterns like customer segmentation). Data preprocessing is crucial for effective ML.  It involves: 1) Importing libraries (e.g., pandas, numpy). 2) Importing the dataset (e.g., CSV file). 3) Handling missing data (replace with mean/median or delete rows/columns).  4) Encoding categorical data (convert text categories to numbers using Label Encoding or One-Hot Encoding). 5) Splitting data into training and test sets (e.g., 80/20 split). 6) Feature scaling (standardization or normalization to bring features to a similar scale).  These steps prepare data for optimal model training.
+[Gemini] Response received in 7.67s: ```json
+[
+  {
+    "question": "What is the primary goal of Machine Learning?",
+    "options": [
+      "To write explicit programs for every task.",
+      "To enable computers to learn from data without explicit programming.",
+      "To manually analyze large datasets.",
+      "To create complex algorithms for data storage."
+    ],
+    "answer": "To enable computers to learn from data without explicit programming."
+  },
+  {
+    "question": "Which of the following is NOT a step in data preprocessing for Machine Learning?",
+    "options": [
+      "Importing libraries like pandas and numpy",
+      "Visualizing the data with matplotlib",
+      "Encoding categorical data",
+      "Splitting data into training and test sets"
+    ],
+    "answer": "Visualizing the data with matplotlib"
+  },
+  {
+    "question": "What is the difference between Supervised and Unsupervised Learning?",
+    "options": [
+      "Supervised uses labeled data, Unsupervised uses unlabeled data.",
+      "Supervised uses unlabeled data, Unsupervised uses labeled data.",
+      "Supervised learning is for classification, Unsupervised learning is for regression.",
+      "There is no significant difference."
+    ],
+    "answer": "Supervised uses labeled data, Unsupervised uses unlabeled data."
+  },
+  {
+    "question": "Which technique is used to convert textual categorical data into numerical representations?",
+    "options": [
+      "Feature scaling",
+      "Data splitting",
+      "Encoding (e.g., Label Encoding, One-Hot Encoding)",
+      "Handling missing data"
+    ],
+    "answer": "Encoding (e.g., Label Encoding, One-Hot Encoding)"
+  },
+  {
+    "question": "Why is feature scaling important in Machine Learning?",
+    "options": [
+      "To improve model interpretability.",
+      "To bring all features to a similar scale, preventing features with larger values from dominating the model.",
+      "To increase the size of the dataset.",
+      "To visualize the data more effectively."
+    ],
+    "answer": "To bring all features to a similar scale, preventing features with larger values from dominating the model."
+  }
+]
+```
+
+[Gemini] Sending prompt: Given the following study notes, generate 5 theory assignment questions (open-ended, descriptive). Respond ONLY as a JSON list of strings. Study notes: Machine Learning (ML) teaches computers to learn from data without explicit programming.  Two main types: Supervised (labeled data, predicting outcomes like spam/not spam) and Unsupervised (unlabeled data, finding patterns like customer segmentation). Data preprocessing is crucial for effective ML.  It involves: 1) Importing libraries (e.g., pandas, numpy). 2) Importing the dataset (e.g., CSV file). 3) Handling missing data (replace with mean/median or delete rows/columns).  4) Encoding categorical data (convert text categories to numbers using Label Encoding or One-Hot Encoding). 5) Splitting data into training and test sets (e.g., 80/20 split). 6) Feature scaling (standardization or normalization to bring features to a similar scale).  These steps prepare data for optimal model training.
+[Gemini] Error after 0.61s: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Sending prompt: Given the following study notes, generate 5 multiple-choice quiz (MCQ) questions with 4 options each and the correct answer marked. Respond ONLY as a JSON list of objects with keys: 'question', 'options', 'answer'. Study notes: Supervised Learning uses labeled data (input-output pairs) to train models.  Regression predicts continuous output values. Example: predicting house prices based on features like size, location.  Cost function measures prediction error (e.g., Mean Squared Error). Gradient descent iteratively adjusts model parameters to minimize cost.  Classification predicts discrete categories. Example: classifying emails as spam/not spam. Logistic regression uses a sigmoid function to output probabilities for each class.  Decision boundary separates different classes.  Evaluation metrics for classification include accuracy, precision, recall, and F1-score.  Overfitting occurs when the model performs well on training data but poorly on unseen data. Regularization techniques (L1, L2) help prevent overfitting by penalizing large model parameters.
+[Gemini] Error after 0.62s: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Sending prompt: Given the following study notes, generate 5 multiple-choice quiz (MCQ) questions with 4 options each and the correct answer marked. Respond ONLY as a JSON list of objects with keys: 'question', 'options', 'answer'. Study notes: No notes available.
+[Gemini] Response received in 3.88s: ```json
+[
+  {
+    "question": "Which of the following is NOT a primary color of light?",
+    "options": ["Red", "Green", "Blue", "Yellow"],
+    "answer": "Yellow"
+  },
+  {
+    "question": "What is the chemical symbol for water?",
+    "options": ["H2O", "CO2", "NaCl", "O2"],
+    "answer": "H2O"
+  },
+  {
+    "question": "The process by which plants convert light energy into chemical energy is called:",
+    "options": ["Photosynthesis", "Respiration", "Transpiration", "Fermentation"],
+    "answer": "Photosynthesis"
+  },
+  {
+    "question": "Which planet is known as the 'Red Planet'?",
+    "options": ["Mars", "Jupiter", "Venus", "Saturn"],
+    "answer": "Mars"
+  },
+  {
+    "question": "What is the smallest prime number?",
+    "options": ["1", "2", "3", "5"],
+    "answer": "2"
+  }
+]
+```
+
+[Gemini] Sending prompt: Given the following study notes, generate 5 theory assignment questions (open-ended, descriptive). Respond ONLY as a JSON list of strings. Study notes: No notes available.
+[Gemini] Error after 0.61s: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Sending prompt: Given the following study notes, generate 5 multiple-choice quiz (MCQ) questions with 4 options each and the correct answer marked. Respond ONLY as a JSON list of objects with keys: 'question', 'options', 'answer'. Study notes: **Java Fundamentals: Data Types, Variables, Operators**
+
+**Data Types:**  Primitive (store simple values directly): `int`, `float`, `double`, `char`, `boolean`.  Reference (store memory addresses of objects): String, arrays, etc.
+
+**Variables:** Named storage locations for data.  Declare with type, name, and optional initialization.  Example: `int age = 25;`  Follow naming conventions (camelCase).
+
+**Operators:**
+* **Arithmetic:** `+`, `-`, `*`, `/`, `%` (modulo).
+* **Assignment:** `=`, `+=`, `-=`, etc. (shorthand assignment).
+* **Comparison:** `==` (equality), `!=` (inequality), `>`, `<`, `>=`, `<=`.
+* **Logical:** `&&` (AND), `||` (OR), `!` (NOT).
+* **Increment/Decrement:** `++`, `--`.
+127.0.0.1 - - [29/Apr/2025 21:17:55] "POST /generate_quiz_and_assignments HTTP/1.1" 500 -
+127.0.0.1 - - [29/Apr/2025 21:17:57] "POST /generate_quiz_and_assignments HTTP/1.1" 500 -
+127.0.0.1 - - [29/Apr/2025 21:17:58] "POST /generate_quiz_and_assignments HTTP/1.1" 500 -
+127.0.0.1 - - [29/Apr/2025 21:18:00] "POST /generate_quiz_and_assignments HTTP/1.1" 500 -
+127.0.0.1 - - [29/Apr/2025 21:18:02] "POST /generate_quiz_and_assignments HTTP/1.1" 500 -
+127.0.0.1 - - [29/Apr/2025 21:18:02] "POST /generate_quiz_and_assignments HTTP/1.1" 500 -
+[Gemini] Response received in 5.15s: ```json
+[
+  {
+    "question": "Which of the following is NOT a primitive data type in Java?",
+    "options": ["int", "String", "boolean", "double"],
+    "answer": "String"
+  },
+  {
+    "question": "What is the correct way to declare and initialize an integer variable named 'count' in Java?",
+    "options": ["int count = 10;", "count = 10;", "integer count = 10;", "int count;"],
+    "answer": "int count = 10;"
+  },
+  {
+    "question": "What does the modulo operator (%) return in Java?",
+    "options": ["The sum of two numbers", "The remainder of a division", "The quotient of a division", "The product of two numbers"],
+    "answer": "The remainder of a division"
+  },
+  {
+    "question": "Which operator is used for checking equality between two values in Java?",
+    "options": [">=", "==", "!=", "="],
+    "answer": "=="
+  },
+  {
+    "question": "What will be the value of 'x' after the following code executes: int x = 5; x += 3;",
+    "options": ["2", "5", "8", "15"],
+    "answer": "8"
+  }
+]
+```
+[Gemini] Sending prompt: Given the following study notes, generate 5 theory assignment questions (open-ended, descriptive). Respond ONLY as a JSON list of strings. Study notes: **Java Fundamentals: Data Types, Variables, Operators**
+
+**Data Types:**  Primitive (store simple values directly): `int`, `float`, `double`, `char`, `boolean`.  Reference (store memory addresses of objects): String, arrays, etc.
+
+**Variables:** Named storage locations for data.  Declare with type, name, and optional initialization.  Example: `int age = 25;`  Follow naming conventions (camelCase).
+
+**Operators:**
+* **Arithmetic:** `+`, `-`, `*`, `/`, `%` (modulo).
+* **Assignment:** `=`, `+=`, `-=`, etc. (shorthand assignment).
+* **Comparison:** `==` (equality), `!=` (inequality), `>`, `<`, `>=`, `<=`.
+* **Logical:** `&&` (AND), `||` (OR), `!` (NOT).
+* **Increment/Decrement:** `++`, `--`.
+[Gemini] Error after 1.69s: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Sending prompt: Given the following study notes, generate 5 multiple-choice quiz (MCQ) questions with 4 options each and the correct answer marked. Respond ONLY as a JSON list of objects with keys: 'question', 'options', 'answer'. Study notes: No notes available.
+[Gemini] Error after 0.42s: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Sending prompt: Given the following study notes, generate 5 multiple-choice quiz (MCQ) questions with 4 options each and the correct answer marked. Respond ONLY as a JSON list of objects with keys: 'question', 'options', 'answer'. Study notes: No notes available.
+[Gemini] Error after 0.48s: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Sending prompt: Given the following study notes, generate 5 multiple-choice quiz (MCQ) questions with 4 options each and the correct answer marked. Respond ONLY as a JSON list of objects with keys: 'question', 'options', 'answer'. Study notes: No notes available.
+[Gemini] Error after 0.42s: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Sending prompt: Given the following study notes, generate 5 multiple-choice quiz (MCQ) questions with 4 options each and the correct answer marked. Respond ONLY as a JSON list of objects with keys: 'question', 'options', 'answer'. Study notes: No notes available.
+[Gemini] Error after 0.49s: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Sending prompt: Given the following study notes, generate 5 multiple-choice quiz (MCQ) questions with 4 options each and the correct answer marked. Respond ONLY as a JSON list of objects with keys: 'question', 'options', 'answer'. Study notes: **Exception Handling:** Java uses `try-catch` blocks to handle exceptions.  `try` contains code that might throw an exception, `catch` handles specific exception types.  `finally` block executes regardless of exceptions, useful for cleanup (e.g., closing files).  Checked exceptions are handled at compile time, unchecked at runtime.
+
+**Input/Output:** Java uses streams for I/O.  `FileInputStream` and `FileOutputStream` for file operations.  `BufferedReader` and `BufferedWriter` for buffered reading/writing, improving efficiency.  `Scanner` class simplifies input from various sources.
+
+**Collections Framework:**  Provides interfaces and classes for working with groups of objects.  `List` (ordered, allows duplicates), `Set` (no duplicates), `Map` (key-value pairs).  `ArrayList`, `HashSet`, `HashMap` are common implementations.  Iterators used to traverse collections.
+[Gemini] Error after 0.41s: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCqWVsLtDeHNeDeaE1uT8j5-2M2VpUiYw8
+[Gemini] Sending prompt: Given the following study notes, generate 5 multiple-choice quiz (MCQ) questions with 4 options each and the correct answer marked. Respond ONLY as a JSON list of objects with keys: 'question', 'options', 'answer'. Study notes: Supervised Learning uses labeled data ...
+[Gemini] Response received in 5.11s: ```json
+[
+  {
+    "question": "Which type of machine learning uses labeled data to train algorithms?",
+    "options": ["Supervised Learning", "Unsupervised Learning", "Reinforcement Learning", "Deep Learning"],
+    "answer": "Supervised Learning"
+  },
+  {
+    "question": "What is the primary goal of supervised learning?",
+    "options": ["To discover hidden patterns in data", "To predict outcomes based on input data", "To learn through trial and error", "To cluster similar data points"],
+    "answer": "To predict outcomes based on input data"
+  },
+  {
+    "question": "Which of the following is an example of a supervised learning task?",
+    "options": ["Image classification", "Customer segmentation", "Anomaly detection", "Dimensionality reduction"],
+    "answer": "Image classification"
+  },
+  {
+    "question": "In supervised learning, what is the 'label' associated with a data point?",
+    "options": ["The predicted output", "The input features", "The error rate", "The model's confidence"],
+    "answer": "The predicted output"
+  },
+  {
+    "question": "Which of these is NOT a common algorithm used in supervised learning?",
+    "options": ["Linear Regression", "K-Means Clustering", "Support Vector Machines", "Decision Trees"],
+    "answer": "K-Means Clustering"
+  }
+]
+```
+
+[Gemini] Sending prompt: Given the following study notes, generate 5 theory assignment questions (open-ended, descriptive). Respond ONLY as a JSON list of strings. Study notes: Supervised Learning uses labeled data ...
+[Gemini] Response received in 4.49s: 127.0.0.1 - - [29/Apr/2025 21:21:25] "POST /generate_quiz_and_assignments HTTP/1.1" 200 -
+127.0.0.1 - - [29/Apr/2025 21:25:59] "POST /generate_quiz_and_assignments HTTP/1.1" 200 -
+127.0.0.1 - - [29/Apr/2025 21:26:05] "POST /generate_quiz_and_assignments HTTP/1.1" 500 -
+127.0.0.1 - - [29/Apr/2025 21:26:06] "POST /generate_quiz_and_assignments HTTP/1.1" 500 -
