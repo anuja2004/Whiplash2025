@@ -1,4 +1,13 @@
 flask
-confluent-kafka
 python-dotenv
 requests
+flask_cors
+tenacity
+pandas
+sqlalchemy
+pymysql
+pydantic
+fastapi
+uvicorn
+pymongo
+

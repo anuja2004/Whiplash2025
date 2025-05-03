@@ -159,3 +159,819 @@ Press CTRL+C to quit
 127.0.0.1 - - [29/Apr/2025 21:17:44] "POST /fetch_videos HTTP/1.1" 200 -
 127.0.0.1 - - [29/Apr/2025 21:17:57] "POST /fetch_videos HTTP/1.1" 200 -
 127.0.0.1 - - [29/Apr/2025 21:25:44] "POST /fetch_videos HTTP/1.1" 200 -
+ * Serving Flask app 'app'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5003
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 593-361-110
+127.0.0.1 - - [02/May/2025 18:35:27] "POST /fetch_videos HTTP/1.1" 200 -
+127.0.0.1 - - [02/May/2025 18:35:35] "POST /fetch_videos HTTP/1.1" 200 -
+127.0.0.1 - - [02/May/2025 18:39:18] "POST /fetch_videos HTTP/1.1" 200 -
+127.0.0.1 - - [02/May/2025 18:47:23] "POST /fetch_videos HTTP/1.1" 200 -
+ * Serving Flask app 'app'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5003
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 216-517-813
+127.0.0.1 - - [03/May/2025 08:56:55] "POST /fetch_videos HTTP/1.1" 200 -
+127.0.0.1 - - [03/May/2025 08:57:04] "POST /fetch_videos HTTP/1.1" 200 -
+127.0.0.1 - - [03/May/2025 08:59:02] "POST /fetch_videos HTTP/1.1" 200 -
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+[DEBUG] Candidate videos: [{'video_id': 'eIrMbAQSU34', 'duration_sec': 9048, 'link': 'https://youtube.com/watch?v=eIrMbAQSU34'}, {'video_id': 'xk4_1vDrzzo', 'duration_sec': 43200, 'link': 'https://youtube.com/watch?v=xk4_1vDrzzo'}, {'video_id': 'hBh_CC5y8-s', 'duration_sec': 36658, 'link': 'https://youtube.com/watch?v=hBh_CC5y8-s'}, {'video_id': 'A74TOX803D0', 'duration_sec': 15060, 'link': 'https://youtube.com/watch?v=A74TOX803D0'}, {'video_id': 'xTtL8E4LzTQ', 'duration_sec': 43200, 'link': 'https://youtube.com/watch?v=xTtL8E4LzTQ'}, {'video_id': 'BGTx91t8q50', 'duration_sec': 44603, 'link': 'https://youtube.com/watch?v=BGTx91t8q50'}, {'video_id': 'bm0OyhwFDuY', 'duration_sec': 297, 'link': 'https://youtube.com/watch?v=bm0OyhwFDuY'}, {'video_id': 'yRpLlJmRo2w', 'duration_sec': 1126, 'link': 'https://youtube.com/watch?v=yRpLlJmRo2w'}]
+[DEBUG] Using in-range video: https://youtube.com/watch?v=xk4_1vDrzzo (43200 sec)
+[DEBUG] Topic full video: https://youtube.com/watch?v=xk4_1vDrzzo, duration (sec): 43200, target (sec): 43200
+[DEBUG] Candidate videos: [{'video_id': 'eIrMbAQSU34', 'duration_sec': 9048, 'link': 'https://youtube.com/watch?v=eIrMbAQSU34'}, {'video_id': 'xk4_1vDrzzo', 'duration_sec': 43200, 'link': 'https://youtube.com/watch?v=xk4_1vDrzzo'}, {'video_id': 'hBh_CC5y8-s', 'duration_sec': 36658, 'link': 'https://youtube.com/watch?v=hBh_CC5y8-s'}, {'video_id': 'A74TOX803D0', 'duration_sec': 15060, 'link': 'https://youtube.com/watch?v=A74TOX803D0'}, {'video_id': 'xTtL8E4LzTQ', 'duration_sec': 43200, 'link': 'https://youtube.com/watch?v=xTtL8E4LzTQ'}, {'video_id': 'BGTx91t8q50', 'duration_sec': 44603, 'link': 'https://youtube.com/watch?v=BGTx91t8q50'}, {'video_id': 'bm0OyhwFDuY', 'duration_sec': 297, 'link': 'https://youtube.com/watch?v=bm0OyhwFDuY'}, {'video_id': 'yRpLlJmRo2w', 'duration_sec': 1126, 'link': 'https://youtube.com/watch?v=yRpLlJmRo2w'}]
+[DEBUG] Using in-range video: https://youtube.com/watch?v=xk4_1vDrzzo (43200 sec)
+[DEBUG] Topic full video: https://youtube.com/watch?v=xk4_1vDrzzo, duration (sec): 43200, target (sec): 43200
+[DEBUG] Candidate videos: [{'video_id': 'eIrMbAQSU34', 'duration_sec': 9048, 'link': 'https://youtube.com/watch?v=eIrMbAQSU34'}, {'video_id': 'xk4_1vDrzzo', 'duration_sec': 43200, 'link': 'https://youtube.com/watch?v=xk4_1vDrzzo'}, {'video_id': 'hBh_CC5y8-s', 'duration_sec': 36658, 'link': 'https://youtube.com/watch?v=hBh_CC5y8-s'}, {'video_id': 'A74TOX803D0', 'duration_sec': 15060, 'link': 'https://youtube.com/watch?v=A74TOX803D0'}, {'video_id': 'xTtL8E4LzTQ', 'duration_sec': 43200, 'link': 'https://youtube.com/watch?v=xTtL8E4LzTQ'}, {'video_id': 'BGTx91t8q50', 'duration_sec': 44603, 'link': 'https://youtube.com/watch?v=BGTx91t8q50'}, {'video_id': 'bm0OyhwFDuY', 'duration_sec': 297, 'link': 'https://youtube.com/watch?v=bm0OyhwFDuY'}, {'video_id': 'yRpLlJmRo2w', 'duration_sec': 1126, 'link': 'https://youtube.com/watch?v=yRpLlJmRo2w'}]
+[DEBUG] Using in-range video: https://youtube.com/watch?v=xk4_1vDrzzo (43200 sec)
+[DEBUG] Topic full video: https://youtube.com/watch?v=xk4_1vDrzzo, duration (sec): 43200, target (sec): 43200
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 216-517-813
+Traceback (most recent call last):
+  File "/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/video_fetcher/app.py", line 190, in <module>
+    app.run(port=5003, debug=True)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 889, in run
+    run_simple(t.cast(str, host), port, self, **options)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/serving.py", line 1097, in run_simple
+    run_with_reloader(
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/_reloader.py", line 446, in run_with_reloader
+    ensure_echo_on()
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/_reloader.py", line 426, in ensure_echo_on
+    termios.tcsetattr(sys.stdin, termios.TCSANOW, attributes)
+termios.error: (5, 'Input/output error')
+ * Serving Flask app 'app'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5003
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 216-517-813
+127.0.0.1 - - [03/May/2025 09:12:39] "POST /fetch_videos HTTP/1.1" 200 -
+127.0.0.1 - - [03/May/2025 09:12:53] "POST /fetch_videos HTTP/1.1" 200 -
+127.0.0.1 - - [03/May/2025 09:51:23] "POST /fetch_videos HTTP/1.1" 200 -
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+[DEBUG] Candidate videos: [{'video_id': 'i_LwzRVP7bg', 'duration_sec': 14033, 'link': 'https://youtube.com/watch?v=i_LwzRVP7bg'}, {'video_id': 'GwIo3gDZCVQ', 'duration_sec': 34712, 'link': 'https://youtube.com/watch?v=GwIo3gDZCVQ'}, {'video_id': 'vdRp_w9f-qM', 'duration_sec': 26, 'link': 'https://youtube.com/watch?v=vdRp_w9f-qM'}, {'video_id': 'FZmR_m0KuC8', 'duration_sec': 45, 'link': 'https://youtube.com/watch?v=FZmR_m0KuC8'}, {'video_id': 'LvC68w9JS4Y', 'duration_sec': 37007, 'link': 'https://youtube.com/watch?v=LvC68w9JS4Y'}, {'video_id': '9v7b8gOIkjw', 'duration_sec': 40, 'link': 'https://youtube.com/watch?v=9v7b8gOIkjw'}, {'video_id': 'V_xro1bcAuA', 'duration_sec': 92246, 'link': 'https://youtube.com/watch?v=V_xro1bcAuA'}, {'video_id': 'po5qTPKBrRc', 'duration_sec': 36, 'link': 'https://youtube.com/watch?v=po5qTPKBrRc'}]
+[DEBUG] No in-range topic video found.
+[DEBUG] Topic full video: None, duration (sec): None, target (sec): 72000
+[DEBUG] No in-range topic video found, falling back to per-subtopic videos.
+[DEBUG] Candidate videos: [{'video_id': 'IGygZ4dErQ0', 'duration_sec': 17, 'link': 'https://youtube.com/watch?v=IGygZ4dErQ0'}, {'video_id': 'eIrMbAQSU34', 'duration_sec': 9048, 'link': 'https://youtube.com/watch?v=eIrMbAQSU34'}, {'video_id': 'xk4_1vDrzzo', 'duration_sec': 43200, 'link': 'https://youtube.com/watch?v=xk4_1vDrzzo'}, {'video_id': 'hBh_CC5y8-s', 'duration_sec': 36658, 'link': 'https://youtube.com/watch?v=hBh_CC5y8-s'}, {'video_id': 'A74TOX803D0', 'duration_sec': 15060, 'link': 'https://youtube.com/watch?v=A74TOX803D0'}, {'video_id': 'xTtL8E4LzTQ', 'duration_sec': 43200, 'link': 'https://youtube.com/watch?v=xTtL8E4LzTQ'}, {'video_id': 'BGTx91t8q50', 'duration_sec': 44603, 'link': 'https://youtube.com/watch?v=BGTx91t8q50'}, {'video_id': 'bm0OyhwFDuY', 'duration_sec': 297, 'link': 'https://youtube.com/watch?v=bm0OyhwFDuY'}]
+[DEBUG] No in-range topic video found.
+[DEBUG] Topic full video: None, duration (sec): None, target (sec): 28800
+[DEBUG] No in-range topic video found, falling back to per-subtopic videos.
+[DEBUG] Candidate videos: [{'video_id': 'i_LwzRVP7bg', 'duration_sec': 14033, 'link': 'https://youtube.com/watch?v=i_LwzRVP7bg'}, {'video_id': 'GwIo3gDZCVQ', 'duration_sec': 34712, 'link': 'https://youtube.com/watch?v=GwIo3gDZCVQ'}, {'video_id': 'vdRp_w9f-qM', 'duration_sec': 26, 'link': 'https://youtube.com/watch?v=vdRp_w9f-qM'}, {'video_id': 'FZmR_m0KuC8', 'duration_sec': 45, 'link': 'https://youtube.com/watch?v=FZmR_m0KuC8'}, {'video_id': 'LvC68w9JS4Y', 'duration_sec': 37007, 'link': 'https://youtube.com/watch?v=LvC68w9JS4Y'}, {'video_id': '9v7b8gOIkjw', 'duration_sec': 40, 'link': 'https://youtube.com/watch?v=9v7b8gOIkjw'}, {'video_id': 'V_xro1bcAuA', 'duration_sec': 92246, 'link': 'https://youtube.com/watch?v=V_xro1bcAuA'}, {'video_id': 'po5qTPKBrRc', 'duration_sec': 36, 'link': 'https://youtube.com/watch?v=po5qTPKBrRc'}]
+[DEBUG] No in-range topic video found.
+[DEBUG] Topic full video: None, duration (sec): None, target (sec): 72000
+[DEBUG] No in-range topic video found, falling back to per-subtopic videos.
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 216-517-813
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 216-517-813
+Traceback (most recent call last):
+  File "/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/video_fetcher/app.py", line 190, in <module>
+    app.run(port=5003, debug=True)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 889, in run
+    run_simple(t.cast(str, host), port, self, **options)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/serving.py", line 1097, in run_simple
+    run_with_reloader(
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/_reloader.py", line 446, in run_with_reloader
+    ensure_echo_on()
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/_reloader.py", line 426, in ensure_echo_on
+    termios.tcsetattr(sys.stdin, termios.TCSANOW, attributes)
+termios.error: (5, 'Input/output error')
+ * Serving Flask app 'app'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5003
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 216-517-813
+127.0.0.1 - - [03/May/2025 10:21:17] "POST /fetch_videos HTTP/1.1" 200 -
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+[DEBUG] Candidate videos: [{'video_id': 'i_LwzRVP7bg', 'duration_sec': 14033, 'link': 'https://youtube.com/watch?v=i_LwzRVP7bg'}, {'video_id': 'GwIo3gDZCVQ', 'duration_sec': 34712, 'link': 'https://youtube.com/watch?v=GwIo3gDZCVQ'}, {'video_id': 'vdRp_w9f-qM', 'duration_sec': 26, 'link': 'https://youtube.com/watch?v=vdRp_w9f-qM'}, {'video_id': 'FZmR_m0KuC8', 'duration_sec': 45, 'link': 'https://youtube.com/watch?v=FZmR_m0KuC8'}, {'video_id': 'LvC68w9JS4Y', 'duration_sec': 37007, 'link': 'https://youtube.com/watch?v=LvC68w9JS4Y'}, {'video_id': '9v7b8gOIkjw', 'duration_sec': 40, 'link': 'https://youtube.com/watch?v=9v7b8gOIkjw'}, {'video_id': 'V_xro1bcAuA', 'duration_sec': 92246, 'link': 'https://youtube.com/watch?v=V_xro1bcAuA'}, {'video_id': 'po5qTPKBrRc', 'duration_sec': 36, 'link': 'https://youtube.com/watch?v=po5qTPKBrRc'}]
+[DEBUG] No in-range topic video found.
+[DEBUG] Topic full video: None, duration (sec): None, target (sec): 72000
+[DEBUG] No in-range topic video found, falling back to per-subtopic videos.
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 216-517-813
+Traceback (most recent call last):
+  File "/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/video_fetcher/app.py", line 190, in <module>
+    app.run(port=5003, debug=True)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 889, in run
+    run_simple(t.cast(str, host), port, self, **options)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/serving.py", line 1097, in run_simple
+    run_with_reloader(
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/_reloader.py", line 446, in run_with_reloader
+    ensure_echo_on()
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/_reloader.py", line 426, in ensure_echo_on
+    termios.tcsetattr(sys.stdin, termios.TCSANOW, attributes)
+termios.error: (5, 'Input/output error')
+ * Serving Flask app 'app'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5003
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 216-517-813
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 216-517-813
+Traceback (most recent call last):
+  File "/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/video_fetcher/app.py", line 190, in <module>
+    app.run(port=5003, debug=True)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 889, in run
+    run_simple(t.cast(str, host), port, self, **options)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/serving.py", line 1097, in run_simple
+    run_with_reloader(
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/_reloader.py", line 446, in run_with_reloader
+    ensure_echo_on()
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/_reloader.py", line 426, in ensure_echo_on
+    termios.tcsetattr(sys.stdin, termios.TCSANOW, attributes)
+termios.error: (5, 'Input/output error')
+ * Serving Flask app 'app'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5003
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 216-517-813
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 216-517-813
+Traceback (most recent call last):
+  File "/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/video_fetcher/app.py", line 190, in <module>
+    app.run(port=5003, debug=True)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 889, in run
+    run_simple(t.cast(str, host), port, self, **options)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/serving.py", line 1097, in run_simple
+    run_with_reloader(
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/_reloader.py", line 446, in run_with_reloader
+    ensure_echo_on()
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/_reloader.py", line 426, in ensure_echo_on
+    termios.tcsetattr(sys.stdin, termios.TCSANOW, attributes)
+termios.error: (5, 'Input/output error')
+ * Serving Flask app 'app'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5003
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 216-517-813
+127.0.0.1 - - [03/May/2025 12:18:10] "POST /fetch_videos HTTP/1.1" 200 -
+127.0.0.1 - - [03/May/2025 12:18:59] "POST /fetch_videos HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 2213, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/video_fetcher/app.py", line 141, in fetch_videos
+    full_link, duration_sec, video_id = search_topic_video_near_duration(topic_name, total_study_time_sec)
+  File "/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/video_fetcher/app.py", line 95, in search_topic_video_near_duration
+    "q": topic + " full course",
+TypeError: can only concatenate list (not "str") to list
+127.0.0.1 - - [03/May/2025 12:21:11] "POST /fetch_videos HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 2213, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/video_fetcher/app.py", line 141, in fetch_videos
+    full_link, duration_sec, video_id = search_topic_video_near_duration(topic_name, total_study_time_sec)
+  File "/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/video_fetcher/app.py", line 95, in search_topic_video_near_duration
+    "q": topic + " full course",
+TypeError: can only concatenate list (not "str") to list
+127.0.0.1 - - [03/May/2025 12:25:17] "POST /fetch_videos HTTP/1.1" 200 -
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+[DEBUG] Candidate videos: [{'video_id': 'i_LwzRVP7bg', 'duration_sec': 14033, 'link': 'https://youtube.com/watch?v=i_LwzRVP7bg'}, {'video_id': 'GwIo3gDZCVQ', 'duration_sec': 34712, 'link': 'https://youtube.com/watch?v=GwIo3gDZCVQ'}, {'video_id': 'vdRp_w9f-qM', 'duration_sec': 26, 'link': 'https://youtube.com/watch?v=vdRp_w9f-qM'}, {'video_id': 'FZmR_m0KuC8', 'duration_sec': 45, 'link': 'https://youtube.com/watch?v=FZmR_m0KuC8'}, {'video_id': 'LvC68w9JS4Y', 'duration_sec': 37007, 'link': 'https://youtube.com/watch?v=LvC68w9JS4Y'}, {'video_id': 'V_xro1bcAuA', 'duration_sec': 92246, 'link': 'https://youtube.com/watch?v=V_xro1bcAuA'}, {'video_id': '9v7b8gOIkjw', 'duration_sec': 40, 'link': 'https://youtube.com/watch?v=9v7b8gOIkjw'}, {'video_id': 'po5qTPKBrRc', 'duration_sec': 36, 'link': 'https://youtube.com/watch?v=po5qTPKBrRc'}]
+[DEBUG] No in-range topic video found.
+[DEBUG] Topic full video: None, duration (sec): None, target (sec): 72000
+[DEBUG] No in-range topic video found, falling back to per-subtopic videos.
+[DEBUG] Candidate videos: [{'video_id': '_uQrJ0TkZlc', 'duration_sec': 22447, 'link': 'https://youtube.com/watch?v=_uQrJ0TkZlc'}, {'video_id': 'UrsmFxEIp5k', 'duration_sec': 39235, 'link': 'https://youtube.com/watch?v=UrsmFxEIp5k'}, {'video_id': 'K5KVEU3aaeQ', 'duration_sec': 7341, 'link': 'https://youtube.com/watch?v=K5KVEU3aaeQ'}, {'video_id': 'eWRfhZUzrAc', 'duration_sec': 16800, 'link': 'https://youtube.com/watch?v=eWRfhZUzrAc'}, {'video_id': 'rfscVS0vtbw', 'duration_sec': 16012, 'link': 'https://youtube.com/watch?v=rfscVS0vtbw'}, {'video_id': 'ix9cRaBkVe0', 'duration_sec': 43200, 'link': 'https://youtube.com/watch?v=ix9cRaBkVe0'}, {'video_id': 'H2EJuAcrZYU', 'duration_sec': 31136, 'link': 'https://youtube.com/watch?v=H2EJuAcrZYU'}, {'video_id': 'nLRL_NcnK-4', 'duration_sec': 57468, 'link': 'https://youtube.com/watch?v=nLRL_NcnK-4'}]
+[DEBUG] Using in-range video: https://youtube.com/watch?v=_uQrJ0TkZlc (22447 sec)
+[DEBUG] Topic full video: https://youtube.com/watch?v=_uQrJ0TkZlc, duration (sec): 22447, target (sec): 21600
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 216-517-813
+Traceback (most recent call last):
+  File "/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/video_fetcher/app.py", line 190, in <module>
+    app.run(port=5003, debug=True)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 889, in run
+    run_simple(t.cast(str, host), port, self, **options)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/serving.py", line 1097, in run_simple
+    run_with_reloader(
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/_reloader.py", line 446, in run_with_reloader
+    ensure_echo_on()
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/_reloader.py", line 426, in ensure_echo_on
+    termios.tcsetattr(sys.stdin, termios.TCSANOW, attributes)
+termios.error: (5, 'Input/output error')
+ * Serving Flask app 'app'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5003
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 216-517-813
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 216-517-813
+Traceback (most recent call last):
+  File "/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/video_fetcher/app.py", line 190, in <module>
+    app.run(port=5003, debug=True)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 889, in run
+    run_simple(t.cast(str, host), port, self, **options)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/serving.py", line 1097, in run_simple
+    run_with_reloader(
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/_reloader.py", line 446, in run_with_reloader
+    ensure_echo_on()
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/_reloader.py", line 426, in ensure_echo_on
+    termios.tcsetattr(sys.stdin, termios.TCSANOW, attributes)
+termios.error: (5, 'Input/output error')
+ * Serving Flask app 'app'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5003
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 216-517-813
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 216-517-813
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 216-517-813
+127.0.0.1 - - [03/May/2025 13:00:46] "POST /fetch_videos HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 2213, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/video_fetcher/app.py", line 141, in fetch_videos
+    full_link, duration_sec, video_id = search_topic_video_near_duration(topic_name, total_study_time_sec)
+  File "/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/video_fetcher/app.py", line 95, in search_topic_video_near_duration
+    "q": topic + " full course",
+TypeError: can only concatenate list (not "str") to list
+127.0.0.1 - - [03/May/2025 13:00:53] "POST /fetch_videos HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 2213, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/video_fetcher/app.py", line 141, in fetch_videos
+    full_link, duration_sec, video_id = search_topic_video_near_duration(topic_name, total_study_time_sec)
+  File "/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/video_fetcher/app.py", line 95, in search_topic_video_near_duration
+    "q": topic + " full course",
+TypeError: can only concatenate list (not "str") to list
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 216-517-813
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 216-517-813
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 216-517-813
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 216-517-813
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 216-517-813
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 216-517-813
+127.0.0.1 - - [03/May/2025 14:35:20] "POST /fetch_videos HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 2213, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/video_fetcher/app.py", line 141, in fetch_videos
+    full_link, duration_sec, video_id = search_topic_video_near_duration(topic_name, total_study_time_sec)
+  File "/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/video_fetcher/app.py", line 95, in search_topic_video_near_duration
+    "q": topic + " full course",
+TypeError: can only concatenate list (not "str") to list
+127.0.0.1 - - [03/May/2025 14:35:30] "POST /fetch_videos HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 2213, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/video_fetcher/app.py", line 141, in fetch_videos
+    full_link, duration_sec, video_id = search_topic_video_near_duration(topic_name, total_study_time_sec)
+  File "/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/video_fetcher/app.py", line 95, in search_topic_video_near_duration
+    "q": topic + " full course",
+TypeError: can only concatenate list (not "str") to list
+127.0.0.1 - - [03/May/2025 14:37:15] "POST /fetch_videos HTTP/1.1" 200 -
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+[DEBUG] Candidate videos: [{'video_id': 'IPvYjXCsTg8', 'duration_sec': 14816, 'link': 'https://youtube.com/watch?v=IPvYjXCsTg8'}, {'video_id': 'fErDcUtd8fA', 'duration_sec': 19136, 'link': 'https://youtube.com/watch?v=fErDcUtd8fA'}, {'video_id': 'PhjHXeMNpp8', 'duration_sec': 41779, 'link': 'https://youtube.com/watch?v=PhjHXeMNpp8'}, {'video_id': 'qiQR5rTSshw', 'duration_sec': 33889, 'link': 'https://youtube.com/watch?v=qiQR5rTSshw'}, {'video_id': 'OYM-Wjs-Gbw', 'duration_sec': 11000, 'link': 'https://youtube.com/watch?v=OYM-Wjs-Gbw'}, {'video_id': '0uflG0SemyM', 'duration_sec': 22719, 'link': 'https://youtube.com/watch?v=0uflG0SemyM'}, {'video_id': 'RY32wSQDekE', 'duration_sec': 9450, 'link': 'https://youtube.com/watch?v=RY32wSQDekE'}, {'video_id': 'k9ZigsW9il0', 'duration_sec': 23413, 'link': 'https://youtube.com/watch?v=k9ZigsW9il0'}]
+[DEBUG] Using in-range video: https://youtube.com/watch?v=fErDcUtd8fA (19136 sec)
+[DEBUG] Topic full video: https://youtube.com/watch?v=fErDcUtd8fA, duration (sec): 19136, target (sec): 21600
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 216-517-813
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 216-517-813
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 216-517-813
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 216-517-813
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 216-517-813
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 216-517-813
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 216-517-813
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/video_fetcher/app.py', reloading
+ * Restarting with stat
+2025-05-03 14:45:49,329 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 14:45:49,329 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 14:45:49,329 - werkzeug - INFO -  * Debugger PIN: 216-517-813
+2025-05-03 14:45:49,329 - werkzeug - INFO -  * Debugger PIN: 216-517-813
+2025-05-03 14:45:59,404 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 14:45:59] "GET /health HTTP/1.1" 200 -
+2025-05-03 14:45:59,404 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 14:45:59] "GET /health HTTP/1.1" 200 -
+2025-05-03 14:46:17,129 - __main__ - INFO - Received video fetch request
+2025-05-03 14:46:17,129 - __main__ - INFO - Received video fetch request
+2025-05-03 14:46:17,129 - __main__ - INFO - Processing topic: Machine Learning, total study time: 21600 seconds
+2025-05-03 14:46:17,129 - __main__ - INFO - Processing topic: Machine Learning, total study time: 21600 seconds
+2025-05-03 14:46:19,002 - __main__ - INFO - Found topic video: https://youtube.com/watch?v=9f-GarcDY58
+2025-05-03 14:46:19,002 - __main__ - INFO - Found topic video: https://youtube.com/watch?v=9f-GarcDY58
+2025-05-03 14:46:19,002 - __main__ - INFO - Successfully processed video fetch request
+2025-05-03 14:46:19,002 - __main__ - INFO - Successfully processed video fetch request
+2025-05-03 14:46:19,003 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 14:46:19] "POST /fetch_videos HTTP/1.1" 200 -
+2025-05-03 14:46:19,003 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 14:46:19] "POST /fetch_videos HTTP/1.1" 200 -
+2025-05-03 14:47:43,485 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/video_fetcher/app.py', reloading
+2025-05-03 14:47:43,485 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/video_fetcher/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 216-517-813
+127.0.0.1 - - [03/May/2025 14:48:47] "POST /fetch_videos HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 2213, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 2193, in wsgi_app
+    response = self.handle_exception(e)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/video_fetcher/app.py", line 141, in fetch_videos
+    full_link, duration_sec, video_id = search_topic_video_near_duration(topic_name, total_study_time_sec)
+  File "/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/video_fetcher/app.py", line 95, in search_topic_video_near_duration
+    "q": topic + " full course",
+TypeError: can only concatenate list (not "str") to list
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/video_fetcher/app.py', reloading
+ * Restarting with stat
+2025-05-03 14:49:11,643 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 14:49:11,643 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 14:49:11,644 - werkzeug - INFO -  * Debugger PIN: 216-517-813
+2025-05-03 14:49:11,644 - werkzeug - INFO -  * Debugger PIN: 216-517-813
+2025-05-03 14:51:45,624 - __main__ - INFO - Received video fetch request
+2025-05-03 14:51:45,624 - __main__ - INFO - Received video fetch request
+2025-05-03 14:51:45,624 - __main__ - INFO - Processing topic: Python Programming, total study time: 14400 seconds
+2025-05-03 14:51:45,624 - __main__ - INFO - Processing topic: Python Programming, total study time: 14400 seconds
+2025-05-03 14:51:48,328 - __main__ - INFO - No suitable topic video found, searching per subtopic
+2025-05-03 14:51:48,328 - __main__ - INFO - No suitable topic video found, searching per subtopic
+2025-05-03 14:51:49,744 - __main__ - INFO - Successfully processed video fetch request
+2025-05-03 14:51:49,744 - __main__ - INFO - Successfully processed video fetch request
+2025-05-03 14:51:49,745 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 14:51:49] "POST /fetch_videos HTTP/1.1" 200 -
+2025-05-03 14:51:49,745 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 14:51:49] "POST /fetch_videos HTTP/1.1" 200 -
+2025-05-03 14:52:06,293 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 14:52:06] "[33mGET /youtube_status HTTP/1.1[0m" 404 -
+2025-05-03 14:52:06,293 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 14:52:06] "[33mGET /youtube_status HTTP/1.1[0m" 404 -
+2025-05-03 14:52:19,980 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 14:52:19] "GET /health HTTP/1.1" 200 -
+2025-05-03 14:52:19,980 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 14:52:19] "GET /health HTTP/1.1" 200 -
+2025-05-03 14:53:51,186 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-03 14:53:51,186 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+2025-05-03 14:53:51,593 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 14:53:51,593 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 14:53:51,593 - werkzeug - INFO -  * Debugger PIN: 216-517-813
+2025-05-03 14:53:51,593 - werkzeug - INFO -  * Debugger PIN: 216-517-813
+2025-05-03 14:54:04,463 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-03 14:54:04,463 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+2025-05-03 14:54:04,865 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 14:54:04,865 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 14:54:04,866 - werkzeug - INFO -  * Debugger PIN: 216-517-813
+2025-05-03 14:54:04,866 - werkzeug - INFO -  * Debugger PIN: 216-517-813
+2025-05-03 14:54:17,595 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-03 14:54:17,595 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+2025-05-03 14:54:17,913 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 14:54:17,913 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 14:54:17,914 - werkzeug - INFO -  * Debugger PIN: 216-517-813
+2025-05-03 14:54:17,914 - werkzeug - INFO -  * Debugger PIN: 216-517-813
+2025-05-03 14:54:30,211 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-03 14:54:30,211 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+2025-05-03 14:54:30,495 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 14:54:30,495 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 14:54:30,496 - werkzeug - INFO -  * Debugger PIN: 216-517-813
+2025-05-03 14:54:30,496 - werkzeug - INFO -  * Debugger PIN: 216-517-813
+2025-05-03 14:54:39,520 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-03 14:54:39,520 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+2025-05-03 14:54:39,816 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 14:54:39,816 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 14:54:39,816 - werkzeug - INFO -  * Debugger PIN: 216-517-813
+2025-05-03 14:54:39,816 - werkzeug - INFO -  * Debugger PIN: 216-517-813
+2025-05-03 14:55:05,020 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 14:55:05] "GET /health HTTP/1.1" 200 -
+2025-05-03 14:55:05,020 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 14:55:05] "GET /health HTTP/1.1" 200 -
+2025-05-03 14:55:05,023 - __main__ - INFO - Received video fetch request
+2025-05-03 14:55:05,023 - __main__ - INFO - Received video fetch request
+2025-05-03 14:55:05,023 - __main__ - INFO - Processing topic: ['Java'], total study time: 21600 seconds
+2025-05-03 14:55:05,023 - __main__ - INFO - Processing topic: ['Java'], total study time: 21600 seconds
+2025-05-03 14:55:07,220 - __main__ - INFO - No suitable topic video found, searching per subtopic
+2025-05-03 14:55:07,220 - __main__ - INFO - No suitable topic video found, searching per subtopic
+2025-05-03 14:55:09,318 - __main__ - INFO - Successfully processed video fetch request
+2025-05-03 14:55:09,318 - __main__ - INFO - Successfully processed video fetch request
+2025-05-03 14:55:09,318 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 14:55:09] "POST /fetch_videos HTTP/1.1" 200 -
+2025-05-03 14:55:09,318 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 14:55:09] "POST /fetch_videos HTTP/1.1" 200 -
+2025-05-03 14:55:48,133 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 14:55:48] "GET /health HTTP/1.1" 200 -
+2025-05-03 14:55:48,133 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 14:55:48] "GET /health HTTP/1.1" 200 -
+2025-05-03 14:55:48,139 - __main__ - INFO - Received video fetch request
+2025-05-03 14:55:48,139 - __main__ - INFO - Received video fetch request
+2025-05-03 14:55:48,139 - __main__ - INFO - Processing topic: ['Java'], total study time: 21600 seconds
+2025-05-03 14:55:48,139 - __main__ - INFO - Processing topic: ['Java'], total study time: 21600 seconds
+2025-05-03 14:55:50,310 - __main__ - INFO - No suitable topic video found, searching per subtopic
+2025-05-03 14:55:50,310 - __main__ - INFO - No suitable topic video found, searching per subtopic
+2025-05-03 14:55:52,636 - __main__ - INFO - Successfully processed video fetch request
+2025-05-03 14:55:52,636 - __main__ - INFO - Successfully processed video fetch request
+2025-05-03 14:55:52,637 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 14:55:52] "POST /fetch_videos HTTP/1.1" 200 -
+2025-05-03 14:55:52,637 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 14:55:52] "POST /fetch_videos HTTP/1.1" 200 -
+2025-05-03 15:08:53,755 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 15:08:53] "GET /health HTTP/1.1" 200 -
+2025-05-03 15:08:53,755 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 15:08:53] "GET /health HTTP/1.1" 200 -
+2025-05-03 15:08:53,758 - __main__ - INFO - Received video fetch request
+2025-05-03 15:08:53,758 - __main__ - INFO - Received video fetch request
+2025-05-03 15:08:53,759 - __main__ - INFO - Processing topic: ['Java'], total study time: 21600 seconds
+2025-05-03 15:08:53,759 - __main__ - INFO - Processing topic: ['Java'], total study time: 21600 seconds
+2025-05-03 15:08:56,065 - __main__ - INFO - No suitable topic video found, searching per subtopic
+2025-05-03 15:08:56,065 - __main__ - INFO - No suitable topic video found, searching per subtopic
+2025-05-03 15:08:58,000 - __main__ - INFO - Successfully processed video fetch request
+2025-05-03 15:08:58,000 - __main__ - INFO - Successfully processed video fetch request
+2025-05-03 15:08:58,001 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 15:08:58] "POST /fetch_videos HTTP/1.1" 200 -
+2025-05-03 15:08:58,001 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 15:08:58] "POST /fetch_videos HTTP/1.1" 200 -
+2025-05-03 15:15:06,847 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/quiz_generator/app.py', reloading
+2025-05-03 15:15:06,847 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/quiz_generator/app.py', reloading
+ * Restarting with stat
+2025-05-03 15:15:07,050 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 15:15:07,050 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 15:15:07,051 - werkzeug - INFO -  * Debugger PIN: 216-517-813
+2025-05-03 15:15:07,051 - werkzeug - INFO -  * Debugger PIN: 216-517-813
+2025-05-03 15:15:10,947 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/quiz_generator/app.py', reloading
+2025-05-03 15:15:10,947 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/quiz_generator/app.py', reloading
+ * Restarting with stat
+2025-05-03 15:15:11,310 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 15:15:11,310 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 15:15:11,310 - werkzeug - INFO -  * Debugger PIN: 216-517-813
+2025-05-03 15:15:11,310 - werkzeug - INFO -  * Debugger PIN: 216-517-813
+2025-05-03 15:15:35,077 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 15:15:35] "GET /health HTTP/1.1" 200 -
+2025-05-03 15:15:35,077 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 15:15:35] "GET /health HTTP/1.1" 200 -
+2025-05-03 15:15:35,080 - __main__ - INFO - Received video fetch request
+2025-05-03 15:15:35,080 - __main__ - INFO - Received video fetch request
+2025-05-03 15:15:35,080 - __main__ - INFO - Processing topic: ['Python'], total study time: 21600 seconds
+2025-05-03 15:15:35,080 - __main__ - INFO - Processing topic: ['Python'], total study time: 21600 seconds
+2025-05-03 15:15:36,861 - __main__ - INFO - Found topic video: https://youtube.com/watch?v=_uQrJ0TkZlc
+2025-05-03 15:15:36,861 - __main__ - INFO - Found topic video: https://youtube.com/watch?v=_uQrJ0TkZlc
+2025-05-03 15:15:36,862 - __main__ - INFO - Successfully processed video fetch request
+2025-05-03 15:15:36,862 - __main__ - INFO - Successfully processed video fetch request
+2025-05-03 15:15:36,862 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 15:15:36] "POST /fetch_videos HTTP/1.1" 200 -
+2025-05-03 15:15:36,862 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 15:15:36] "POST /fetch_videos HTTP/1.1" 200 -
+2025-05-03 15:21:22,371 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-03 15:21:22,371 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+2025-05-03 15:21:22,591 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 15:21:22,591 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 15:21:22,591 - werkzeug - INFO -  * Debugger PIN: 216-517-813
+2025-05-03 15:21:22,591 - werkzeug - INFO -  * Debugger PIN: 216-517-813
+2025-05-03 15:21:33,307 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-03 15:21:33,307 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+2025-05-03 15:21:33,501 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 15:21:33,501 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 15:21:33,502 - werkzeug - INFO -  * Debugger PIN: 216-517-813
+2025-05-03 15:21:33,502 - werkzeug - INFO -  * Debugger PIN: 216-517-813
+2025-05-03 15:24:08,839 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-03 15:24:08,839 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+2025-05-03 15:24:09,037 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 15:24:09,037 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 15:24:09,037 - werkzeug - INFO -  * Debugger PIN: 216-517-813
+2025-05-03 15:24:09,037 - werkzeug - INFO -  * Debugger PIN: 216-517-813
+2025-05-03 15:24:10,528 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-03 15:24:10,528 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+2025-05-03 15:24:10,729 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 15:24:10,729 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 15:24:10,730 - werkzeug - INFO -  * Debugger PIN: 216-517-813
+2025-05-03 15:24:10,730 - werkzeug - INFO -  * Debugger PIN: 216-517-813
+2025-05-03 15:24:29,785 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 15:24:29] "GET /health HTTP/1.1" 200 -
+2025-05-03 15:24:29,785 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 15:24:29] "GET /health HTTP/1.1" 200 -
+2025-05-03 15:24:29,788 - __main__ - INFO - Received video fetch request
+2025-05-03 15:24:29,788 - __main__ - INFO - Received video fetch request
+2025-05-03 15:24:29,788 - __main__ - INFO - Processing topic: ['Java'], total study time: 21600 seconds
+2025-05-03 15:24:29,788 - __main__ - INFO - Processing topic: ['Java'], total study time: 21600 seconds
+2025-05-03 15:24:32,214 - __main__ - INFO - No suitable topic video found, searching per subtopic
+2025-05-03 15:24:32,214 - __main__ - INFO - No suitable topic video found, searching per subtopic
+2025-05-03 15:24:34,410 - __main__ - INFO - Successfully processed video fetch request
+2025-05-03 15:24:34,410 - __main__ - INFO - Successfully processed video fetch request
+2025-05-03 15:24:34,410 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 15:24:34] "POST /fetch_videos HTTP/1.1" 200 -
+2025-05-03 15:24:34,410 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 15:24:34] "POST /fetch_videos HTTP/1.1" 200 -
+2025-05-03 15:25:01,398 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-03 15:25:01,398 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+2025-05-03 15:25:01,594 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 15:25:01,594 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 15:25:01,594 - werkzeug - INFO -  * Debugger PIN: 216-517-813
+2025-05-03 15:25:01,594 - werkzeug - INFO -  * Debugger PIN: 216-517-813
+2025-05-03 15:25:08,725 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-03 15:25:08,725 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+2025-05-03 15:25:08,929 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 15:25:08,929 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 15:25:08,929 - werkzeug - INFO -  * Debugger PIN: 216-517-813
+2025-05-03 15:25:08,929 - werkzeug - INFO -  * Debugger PIN: 216-517-813
+2025-05-03 15:26:37,687 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 15:26:37] "GET /health HTTP/1.1" 200 -
+2025-05-03 15:26:37,687 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 15:26:37] "GET /health HTTP/1.1" 200 -
+2025-05-03 15:26:37,689 - __main__ - INFO - Received video fetch request
+2025-05-03 15:26:37,689 - __main__ - INFO - Received video fetch request
+2025-05-03 15:26:37,689 - __main__ - INFO - Processing topic: ['Java'], total study time: 21600 seconds
+2025-05-03 15:26:37,689 - __main__ - INFO - Processing topic: ['Java'], total study time: 21600 seconds
+2025-05-03 15:26:40,993 - __main__ - INFO - No suitable topic video found, searching per subtopic
+2025-05-03 15:26:40,993 - __main__ - INFO - No suitable topic video found, searching per subtopic
+2025-05-03 15:26:43,124 - __main__ - INFO - Successfully processed video fetch request
+2025-05-03 15:26:43,124 - __main__ - INFO - Successfully processed video fetch request
+2025-05-03 15:26:43,124 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 15:26:43] "POST /fetch_videos HTTP/1.1" 200 -
+2025-05-03 15:26:43,124 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 15:26:43] "POST /fetch_videos HTTP/1.1" 200 -
+2025-05-03 15:29:41,802 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-03 15:29:41,802 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+2025-05-03 15:29:42,029 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 15:29:42,029 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 15:29:42,030 - werkzeug - INFO -  * Debugger PIN: 216-517-813
+2025-05-03 15:29:42,030 - werkzeug - INFO -  * Debugger PIN: 216-517-813
+2025-05-03 15:29:45,891 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-03 15:29:45,891 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+2025-05-03 15:29:46,165 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 15:29:46,165 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 15:29:46,165 - werkzeug - INFO -  * Debugger PIN: 216-517-813
+2025-05-03 15:29:46,165 - werkzeug - INFO -  * Debugger PIN: 216-517-813
+2025-05-03 15:36:22,071 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/quiz_generator/app.py', reloading
+2025-05-03 15:36:22,071 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/quiz_generator/app.py', reloading
+ * Restarting with stat
+2025-05-03 15:36:22,312 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 15:36:22,312 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 15:36:22,313 - werkzeug - INFO -  * Debugger PIN: 216-517-813
+2025-05-03 15:36:22,313 - werkzeug - INFO -  * Debugger PIN: 216-517-813
+2025-05-03 15:36:58,767 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 15:36:58] "GET /health HTTP/1.1" 200 -
+2025-05-03 15:36:58,767 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 15:36:58] "GET /health HTTP/1.1" 200 -
+2025-05-03 15:36:58,770 - __main__ - INFO - Received video fetch request
+2025-05-03 15:36:58,770 - __main__ - INFO - Received video fetch request
+2025-05-03 15:36:58,770 - __main__ - INFO - Processing topic: ['Operating system'], total study time: 21600 seconds
+2025-05-03 15:36:58,770 - __main__ - INFO - Processing topic: ['Operating system'], total study time: 21600 seconds
+2025-05-03 15:37:01,180 - __main__ - INFO - No suitable topic video found, searching per subtopic
+2025-05-03 15:37:01,180 - __main__ - INFO - No suitable topic video found, searching per subtopic
+2025-05-03 15:37:03,047 - __main__ - INFO - Successfully processed video fetch request
+2025-05-03 15:37:03,047 - __main__ - INFO - Successfully processed video fetch request
+2025-05-03 15:37:03,047 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 15:37:03] "POST /fetch_videos HTTP/1.1" 200 -
+2025-05-03 15:37:03,047 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 15:37:03] "POST /fetch_videos HTTP/1.1" 200 -
+2025-05-03 15:42:45,341 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-03 15:42:45,341 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+2025-05-03 15:42:45,654 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 15:42:45,654 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 15:42:45,654 - werkzeug - INFO -  * Debugger PIN: 216-517-813
+2025-05-03 15:42:45,654 - werkzeug - INFO -  * Debugger PIN: 216-517-813
+2025-05-03 15:47:37,760 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-03 15:47:37,760 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+2025-05-03 15:47:38,079 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 15:47:38,079 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 15:47:38,080 - werkzeug - INFO -  * Debugger PIN: 216-517-813
+2025-05-03 15:47:38,080 - werkzeug - INFO -  * Debugger PIN: 216-517-813
+2025-05-03 16:29:52,478 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/common/gemini_utils.py', reloading
+2025-05-03 16:29:52,478 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/common/gemini_utils.py', reloading
+ * Restarting with stat
+2025-05-03 16:29:52,685 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 16:29:52,685 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 16:29:52,685 - werkzeug - INFO -  * Debugger PIN: 216-517-813
+2025-05-03 16:29:52,685 - werkzeug - INFO -  * Debugger PIN: 216-517-813
+2025-05-03 16:30:01,220 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/common/gemini_utils.py', reloading
+2025-05-03 16:30:01,220 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/common/gemini_utils.py', reloading
+ * Restarting with stat
+2025-05-03 16:30:01,430 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 16:30:01,430 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 16:30:01,430 - werkzeug - INFO -  * Debugger PIN: 216-517-813
+2025-05-03 16:30:01,430 - werkzeug - INFO -  * Debugger PIN: 216-517-813
+2025-05-03 16:30:11,149 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/common/gemini_utils.py', reloading
+2025-05-03 16:30:11,149 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/common/gemini_utils.py', reloading
+ * Restarting with stat
+2025-05-03 16:30:11,374 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 16:30:11,374 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 16:30:11,374 - werkzeug - INFO -  * Debugger PIN: 216-517-813
+2025-05-03 16:30:11,374 - werkzeug - INFO -  * Debugger PIN: 216-517-813
+ * Serving Flask app 'app'
+ * Debug mode: on
+2025-05-03 21:11:23,918 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5003
+2025-05-03 21:11:23,918 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5003
+2025-05-03 21:11:23,918 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-03 21:11:23,918 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-03 21:11:23,918 - werkzeug - INFO -  * Restarting with stat
+2025-05-03 21:11:23,918 - werkzeug - INFO -  * Restarting with stat
+2025-05-03 21:11:24,041 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 21:11:24,041 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 21:11:24,041 - werkzeug - INFO -  * Debugger PIN: 126-456-756
+2025-05-03 21:11:24,041 - werkzeug - INFO -  * Debugger PIN: 126-456-756
+2025-05-03 21:55:18,149 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/common/gemini_utils.py', reloading
+2025-05-03 21:55:18,149 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/common/gemini_utils.py', reloading
+2025-05-03 21:55:18,239 - werkzeug - INFO -  * Restarting with stat
+2025-05-03 21:55:18,239 - werkzeug - INFO -  * Restarting with stat
+2025-05-03 21:55:18,844 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 21:55:18,844 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 21:55:18,845 - werkzeug - INFO -  * Debugger PIN: 126-456-756
+2025-05-03 21:55:18,845 - werkzeug - INFO -  * Debugger PIN: 126-456-756
+Traceback (most recent call last):
+  File "/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/video_fetcher/app.py", line 219, in <module>
+    app.run(port=5003, debug=True)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/flask/app.py", line 889, in run
+    run_simple(t.cast(str, host), port, self, **options)
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/serving.py", line 1097, in run_simple
+    run_with_reloader(
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/_reloader.py", line 446, in run_with_reloader
+    ensure_echo_on()
+  File "/home/anujasuntnur/.local/lib/python3.10/site-packages/werkzeug/_reloader.py", line 426, in ensure_echo_on
+    termios.tcsetattr(sys.stdin, termios.TCSANOW, attributes)
+termios.error: (5, 'Input/output error')
+ * Serving Flask app 'app'
+ * Debug mode: on
+2025-05-03 22:21:17,480 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5003
+2025-05-03 22:21:17,480 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5003
+2025-05-03 22:21:17,480 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-03 22:21:17,480 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-03 22:21:17,480 - werkzeug - INFO -  * Restarting with stat
+2025-05-03 22:21:17,480 - werkzeug - INFO -  * Restarting with stat
+2025-05-03 22:21:17,603 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 22:21:17,603 - werkzeug - WARNING -  * Debugger is active!
+2025-05-03 22:21:17,603 - werkzeug - INFO -  * Debugger PIN: 126-456-756
+2025-05-03 22:21:17,603 - werkzeug - INFO -  * Debugger PIN: 126-456-756
+2025-05-03 22:21:21,400 - __main__ - INFO - Received video fetch request
+2025-05-03 22:21:21,400 - __main__ - INFO - Received video fetch request
+2025-05-03 22:21:21,401 - __main__ - ERROR - Missing required fields: ['daily_hours', 'target_days']
+2025-05-03 22:21:21,401 - __main__ - ERROR - Missing required fields: ['daily_hours', 'target_days']
+2025-05-03 22:21:21,401 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 22:21:21] "[31m[1mPOST /fetch_videos HTTP/1.1[0m" 400 -
+2025-05-03 22:21:21,401 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 22:21:21] "[31m[1mPOST /fetch_videos HTTP/1.1[0m" 400 -
+2025-05-03 22:22:28,082 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 22:22:28] "GET /health HTTP/1.1" 200 -
+2025-05-03 22:22:28,082 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 22:22:28] "GET /health HTTP/1.1" 200 -
+2025-05-03 22:22:28,089 - __main__ - INFO - Received video fetch request
+2025-05-03 22:22:28,089 - __main__ - INFO - Received video fetch request
+2025-05-03 22:22:28,090 - __main__ - INFO - Processing topic: Python, total study time: 21600 seconds
+2025-05-03 22:22:28,090 - __main__ - INFO - Processing topic: Python, total study time: 21600 seconds
+2025-05-03 22:22:29,294 - __main__ - INFO - Found topic video: https://youtube.com/watch?v=_uQrJ0TkZlc
+2025-05-03 22:22:29,294 - __main__ - INFO - Found topic video: https://youtube.com/watch?v=_uQrJ0TkZlc
+2025-05-03 22:22:29,295 - __main__ - INFO - Successfully processed video fetch request
+2025-05-03 22:22:29,295 - __main__ - INFO - Successfully processed video fetch request
+2025-05-03 22:22:29,295 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 22:22:29] "POST /fetch_videos HTTP/1.1" 200 -
+2025-05-03 22:22:29,295 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 22:22:29] "POST /fetch_videos HTTP/1.1" 200 -
+2025-05-03 22:22:35,262 - __main__ - INFO - Received video fetch request
+2025-05-03 22:22:35,262 - __main__ - INFO - Received video fetch request
+2025-05-03 22:22:35,263 - __main__ - INFO - Processing topic: Computer Networks, total study time: 21600 seconds
+2025-05-03 22:22:35,263 - __main__ - INFO - Processing topic: Computer Networks, total study time: 21600 seconds
+2025-05-03 22:22:36,506 - __main__ - INFO - Found topic video: https://youtube.com/watch?v=k9ZigsW9il0
+2025-05-03 22:22:36,506 - __main__ - INFO - Found topic video: https://youtube.com/watch?v=k9ZigsW9il0
+2025-05-03 22:22:36,507 - __main__ - INFO - Successfully processed video fetch request
+2025-05-03 22:22:36,507 - __main__ - INFO - Successfully processed video fetch request
+2025-05-03 22:22:36,507 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 22:22:36] "POST /fetch_videos HTTP/1.1" 200 -
+2025-05-03 22:22:36,507 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 22:22:36] "POST /fetch_videos HTTP/1.1" 200 -
+2025-05-03 22:24:04,417 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 22:24:04] "GET /health HTTP/1.1" 200 -
+2025-05-03 22:24:04,417 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 22:24:04] "GET /health HTTP/1.1" 200 -
+2025-05-03 22:24:04,419 - __main__ - INFO - Received video fetch request
+2025-05-03 22:24:04,419 - __main__ - INFO - Received video fetch request
+2025-05-03 22:24:04,419 - __main__ - INFO - Processing topic: Python, total study time: 21600 seconds
+2025-05-03 22:24:04,419 - __main__ - INFO - Processing topic: Python, total study time: 21600 seconds
+2025-05-03 22:24:05,713 - __main__ - INFO - Found topic video: https://youtube.com/watch?v=_uQrJ0TkZlc
+2025-05-03 22:24:05,713 - __main__ - INFO - Found topic video: https://youtube.com/watch?v=_uQrJ0TkZlc
+2025-05-03 22:24:05,714 - __main__ - INFO - Successfully processed video fetch request
+2025-05-03 22:24:05,714 - __main__ - INFO - Successfully processed video fetch request
+2025-05-03 22:24:05,714 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 22:24:05] "POST /fetch_videos HTTP/1.1" 200 -
+2025-05-03 22:24:05,714 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 22:24:05] "POST /fetch_videos HTTP/1.1" 200 -
+2025-05-03 22:26:49,391 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 22:26:49] "GET /health HTTP/1.1" 200 -
+2025-05-03 22:26:49,391 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 22:26:49] "GET /health HTTP/1.1" 200 -
+2025-05-03 22:26:49,394 - __main__ - INFO - Received video fetch request
+2025-05-03 22:26:49,394 - __main__ - INFO - Received video fetch request
+2025-05-03 22:26:49,394 - __main__ - INFO - Processing topic: Python, total study time: 21600 seconds
+2025-05-03 22:26:49,394 - __main__ - INFO - Processing topic: Python, total study time: 21600 seconds
+2025-05-03 22:26:50,755 - __main__ - INFO - Found topic video: https://youtube.com/watch?v=_uQrJ0TkZlc
+2025-05-03 22:26:50,755 - __main__ - INFO - Found topic video: https://youtube.com/watch?v=_uQrJ0TkZlc
+2025-05-03 22:26:50,756 - __main__ - INFO - Successfully processed video fetch request
+2025-05-03 22:26:50,756 - __main__ - INFO - Successfully processed video fetch request
+2025-05-03 22:26:50,756 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 22:26:50] "POST /fetch_videos HTTP/1.1" 200 -
+2025-05-03 22:26:50,756 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 22:26:50] "POST /fetch_videos HTTP/1.1" 200 -
+2025-05-03 22:38:08,236 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 22:38:08] "GET /health HTTP/1.1" 200 -
+2025-05-03 22:38:08,236 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 22:38:08] "GET /health HTTP/1.1" 200 -
+2025-05-03 22:38:08,240 - __main__ - INFO - Received video fetch request
+2025-05-03 22:38:08,240 - __main__ - INFO - Received video fetch request
+2025-05-03 22:38:08,241 - __main__ - INFO - Processing topic: Operating System, total study time: 21600 seconds
+2025-05-03 22:38:08,241 - __main__ - INFO - Processing topic: Operating System, total study time: 21600 seconds
+2025-05-03 22:38:10,376 - __main__ - INFO - No suitable topic video found, searching per subtopic
+2025-05-03 22:38:10,376 - __main__ - INFO - No suitable topic video found, searching per subtopic
+2025-05-03 22:38:12,301 - __main__ - INFO - Successfully processed video fetch request
+2025-05-03 22:38:12,301 - __main__ - INFO - Successfully processed video fetch request
+2025-05-03 22:38:12,302 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 22:38:12] "POST /fetch_videos HTTP/1.1" 200 -
+2025-05-03 22:38:12,302 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 22:38:12] "POST /fetch_videos HTTP/1.1" 200 -

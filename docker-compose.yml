@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./Frontend/web-app-frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5175:80" # Map port 5175 in the container to 5173 on the host
+    depends_on:
+      - backend
+    networks:
+      - whiplash-network
+
+  backend:
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000" # Map port 5001 in the container to 5001 on the host
+    depends_on:
+      - microservices-backend
+    networks:
+      - whiplash-network
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/WhipLash
+
+  microservices-backend:
+    build:
+      context: ./microservices_backend
+      dockerfile: Dockerfile
+    ports:
+      - "5001:5001" # Map port 5001 in the container to 5001 on the host
+      - "5002:5002" # Map port 5002 in the container to 5002 on the host
+      - "5003:5003" # Map port 5003 in the container to 5003 on the host
+      - "5004:5004" # Map port 5004 in the container to 5004 on the host
+    networks:
+      - whiplash-network
+    environment:
+      - GEMINI_API_KEY=AIzaSyDDoqQmjpVsKUpxtCHUHULFxT_MtUaQbb0
+      - YOUTUBE_API_KEY=AIzaSyAOSEp15iZvLc9fFDbc-bhj7tMjxQVKSw8
+      - MONGO_URI=mongodb://mongo:27017/WhipLash
+
+  mongo:
+    image: mongo:5.0
+    container_name: mongo
+    ports:
+      - "27017:27017" # Map MongoDB port
+    networks:
+      - whiplash-network
+    volumes:
+      - mongo-data:/data/db
+
+networks:
+  whiplash-network:
+    driver: bridge
+
+volumes:
+  mongo-data:
+    driver: local

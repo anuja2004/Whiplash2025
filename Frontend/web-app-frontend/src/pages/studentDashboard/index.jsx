@@ -28,6 +28,10 @@ const StudentDashboard = () => {
   const [dailyHours, setDailyHours] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
 
+  const [learningPath, setLearningPath] = useState(null);
+  const [lpLoading, setLpLoading] = useState(false);
+  const [lpError, setLpError] = useState(null);
+
   const navigate = useNavigate();
   const { courses, fetchCourses, fetchCourseDetails, setCurrentCourse, setCurrentTopic, currentCourse } = useCourseStore();
 
@@ -35,14 +39,12 @@ const StudentDashboard = () => {
     fetchCourses();
   }, [fetchCourses]);
 
-  // Close sidebar when screen resizes to larger size
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768) {
         setSidebarOpen(false);
       }
     };
-    
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -59,42 +61,56 @@ const StudentDashboard = () => {
     setOcrLoading(true);
     setOcrError(null);
     setOcrTopics([]);
-    // TO DO: implement image upload and OCR logic
     setTimeout(() => {
       setOcrLoading(false);
       setOcrTopics(['Topic 1', 'Topic 2', 'Topic 3']);
     }, 2000);
   };
 
-  const [learningPath, setLearningPath] = useState(null);
-  const [lpLoading, setLpLoading] = useState(false);
-  const [lpError, setLpError] = useState(null);
-
   const handleSaveSyllabus = async () => {
-    console.log('[handleSaveSyllabus] called');
-    setLpLoading(true);
-    setLpError(null);
-    try {
-      console.log('[handleSaveSyllabus] Sending data:', { manualTopics, targetDays, dailyHours, startDate });
-      const data = await generateLearningPath({
-        manualTopics,
-        targetDays,
-        dailyHours,
-        startDate
-      });
-      console.log('[handleSaveSyllabus] Received response:', data);
-      setLearningPath(data);
-      handleClose();
-    } catch (err) {
-      console.error('[handleSaveSyllabus] Error:', err);
-      setLpError(err);
-    } finally {
-      setLpLoading(false);
-      console.log('[handleSaveSyllabus] Done');
+  console.log('[handleSaveSyllabus] called');
+  setLpLoading(true);
+  setLpError(null);
+  
+  try {
+    // Validate inputs
+    if (!manualTopics || !targetDays || !dailyHours || !startDate) {
+      throw new Error('Please fill in all the fields');
     }
-  };
 
-  // Check if a date has an event
+    // Prepare payload
+    const payload = {
+      manualTopics: manualTopics.split(',').map(t => t.trim()),
+      targetDays: Number(targetDays),
+      dailyHours: Number(dailyHours),
+      startDate: startDate
+    };
+
+    console.log('[handleSaveSyllabus] Sending data:', payload);
+    const data = await generateLearningPath(payload);
+    
+    console.log('[handleSaveSyllabus] Received response:', data);
+    setLearningPath(data);
+    handleClose();
+  } catch (err) {
+    console.error('[handleSaveSyllabus] Error:', err);
+    
+    // User-friendly error messages
+    let displayError = err.message;
+    if (err.message.includes('Network Error')) {
+      displayError = 'Unable to connect to the server. Please check your connection.';
+    } else if (err.message.includes('timeout')) {
+      displayError = 'Request timed out. Please try again.';
+    } else if (err.message.includes('500')) {
+      displayError = 'Server error. Please try again later.';
+    }
+    
+    setLpError(displayError);
+  } finally {
+    setLpLoading(false);
+  }
+};
+
   const tileClassName = ({ date, view }) => {
     if (view === 'month') {
       const isEvent = importantEvents.some(ev =>
@@ -105,7 +121,6 @@ const StudentDashboard = () => {
     return null;
   };
 
-  // Active link style for navigation
   const navLinkStyle = ({ isActive }) => {
     return isActive 
       ? "bg-black text-white p-3 rounded-xl font-medium flex items-center transition-all"
@@ -125,7 +140,6 @@ const StudentDashboard = () => {
     setUpcomingOpen(false);
   };
 
-  // Demo Events
   const importantEvents = [
     { date: new Date(2025, 3, 15), label: 'AI/ML Mid Exam' },
     { date: new Date(2025, 3, 18), label: 'Web Dev Project Review' },
@@ -133,9 +147,8 @@ const StudentDashboard = () => {
     { date: new Date(), label: 'Today: Prep for DBMS' }
   ];
 
-  // Handler to go to syllabus page for a course
   const handleGoToSyllabus = async (courseId) => {
-    await fetchCourseDetails(courseId); // This will set currentCourse with syllabus
+    await fetchCourseDetails(courseId);
     navigate('/syllabus');
   };
 
@@ -327,135 +340,56 @@ const StudentDashboard = () => {
               <div className="text-blue-600 font-semibold mb-4">Generating your personalized learning path...</div>
             )}
             {lpError && (
-              <div className="text-red-600 font-semibold mb-4">Error: {lpError.toString()}</div>
+              <div className="text-red-600 font-semibold mb-4">Error: {lpError}</div>
             )}
             {/* Display Generated Learning Path */}
             {learningPath && (
               <div className="mb-6">
                 <h2 className="text-2xl font-bold mb-4">Your Personalized Learning Path</h2>
-                {learningPath.modules && learningPath.modules.length > 0 ? (
-                  <div className="space-y-6">
-                    {learningPath.modules.map((module, idx) => (
-                      <div key={idx} className="border rounded-xl p-4 bg-gray-50">
-                        <h3 className="text-xl font-semibold mb-2">Module {idx + 1}: {module.name}</h3>
-                        {/* Subtopics */}
-                        {module.subtopics && (
-                          <ul className="mb-2 list-disc list-inside">
-                            {module.subtopics.map((sub, subIdx) => (
-                              <li key={subIdx} className="mb-1">
-                                <span className="font-medium">{sub.name}</span>
-                                {/* YouTube Video Links */}
-                                {sub.videos && sub.videos.length > 0 && (
-                                  <ul className="ml-4 list-decimal">
-                                    {sub.videos.map((vid, vidIdx) => (
-                                      <li key={vidIdx}>
-                                        <a href={vid.url} target="_blank" rel="noopener noreferrer" className="text-blue-700 underline">
-                                          {vid.title || vid.url}
-                                        </a>
-                                        {vid.timestamp && (
-                                          <span className="ml-2 text-xs text-gray-500">[{vid.timestamp}]</span>
-                                        )}
-                                      </li>
-                                    ))}
-                                  </ul>
-                                )}
-                              </li>
-                            ))}
-                          </ul>
-                        )}
-                        {/* Study Notes */}
-                        {module.notes && (
-                          <div className="mb-2">
-                            <span className="font-semibold">Notes:</span>
-                            <div className="prose max-w-none bg-white rounded p-2 border mt-1">{module.notes}</div>
-                          </div>
-                        )}
-                        {/* Quizzes */}
-                        {module.quizzes && module.quizzes.length > 0 && (
-                          <div className="mb-2">
-                            <span className="font-semibold">Quizzes:</span>
-                            <ul className="ml-4 list-decimal">
-                              {module.quizzes.map((quiz, quizIdx) => (
-                                <li key={quizIdx}>{quiz.question}</li>
-                              ))}
-                            </ul>
-                          </div>
-                        )}
-                        {/* Assignments */}
-                        {module.assignments && module.assignments.length > 0 && (
-                          <div className="mb-2">
-                            <span className="font-semibold">Assignments:</span>
-                            <ul className="ml-4 list-decimal">
-                              {module.assignments.map((assn, assnIdx) => (
-                                <li key={assnIdx}>{assn.title || assn.description}</li>
-                              ))}
-                            </ul>
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                ) : (learningPath.plan && Object.keys(learningPath.plan).length > 0) ? (
+                {learningPath.plan && Object.keys(learningPath.plan).length > 0 ? (
                   <div className="space-y-6">
                     {Object.entries(learningPath.plan).map(([date, value], idx) => (
                       <div key={idx} className="border rounded-xl p-4 bg-gray-50">
                         <h3 className="text-xl font-semibold mb-2">Day {idx + 1}: {date}</h3>
                         <ul className="mb-2 list-disc list-inside">
-                          {/* Handle array of subtopics or enriched object */}
-                          {Array.isArray(value) ? value.map((s, subIdx) => (
-                            <li key={subIdx} className="mb-1">
-                              <span className="font-medium">{s}</span>
-                            </li>
-                          )) : (typeof value === 'object' && value !== null ? (
-                            <li className="mb-1">
-                              {/* Subtopic name */}
-                              <span className="font-medium">{value.subtopic || value.name || ''}</span>
-                              {/* YouTube Video Link */}
-                              {value.youtube_link && (
-                                <div className="ml-4 mt-1">
-                                  <a href={value.youtube_link} target="_blank" rel="noopener noreferrer" className="text-blue-700 underline">
-                                    Watch Video
-                                  </a>
-                                  {value.timestamp && (
-                                    <span className="ml-2 text-xs text-gray-500">[{value.timestamp}]</span>
-                                  )}
-                                </div>
-                              )}
-                              {/* Study Notes */}
-                              {value.notes && (
-                                <div className="mb-2 mt-2">
-                                  <span className="font-semibold">Notes:</span>
-                                  <div className="prose max-w-none bg-white rounded p-2 border mt-1">{value.notes}</div>
-                                </div>
-                              )}
-                              {/* Quizzes */}
-                              {value.quizzes && value.quizzes.length > 0 && (
-                                <div className="mb-2">
-                                  <span className="font-semibold">Quizzes:</span>
-                                  <ul className="ml-4 list-decimal">
-                                    {value.quizzes.map((quiz, quizIdx) => (
-                                      <li key={quizIdx}>{quiz.question || quiz.questionText}</li>
-                                    ))}
-                                  </ul>
-                                </div>
-                              )}
-                              {/* Assignments */}
-                              {value.assignments && value.assignments.length > 0 && (
-                                <div className="mb-2">
-                                  <span className="font-semibold">Assignments:</span>
-                                  <ul className="ml-4 list-decimal">
-                                    {value.assignments.map((assn, assnIdx) => (
-                                      <li key={assnIdx}>{assn.title || assn.description || assn.questionText}</li>
-                                    ))}
-                                  </ul>
-                                </div>
+                          <li className="mb-1">
+                            <span className="font-medium">{value.subtopic || ''}</span>
+                          </li>
+                          {value.youtube_link && (
+                            <li>
+                              <a href={value.youtube_link} target="_blank" rel="noopener noreferrer" className="text-blue-700 underline">
+                                Watch Video
+                              </a>
+                              {value.timestamp && (
+                                <span className="ml-2 text-xs text-gray-500">[{value.timestamp}]</span>
                               )}
                             </li>
-                          ) : (
-                            <li className="mb-1">
-                              <span className="font-medium">{value}</span>
+                          )}
+                          {value.notes && (
+                            <li>
+                              <span className="font-semibold">Notes:</span> {value.notes}
                             </li>
-                          ))}
+                          )}
+                          {value.quizzes && value.quizzes.length > 0 && (
+                            <li>
+                              <span className="font-semibold">Quizzes:</span>
+                              <ul className="ml-4 list-decimal">
+                                {value.quizzes.map((quiz, quizIdx) => (
+                                  <li key={quizIdx}>{quiz.questionText}</li>
+                                ))}
+                              </ul>
+                            </li>
+                          )}
+                          {value.assignments && value.assignments.length > 0 && (
+                            <li>
+                              <span className="font-semibold">Assignments:</span>
+                              <ul className="ml-4 list-decimal">
+                                {value.assignments.map((assn, assnIdx) => (
+                                  <li key={assnIdx}>{assn.questionText}</li>
+                                ))}
+                              </ul>
+                            </li>
+                          )}
                         </ul>
                       </div>
                     ))}

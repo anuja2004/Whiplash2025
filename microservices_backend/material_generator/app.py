@@ -50,7 +50,7 @@ def generate_material():
     return jsonify(response)
 
 if __name__ == '__main__':
-    app.run(port=5002, debug=True)
+    app.run(host='0.0.0.0',port=5002, debug=True)
 
 def main():
     consumer = get_kafka_consumer('material_generator_group', ['material.generate.request'])
