@@ -975,3 +975,229 @@ termios.error: (5, 'Input/output error')
 2025-05-03 22:38:12,301 - __main__ - INFO - Successfully processed video fetch request
 2025-05-03 22:38:12,302 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 22:38:12] "POST /fetch_videos HTTP/1.1" 200 -
 2025-05-03 22:38:12,302 - werkzeug - INFO - 127.0.0.1 - - [03/May/2025 22:38:12] "POST /fetch_videos HTTP/1.1" 200 -
+ * Serving Flask app 'app'
+ * Debug mode: on
+2025-05-04 09:34:37,746 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5003
+ * Running on http://192.168.214.101:5003
+2025-05-04 09:34:37,746 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5003
+ * Running on http://192.168.214.101:5003
+2025-05-04 09:34:37,746 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-04 09:34:37,746 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-04 09:34:37,746 - werkzeug - INFO -  * Restarting with stat
+2025-05-04 09:34:37,746 - werkzeug - INFO -  * Restarting with stat
+2025-05-04 09:34:37,863 - werkzeug - WARNING -  * Debugger is active!
+2025-05-04 09:34:37,863 - werkzeug - WARNING -  * Debugger is active!
+2025-05-04 09:34:37,864 - werkzeug - INFO -  * Debugger PIN: 952-731-907
+2025-05-04 09:34:37,864 - werkzeug - INFO -  * Debugger PIN: 952-731-907
+2025-05-04 09:41:05,063 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-04 09:41:05,063 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-04 09:41:05,105 - werkzeug - INFO -  * Restarting with stat
+2025-05-04 09:41:05,105 - werkzeug - INFO -  * Restarting with stat
+2025-05-04 09:41:05,700 - werkzeug - WARNING -  * Debugger is active!
+2025-05-04 09:41:05,700 - werkzeug - WARNING -  * Debugger is active!
+2025-05-04 09:41:05,701 - werkzeug - INFO -  * Debugger PIN: 952-731-907
+2025-05-04 09:41:05,701 - werkzeug - INFO -  * Debugger PIN: 952-731-907
+2025-05-04 09:41:20,628 - werkzeug - INFO - 127.0.0.1 - - [04/May/2025 09:41:20] "GET /health HTTP/1.1" 200 -
+2025-05-04 09:41:20,628 - werkzeug - INFO - 127.0.0.1 - - [04/May/2025 09:41:20] "GET /health HTTP/1.1" 200 -
+2025-05-04 09:41:20,634 - __main__ - INFO - Received video fetch request
+2025-05-04 09:41:20,634 - __main__ - INFO - Received video fetch request
+2025-05-04 09:41:20,634 - __main__ - INFO - Processing topic: Python, total study time: 21600 seconds
+2025-05-04 09:41:20,634 - __main__ - INFO - Processing topic: Python, total study time: 21600 seconds
+2025-05-04 09:41:22,155 - __main__ - INFO - Found topic video: https://youtube.com/watch?v=_uQrJ0TkZlc
+2025-05-04 09:41:22,155 - __main__ - INFO - Found topic video: https://youtube.com/watch?v=_uQrJ0TkZlc
+2025-05-04 09:41:22,156 - __main__ - INFO - Successfully processed video fetch request
+2025-05-04 09:41:22,156 - __main__ - INFO - Successfully processed video fetch request
+2025-05-04 09:41:22,156 - werkzeug - INFO - 127.0.0.1 - - [04/May/2025 09:41:22] "POST /fetch_videos HTTP/1.1" 200 -
+2025-05-04 09:41:22,156 - werkzeug - INFO - 127.0.0.1 - - [04/May/2025 09:41:22] "POST /fetch_videos HTTP/1.1" 200 -
+2025-05-04 11:31:24,041 - werkzeug - INFO - 127.0.0.1 - - [04/May/2025 11:31:24] "GET /health HTTP/1.1" 200 -
+2025-05-04 11:31:24,041 - werkzeug - INFO - 127.0.0.1 - - [04/May/2025 11:31:24] "GET /health HTTP/1.1" 200 -
+2025-05-04 11:31:24,045 - __main__ - INFO - Received video fetch request
+2025-05-04 11:31:24,045 - __main__ - INFO - Received video fetch request
+2025-05-04 11:31:24,045 - __main__ - INFO - Processing topic: Java, total study time: 21600 seconds
+2025-05-04 11:31:24,045 - __main__ - INFO - Processing topic: Java, total study time: 21600 seconds
+2025-05-04 11:31:26,699 - __main__ - INFO - No suitable topic video found, searching per subtopic
+2025-05-04 11:31:26,699 - __main__ - INFO - No suitable topic video found, searching per subtopic
+2025-05-04 11:31:28,951 - __main__ - INFO - Successfully processed video fetch request
+2025-05-04 11:31:28,951 - __main__ - INFO - Successfully processed video fetch request
+2025-05-04 11:31:28,951 - werkzeug - INFO - 127.0.0.1 - - [04/May/2025 11:31:28] "POST /fetch_videos HTTP/1.1" 200 -
+2025-05-04 11:31:28,951 - werkzeug - INFO - 127.0.0.1 - - [04/May/2025 11:31:28] "POST /fetch_videos HTTP/1.1" 200 -
+2025-05-04 11:39:24,774 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-04 11:39:24,774 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-04 11:39:24,828 - werkzeug - INFO -  * Restarting with stat
+2025-05-04 11:39:24,828 - werkzeug - INFO -  * Restarting with stat
+2025-05-04 11:39:25,132 - werkzeug - WARNING -  * Debugger is active!
+2025-05-04 11:39:25,132 - werkzeug - WARNING -  * Debugger is active!
+2025-05-04 11:39:25,133 - werkzeug - INFO -  * Debugger PIN: 952-731-907
+2025-05-04 11:39:25,133 - werkzeug - INFO -  * Debugger PIN: 952-731-907
+2025-05-04 11:41:23,825 - werkzeug - INFO - 127.0.0.1 - - [04/May/2025 11:41:23] "GET /health HTTP/1.1" 200 -
+2025-05-04 11:41:23,825 - werkzeug - INFO - 127.0.0.1 - - [04/May/2025 11:41:23] "GET /health HTTP/1.1" 200 -
+2025-05-04 11:41:23,828 - __main__ - INFO - Received video fetch request
+2025-05-04 11:41:23,828 - __main__ - INFO - Received video fetch request
+2025-05-04 11:41:23,828 - __main__ - INFO - Processing topic: Java, total study time: 21600 seconds
+2025-05-04 11:41:23,828 - __main__ - INFO - Processing topic: Java, total study time: 21600 seconds
+2025-05-04 11:41:26,540 - __main__ - INFO - No suitable topic video found, searching per subtopic
+2025-05-04 11:41:26,540 - __main__ - INFO - No suitable topic video found, searching per subtopic
+2025-05-04 11:41:29,046 - __main__ - INFO - Successfully processed video fetch request
+2025-05-04 11:41:29,046 - __main__ - INFO - Successfully processed video fetch request
+2025-05-04 11:41:29,046 - werkzeug - INFO - 127.0.0.1 - - [04/May/2025 11:41:29] "POST /fetch_videos HTTP/1.1" 200 -
+2025-05-04 11:41:29,046 - werkzeug - INFO - 127.0.0.1 - - [04/May/2025 11:41:29] "POST /fetch_videos HTTP/1.1" 200 -
+2025-05-04 11:47:19,147 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-04 11:47:19,147 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-04 11:47:19,194 - werkzeug - INFO -  * Restarting with stat
+2025-05-04 11:47:19,194 - werkzeug - INFO -  * Restarting with stat
+2025-05-04 11:47:19,343 - werkzeug - WARNING -  * Debugger is active!
+2025-05-04 11:47:19,343 - werkzeug - WARNING -  * Debugger is active!
+2025-05-04 11:47:19,344 - werkzeug - INFO -  * Debugger PIN: 952-731-907
+2025-05-04 11:47:19,344 - werkzeug - INFO -  * Debugger PIN: 952-731-907
+2025-05-04 11:47:20,851 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-04 11:47:20,851 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-04 11:47:20,890 - werkzeug - INFO -  * Restarting with stat
+2025-05-04 11:47:20,890 - werkzeug - INFO -  * Restarting with stat
+2025-05-04 11:47:21,039 - werkzeug - WARNING -  * Debugger is active!
+2025-05-04 11:47:21,039 - werkzeug - WARNING -  * Debugger is active!
+2025-05-04 11:47:21,039 - werkzeug - INFO -  * Debugger PIN: 952-731-907
+2025-05-04 11:47:21,039 - werkzeug - INFO -  * Debugger PIN: 952-731-907
+2025-05-04 11:47:28,069 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-04 11:47:28,069 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-04 11:47:28,099 - werkzeug - INFO -  * Restarting with stat
+2025-05-04 11:47:28,099 - werkzeug - INFO -  * Restarting with stat
+2025-05-04 11:47:28,320 - werkzeug - WARNING -  * Debugger is active!
+2025-05-04 11:47:28,320 - werkzeug - WARNING -  * Debugger is active!
+2025-05-04 11:47:28,320 - werkzeug - INFO -  * Debugger PIN: 952-731-907
+2025-05-04 11:47:28,320 - werkzeug - INFO -  * Debugger PIN: 952-731-907
+2025-05-04 11:47:29,840 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-04 11:47:29,840 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-04 11:47:29,882 - werkzeug - INFO -  * Restarting with stat
+2025-05-04 11:47:29,882 - werkzeug - INFO -  * Restarting with stat
+2025-05-04 11:47:30,026 - werkzeug - WARNING -  * Debugger is active!
+2025-05-04 11:47:30,026 - werkzeug - WARNING -  * Debugger is active!
+2025-05-04 11:47:30,027 - werkzeug - INFO -  * Debugger PIN: 952-731-907
+2025-05-04 11:47:30,027 - werkzeug - INFO -  * Debugger PIN: 952-731-907
+2025-05-04 11:47:32,573 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-04 11:47:32,573 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-04 11:47:32,625 - werkzeug - INFO -  * Restarting with stat
+2025-05-04 11:47:32,625 - werkzeug - INFO -  * Restarting with stat
+2025-05-04 11:47:32,769 - werkzeug - WARNING -  * Debugger is active!
+2025-05-04 11:47:32,769 - werkzeug - WARNING -  * Debugger is active!
+2025-05-04 11:47:32,769 - werkzeug - INFO -  * Debugger PIN: 952-731-907
+2025-05-04 11:47:32,769 - werkzeug - INFO -  * Debugger PIN: 952-731-907
+2025-05-04 11:47:34,254 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-04 11:47:34,254 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-04 11:47:34,308 - werkzeug - INFO -  * Restarting with stat
+2025-05-04 11:47:34,308 - werkzeug - INFO -  * Restarting with stat
+2025-05-04 11:47:34,489 - werkzeug - WARNING -  * Debugger is active!
+2025-05-04 11:47:34,489 - werkzeug - WARNING -  * Debugger is active!
+2025-05-04 11:47:34,490 - werkzeug - INFO -  * Debugger PIN: 952-731-907
+2025-05-04 11:47:34,490 - werkzeug - INFO -  * Debugger PIN: 952-731-907
+2025-05-04 11:47:37,090 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-04 11:47:37,090 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-04 11:47:37,150 - werkzeug - INFO -  * Restarting with stat
+2025-05-04 11:47:37,150 - werkzeug - INFO -  * Restarting with stat
+2025-05-04 11:47:37,310 - werkzeug - WARNING -  * Debugger is active!
+2025-05-04 11:47:37,310 - werkzeug - WARNING -  * Debugger is active!
+2025-05-04 11:47:37,310 - werkzeug - INFO -  * Debugger PIN: 952-731-907
+2025-05-04 11:47:37,310 - werkzeug - INFO -  * Debugger PIN: 952-731-907
+2025-05-04 11:47:38,707 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-04 11:47:38,707 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-04 11:47:38,746 - werkzeug - INFO -  * Restarting with stat
+2025-05-04 11:47:38,746 - werkzeug - INFO -  * Restarting with stat
+2025-05-04 11:47:38,899 - werkzeug - WARNING -  * Debugger is active!
+2025-05-04 11:47:38,899 - werkzeug - WARNING -  * Debugger is active!
+2025-05-04 11:47:38,899 - werkzeug - INFO -  * Debugger PIN: 952-731-907
+2025-05-04 11:47:38,899 - werkzeug - INFO -  * Debugger PIN: 952-731-907
+2025-05-04 11:47:40,348 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-04 11:47:40,348 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-04 11:47:40,383 - werkzeug - INFO -  * Restarting with stat
+2025-05-04 11:47:40,383 - werkzeug - INFO -  * Restarting with stat
+2025-05-04 11:47:40,548 - werkzeug - WARNING -  * Debugger is active!
+2025-05-04 11:47:40,548 - werkzeug - WARNING -  * Debugger is active!
+2025-05-04 11:47:40,549 - werkzeug - INFO -  * Debugger PIN: 952-731-907
+2025-05-04 11:47:40,549 - werkzeug - INFO -  * Debugger PIN: 952-731-907
+2025-05-04 11:47:42,079 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-04 11:47:42,079 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-04 11:47:42,118 - werkzeug - INFO -  * Restarting with stat
+2025-05-04 11:47:42,118 - werkzeug - INFO -  * Restarting with stat
+2025-05-04 11:47:42,274 - werkzeug - WARNING -  * Debugger is active!
+2025-05-04 11:47:42,274 - werkzeug - WARNING -  * Debugger is active!
+2025-05-04 11:47:42,274 - werkzeug - INFO -  * Debugger PIN: 952-731-907
+2025-05-04 11:47:42,274 - werkzeug - INFO -  * Debugger PIN: 952-731-907
+2025-05-04 11:47:43,714 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-04 11:47:43,714 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-04 11:47:43,756 - werkzeug - INFO -  * Restarting with stat
+2025-05-04 11:47:43,756 - werkzeug - INFO -  * Restarting with stat
+2025-05-04 11:47:43,922 - werkzeug - WARNING -  * Debugger is active!
+2025-05-04 11:47:43,922 - werkzeug - WARNING -  * Debugger is active!
+2025-05-04 11:47:43,922 - werkzeug - INFO -  * Debugger PIN: 952-731-907
+2025-05-04 11:47:43,922 - werkzeug - INFO -  * Debugger PIN: 952-731-907
+2025-05-04 11:47:46,518 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-04 11:47:46,518 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-04 11:47:46,549 - werkzeug - INFO -  * Restarting with stat
+2025-05-04 11:47:46,549 - werkzeug - INFO -  * Restarting with stat
+2025-05-04 11:47:46,701 - werkzeug - WARNING -  * Debugger is active!
+2025-05-04 11:47:46,701 - werkzeug - WARNING -  * Debugger is active!
+2025-05-04 11:47:46,701 - werkzeug - INFO -  * Debugger PIN: 952-731-907
+2025-05-04 11:47:46,701 - werkzeug - INFO -  * Debugger PIN: 952-731-907
+2025-05-04 11:47:48,105 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-04 11:47:48,105 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-04 11:47:48,135 - werkzeug - INFO -  * Restarting with stat
+2025-05-04 11:47:48,135 - werkzeug - INFO -  * Restarting with stat
+2025-05-04 11:47:48,281 - werkzeug - WARNING -  * Debugger is active!
+2025-05-04 11:47:48,281 - werkzeug - WARNING -  * Debugger is active!
+2025-05-04 11:47:48,282 - werkzeug - INFO -  * Debugger PIN: 952-731-907
+2025-05-04 11:47:48,282 - werkzeug - INFO -  * Debugger PIN: 952-731-907
+2025-05-04 11:47:49,679 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-04 11:47:49,679 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-04 11:47:49,701 - werkzeug - INFO -  * Restarting with stat
+2025-05-04 11:47:49,701 - werkzeug - INFO -  * Restarting with stat
+2025-05-04 11:47:49,820 - werkzeug - WARNING -  * Debugger is active!
+2025-05-04 11:47:49,820 - werkzeug - WARNING -  * Debugger is active!
+2025-05-04 11:47:49,820 - werkzeug - INFO -  * Debugger PIN: 952-731-907
+2025-05-04 11:47:49,820 - werkzeug - INFO -  * Debugger PIN: 952-731-907
+2025-05-04 11:47:52,331 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-04 11:47:52,331 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-04 11:47:52,354 - werkzeug - INFO -  * Restarting with stat
+2025-05-04 11:47:52,354 - werkzeug - INFO -  * Restarting with stat
+2025-05-04 11:47:52,474 - werkzeug - WARNING -  * Debugger is active!
+2025-05-04 11:47:52,474 - werkzeug - WARNING -  * Debugger is active!
+2025-05-04 11:47:52,474 - werkzeug - INFO -  * Debugger PIN: 952-731-907
+2025-05-04 11:47:52,474 - werkzeug - INFO -  * Debugger PIN: 952-731-907
+2025-05-04 11:47:53,815 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-04 11:47:53,815 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-04 11:47:53,836 - werkzeug - INFO -  * Restarting with stat
+2025-05-04 11:47:53,836 - werkzeug - INFO -  * Restarting with stat
+2025-05-04 11:47:53,952 - werkzeug - WARNING -  * Debugger is active!
+2025-05-04 11:47:53,952 - werkzeug - WARNING -  * Debugger is active!
+2025-05-04 11:47:53,952 - werkzeug - INFO -  * Debugger PIN: 952-731-907
+2025-05-04 11:47:53,952 - werkzeug - INFO -  * Debugger PIN: 952-731-907
+2025-05-04 11:47:56,482 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-04 11:47:56,482 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-04 11:47:56,520 - werkzeug - INFO -  * Restarting with stat
+2025-05-04 11:47:56,520 - werkzeug - INFO -  * Restarting with stat
+2025-05-04 11:47:56,674 - werkzeug - WARNING -  * Debugger is active!
+2025-05-04 11:47:56,674 - werkzeug - WARNING -  * Debugger is active!
+2025-05-04 11:47:56,675 - werkzeug - INFO -  * Debugger PIN: 952-731-907
+2025-05-04 11:47:56,675 - werkzeug - INFO -  * Debugger PIN: 952-731-907
+2025-05-04 11:48:22,130 - werkzeug - INFO - 127.0.0.1 - - [04/May/2025 11:48:22] "GET /health HTTP/1.1" 200 -
+2025-05-04 11:48:22,130 - werkzeug - INFO - 127.0.0.1 - - [04/May/2025 11:48:22] "GET /health HTTP/1.1" 200 -
+2025-05-04 11:48:22,136 - __main__ - INFO - Received video fetch request
+2025-05-04 11:48:22,136 - __main__ - INFO - Received video fetch request
+2025-05-04 11:48:22,136 - __main__ - INFO - Processing topic: Java, total study time: 21600 seconds
+2025-05-04 11:48:22,136 - __main__ - INFO - Processing topic: Java, total study time: 21600 seconds
+2025-05-04 11:48:24,797 - __main__ - INFO - No suitable topic video found, searching per subtopic
+2025-05-04 11:48:24,797 - __main__ - INFO - No suitable topic video found, searching per subtopic
+2025-05-04 11:48:27,429 - __main__ - INFO - Successfully processed video fetch request
+2025-05-04 11:48:27,429 - __main__ - INFO - Successfully processed video fetch request
+2025-05-04 11:48:27,430 - werkzeug - INFO - 127.0.0.1 - - [04/May/2025 11:48:27] "POST /fetch_videos HTTP/1.1" 200 -
+2025-05-04 11:48:27,430 - werkzeug - INFO - 127.0.0.1 - - [04/May/2025 11:48:27] "POST /fetch_videos HTTP/1.1" 200 -
+2025-05-04 12:11:17,882 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-04 12:11:17,882 - werkzeug - INFO -  * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+2025-05-04 12:11:17,925 - werkzeug - INFO -  * Restarting with stat
+2025-05-04 12:11:17,925 - werkzeug - INFO -  * Restarting with stat
+2025-05-04 12:11:18,165 - werkzeug - WARNING -  * Debugger is active!
+2025-05-04 12:11:18,165 - werkzeug - WARNING -  * Debugger is active!
+2025-05-04 12:11:18,165 - werkzeug - INFO -  * Debugger PIN: 952-731-907
+2025-05-04 12:11:18,165 - werkzeug - INFO -  * Debugger PIN: 952-731-907

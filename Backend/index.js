@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import { connectDB } from './config/db.js';
 import dotenv from 'dotenv';
+// import courseRoutes from './routes/course.js';
 
 // Load env variables
 dotenv.config();
@@ -15,7 +16,7 @@ const app = express();
 
 // Middleware
 app.use(cors({
-    origin: '*', // Replace with your frontend URL
+    origin: 'http://localhost:5173', // Replace with your frontend URL
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
 }));
@@ -24,6 +25,11 @@ app.use(express.urlencoded({ extended: true }));
 
 // Connect to MongoDB
 connectDB();
+
+
+
+// Other middleware and routes
+// app.use('/api/courses', courseRoutes);
 
 // Basic API route with content negotiation
 app.use('/health', (req, res) => {

@@ -4178,3 +4178,1108 @@ Params: {'key': 'AIzaSyDDoqQmjpVsKUpxtCHUHULFxT_MtUaQbb0'}
 URL: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent
 Payload: [2025-05-03 22:39:50,797] ERROR in app: Error generating quizzes: RetryError[<Future at 0x73fd2603e950 state=finished raised HTTPError>]
 127.0.0.1 - - [03/May/2025 22:39:50] "POST /generate_quiz_and_assignments HTTP/1.1" 500 -
+ * Serving Flask app 'app'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5004
+ * Running on http://192.168.214.101:5004
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 952-731-907
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 952-731-907
+[DEBUG] Sending request to Gemini API...
+URL: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent
+Payload: {'contents': [{'parts': [{'text': 'Generate 5 multiple-choice questions about Setting up Python environment and basic syntax based on these notes: {"title": "Setting up Python Environment and Basic Syntax", "notes": "**Environment Setup:**\\n* Install Python from [python.org](https://python.org).\\n* Choose a suitable IDE (e.g. VS Code, PyCharm).\\n* Set up virtual environments using `venv` to avoid dependency conflicts.\\n* Install packages with `pip install <package_name>`.\\n\\n**Basic Syntax:**\\n* Variables are dynamically typed, declared upon assignment (e.g. `name = \\"John Doe\\"`, `age = 30`, `price = 99.99`).\\n* Print using `print()` function (e.g., `print(\\"Hello, world!\\")`, `print(name, age)`).\\n* String concatenation with `+` (e.g. `greeting = \\"Hello, \\" + name`).\\n* Basic data types: int, float, string, boolean.\\n* Comments start with `#`.\\n* Indentation is crucial for code blocks.\\n* Use `input()` for user input (e.g., `name = input(\\"Enter your name: \\")`).\\n* Type conversion (casting) using functions like `int()`, `str()`, `float()` (e.g., `age_str = input(\\"Enter your age: \\")`, `age = int(age_str)`)."}\nFormat as JSON with keys: \'question\', \'options\' (array), \'answer\''}]}], 'generationConfig': {'response_mime_type': 'application/json'}}
+Params: {'key': 'AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg'}
+[DEBUG] Gemini API response: {'candidates': [{'content': {'parts': [{'text': '[{"question": "Which command is used to install Python packages?", "options": ["`install package`", "`pip install <package_name>`", "`python install <package_name>`", "`package install`"], "answer": "`pip install <package_name>`"}, {"question": "What is the purpose of using `venv`?", "options": ["To create a virtual machine", "To manage different versions of Python", "To avoid dependency conflicts between projects", "To install the Python interpreter"], "answer": "To avoid dependency conflicts between projects"}, {"question": "How do you declare a variable named \\"count\\" with a value of 10 in Python?", "options": ["`int count = 10`", "`count = 10`", "`var count = 10`", "`count := 10`"], "answer": "`count = 10`"}, {"question": "Which of the following is NOT a valid way to print output in Python?", "options": ["`print(\\"Hello\\")`", "`print(\\"Value:\\", x)`", "`console.log(\\"Output\\")`", "`print(123)`"], "answer": "`console.log(\\"Output\\")`"}, {"question": "How do you convert the string \\"50\\" to an integer in Python?", "options": ["`int.parse(\\"50\\")`", "`int(\\"50\\")`", "`integer(\\"50\\")`", `"50".toInt()`"], "answer": "`int(\\"50\\")`"}]'}], 'role': 'model'}, 'finishReason': 'STOP', 'avgLogprobs': -0.09661845759944515}], 'usageMetadata': {'promptTokenCount': 337, 'candidatesTokenCount': 333, 'totalTokenCount': 670, 'promptTokensDetails': [{'modality': 'TEXT', 'tokenCount': 337}], 'candidatesTokensDetails': [{'modality': 'TEXT', 'tokenCount': 333}]}, 'modelVersion': 'gemini-1.5-pro-002'}
+[DEBUG] Sending request to Gemini API...
+URL: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent
+Payload: {'contents': [{'parts': [{'text': 'Generate 5 open-ended questions about Setting up Python environment and basic syntax based on: {"title": "Setting up Python Environment and Basic Syntax", "notes": "**Environment Setup:**\\n* Install Python from [python.org](https://python.org).\\n* Choose a suitable IDE (e.g. VS Code, PyCharm).\\n* Set up virtual environments using `venv` to avoid dependency conflicts.\\n* Install packages with `pip install <package_name>`.\\n\\n**Basic Syntax:**\\n* Variables are dynamically typed, declared upon assignment (e.g. `name = \\"John Doe\\"`, `age = 30`, `price = 99.99`).\\n* Print using `print()` function (e.g., `print(\\"Hello, world!\\")`, `print(name, age)`).\\n* String concatenation with `+` (e.g. `greeting = \\"Hello, \\" + name`).\\n* Basic data types: int, float, string, boolean.\\n* Comments start with `#`.\\n* Indentation is crucial for code blocks.\\n* Use `input()` for user input (e.g., `name = input(\\"Enter your name: \\")`).\\n* Type conversion (casting) using functions like `int()`, `str()`, `float()` (e.g., `age_str = input(\\"Enter your age: \\")`, `age = int(age_str)`)."}\nReturn as JSON array of strings'}]}], 'generationConfig': {'response_mime_type': 'application/json'}}
+Params: {'key': 'AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg'}
+[ERROR] HTTPError in call_gemini: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg
+[ERROR] Response content: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.QuotaFailure",
+        "violations": [
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            },
+            "quotaValue": "2"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more about Gemini API quotas",
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.RetryInfo",
+        "retryDelay": "23s"
+      }
+    ]
+  }
+}
+
+[ERROR] Rate limited. Retrying after 5 seconds...
+[DEBUG] Sending request to Gemini API...
+URL: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent
+Payload: {'contents': [{'parts': [{'text': 'Generate 5 open-ended questions about Setting up Python environment and basic syntax based on: {"title": "Setting up Python Environment and Basic Syntax", "notes": "**Environment Setup:**\\n* Install Python from [python.org](https://python.org).\\n* Choose a suitable IDE (e.g. VS Code, PyCharm).\\n* Set up virtual environments using `venv` to avoid dependency conflicts.\\n* Install packages with `pip install <package_name>`.\\n\\n**Basic Syntax:**\\n* Variables are dynamically typed, declared upon assignment (e.g. `name = \\"John Doe\\"`, `age = 30`, `price = 99.99`).\\n* Print using `print()` function (e.g., `print(\\"Hello, world!\\")`, `print(name, age)`).\\n* String concatenation with `+` (e.g. `greeting = \\"Hello, \\" + name`).\\n* Basic data types: int, float, string, boolean.\\n* Comments start with `#`.\\n* Indentation is crucial for code blocks.\\n* Use `input()` for user input (e.g., `name = input(\\"Enter your name: \\")`).\\n* Type conversion (casting) using functions like `int()`, `str()`, `float()` (e.g., `age_str = input(\\"Enter your age: \\")`, `age = int(age_str)`)."}\nReturn as JSON array of strings'}]}], 'generationConfig': {'response_mime_type': 'application/json'}}
+Params: {'key': 'AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg'}
+[ERROR] HTTPError in call_gemini: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg
+[ERROR] Response content: [2025-05-04 09:42:01,580] ERROR in app: Error generating quizzes: Expecting value: line 1 column 1107 (char 1106)
+127.0.0.1 - - [04/May/2025 09:42:01] "POST /generate_quiz_and_assignments HTTP/1.1" 500 -
+{
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.QuotaFailure",
+        "violations": [
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            },
+            "quotaValue": "2"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more about Gemini API quotas",
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.RetryInfo",
+        "retryDelay": "12s"
+      }
+    ]
+  }
+}
+
+[ERROR] Rate limited. Retrying after 5 seconds...
+[DEBUG] Sending request to Gemini API...
+URL: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent
+Payload: {'contents': [{'parts': [{'text': 'Generate 5 open-ended questions about Setting up Python environment and basic syntax based on: {"title": "Setting up Python Environment and Basic Syntax", "notes": "**Environment Setup:**\\n* Install Python from [python.org](https://python.org).\\n* Choose a suitable IDE (e.g. VS Code, PyCharm).\\n* Set up virtual environments using `venv` to avoid dependency conflicts.\\n* Install packages with `pip install <package_name>`.\\n\\n**Basic Syntax:**\\n* Variables are dynamically typed, declared upon assignment (e.g. `name = \\"John Doe\\"`, `age = 30`, `price = 99.99`).\\n* Print using `print()` function (e.g., `print(\\"Hello, world!\\")`, `print(name, age)`).\\n* String concatenation with `+` (e.g. `greeting = \\"Hello, \\" + name`).\\n* Basic data types: int, float, string, boolean.\\n* Comments start with `#`.\\n* Indentation is crucial for code blocks.\\n* Use `input()` for user input (e.g., `name = input(\\"Enter your name: \\")`).\\n* Type conversion (casting) using functions like `int()`, `str()`, `float()` (e.g., `age_str = input(\\"Enter your age: \\")`, `age = int(age_str)`)."}\nReturn as JSON array of strings'}]}], 'generationConfig': {'response_mime_type': 'application/json'}}
+Params: {'key': 'AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg'}
+[DEBUG] Gemini API response: {'candidates': [{'content': {'parts': [{'text': '["What are the advantages of using virtual environments when developing Python projects, and how do you create and manage them using the `venv` module?", "How does dynamic typing in Python affect variable management and what are some best practices to consider when working with dynamically typed variables?", "Explain the significance of indentation in Python\'s syntax and provide examples of how improper indentation can lead to errors.", "Describe the various ways to handle user input in Python, including how to prompt the user for input and how to perform input validation or error handling.", "How can you effectively use type conversion functions like `int()`, `str()`, and `float()` to ensure data compatibility and avoid common type-related errors in your Python code?"]'}], 'role': 'model'}, 'finishReason': 'STOP', 'avgLogprobs': -0.28090906467567495}], 'usageMetadata': {'promptTokenCount': 323, 'candidatesTokenCount': 147, 'totalTokenCount': 470, 'promptTokensDetails': [{'modality': 'TEXT', 'tokenCount': 323}], 'candidatesTokensDetails': [{'modality': 'TEXT', 'tokenCount': 147}]}, 'modelVersion': 'gemini-1.5-pro-002'}
+[DEBUG] Sending request to Gemini API...
+URL: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent
+Payload: {'contents': [{'parts': [{'text': 'Generate 5 multiple-choice questions about Data types, operators, and control flow based on these notes: {"study_notes": "Data Types: Python offers built-in data types like integers, floating-point numbers, strings (using single, double, or triple quotes), booleans (True/False), lists (ordered, mutable sequences), tuples (ordered, immutable sequences), sets (unordered collections of unique items), dictionaries (key-value pairs). Operators: Arithmetic (+, -, \\*, /, //, %, \\*\\*), comparison (==, !=, >, <, >=, <=), logical (and, or, not), bitwise (&, |, ^, ~, <<, >>), assignment (=, +=, -=, \\*=, etc.), membership (in, not in), identity (is, is not). Control Flow: Use conditional statements (if, elif, else) to execute different blocks of code based on conditions. Loops (for, while) allow repetitive execution of code blocks.  Loop control keywords like \'break\' (exit loop) and \'continue\' (skip current iteration) offer finer control."}\nFormat as JSON with keys: \'question\', \'options\' (array), \'answer\''}]}], 'generationConfig': {'response_mime_type': 'application/json'}}
+Params: {'key': 'AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg'}
+[ERROR] HTTPError in call_gemini: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg
+[ERROR] Response content: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.QuotaFailure",
+        "violations": [
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "model": "gemini-1.5-pro",
+              "location": "global"
+            },
+            "quotaValue": "2"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more about Gemini API quotas",
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.RetryInfo",
+        "retryDelay": "55s"
+      }
+    ]
+  }
+}
+
+[ERROR] Rate limited. Retrying after 5 seconds...
+[DEBUG] Sending request to Gemini API...
+URL: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent
+Payload: {'contents': [{'parts': [{'text': 'Generate 5 multiple-choice questions about Data types, operators, and control flow based on these notes: {"study_notes": "Data Types: Python offers built-in data types like integers, floating-point numbers, strings (using single, double, or triple quotes), booleans (True/False), lists (ordered, mutable sequences), tuples (ordered, immutable sequences), sets (unordered collections of unique items), dictionaries (key-value pairs). Operators: Arithmetic (+, -, \\*, /, //, %, \\*\\*), comparison (==, !=, >, <, >=, <=), logical (and, or, not), bitwise (&, |, ^, ~, <<, >>), assignment (=, +=, -=, \\*=, etc.), membership (in, not in), identity (is, is not). Control Flow: Use conditional statements (if, elif, else) to execute different blocks of code based on conditions. Loops (for, while) allow repetitive execution of code blocks.  Loop control keywords like \'break\' (exit loop) and \'continue\' (skip current iteration) offer finer control."}\nFormat as JSON with keys: \'question\', \'options\' (array), \'answer\''}]}], 'generationConfig': {'response_mime_type': 'application/json'}}
+Params: {'key': 'AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg'}
+[ERROR] HTTPError in call_gemini: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg
+[ERROR] Response content: 127.0.0.1 - - [04/May/2025 09:42:34] "POST /generate_quiz_and_assignments HTTP/1.1" 200 -
+{
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.QuotaFailure",
+        "violations": [
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            },
+            "quotaValue": "2"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more about Gemini API quotas",
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.RetryInfo",
+        "retryDelay": "44s"
+      }
+    ]
+  }
+}
+
+[ERROR] Rate limited. Retrying after 5 seconds...
+[DEBUG] Sending request to Gemini API...
+URL: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent
+Payload: {'contents': [{'parts': [{'text': 'Generate 5 multiple-choice questions about Data types, operators, and control flow based on these notes: {"study_notes": "Data Types: Python offers built-in data types like integers, floating-point numbers, strings (using single, double, or triple quotes), booleans (True/False), lists (ordered, mutable sequences), tuples (ordered, immutable sequences), sets (unordered collections of unique items), dictionaries (key-value pairs). Operators: Arithmetic (+, -, \\*, /, //, %, \\*\\*), comparison (==, !=, >, <, >=, <=), logical (and, or, not), bitwise (&, |, ^, ~, <<, >>), assignment (=, +=, -=, \\*=, etc.), membership (in, not in), identity (is, is not). Control Flow: Use conditional statements (if, elif, else) to execute different blocks of code based on conditions. Loops (for, while) allow repetitive execution of code blocks.  Loop control keywords like \'break\' (exit loop) and \'continue\' (skip current iteration) offer finer control."}\nFormat as JSON with keys: \'question\', \'options\' (array), \'answer\''}]}], 'generationConfig': {'response_mime_type': 'application/json'}}
+Params: {'key': 'AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg'}
+[DEBUG] Gemini API response: {'candidates': [{'content': {'parts': [{'text': '[{"question": "Which of the following is an unordered collection of unique items?", "options": ["List", "Tuple", "Set", "Dictionary"], "answer": "Set"}, {"question": "What is the purpose of the \'%\' operator?", "options": ["Addition", "Division", "Modulo", "Exponentiation"], "answer": "Modulo"}, {"question": "Which data type is mutable?", "options": ["List", "Tuple", "String", "Integer"], "answer": "List"}, {"question": "What does the \'continue\' keyword do in a loop?", "options": ["Exits the loop entirely", "Skips the current iteration and proceeds to the next", "Pauses the loop execution", "Restarts the loop from the beginning"], "answer": "Skips the current iteration and proceeds to the next"}, {"question": "What is the correct way to check if a value exists in a list?", "options": ["Using the \'==\' operator", "Using the \'in\' operator", "Using the \'is\' operator", "Using the \'has\' keyword"], "answer": "Using the \'in\' operator"}]'}], 'role': 'model'}, 'finishReason': 'STOP', 'avgLogprobs': -0.05437556902567545}], 'usageMetadata': {'promptTokenCount': 251, 'candidatesTokenCount': 240, 'totalTokenCount': 491, 'promptTokensDetails': [{'modality': 'TEXT', 'tokenCount': 251}], 'candidatesTokensDetails': [{'modality': 'TEXT', 'tokenCount': 240}]}, 'modelVersion': 'gemini-1.5-pro-002'}
+[DEBUG] Sending request to Gemini API...
+URL: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent
+Payload: {'contents': [{'parts': [{'text': 'Generate 5 open-ended questions about Data types, operators, and control flow based on: {"study_notes": "Data Types: Python offers built-in data types like integers, floating-point numbers, strings (using single, double, or triple quotes), booleans (True/False), lists (ordered, mutable sequences), tuples (ordered, immutable sequences), sets (unordered collections of unique items), dictionaries (key-value pairs). Operators: Arithmetic (+, -, \\*, /, //, %, \\*\\*), comparison (==, !=, >, <, >=, <=), logical (and, or, not), bitwise (&, |, ^, ~, <<, >>), assignment (=, +=, -=, \\*=, etc.), membership (in, not in), identity (is, is not). Control Flow: Use conditional statements (if, elif, else) to execute different blocks of code based on conditions. Loops (for, while) allow repetitive execution of code blocks.  Loop control keywords like \'break\' (exit loop) and \'continue\' (skip current iteration) offer finer control."}\nReturn as JSON array of strings'}]}], 'generationConfig': {'response_mime_type': 'application/json'}}
+Params: {'key': 'AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg'}
+[DEBUG] Gemini API response: {'candidates': [{'content': {'parts': [{'text': '["How would you choose the most appropriate data type for representing different kinds of information in a Python program, considering factors like memory efficiency and the operations you intend to perform?", "Explain the difference between the \'is\' and \'==\' operators in Python, and provide examples where using one over the other would be crucial.", "Describe how short-circuiting works with logical operators (and, or) in Python, and how it can be utilized to improve code efficiency or prevent errors.", "Given a complex problem requiring repetitive calculations or operations, how would you decide between using a \'for\' loop and a \'while\' loop in Python, and what factors would influence your choice?", "How can you effectively use nested conditional statements and loops together to implement complex program logic, and what strategies can you employ to ensure code readability and maintainability in such scenarios?"]'}], 'role': 'model'}, 'finishReason': 'STOP', 'avgLogprobs': -0.19911890251691952}], 'usageMetadata': {'promptTokenCount': 237, 'candidatesTokenCount': 172, 'totalTokenCount': 409, 'promptTokensDetails': [{'modality': 'TEXT', 'tokenCount': 237}], 'candidatesTokensDetails': [{'modality': 'TEXT', 'tokenCount': 172}]}, 'modelVersion': 'gemini-1.5-pro-002'}
+[DEBUG] Sending request to Gemini API...
+URL: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent
+Payload: {'contents': [{'parts': [{'text': 'Generate 5 multiple-choice questions about Functions, modules, and working with files based on these notes: {"study_notes": "**Functions:** Reusable blocks of code. Defined using `def` keyword followed by function name, parentheses `()`, and colon `:`.  Example:\\n```python\\ndef greet(name):\\n  print(f\\"Hello, {name}!\\")\\ngreet(\\"Alice\\")  # Output: Hello, Alice!\\n```\\n\\n**Modules:** Files containing Python code. Allow organization and reusability of functions and variables. Import using `import` keyword. Example:\\n```python\\nimport math\\nprint(math.sqrt(16)) # Output: 4.0\\n```\\n\\n**Working with Files:**\\n* **Opening:** Use `open(\\"filename\\", \\"mode\\")`. Modes: `\\"r\\"` (read), `\\"w\\"` (write), `\\"a\\"` (append).\\n* **Reading:** `file.read()` reads entire file, `file.readline()` reads one line.\\n* **Writing:** `file.write(\\"text\\")` writes to file.\\n* **Closing:** `file.close()` or use `with open(...) as file:` which automatically closes the file. Example:\\n```python\\nwith open(\\"myfile.txt\\", \\"w\\") as file:\\n  file.write(\\"Hello, world!\\")\\n```"}\nFormat as JSON with keys: \'question\', \'options\' (array), \'answer\''}]}], 'generationConfig': {'response_mime_type': 'application/json'}}
+Params: {'key': 'AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg'}
+[ERROR] HTTPError in call_gemini: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg
+[ERROR] Response content: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.QuotaFailure",
+        "violations": [
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "model": "gemini-1.5-pro",
+              "location": "global"
+            },
+            "quotaValue": "2"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more about Gemini API quotas",
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.RetryInfo",
+        "retryDelay": "20s"
+      }
+    ]
+  }
+}
+
+[ERROR] Rate limited. Retrying after 5 seconds...
+[DEBUG] Sending request to Gemini API...
+URL: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent
+Payload: {'contents': [{'parts': [{'text': 'Generate 5 multiple-choice questions about Functions, modules, and working with files based on these notes: {"study_notes": "**Functions:** Reusable blocks of code. Defined using `def` keyword followed by function name, parentheses `()`, and colon `:`.  Example:\\n```python\\ndef greet(name):\\n  print(f\\"Hello, {name}!\\")\\ngreet(\\"Alice\\")  # Output: Hello, Alice!\\n```\\n\\n**Modules:** Files containing Python code. Allow organization and reusability of functions and variables. Import using `import` keyword. Example:\\n```python\\nimport math\\nprint(math.sqrt(16)) # Output: 4.0\\n```\\n\\n**Working with Files:**\\n* **Opening:** Use `open(\\"filename\\", \\"mode\\")`. Modes: `\\"r\\"` (read), `\\"w\\"` (write), `\\"a\\"` (append).\\n* **Reading:** `file.read()` reads entire file, `file.readline()` reads one line.\\n* **Writing:** `file.write(\\"text\\")` writes to file.\\n* **Closing:** `file.close()` or use `with open(...) as file:` which automatically closes the file. Example:\\n```python\\nwith open(\\"myfile.txt\\", \\"w\\") as file:\\n  file.write(\\"Hello, world!\\")\\n```"}\nFormat as JSON with keys: \'question\', \'options\' (array), \'answer\''}]}], 'generationConfig': {'response_mime_type': 'application/json'}}
+Params: {'key': 'AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg'}
+[ERROR] HTTPError in call_gemini: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg
+[ERROR] Response content: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.QuotaFailure",
+        "violations": [
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            },
+            "quotaValue": "2"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more about Gemini API quotas",
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.RetryInfo",
+        "retryDelay": "9s"
+      }
+    ]
+  }
+}
+
+[ERROR] Rate limited. Retrying after 5 seconds...
+[DEBUG] Sending request to Gemini API...
+URL: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent
+Payload: {'contents': [{'parts': [{'text': 'Generate 5 multiple-choice questions about Functions, modules, and working with files based on these notes: {"study_notes": "**Functions:** Reusable blocks of code. Defined using `def` keyword followed by function name, parentheses `()`, and colon `:`.  Example:\\n```python\\ndef greet(name):\\n  print(f\\"Hello, {name}!\\")\\ngreet(\\"Alice\\")  # Output: Hello, Alice!\\n```\\n\\n**Modules:** Files containing Python code. Allow organization and reusability of functions and variables. Import using `import` keyword. Example:\\n```python\\nimport math\\nprint(math.sqrt(16)) # Output: 4.0\\n```\\n\\n**Working with Files:**\\n* **Opening:** Use `open(\\"filename\\", \\"mode\\")`. Modes: `\\"r\\"` (read), `\\"w\\"` (write), `\\"a\\"` (append).\\n* **Reading:** `file.read()` reads entire file, `file.readline()` reads one line.\\n* **Writing:** `file.write(\\"text\\")` writes to file.\\n* **Closing:** `file.close()` or use `with open(...) as file:` which automatically closes the file. Example:\\n```python\\nwith open(\\"myfile.txt\\", \\"w\\") as file:\\n  file.write(\\"Hello, world!\\")\\n```"}\nFormat as JSON with keys: \'question\', \'options\' (array), \'answer\''}]}], 'generationConfig': {'response_mime_type': 'application/json'}}
+Params: {'key': 'AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg'}
+[DEBUG] Gemini API response: {'candidates': [{'content': {'parts': [{'text': '[{"question": "What keyword is used to define a function in Python?", "options": ["func", "def", "function", "define"], "answer": "def"}, {"question": "How do you import the `math` module?", "options": ["include math", "import math", "using math", "require math"], "answer": "import math"}, {"question": "Which file mode is used for writing to a file?", "options": ["r", "w", "a", "x"], "answer": "w"}, {"question": "What does `file.readline()` do?", "options": ["Reads the entire file", "Reads one line from the file", "Writes a line to the file", "Closes the file"], "answer": "Reads one line from the file"}, {"question": "Which method ensures a file is automatically closed even if errors occur?", "options": ["Using `try-except` blocks", "Using `file.close()` explicitly", "Using `with open(...) as file:`", "Manually deleting the file object"], "answer": "Using `with open(...) as file:`"}]'}], 'role': 'model'}, 'finishReason': 'STOP', 'avgLogprobs': -0.06305333230062879}], 'usageMetadata': {'promptTokenCount': 330, 'candidatesTokenCount': 237, 'totalTokenCount': 567, 'promptTokensDetails': [{'modality': 'TEXT', 'tokenCount': 330}], 'candidatesTokensDetails': [{'modality': 'TEXT', 'tokenCount': 237}]}, 'modelVersion': 'gemini-1.5-pro-002'}
+[DEBUG] Sending request to Gemini API...
+URL: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent
+Payload: {'contents': [{'parts': [{'text': 'Generate 5 open-ended questions about Functions, modules, and working with files based on: {"study_notes": "**Functions:** Reusable blocks of code. Defined using `def` keyword followed by function name, parentheses `()`, and colon `:`.  Example:\\n```python\\ndef greet(name):\\n  print(f\\"Hello, {name}!\\")\\ngreet(\\"Alice\\")  # Output: Hello, Alice!\\n```\\n\\n**Modules:** Files containing Python code. Allow organization and reusability of functions and variables. Import using `import` keyword. Example:\\n```python\\nimport math\\nprint(math.sqrt(16)) # Output: 4.0\\n```\\n\\n**Working with Files:**\\n* **Opening:** Use `open(\\"filename\\", \\"mode\\")`. Modes: `\\"r\\"` (read), `\\"w\\"` (write), `\\"a\\"` (append).\\n* **Reading:** `file.read()` reads entire file, `file.readline()` reads one line.\\n* **Writing:** `file.write(\\"text\\")` writes to file.\\n* **Closing:** `file.close()` or use `with open(...) as file:` which automatically closes the file. Example:\\n```python\\nwith open(\\"myfile.txt\\", \\"w\\") as file:\\n  file.write(\\"Hello, world!\\")\\n```"}\nReturn as JSON array of strings'}]}], 'generationConfig': {'response_mime_type': 'application/json'}}
+Params: {'key': 'AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg'}
+[ERROR] HTTPError in call_gemini: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg
+[ERROR] Response content: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.QuotaFailure",
+        "violations": [
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "model": "gemini-1.5-pro",
+              "location": "global"
+            },
+            "quotaValue": "2"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more about Gemini API quotas",
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.RetryInfo",
+        "retryDelay": "54s"
+      }
+    ]
+  }
+}
+
+[ERROR] Rate limited. Retrying after 5 seconds...
+[DEBUG] Sending request to Gemini API...
+URL: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent
+Payload: {'contents': [{'parts': [{'text': 'Generate 5 open-ended questions about Functions, modules, and working with files based on: {"study_notes": "**Functions:** Reusable blocks of code. Defined using `def` keyword followed by function name, parentheses `()`, and colon `:`.  Example:\\n```python\\ndef greet(name):\\n  print(f\\"Hello, {name}!\\")\\ngreet(\\"Alice\\")  # Output: Hello, Alice!\\n```\\n\\n**Modules:** Files containing Python code. Allow organization and reusability of functions and variables. Import using `import` keyword. Example:\\n```python\\nimport math\\nprint(math.sqrt(16)) # Output: 4.0\\n```\\n\\n**Working with Files:**\\n* **Opening:** Use `open(\\"filename\\", \\"mode\\")`. Modes: `\\"r\\"` (read), `\\"w\\"` (write), `\\"a\\"` (append).\\n* **Reading:** `file.read()` reads entire file, `file.readline()` reads one line.\\n* **Writing:** `file.write(\\"text\\")` writes to file.\\n* **Closing:** `file.close()` or use `with open(...) as file:` which automatically closes the file. Example:\\n```python\\nwith open(\\"myfile.txt\\", \\"w\\") as file:\\n  file.write(\\"Hello, world!\\")\\n```"}\nReturn as JSON array of strings'}]}], 'generationConfig': {'response_mime_type': 'application/json'}}
+Params: {'key': 'AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg'}
+[ERROR] HTTPError in call_gemini: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg
+[ERROR] Response content: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.QuotaFailure",
+        "violations": [
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            },
+            "quotaValue": "2"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more about Gemini API quotas",
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.RetryInfo",
+        "retryDelay": "43s"
+      }
+    ]
+  }
+}
+
+[ERROR] Rate limited. Retrying after 5 seconds...
+[DEBUG] Sending request to Gemini API...
+URL: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent
+Payload: {'contents': [{'parts': [{'text': 'Generate 5 open-ended questions about Functions, modules, and working with files based on: {"study_notes": "**Functions:** Reusable blocks of code. Defined using `def` keyword followed by function name, parentheses `()`, and colon `:`.  Example:\\n```python\\ndef greet(name):\\n  print(f\\"Hello, {name}!\\")\\ngreet(\\"Alice\\")  # Output: Hello, Alice!\\n```\\n\\n**Modules:** Files containing Python code. Allow organization and reusability of functions and variables. Import using `import` keyword. Example:\\n```python\\nimport math\\nprint(math.sqrt(16)) # Output: 4.0\\n```\\n\\n**Working with Files:**\\n* **Opening:** Use `open(\\"filename\\", \\"mode\\")`. Modes: `\\"r\\"` (read), `\\"w\\"` (write), `\\"a\\"` (append).\\n* **Reading:** `file.read()` reads entire file, `file.readline()` reads one line.\\n* **Writing:** `file.write(\\"text\\")` writes to file.\\n* **Closing:** `file.close()` or use `with open(...) as file:` which automatically closes the file. Example:\\n```python\\nwith open(\\"myfile.txt\\", \\"w\\") as file:\\n  file.write(\\"Hello, world!\\")\\n```"}\nReturn as JSON array of strings'}]}], 'generationConfig': {'response_mime_type': 'application/json'}}
+Params: {'key': 'AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg'}
+[DEBUG] Gemini API response: 127.0.0.1 - - [04/May/2025 09:43:30] "POST /generate_quiz_and_assignments HTTP/1.1" 200 -
+[2025-05-04 11:31:42,472] ERROR in app: Error generating quizzes: string indices must be integers
+127.0.0.1 - - [04/May/2025 11:31:42] "POST /generate_quiz_and_assignments HTTP/1.1" 500 -
+{'candidates': [{'content': {'parts': [{'text': '["How can you leverage functions to improve code modularity and reduce redundancy in a large Python project?", "Explain the benefits of using modules in Python and provide a practical example of how you would create and import your own module containing a set of utility functions.", "Describe different ways to handle potential exceptions (e.g., FileNotFoundError) when working with files in Python. Provide code examples demonstrating best practices.", "Compare and contrast the various file opening modes in Python (\'r\', \'w\', \'a\', \'x\', \'b\', \'t\', \'+\') and explain when you would use each one.", "Given a scenario where you need to process a large CSV file containing millions of rows, explain how you would efficiently read and process the data using Python, while minimizing memory usage and optimizing performance."]'}], 'role': 'model'}, 'finishReason': 'STOP', 'avgLogprobs': -0.25326478481292725}], 'usageMetadata': {'promptTokenCount': 316, 'candidatesTokenCount': 160, 'totalTokenCount': 476, 'promptTokensDetails': [{'modality': 'TEXT', 'tokenCount': 316}], 'candidatesTokensDetails': [{'modality': 'TEXT', 'tokenCount': 160}]}, 'modelVersion': 'gemini-1.5-pro-002'}
+[DEBUG] Sending request to Gemini API...
+URL: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent
+Payload: {'contents': [{'parts': [{'text': 'Generate 5 multiple-choice questions about Introduction to Java, Setting up the environment, Data Types and Variables based on these notes: {"Study Notes": {"Introduction to Java": "Java is a versatile, object-oriented programming language used for various applications.", "Setting up the Environment": "1. Install the Java Development Kit (JDK). 2. Set up environment variables (JAVA_HOME, PATH). 3. Choose an IDE like IntelliJ IDEA or Eclipse.", "Data Types and Variables": "Primitive Types: int, float, double, char, boolean. Variable Declaration: type variableName = value; Example: int age = 30; String name = \\"John\\";"}}\nFormat as JSON with keys: \'question\', \'options\' (array), \'answer\''}]}], 'generationConfig': {'response_mime_type': 'application/json'}}
+Params: {'key': 'AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg'}
+[DEBUG] Gemini API response: {'candidates': [{'content': {'parts': [{'text': '{"questions": [{"question": "What is Java primarily known for?", "options": ["Web development", "Object-oriented programming", "Data analysis", "Game development"], "answer": "Object-oriented programming"}, {"question": "Which of the following is NOT a step in setting up the Java environment?", "options": ["Installing JDK", "Setting JAVA_HOME environment variable", "Installing Python", "Choosing an IDE like IntelliJ IDEA"], "answer": "Installing Python"}, {"question": "What does JDK stand for?", "options": ["Java Development Kit", "Java Design Kit", "Java Deployment Kit", "Java Database Kit"], "answer": "Java Development Kit"}, {"question": "Which of the following is NOT a primitive data type in Java?", "options": ["int", "String", "float", "boolean"], "answer": "String"}, {"question": "What is the correct way to declare an integer variable named \\"count\\" and initialize it to 10 in Java?", "options": ["int count = 10;", "count = 10;", "integer count = 10;", "int count == 10;"], "answer": "int count = 10;"}]}'}], 'role': 'model'}, 'finishReason': 'STOP', 'avgLogprobs': -0.06874781069548233}], 'usageMetadata': {'promptTokenCount': 159, 'candidatesTokenCount': 253, 'totalTokenCount': 412, 'promptTokensDetails': [{'modality': 'TEXT', 'tokenCount': 159}], 'candidatesTokensDetails': [{'modality': 'TEXT', 'tokenCount': 253}]}, 'modelVersion': 'gemini-1.5-pro-002'}
+[DEBUG] Sending request to Gemini API...
+URL: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent
+Payload: {'contents': [{'parts': [{'text': 'Generate 5 open-ended questions about Introduction to Java, Setting up the environment, Data Types and Variables based on: {"Study Notes": {"Introduction to Java": "Java is a versatile, object-oriented programming language used for various applications.", "Setting up the Environment": "1. Install the Java Development Kit (JDK). 2. Set up environment variables (JAVA_HOME, PATH). 3. Choose an IDE like IntelliJ IDEA or Eclipse.", "Data Types and Variables": "Primitive Types: int, float, double, char, boolean. Variable Declaration: type variableName = value; Example: int age = 30; String name = \\"John\\";"}}\nReturn as JSON array of strings'}]}], 'generationConfig': {'response_mime_type': 'application/json'}}
+Params: {'key': 'AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg'}
+[DEBUG] Gemini API response: {'candidates': [{'content': {'parts': [{'text': '["How can the versatility of Java benefit different software development projects and which domains are best suited for its application?", "Beyond IntelliJ IDEA and Eclipse, what other IDEs or text editors can be effectively used for Java development, and what are their potential advantages or drawbacks?", "When setting up the Java environment, what potential issues might arise during JDK installation or environment variable configuration, and how can these issues be resolved effectively?", "Considering the various data types available in Java, how would you choose the most appropriate data type for different scenarios, such as storing large numbers, representing characters, or working with boolean values?", "How does the concept of immutability in Java, particularly in String variables, influence memory management and program behavior, and what best practices should be followed when dealing with immutable data?"]'}], 'role': 'model'}, 'finishReason': 'STOP', 'avgLogprobs': -0.3751302067237564}], 'usageMetadata': {'promptTokenCount': 145, 'candidatesTokenCount': 158, 'totalTokenCount': 303, 'promptTokensDetails': [{'modality': 'TEXT', 'tokenCount': 145}], 'candidatesTokensDetails': [{'modality': 'TEXT', 'tokenCount': 158}]}, 'modelVersion': 'gemini-1.5-pro-002'}
+[DEBUG] Sending request to Gemini API...
+URL: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent
+Payload: {'contents': [{'parts': [{'text': 'Generate 5 multiple-choice questions about Operators, Control Flow Statements, Object-Oriented Programming Concepts based on these notes: {"title": "C# Essentials", "segment": "[00:00:00-full]", "notes": {"Operators": "C# supports standard arithmetic (+, -, \\*, /, %), relational (==, !=, <, >, <=, >=), logical (&&, ||, !), bitwise (&, |, ^, ~, <<, >>), assignment (=, +=, -=, \\*=, /=, %=), and other operators.  Understanding operator precedence is crucial.", "Control Flow": "Control flow statements manage execution flow.  \'if\', \'else if\', \'else\' handle conditional logic. \'for\' and \'while\' implement loops for repetitive tasks.  \'switch\' offers structured branching based on a variable\'s value.  \'break\' and \'continue\' keywords provide finer control within loops.", "OOP Concepts": "C# is object-oriented. Core concepts include: Classes (blueprints for objects), Objects (instances of classes), Methods (functions within classes), Inheritance (creating new classes from existing ones), Polymorphism (objects of different classes responding differently to the same method call), and Encapsulation (bundling data and methods that operate on that data)."}}\nFormat as JSON with keys: \'question\', \'options\' (array), \'answer\''}]}], 'generationConfig': {'response_mime_type': 'application/json'}}
+Params: {'key': 'AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg'}
+[ERROR] HTTPError in call_gemini: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg
+[ERROR] Response content: 127.0.0.1 - - [04/May/2025 11:32:35] "POST /generate_quiz_and_assignments HTTP/1.1" 200 -
+{
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.QuotaFailure",
+        "violations": [
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "model": "gemini-1.5-pro",
+              "location": "global"
+            },
+            "quotaValue": "2"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more about Gemini API quotas",
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.RetryInfo",
+        "retryDelay": "44s"
+      }
+    ]
+  }
+}
+
+[ERROR] Rate limited. Retrying after 5 seconds...
+[DEBUG] Sending request to Gemini API...
+URL: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent
+Payload: {'contents': [{'parts': [{'text': 'Generate 5 multiple-choice questions about Operators, Control Flow Statements, Object-Oriented Programming Concepts based on these notes: {"title": "C# Essentials", "segment": "[00:00:00-full]", "notes": {"Operators": "C# supports standard arithmetic (+, -, \\*, /, %), relational (==, !=, <, >, <=, >=), logical (&&, ||, !), bitwise (&, |, ^, ~, <<, >>), assignment (=, +=, -=, \\*=, /=, %=), and other operators.  Understanding operator precedence is crucial.", "Control Flow": "Control flow statements manage execution flow.  \'if\', \'else if\', \'else\' handle conditional logic. \'for\' and \'while\' implement loops for repetitive tasks.  \'switch\' offers structured branching based on a variable\'s value.  \'break\' and \'continue\' keywords provide finer control within loops.", "OOP Concepts": "C# is object-oriented. Core concepts include: Classes (blueprints for objects), Objects (instances of classes), Methods (functions within classes), Inheritance (creating new classes from existing ones), Polymorphism (objects of different classes responding differently to the same method call), and Encapsulation (bundling data and methods that operate on that data)."}}\nFormat as JSON with keys: \'question\', \'options\' (array), \'answer\''}]}], 'generationConfig': {'response_mime_type': 'application/json'}}
+Params: {'key': 'AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg'}
+[DEBUG] Gemini API response: {'candidates': [{'content': {'parts': [{'text': '[{"question": "Which of the following is NOT a logical operator in C#?", "options": ["&&", "||", "!", "^"], "answer": "^"}, {"question": "What does the \'continue\' keyword do in a C# loop?", "options": ["Exits the loop entirely", "Skips the rest of the current iteration and proceeds to the next", "Pauses the loop execution", "Restarts the loop from the beginning"], "answer": "Skips the rest of the current iteration and proceeds to the next"}, {"question": "In C#, what is the purpose of a \'switch\' statement?", "options": ["To define a loop structure", "To handle exceptions", "To implement conditional logic based on a variable\'s value", "To declare a variable"], "answer": "To implement conditional logic based on a variable\'s value"}, {"question": "Which principle of OOP allows a subclass to modify the behavior of a method inherited from a parent class?", "options": ["Encapsulation", "Inheritance", "Polymorphism", "Abstraction"], "answer": "Polymorphism"}, {"question": "What is the concept of bundling data and methods that operate on that data within a class called?", "options": ["Inheritance", "Encapsulation", "Polymorphism", "Abstraction"], "answer": "Encapsulation"}]'}], 'role': 'model'}, 'finishReason': 'STOP', 'avgLogprobs': -0.10874817030770438}], 'usageMetadata': {'promptTokenCount': 292, 'candidatesTokenCount': 280, 'totalTokenCount': 572, 'promptTokensDetails': [{'modality': 'TEXT', 'tokenCount': 292}], 'candidatesTokensDetails': [{'modality': 'TEXT', 'tokenCount': 280}]}, 'modelVersion': 'gemini-1.5-pro-002'}
+[DEBUG] Sending request to Gemini API...
+URL: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent
+Payload: {'contents': [{'parts': [{'text': 'Generate 5 open-ended questions about Operators, Control Flow Statements, Object-Oriented Programming Concepts based on: {"title": "C# Essentials", "segment": "[00:00:00-full]", "notes": {"Operators": "C# supports standard arithmetic (+, -, \\*, /, %), relational (==, !=, <, >, <=, >=), logical (&&, ||, !), bitwise (&, |, ^, ~, <<, >>), assignment (=, +=, -=, \\*=, /=, %=), and other operators.  Understanding operator precedence is crucial.", "Control Flow": "Control flow statements manage execution flow.  \'if\', \'else if\', \'else\' handle conditional logic. \'for\' and \'while\' implement loops for repetitive tasks.  \'switch\' offers structured branching based on a variable\'s value.  \'break\' and \'continue\' keywords provide finer control within loops.", "OOP Concepts": "C# is object-oriented. Core concepts include: Classes (blueprints for objects), Objects (instances of classes), Methods (functions within classes), Inheritance (creating new classes from existing ones), Polymorphism (objects of different classes responding differently to the same method call), and Encapsulation (bundling data and methods that operate on that data)."}}\nReturn as JSON array of strings'}]}], 'generationConfig': {'response_mime_type': 'application/json'}}
+Params: {'key': 'AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg'}
+[DEBUG] Gemini API response: {'candidates': [{'content': {'parts': [{'text': '["How would you utilize bitwise operators in C# to efficiently manipulate individual bits within an integer variable, and what are some practical scenarios where this approach would be advantageous?", "Explain how the order of precedence of operators can impact the outcome of a complex C# expression. Provide a specific example demonstrating a potential pitfall due to incorrect operator precedence and how to avoid it.", "Given a scenario requiring repetitive execution of code based on a condition, compare and contrast the use of \'for\' and \'while\' loops in C#, highlighting their respective strengths and weaknesses and providing an example where one would be more suitable than the other.", "How does polymorphism enable flexible and reusable code design in C#?  Provide an example demonstrating its use with inheritance and method overriding.", "Discuss the importance of encapsulation in C# and its role in achieving data hiding and abstraction. How do access modifiers (public, private, protected) contribute to encapsulation, and how would you decide which modifier is appropriate for different members of a class?"]'}], 'role': 'model'}, 'finishReason': 'STOP', 'avgLogprobs': -0.3025193237906019}], 'usageMetadata': {'promptTokenCount': 278, 'candidatesTokenCount': 203, 'totalTokenCount': 481, 'promptTokensDetails': [{'modality': 'TEXT', 'tokenCount': 278}], 'candidatesTokensDetails': [{'modality': 'TEXT', 'tokenCount': 203}]}, 'modelVersion': 'gemini-1.5-pro-002'}
+[DEBUG] Sending request to Gemini API...
+URL: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent
+Payload: {'contents': [{'parts': [{'text': 'Generate 5 multiple-choice questions about Classes and Objects, Inheritance and Polymorphism, Exception Handling based on these notes: {"title": "C++: Classes, Objects, Inheritance, Polymorphism, and Exception Handling", "notes": "**Classes and Objects:** Classes are blueprints for creating objects. Objects are instances of a class. Define classes with `class` keyword, specify access modifiers (public, private, protected), member variables (data), and member functions (behavior). Create objects using the class name followed by a variable name.\\n\\n**Inheritance:**  Establishes \\"is-a\\" relationships between classes. Derive a new class (derived class) from an existing one (base class) using the `:` operator followed by access specifier (public, private, protected) and the base class name. Inherit public members of the base class; derived class can add or override members. Example: `class DerivedClass : public BaseClass`.\\n\\n**Polymorphism:** Enables objects of different classes to be treated as objects of a common type. Achieve using virtual functions. Declare a function in the base class as `virtual`, override it in derived classes. Use pointers or references to base class to call overridden functions, achieving dynamic dispatch at runtime.\\n\\n**Exception Handling:** Mechanism to handle runtime errors. Use `try`, `catch`, and `throw` blocks. Enclose code that might throw exceptions within a `try` block. Use `catch` to specify the type of exception to handle.  `throw` exceptions using objects of exception classes. Example: `try { ... throw runtime_error(\\"Error\\"); } catch (const runtime_error& e) { ... }`."}\nFormat as JSON with keys: \'question\', \'options\' (array), \'answer\''}]}], 'generationConfig': {'response_mime_type': 'application/json'}}
+Params: {'key': 'AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg'}
+[ERROR] HTTPError in call_gemini: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg
+[ERROR] Response content: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.QuotaFailure",
+        "violations": [
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            },
+            "quotaValue": "2"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more about Gemini API quotas",
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.RetryInfo",
+        "retryDelay": "13s"
+      }
+    ]
+  }
+}
+
+[ERROR] Rate limited. Retrying after 5 seconds...
+[DEBUG] Sending request to Gemini API...
+URL: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent
+Payload: {'contents': [{'parts': [{'text': 'Generate 5 multiple-choice questions about Classes and Objects, Inheritance and Polymorphism, Exception Handling based on these notes: {"title": "C++: Classes, Objects, Inheritance, Polymorphism, and Exception Handling", "notes": "**Classes and Objects:** Classes are blueprints for creating objects. Objects are instances of a class. Define classes with `class` keyword, specify access modifiers (public, private, protected), member variables (data), and member functions (behavior). Create objects using the class name followed by a variable name.\\n\\n**Inheritance:**  Establishes \\"is-a\\" relationships between classes. Derive a new class (derived class) from an existing one (base class) using the `:` operator followed by access specifier (public, private, protected) and the base class name. Inherit public members of the base class; derived class can add or override members. Example: `class DerivedClass : public BaseClass`.\\n\\n**Polymorphism:** Enables objects of different classes to be treated as objects of a common type. Achieve using virtual functions. Declare a function in the base class as `virtual`, override it in derived classes. Use pointers or references to base class to call overridden functions, achieving dynamic dispatch at runtime.\\n\\n**Exception Handling:** Mechanism to handle runtime errors. Use `try`, `catch`, and `throw` blocks. Enclose code that might throw exceptions within a `try` block. Use `catch` to specify the type of exception to handle.  `throw` exceptions using objects of exception classes. Example: `try { ... throw runtime_error(\\"Error\\"); } catch (const runtime_error& e) { ... }`."}\nFormat as JSON with keys: \'question\', \'options\' (array), \'answer\''}]}], 'generationConfig': {'response_mime_type': 'application/json'}}
+Params: {'key': 'AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg'}
+[ERROR] HTTPError in call_gemini: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg
+[ERROR] Response content: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.QuotaFailure",
+        "violations": [
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            },
+            "quotaValue": "2"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more about Gemini API quotas",
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.RetryInfo",
+        "retryDelay": "4s"
+      }
+    ]
+  }
+}
+
+[ERROR] Rate limited. Retrying after 5 seconds...
+[DEBUG] Sending request to Gemini API...
+URL: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent
+Payload: {'contents': [{'parts': [{'text': 'Generate 5 multiple-choice questions about Classes and Objects, Inheritance and Polymorphism, Exception Handling based on these notes: {"title": "C++: Classes, Objects, Inheritance, Polymorphism, and Exception Handling", "notes": "**Classes and Objects:** Classes are blueprints for creating objects. Objects are instances of a class. Define classes with `class` keyword, specify access modifiers (public, private, protected), member variables (data), and member functions (behavior). Create objects using the class name followed by a variable name.\\n\\n**Inheritance:**  Establishes \\"is-a\\" relationships between classes. Derive a new class (derived class) from an existing one (base class) using the `:` operator followed by access specifier (public, private, protected) and the base class name. Inherit public members of the base class; derived class can add or override members. Example: `class DerivedClass : public BaseClass`.\\n\\n**Polymorphism:** Enables objects of different classes to be treated as objects of a common type. Achieve using virtual functions. Declare a function in the base class as `virtual`, override it in derived classes. Use pointers or references to base class to call overridden functions, achieving dynamic dispatch at runtime.\\n\\n**Exception Handling:** Mechanism to handle runtime errors. Use `try`, `catch`, and `throw` blocks. Enclose code that might throw exceptions within a `try` block. Use `catch` to specify the type of exception to handle.  `throw` exceptions using objects of exception classes. Example: `try { ... throw runtime_error(\\"Error\\"); } catch (const runtime_error& e) { ... }`."}\nFormat as JSON with keys: \'question\', \'options\' (array), \'answer\''}]}], 'generationConfig': {'response_mime_type': 'application/json'}}
+Params: {'key': 'AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg'}
+[DEBUG] Gemini API response: {'candidates': [{'content': {'parts': [{'text': '[{"question": "Which keyword is used to define a class in C++?", "options": ["struct", "class", "object", "instance"], "answer": "class"}, {"question": "What is the purpose of access modifiers in C++ classes?", "options": ["To control the visibility and accessibility of class members", "To define the data type of member variables", "To specify the return type of member functions", "To declare the inheritance type"], "answer": "To control the visibility and accessibility of class members"}, {"question": "Which access specifier allows derived classes to inherit public members of the base class?", "options": ["private", "protected", "public", "internal"], "answer": "public"}, {"question": "What is the primary mechanism for achieving polymorphism in C++?", "options": ["Operator overloading", "Function overloading", "Virtual functions", "Templates"], "answer": "Virtual functions"}, {"question": "Which keyword is used to throw an exception in C++?", "options": ["try", "catch", "throw", "finally"], "answer": "throw"}]'}], 'role': 'model'}, 'finishReason': 'STOP', 'avgLogprobs': -0.07903335604605195}], 'usageMetadata': {'promptTokenCount': 370, 'candidatesTokenCount': 229, 'totalTokenCount': 599, 'promptTokensDetails': [{'modality': 'TEXT', 'tokenCount': 370}], 'candidatesTokensDetails': [{'modality': 'TEXT', 'tokenCount': 229}]}, 'modelVersion': 'gemini-1.5-pro-002'}
+[DEBUG] Sending request to Gemini API...
+URL: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent
+Payload: {'contents': [{'parts': [{'text': 'Generate 5 open-ended questions about Classes and Objects, Inheritance and Polymorphism, Exception Handling based on: {"title": "C++: Classes, Objects, Inheritance, Polymorphism, and Exception Handling", "notes": "**Classes and Objects:** Classes are blueprints for creating objects. Objects are instances of a class. Define classes with `class` keyword, specify access modifiers (public, private, protected), member variables (data), and member functions (behavior). Create objects using the class name followed by a variable name.\\n\\n**Inheritance:**  Establishes \\"is-a\\" relationships between classes. Derive a new class (derived class) from an existing one (base class) using the `:` operator followed by access specifier (public, private, protected) and the base class name. Inherit public members of the base class; derived class can add or override members. Example: `class DerivedClass : public BaseClass`.\\n\\n**Polymorphism:** Enables objects of different classes to be treated as objects of a common type. Achieve using virtual functions. Declare a function in the base class as `virtual`, override it in derived classes. Use pointers or references to base class to call overridden functions, achieving dynamic dispatch at runtime.\\n\\n**Exception Handling:** Mechanism to handle runtime errors. Use `try`, `catch`, and `throw` blocks. Enclose code that might throw exceptions within a `try` block. Use `catch` to specify the type of exception to handle.  `throw` exceptions using objects of exception classes. Example: `try { ... throw runtime_error(\\"Error\\"); } catch (const runtime_error& e) { ... }`."}\nReturn as JSON array of strings'}]}], 'generationConfig': {'response_mime_type': 'application/json'}}
+Params: {'key': 'AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg'}
+[ERROR] HTTPError in call_gemini: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg
+[ERROR] Response content: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.QuotaFailure",
+        "violations": [
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            },
+            "quotaValue": "2"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more about Gemini API quotas",
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.RetryInfo",
+        "retryDelay": "48s"
+      }
+    ]
+  }
+}
+
+[ERROR] Rate limited. Retrying after 5 seconds...
+[DEBUG] Sending request to Gemini API...
+URL: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent
+Payload: 127.0.0.1 - - [04/May/2025 11:33:27] "POST /generate_quiz_and_assignments HTTP/1.1" 200 -
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+{'contents': [{'parts': [{'text': 'Generate 5 open-ended questions about Classes and Objects, Inheritance and Polymorphism, Exception Handling based on: {"title": "C++: Classes, Objects, Inheritance, Polymorphism, and Exception Handling", "notes": "**Classes and Objects:** Classes are blueprints for creating objects. Objects are instances of a class. Define classes with `class` keyword, specify access modifiers (public, private, protected), member variables (data), and member functions (behavior). Create objects using the class name followed by a variable name.\\n\\n**Inheritance:**  Establishes \\"is-a\\" relationships between classes. Derive a new class (derived class) from an existing one (base class) using the `:` operator followed by access specifier (public, private, protected) and the base class name. Inherit public members of the base class; derived class can add or override members. Example: `class DerivedClass : public BaseClass`.\\n\\n**Polymorphism:** Enables objects of different classes to be treated as objects of a common type. Achieve using virtual functions. Declare a function in the base class as `virtual`, override it in derived classes. Use pointers or references to base class to call overridden functions, achieving dynamic dispatch at runtime.\\n\\n**Exception Handling:** Mechanism to handle runtime errors. Use `try`, `catch`, and `throw` blocks. Enclose code that might throw exceptions within a `try` block. Use `catch` to specify the type of exception to handle.  `throw` exceptions using objects of exception classes. Example: `try { ... throw runtime_error(\\"Error\\"); } catch (const runtime_error& e) { ... }`."}\nReturn as JSON array of strings'}]}], 'generationConfig': {'response_mime_type': 'application/json'}}
+Params: {'key': 'AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg'}
+[DEBUG] Gemini API response: {'candidates': [{'content': {'parts': [{'text': '["How would you design a class hierarchy for a banking system, considering different account types (e.g., savings, checking, loan) and customer roles, using inheritance and polymorphism to manage account operations and customer interactions?", "Given a scenario where different geometric shapes (circle, square, triangle) need to be drawn, explain how polymorphism can be used to implement a generic \'draw\' function that works correctly for each shape, and discuss the advantages of this approach over using separate draw functions for each shape.", "Imagine you are building a software application for managing library resources. How can exception handling be utilized to gracefully handle situations such as a book being unavailable, a user exceeding their borrowing limit, or a database connection error, ensuring the application continues to run smoothly?", "Discuss the potential issues that might arise when dealing with deep inheritance hierarchies in C++, specifically focusing on code maintainability, and propose strategies to mitigate these challenges.", "Explain how virtual destructors are essential when dealing with polymorphism in C++ and what potential problems could occur if they are not used correctly. Provide a practical example illustrating the importance of virtual destructors."]'}], 'role': 'model'}, 'finishReason': 'STOP', 'avgLogprobs': -0.39135090650710386}], 'usageMetadata': {'promptTokenCount': 356, 'candidatesTokenCount': 226, 'totalTokenCount': 582, 'promptTokensDetails': [{'modality': 'TEXT', 'tokenCount': 356}], 'candidatesTokensDetails': [{'modality': 'TEXT', 'tokenCount': 226}]}, 'modelVersion': 'gemini-1.5-pro-002'}
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 952-731-907
+127.0.0.1 - - [04/May/2025 11:41:40] "POST /generate_quiz_and_assignments HTTP/1.1" 200 -
+[DEBUG] Sending request to Gemini API...
+URL: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent
+Payload: {'contents': [{'parts': [{'text': 'Generate 5 multiple-choice questions about Introduction to Java, Setting up the environment, Basic Syntax and Data Types based on these notes: {"StudyNotes": {"Subtopic": "Introduction to Java, Setting up the environment, Basic Syntax and Data Types", "VideoSegment": "[00:00:00-full]", "Notes": "Java is a platform-independent, object-oriented programming language known for its versatility in building various applications. To set up the Java environment, you\'ll need to download and install the Java Development Kit (JDK), which includes the compiler and runtime environment. After installation, configure environment variables like JAVA_HOME and update the system path. Java syntax uses curly braces {} to define code blocks and semicolons ; to terminate statements. Key data types include primitive types like `int` (integer), `float` (floating-point number), `char` (character), `boolean` (true/false) and non-primitive types like `String` (sequence of characters), `Array` (collection of similar data types). Understanding these core concepts is crucial for Java programming."}}\nFormat as JSON with keys: \'question\', \'options\' (array), \'answer\''}]}], 'generationConfig': {'response_mime_type': 'application/json'}}
+Params: {'key': 'AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg'}
+[DEBUG] Gemini API response: {'candidates': [{'content': {'parts': [{'text': '[{"question": "What makes Java platform-independent?", "options": ["Its object-oriented nature", "The use of curly braces", "The Java Virtual Machine (JVM)", "The Java Development Kit (JDK)"], "answer": "The Java Virtual Machine (JVM)"}, {"question": "Which of the following is NOT included in the Java Development Kit (JDK)?", "options": ["Java compiler", "Java Runtime Environment (JRE)", "Java Virtual Machine (JVM)", "Integrated Development Environment (IDE)"], "answer": "Integrated Development Environment (IDE)"}, {"question": "What is the purpose of semicolons in Java?", "options": ["To define code blocks", "To terminate statements", "To declare variables", "To comment code"], "answer": "To terminate statements"}, {"question": "Which data type is used to store a sequence of characters in Java?", "options": ["char", "String", "Array", "int"], "answer": "String"}, {"question": "Which of the following is a primitive data type in Java?", "options": ["String", "Array", "int", "Class"], "answer": "int"}]'}], 'role': 'model'}, 'finishReason': 'STOP', 'avgLogprobs': -0.03117396507734134}], 'usageMetadata': {'promptTokenCount': 247, 'candidatesTokenCount': 243, 'totalTokenCount': 490, 'promptTokensDetails': [{'modality': 'TEXT', 'tokenCount': 247}], 'candidatesTokensDetails': [{'modality': 'TEXT', 'tokenCount': 243}]}, 'modelVersion': 'gemini-1.5-pro-002'}
+[DEBUG] Sending request to Gemini API...
+URL: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent
+Payload: {'contents': [{'parts': [{'text': 'Generate 5 open-ended questions about Introduction to Java, Setting up the environment, Basic Syntax and Data Types based on: {"StudyNotes": {"Subtopic": "Introduction to Java, Setting up the environment, Basic Syntax and Data Types", "VideoSegment": "[00:00:00-full]", "Notes": "Java is a platform-independent, object-oriented programming language known for its versatility in building various applications. To set up the Java environment, you\'ll need to download and install the Java Development Kit (JDK), which includes the compiler and runtime environment. After installation, configure environment variables like JAVA_HOME and update the system path. Java syntax uses curly braces {} to define code blocks and semicolons ; to terminate statements. Key data types include primitive types like `int` (integer), `float` (floating-point number), `char` (character), `boolean` (true/false) and non-primitive types like `String` (sequence of characters), `Array` (collection of similar data types). Understanding these core concepts is crucial for Java programming."}}\nReturn as JSON array of strings'}]}], 'generationConfig': {'response_mime_type': 'application/json'}}
+Params: {'key': 'AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg'}
+[DEBUG] Gemini API response: {'candidates': [{'content': {'parts': [{'text': '["Explain the significance of platform independence in Java and its benefits for developers.", "Describe the steps involved in setting up the Java development environment, including JDK installation and environment variable configuration.", "How do you declare and initialize different data types in Java, and what are some common use cases for each?", "What is the purpose of curly braces {} and semicolons ; in Java syntax, and how do they affect code execution?", "Compare and contrast primitive and non-primitive data types in Java, providing examples of each and explaining their memory allocation."]'}], 'role': 'model'}, 'finishReason': 'STOP', 'avgLogprobs': -0.05835587825250188}], 'usageMetadata': {'promptTokenCount': 233, 'candidatesTokenCount': 109, 'totalTokenCount': 342, 'promptTokensDetails': [{'modality': 'TEXT', 'tokenCount': 233}], 'candidatesTokensDetails': [{'modality': 'TEXT', 'tokenCount': 109}]}, 'modelVersion': 'gemini-1.5-pro-002'}
+[DEBUG] Sending request to Gemini API...
+URL: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent
+Payload: {'contents': [{'parts': [{'text': 'Generate 5 multiple-choice questions about Object-Oriented Programming Concepts (Classes, Objects, Inheritance, Polymorphism), Control Flow and Loops based on these notes: {"study_notes": "Object-Oriented Programming (OOP) uses classes as blueprints for creating objects.  Objects encapsulate data (attributes) and actions (methods). Inheritance allows creating new classes (derived classes) based on existing ones (base classes), inheriting attributes and methods. Polymorphism enables objects of different classes to be treated as objects of a common type, allowing flexibility. Control flow directs the order of program execution.  Conditional statements (if, else if, else) execute code blocks based on conditions. Loops (for, while) repeat code blocks.  A \'for\' loop iterates a specific number of times, while a \'while\' loop continues as long as a condition is true. These concepts work together for organized, reusable, and efficient code."}\nFormat as JSON with keys: \'question\', \'options\' (array), \'answer\''}]}], 'generationConfig': {'response_mime_type': 'application/json'}}
+Params: {'key': 'AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg'}
+[ERROR] HTTPError in call_gemini: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg
+[ERROR] Response content: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.QuotaFailure",
+        "violations": [
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "model": "gemini-1.5-pro",
+              "location": "global"
+            },
+            "quotaValue": "2"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more about Gemini API quotas",
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.RetryInfo",
+        "retryDelay": "52s"
+      }
+    ]
+  }
+}
+
+[ERROR] Rate limited. Retrying after 5 seconds...
+[DEBUG] Sending request to Gemini API...
+URL: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent
+Payload: {'contents': [{'parts': [{'text': 'Generate 5 multiple-choice questions about Object-Oriented Programming Concepts (Classes, Objects, Inheritance, Polymorphism), Control Flow and Loops based on these notes: {"study_notes": "Object-Oriented Programming (OOP) uses classes as blueprints for creating objects.  Objects encapsulate data (attributes) and actions (methods). Inheritance allows creating new classes (derived classes) based on existing ones (base classes), inheriting attributes and methods. Polymorphism enables objects of different classes to be treated as objects of a common type, allowing flexibility. Control flow directs the order of program execution.  Conditional statements (if, else if, else) execute code blocks based on conditions. Loops (for, while) repeat code blocks.  A \'for\' loop iterates a specific number of times, while a \'while\' loop continues as long as a condition is true. These concepts work together for organized, reusable, and efficient code."}\nFormat as JSON with keys: \'question\', \'options\' (array), \'answer\''}]}], 'generationConfig': {'response_mime_type': 'application/json'}}
+Params: {'key': 'AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg'}
+[ERROR] HTTPError in call_gemini: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg
+[ERROR] Response content: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.QuotaFailure",
+        "violations": [
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "model": "gemini-1.5-pro",
+              "location": "global"
+            },
+            "quotaValue": "2"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more about Gemini API quotas",
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.RetryInfo",
+        "retryDelay": "42s"
+      }
+    ]
+  }
+}
+
+[ERROR] Rate limited. Retrying after 5 seconds...
+[DEBUG] Sending request to Gemini API...
+URL: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent
+Payload: {'contents': [{'parts': [{'text': 'Generate 5 multiple-choice questions about Object-Oriented Programming Concepts (Classes, Objects, Inheritance, Polymorphism), Control Flow and Loops based on these notes: {"study_notes": "Object-Oriented Programming (OOP) uses classes as blueprints for creating objects.  Objects encapsulate data (attributes) and actions (methods). Inheritance allows creating new classes (derived classes) based on existing ones (base classes), inheriting attributes and methods. Polymorphism enables objects of different classes to be treated as objects of a common type, allowing flexibility. Control flow directs the order of program execution.  Conditional statements (if, else if, else) execute code blocks based on conditions. Loops (for, while) repeat code blocks.  A \'for\' loop iterates a specific number of times, while a \'while\' loop continues as long as a condition is true. These concepts work together for organized, reusable, and efficient code."}\nFormat as JSON with keys: \'question\', \'options\' (array), \'answer\''}]}], 'generationConfig': {'response_mime_type': 'application/json'}}
+Params: {'key': 'AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg'}
+[DEBUG] Gemini API response: {'candidates': [{'content': {'parts': [{'text': '[{"question": "Which concept in OOP serves as a blueprint for creating objects?", "options": ["Inheritance", "Polymorphism", "Class", "Object"], "answer": "Class"}, {"question": "What is the primary purpose of inheritance in OOP?", "options": ["Data hiding", "Code reusability and extension", "Creating interfaces", "Defining data structures"], "answer": "Code reusability and extension"}, {"question": "Which control flow statement is most suitable when the number of iterations is known in advance?", "options": ["while loop", "for loop", "if statement", "do-while loop"], "answer": "for loop"}, {"question": "Polymorphism allows objects of different classes to be treated as objects of a common type. What is a key benefit of this?", "options": ["Improved code readability", "Enhanced security", "Flexibility and code simplification", "Reduced memory usage"], "answer": "Flexibility and code simplification"}, {"question": "In a \'while\' loop, when does the code block inside the loop execute?", "options": ["Only once", "As long as the condition is true", "A fixed number of times", "When the condition is false"], "answer": "As long as the condition is true"}]'}], 'role': 'model'}, 'finishReason': 'STOP', 'avgLogprobs': -0.08838430551382212}], 'usageMetadata': {'promptTokenCount': 208, 'candidatesTokenCount': 260, 'totalTokenCount': 468, 'promptTokensDetails': [{'modality': 'TEXT', 'tokenCount': 208}], 'candidatesTokensDetails': [{'modality': 'TEXT', 'tokenCount': 260}]}, 'modelVersion': 'gemini-1.5-pro-002'}
+[DEBUG] Sending request to Gemini API...
+URL: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent
+Payload: {'contents': [{'parts': [{'text': 'Generate 5 open-ended questions about Object-Oriented Programming Concepts (Classes, Objects, Inheritance, Polymorphism), Control Flow and Loops based on: {"study_notes": "Object-Oriented Programming (OOP) uses classes as blueprints for creating objects.  Objects encapsulate data (attributes) and actions (methods). Inheritance allows creating new classes (derived classes) based on existing ones (base classes), inheriting attributes and methods. Polymorphism enables objects of different classes to be treated as objects of a common type, allowing flexibility. Control flow directs the order of program execution.  Conditional statements (if, else if, else) execute code blocks based on conditions. Loops (for, while) repeat code blocks.  A \'for\' loop iterates a specific number of times, while a \'while\' loop continues as long as a condition is true. These concepts work together for organized, reusable, and efficient code."}\nReturn as JSON array of strings'}]}], 'generationConfig': {'response_mime_type': 'application/json'}}
+Params: {'key': 'AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg'}
+[DEBUG] Gemini API response: 127.0.0.1 - - [04/May/2025 11:42:37] "POST /generate_quiz_and_assignments HTTP/1.1" 200 -
+{'candidates': [{'content': {'parts': [{'text': '["How would you design a class hierarchy for a banking system, considering different account types and customer roles, and how can polymorphism be used to manage transactions across these accounts?", "Given a scenario requiring complex conditional logic involving multiple variables and potential outcomes, how would you structure the control flow using nested if-else statements or a switch statement, and what are the trade-offs of each approach?", "Explain how inheritance can lead to code reusability and reduced redundancy in a software project, providing a specific example illustrating the benefits.", "If you needed to process a large dataset with varying data types, how would you leverage polymorphism and control flow structures like loops to efficiently iterate and perform operations on the data?", "Describe a situation where using a \'while\' loop would be more appropriate than a \'for\' loop, and explain how infinite loops can be avoided in such scenarios, highlighting the role of loop conditions."]'}], 'role': 'model'}, 'finishReason': 'STOP', 'avgLogprobs': -0.3236151801215278}], 'usageMetadata': {'promptTokenCount': 194, 'candidatesTokenCount': 180, 'totalTokenCount': 374, 'promptTokensDetails': [{'modality': 'TEXT', 'tokenCount': 194}], 'candidatesTokensDetails': [{'modality': 'TEXT', 'tokenCount': 180}]}, 'modelVersion': 'gemini-1.5-pro-002'}
+[DEBUG] Sending request to Gemini API...
+URL: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent
+Payload: {'contents': [{'parts': [{'text': 'Generate 5 multiple-choice questions about Data Structures (Arrays, Lists, Maps), Input/Output Operations based on these notes: {"StudyNotes": {"Subtopic": "Data Structures (Arrays, Lists, Maps), Input/Output Operations", "VideoSegment": "[00:00:00-full]", "Notes": "**Data Structures:**  Arrays store elements of the same type in contiguous memory locations, enabling efficient random access using index. Lists, unlike arrays, can grow dynamically and store elements of different types. Maps store key-value pairs, allowing efficient data retrieval based on keys.\\n**Input/Output Operations:** Reading data from input streams (e.g., keyboard, file) involves functions like `input()` or file I/O operations. Writing data to output streams (e.g., console, file) uses `print()` or file I/O operations. Working with files often involves opening, reading from/writing to, and closing the file stream. Data serialization formats like JSON and CSV are commonly used for storing structured data."}}\nFormat as JSON with keys: \'question\', \'options\' (array), \'answer\''}]}], 'generationConfig': {'response_mime_type': 'application/json'}}
+Params: {'key': 'AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg'}
+[DEBUG] Gemini API response: {'candidates': [{'content': {'parts': [{'text': '[{"question": "Which data structure allows efficient random access to elements using an index?", "options": ["List", "Map", "Array", "Set"], "answer": "Array"}, {"question": "What is a key difference between arrays and lists?", "options": ["Arrays can store different data types, while lists cannot.", "Lists can grow dynamically, while arrays typically have a fixed size.", "Arrays are used for key-value pairs, while lists are for ordered collections.", "Lists allow random access, while arrays do not."], "answer": "Lists can grow dynamically, while arrays typically have a fixed size."}, {"question": "Which data structure is most suitable for storing key-value pairs?", "options": ["Array", "List", "Map", "Set"], "answer": "Map"}, {"question": "Which function is commonly used for reading data from standard input in Python?", "options": ["print()", "read()", "input()", "write()"], "answer": "input()"}, {"question": "What are some common data serialization formats used for storing structured data?", "options": ["JSON and CSV", "MP3 and WAV", "JPEG and PNG", "HTML and XML"], "answer": "JSON and CSV"}]'}], 'role': 'model'}, 'finishReason': 'STOP', 'avgLogprobs': -0.054895868561147254}], 'usageMetadata': {'promptTokenCount': 236, 'candidatesTokenCount': 257, 'totalTokenCount': 493, 'promptTokensDetails': [{'modality': 'TEXT', 'tokenCount': 236}], 'candidatesTokensDetails': [{'modality': 'TEXT', 'tokenCount': 257}]}, 'modelVersion': 'gemini-1.5-pro-002'}
+[DEBUG] Sending request to Gemini API...
+URL: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent
+Payload: {'contents': [{'parts': [{'text': 'Generate 5 open-ended questions about Data Structures (Arrays, Lists, Maps), Input/Output Operations based on: {"StudyNotes": {"Subtopic": "Data Structures (Arrays, Lists, Maps), Input/Output Operations", "VideoSegment": "[00:00:00-full]", "Notes": "**Data Structures:**  Arrays store elements of the same type in contiguous memory locations, enabling efficient random access using index. Lists, unlike arrays, can grow dynamically and store elements of different types. Maps store key-value pairs, allowing efficient data retrieval based on keys.\\n**Input/Output Operations:** Reading data from input streams (e.g., keyboard, file) involves functions like `input()` or file I/O operations. Writing data to output streams (e.g., console, file) uses `print()` or file I/O operations. Working with files often involves opening, reading from/writing to, and closing the file stream. Data serialization formats like JSON and CSV are commonly used for storing structured data."}}\nReturn as JSON array of strings'}]}], 'generationConfig': {'response_mime_type': 'application/json'}}
+Params: {'key': 'AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg'}
+[ERROR] HTTPError in call_gemini: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg
+[ERROR] Response content: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.QuotaFailure",
+        "violations": [
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            },
+            "quotaValue": "2"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more about Gemini API quotas",
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.RetryInfo",
+        "retryDelay": "11s"
+      }
+    ]
+  }
+}
+
+[ERROR] Rate limited. Retrying after 5 seconds...
+[DEBUG] Sending request to Gemini API...
+URL: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent
+Payload: 127.0.0.1 - - [04/May/2025 11:43:02] "POST /generate_quiz_and_assignments HTTP/1.1" 200 -
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+{'contents': [{'parts': [{'text': 'Generate 5 open-ended questions about Data Structures (Arrays, Lists, Maps), Input/Output Operations based on: {"StudyNotes": {"Subtopic": "Data Structures (Arrays, Lists, Maps), Input/Output Operations", "VideoSegment": "[00:00:00-full]", "Notes": "**Data Structures:**  Arrays store elements of the same type in contiguous memory locations, enabling efficient random access using index. Lists, unlike arrays, can grow dynamically and store elements of different types. Maps store key-value pairs, allowing efficient data retrieval based on keys.\\n**Input/Output Operations:** Reading data from input streams (e.g., keyboard, file) involves functions like `input()` or file I/O operations. Writing data to output streams (e.g., console, file) uses `print()` or file I/O operations. Working with files often involves opening, reading from/writing to, and closing the file stream. Data serialization formats like JSON and CSV are commonly used for storing structured data."}}\nReturn as JSON array of strings'}]}], 'generationConfig': {'response_mime_type': 'application/json'}}
+Params: {'key': 'AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg'}
+[DEBUG] Gemini API response: {'candidates': [{'content': {'parts': [{'text': '["Considering the trade-offs between memory efficiency and flexibility, when would you choose to use an array over a list, or vice versa, for a given programming task?", "How can you efficiently search for a specific element within a large dataset stored in a map, and what factors might influence your choice of search algorithm?", "Describe different strategies for handling file input/output operations, including techniques for error management and ensuring data integrity.", "If you need to store and retrieve structured data in a persistent manner, what factors would you consider when choosing between different data serialization formats like JSON, CSV, or XML?", "Explain how input and output operations interact with different data structures, and provide examples of how you would read data from a file into an array or write data from a map to a CSV file."]'}], 'role': 'model'}, 'finishReason': 'STOP', 'avgLogprobs': -0.38458847999572754}], 'usageMetadata': {'promptTokenCount': 222, 'candidatesTokenCount': 160, 'totalTokenCount': 382, 'promptTokensDetails': [{'modality': 'TEXT', 'tokenCount': 222}], 'candidatesTokensDetails': [{'modality': 'TEXT', 'tokenCount': 160}]}, 'modelVersion': 'gemini-1.5-pro-002'}
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 952-731-907
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 952-731-907
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 952-731-907
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 952-731-907
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 952-731-907
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 952-731-907
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 952-731-907
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 952-731-907
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 952-731-907
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 952-731-907
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 952-731-907
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 952-731-907
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 952-731-907
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 952-731-907
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 952-731-907
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 952-731-907
+127.0.0.1 - - [04/May/2025 11:48:40] "POST /generate_quiz_and_assignments HTTP/1.1" 200 -
+[DEBUG] Sending request to Gemini API...
+URL: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent
+Payload: {'contents': [{'parts': [{'text': 'Generate 5 multiple-choice questions about Introduction to Java, Setting up the environment, Basic Syntax and Data Types based on these notes: {"title": "Introduction to Java, Setting up the environment, Basic Syntax and Data Types", "notes": "Java is a versatile, object-oriented programming language known for its platform independence (\\"write once, run anywhere\\"). To set up your environment, download and install the Java Development Kit (JDK), which includes the Java Runtime Environment (JRE) and compiler.  Set the JAVA_HOME environment variable and update the system PATH.  A basic Java program starts with a class declaration containing the `main` method. Inside `main`, you\'ll write your code using various data types like `int` for integers, `double` for floating-point numbers, `boolean` for true/false values, and `String` for text.  Semicolons mark the end of statements. The `System.out.println()` method displays output to the console. Remember to save your code with a `.java` extension and compile it using `javac` before running with `java`."}\nFormat as JSON with keys: \'question\', \'options\' (array), \'answer\''}]}], 'generationConfig': {'response_mime_type': 'application/json'}}
+Params: {'key': 'AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg'}
+[DEBUG] Gemini API response: {'candidates': [{'content': {'parts': [{'text': '[{"question": "What is the primary purpose of the Java Development Kit (JDK)?", "options": ["A. To execute Java programs.", "B. To compile and run Java programs.", "C. To only compile Java programs.", "D. To write Java code."], "answer": "B"}, {"question": "Which environment variable is crucial for setting up Java?", "options": ["A. JAVA_PATH", "B. JAVA_HOME", "C. JDK_HOME", "D. JRE_PATH"], "answer": "B"}, {"question": "What is the entry point for execution in a Java program?", "options": ["A. The class declaration.", "B. The `main` method.", "C. The `System.out.println()` method.", "D. The file extension."], "answer": "B"}, {"question": "Which data type would you use to store the value 3.14159 in Java?", "options": ["A. `int`", "B. `float`", "C. `double`", "D. `String`"], "answer": "C"}, {"question": "What symbol signifies the end of a statement in Java?", "options": ["A. Colon (:)", "B. Comma (,)", "C. Period (.)", "D. Semicolon (;)"], "answer": "D"}]'}], 'role': 'model'}, 'finishReason': 'STOP', 'avgLogprobs': -0.09450344190205613}], 'usageMetadata': {'promptTokenCount': 250, 'candidatesTokenCount': 292, 'totalTokenCount': 542, 'promptTokensDetails': [{'modality': 'TEXT', 'tokenCount': 250}], 'candidatesTokensDetails': [{'modality': 'TEXT', 'tokenCount': 292}]}, 'modelVersion': 'gemini-1.5-pro-002'}
+[DEBUG] Sending request to Gemini API...
+URL: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent
+Payload: {'contents': [{'parts': [{'text': 'Generate 5 open-ended questions about Introduction to Java, Setting up the environment, Basic Syntax and Data Types based on: {"title": "Introduction to Java, Setting up the environment, Basic Syntax and Data Types", "notes": "Java is a versatile, object-oriented programming language known for its platform independence (\\"write once, run anywhere\\"). To set up your environment, download and install the Java Development Kit (JDK), which includes the Java Runtime Environment (JRE) and compiler.  Set the JAVA_HOME environment variable and update the system PATH.  A basic Java program starts with a class declaration containing the `main` method. Inside `main`, you\'ll write your code using various data types like `int` for integers, `double` for floating-point numbers, `boolean` for true/false values, and `String` for text.  Semicolons mark the end of statements. The `System.out.println()` method displays output to the console. Remember to save your code with a `.java` extension and compile it using `javac` before running with `java`."}\nReturn as JSON array of strings'}]}], 'generationConfig': {'response_mime_type': 'application/json'}}
+Params: {'key': 'AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg'}
+[DEBUG] Gemini API response: {'candidates': [{'content': {'parts': [{'text': '["What are the key advantages of Java\'s platform independence and how does it achieve this?", "Explain the roles of JDK, JRE, and JVM in Java development and their relationship to each other.", "Describe the process of setting up the Java development environment on your operating system, including setting environment variables.", "Given a scenario requiring specific data types, how would you choose the most appropriate data types in Java and explain your reasoning?", "How can you effectively use the System.out.println() method to format and display different data types in a user-friendly manner?"]'}], 'role': 'model'}, 'finishReason': 'STOP', 'avgLogprobs': -0.25477626405913256}], 'usageMetadata': {'promptTokenCount': 236, 'candidatesTokenCount': 116, 'totalTokenCount': 352, 'promptTokensDetails': [{'modality': 'TEXT', 'tokenCount': 236}], 'candidatesTokensDetails': [{'modality': 'TEXT', 'tokenCount': 116}]}, 'modelVersion': 'gemini-1.5-pro-002'}
+[DEBUG] Sending request to Gemini API...
+URL: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent
+Payload: {'contents': [{'parts': [{'text': 'Generate 5 multiple-choice questions about Object-Oriented Programming Concepts (Classes, Objects, Inheritance, Polymorphism), Control Flow and Loops based on these notes: {"title": "Object-Oriented Programming and Control Flow", "notes": "**Object-Oriented Programming (OOP):**\\n* **Classes:** Blueprints for creating objects. Define properties (data) and methods (behavior).\\n* **Objects:** Instances of a class. Each object has its own state.\\n* **Inheritance:**  Creating new classes (derived classes) based on existing ones (base classes). Inherits properties and methods, promoting code reuse.\\n* **Polymorphism:**  Objects of different classes can respond differently to the same method call. Enables flexibility and extensibility.\\n\\n**Control Flow:**\\n* Determines the order in which statements are executed.\\n* **Conditional Statements (if, elif, else):** Execute code blocks based on conditions.\\n* **Loops (for, while):** Repeat a block of code multiple times.\\n    * **for loop:** Iterates over a sequence (e.g., list, string).\\n    * **while loop:** Continues as long as a condition is true."}\nFormat as JSON with keys: \'question\', \'options\' (array), \'answer\''}]}], 'generationConfig': {'response_mime_type': 'application/json'}}
+Params: {'key': 'AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg'}
+[ERROR] HTTPError in call_gemini: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg
+[ERROR] Response content: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.QuotaFailure",
+        "violations": [
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            },
+            "quotaValue": "2"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more about Gemini API quotas",
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.RetryInfo",
+        "retryDelay": "14s"
+      }
+    ]
+  }
+}
+
+[2025-05-04 11:49:10,051] ERROR in app: Error generating quizzes: RetryError[<Future at 0x77a9926be410 state=finished raised HTTPError>]
+127.0.0.1 - - [04/May/2025 11:49:10] "POST /generate_quiz_and_assignments HTTP/1.1" 500 -
+[ERROR] Rate limited. Retrying after 5 seconds...
+[DEBUG] Sending request to Gemini API...
+URL: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent
+Payload: {'contents': [{'parts': [{'text': 'Generate 5 multiple-choice questions about Object-Oriented Programming Concepts (Classes, Objects, Inheritance, Polymorphism), Control Flow and Loops based on these notes: {"title": "Object-Oriented Programming and Control Flow", "notes": "**Object-Oriented Programming (OOP):**\\n* **Classes:** Blueprints for creating objects. Define properties (data) and methods (behavior).\\n* **Objects:** Instances of a class. Each object has its own state.\\n* **Inheritance:**  Creating new classes (derived classes) based on existing ones (base classes). Inherits properties and methods, promoting code reuse.\\n* **Polymorphism:**  Objects of different classes can respond differently to the same method call. Enables flexibility and extensibility.\\n\\n**Control Flow:**\\n* Determines the order in which statements are executed.\\n* **Conditional Statements (if, elif, else):** Execute code blocks based on conditions.\\n* **Loops (for, while):** Repeat a block of code multiple times.\\n    * **for loop:** Iterates over a sequence (e.g., list, string).\\n    * **while loop:** Continues as long as a condition is true."}\nFormat as JSON with keys: \'question\', \'options\' (array), \'answer\''}]}], 'generationConfig': {'response_mime_type': 'application/json'}}
+Params: {'key': 'AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg'}
+[ERROR] HTTPError in call_gemini: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg
+[ERROR] Response content: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.QuotaFailure",
+        "violations": [
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            },
+            "quotaValue": "2"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more about Gemini API quotas",
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.RetryInfo",
+        "retryDelay": "4s"
+      }
+    ]
+  }
+}
+
+[ERROR] Rate limited. Retrying after 5 seconds...
+[DEBUG] Sending request to Gemini API...
+URL: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent
+Payload: {'contents': [{'parts': [{'text': 'Generate 5 multiple-choice questions about Object-Oriented Programming Concepts (Classes, Objects, Inheritance, Polymorphism), Control Flow and Loops based on these notes: {"title": "Object-Oriented Programming and Control Flow", "notes": "**Object-Oriented Programming (OOP):**\\n* **Classes:** Blueprints for creating objects. Define properties (data) and methods (behavior).\\n* **Objects:** Instances of a class. Each object has its own state.\\n* **Inheritance:**  Creating new classes (derived classes) based on existing ones (base classes). Inherits properties and methods, promoting code reuse.\\n* **Polymorphism:**  Objects of different classes can respond differently to the same method call. Enables flexibility and extensibility.\\n\\n**Control Flow:**\\n* Determines the order in which statements are executed.\\n* **Conditional Statements (if, elif, else):** Execute code blocks based on conditions.\\n* **Loops (for, while):** Repeat a block of code multiple times.\\n    * **for loop:** Iterates over a sequence (e.g., list, string).\\n    * **while loop:** Continues as long as a condition is true."}\nFormat as JSON with keys: \'question\', \'options\' (array), \'answer\''}]}], 'generationConfig': {'response_mime_type': 'application/json'}}
+Params: {'key': 'AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg'}
+[ERROR] HTTPError in call_gemini: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg
+[ERROR] Response content: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.QuotaFailure",
+        "violations": [
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "model": "gemini-1.5-pro",
+              "location": "global"
+            },
+            "quotaValue": "2"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more about Gemini API quotas",
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.RetryInfo",
+        "retryDelay": "55s"
+      }
+    ]
+  }
+}
+
+[ERROR] Rate limited. Retrying after 5 seconds...
+[DEBUG] Sending request to Gemini API...
+URL: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent
+Payload: {'contents': [{'parts': [{'text': 'Generate 5 multiple-choice questions about Data Structures (Arrays, Lists, Maps), Exception Handling based on these notes: {"title": "Data Structures and Exception Handling in Python", "notes": "**Data Structures:**\\n* **Arrays (Lists):** Ordered, mutable sequences.  Use `[]` to create. Efficient for indexing, appending, and popping from the end. Slower for insertions and deletions in the middle. Example: `my_list = [1, 2, \'apple\']`\\n* **Maps (Dictionaries):** Key-value pairs. Unordered.  Use `{}` or `dict()` to create. Efficient lookups, insertions, and deletions. Example: `my_dict = {\'name\': \'Alice\', \'age\': 30}`\\n**Exception Handling:**\\n* Use `try-except` blocks to handle potential errors. The `try` block contains the code that might raise an exception. The `except` block specifies how to handle the exception. Example:\\n```python\\ntry:\\n  result = 10 / 0\\nexcept ZeroDivisionError:\\n  print(\\"Cannot divide by zero.\\")\\n```"}\nFormat as JSON with keys: \'question\', \'options\' (array), \'answer\''}]}], 'generationConfig': {'response_mime_type': 'application/json'}}
+Params: {'key': 'AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg'}
+[ERROR] HTTPError in call_gemini: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg
+[ERROR] Response content: [2025-05-04 11:49:51,006] ERROR in app: Error generating quizzes: RetryError[<Future at 0x77a9926bf1f0 state=finished raised HTTPError>]
+127.0.0.1 - - [04/May/2025 11:49:51] "POST /generate_quiz_and_assignments HTTP/1.1" 500 -
+ * Detected change in '/home/anujasuntnur/Documents/Whiplash2025-main(1)/Whiplash2025-main/microservices_backend/mcp_server/app.py', reloading
+{
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.QuotaFailure",
+        "violations": [
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerDayPerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "model": "gemini-1.5-pro",
+              "location": "global"
+            },
+            "quotaValue": "50"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more about Gemini API quotas",
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.RetryInfo",
+        "retryDelay": "35s"
+      }
+    ]
+  }
+}
+
+[ERROR] Rate limited. Retrying after 5 seconds...
+[DEBUG] Sending request to Gemini API...
+URL: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent
+Payload: {'contents': [{'parts': [{'text': 'Generate 5 multiple-choice questions about Data Structures (Arrays, Lists, Maps), Exception Handling based on these notes: {"title": "Data Structures and Exception Handling in Python", "notes": "**Data Structures:**\\n* **Arrays (Lists):** Ordered, mutable sequences.  Use `[]` to create. Efficient for indexing, appending, and popping from the end. Slower for insertions and deletions in the middle. Example: `my_list = [1, 2, \'apple\']`\\n* **Maps (Dictionaries):** Key-value pairs. Unordered.  Use `{}` or `dict()` to create. Efficient lookups, insertions, and deletions. Example: `my_dict = {\'name\': \'Alice\', \'age\': 30}`\\n**Exception Handling:**\\n* Use `try-except` blocks to handle potential errors. The `try` block contains the code that might raise an exception. The `except` block specifies how to handle the exception. Example:\\n```python\\ntry:\\n  result = 10 / 0\\nexcept ZeroDivisionError:\\n  print(\\"Cannot divide by zero.\\")\\n```"}\nFormat as JSON with keys: \'question\', \'options\' (array), \'answer\''}]}], 'generationConfig': {'response_mime_type': 'application/json'}}
+Params: {'key': 'AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg'}
+[ERROR] HTTPError in call_gemini: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg
+[ERROR] Response content: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.QuotaFailure",
+        "violations": [
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerDayPerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            },
+            "quotaValue": "50"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more about Gemini API quotas",
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.RetryInfo",
+        "retryDelay": "25s"
+      }
+    ]
+  }
+}
+
+[ERROR] Rate limited. Retrying after 5 seconds...
+[DEBUG] Sending request to Gemini API...
+URL: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent
+Payload: {'contents': [{'parts': [{'text': 'Generate 5 multiple-choice questions about Data Structures (Arrays, Lists, Maps), Exception Handling based on these notes: {"title": "Data Structures and Exception Handling in Python", "notes": "**Data Structures:**\\n* **Arrays (Lists):** Ordered, mutable sequences.  Use `[]` to create. Efficient for indexing, appending, and popping from the end. Slower for insertions and deletions in the middle. Example: `my_list = [1, 2, \'apple\']`\\n* **Maps (Dictionaries):** Key-value pairs. Unordered.  Use `{}` or `dict()` to create. Efficient lookups, insertions, and deletions. Example: `my_dict = {\'name\': \'Alice\', \'age\': 30}`\\n**Exception Handling:**\\n* Use `try-except` blocks to handle potential errors. The `try` block contains the code that might raise an exception. The `except` block specifies how to handle the exception. Example:\\n```python\\ntry:\\n  result = 10 / 0\\nexcept ZeroDivisionError:\\n  print(\\"Cannot divide by zero.\\")\\n```"}\nFormat as JSON with keys: \'question\', \'options\' (array), \'answer\''}]}], 'generationConfig': {'response_mime_type': 'application/json'}}
+Params: {'key': 'AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg'}
+[ERROR] HTTPError in call_gemini: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg
+[ERROR] Response content: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits.",
+    "status": "RESOURCE_EXHAUSTED",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.QuotaFailure",
+        "violations": [
+          {
+            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
+            "quotaId": "GenerateRequestsPerDayPerProjectPerModel-FreeTier",
+            "quotaDimensions": {
+              "location": "global",
+              "model": "gemini-1.5-pro"
+            },
+            "quotaValue": "50"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.Help",
+        "links": [
+          {
+            "description": "Learn more about Gemini API quotas",
+            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"
+          }
+        ]
+      },
+      {
+        "@type": "type.googleapis.com/google.rpc.RetryInfo",
+        "retryDelay": "14s"
+      }
+    ]
+  }
+}
+
+[ERROR] Rate limited. Retrying after 5 seconds...
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 952-731-907

@@ -37,7 +37,7 @@ services:
     networks:
       - whiplash-network
     environment:
-      - GEMINI_API_KEY=AIzaSyDDoqQmjpVsKUpxtCHUHULFxT_MtUaQbb0
+      - GEMINI_API_KEY=AIzaSyCCPITo6UAkBP3w1iAYEm5FboKcQ2x5Qyg
       - YOUTUBE_API_KEY=AIzaSyAOSEp15iZvLc9fFDbc-bhj7tMjxQVKSw8
       - MONGO_URI=mongodb://mongo:27017/WhipLash
 

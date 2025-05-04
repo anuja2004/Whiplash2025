@@ -1,25 +1,77 @@
 """
 MCP Server: Handles incoming study plan requests, uses Gemini to generate topics, and triggers video fetching via Kafka.
+Enhanced with rich terminal output, robust error handling, and improved database operations.
 """
 from flask import Flask, request, jsonify
 import json
+import time
+import re
+import requests
 from flask_cors import CORS
 from common.gemini_utils import call_gemini
 from pymongo import MongoClient
+from pymongo.errors import ConnectionFailure, OperationFailure
 from dotenv import load_dotenv
 import os
+from datetime import datetime
+import uuid
+from rich.console import Console
+from rich.panel import Panel
+from rich.progress import Progress, SpinnerColumn, TextColumn, TimeElapsedColumn
+from rich import print as rprint
+from rich.table import Table
+from rich.traceback import install
+
+# Install rich traceback handler
+install(show_locals=True)
+
+# Initialize Rich console
+console = Console()
+
+# Create banner
+def print_banner():
+    console.print(Panel.fit(
+        "[bold yellow]WhipLash MCP Server[/bold yellow]\n"
+        "[cyan]Handling study plan generation, video fetching, and database operations[/cyan]",
+        border_style="green"
+    ))
 
 # Load environment variables from .env file
 load_dotenv()
+console.print("[bold green]✓[/bold green] Environment variables loaded")
 
-# Connect to MongoDB
-mongo_uri = os.getenv('MONGO_URI', 'mongodb://localhost:27017/WhipLash')
-client = MongoClient(mongo_uri)
-db = client['WhipLash']
-learning_paths_collection = db['learning_paths']
+# MongoDB connection with proper error handling
+def connect_to_mongodb():
+    mongo_uri = os.getenv('MONGO_URI', 'mongodb://localhost:27017/WhipLash')
+    console.print(f"[yellow]Connecting to MongoDB at:[/yellow] {mongo_uri}")
+    
+    try:
+        client = MongoClient(mongo_uri, serverSelectionTimeoutMS=5000)
+        # Verify connection is working
+        client.admin.command('ping')
+        db = client['WhipLash']
+        console.print("[bold green]✓[/bold green] MongoDB connection successful")
+        return client, db
+    except ConnectionFailure as e:
+        console.print(f"[bold red]✗ MongoDB connection failed:[/bold red] {str(e)}")
+        raise
+    except Exception as e:
+        console.print(f"[bold red]✗ Unexpected MongoDB error:[/bold red] {str(e)}")
+        raise
+
+# Initialize MongoDB connection
+try:
+    mongo_client, db = connect_to_mongodb()
+    learning_paths_collection = db['learning_paths']
+except Exception as e:
+    console.print(f"[bold red]Fatal error: Could not connect to MongoDB[/bold red]")
+    # In a production environment, you might want to implement a retry mechanism
+    # or fallback to a local storage option
+    learning_paths_collection = None
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "http://localhost:5175"}})
+CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}})
+console.print("[bold green]✓[/bold green] Flask app initialized with CORS")
 
 # Improved Gemini prompt for a full study plan distributed by date
 STUDY_PLAN_PROMPT = (
@@ -29,246 +81,329 @@ STUDY_PLAN_PROMPT = (
     "Do not include any explanation or extra text. Example: {\"2025-04-27\": \"Intro to ML\", \"2025-04-28\": \"Supervised Learning\"}"
 )
 
+@app.route('/health', methods=['GET'])
+def health_check():
+    """Health check endpoint for the MCP Server"""
+    status = {
+        "service": "MCP Server",
+        "status": "healthy",
+        "timestamp": datetime.now().isoformat(),
+        "mongodb_connected": learning_paths_collection is not None
+    }
+    return jsonify(status)
+
 @app.route('/generate_plan', methods=['POST'])
 def generate_plan():
-    import requests
-    import time
-    import re
-    data = request.json
-    print("GEMINI_API_KEY:", os.getenv('GEMINI_API_KEY'))
-    print("Received request:", data)
-    topic_name = data.get('topic_name')
-    no_of_days = data.get('no_of_days')
-    start_date = data.get('start_date')
-    daily_hours = data.get('daily_hours')
-     # Validate required fields
-    if not all(key in data for key in ['topic_name', 'no_of_days', 'start_date', 'daily_hours']):
-        return jsonify({"error": "Missing required fields in request payload"}), 400
+    """
+    Main endpoint to generate learning plans with advanced error handling
+    and rich visual feedback
+    """
+    # Generate a unique request ID
+    request_id = str(uuid.uuid4())[:8]
+    console.print(f"\n[bold blue]╔══════════════════════════════════════════════════════════════╗[/bold blue]")
+    console.print(f"[bold blue]║[/bold blue] [bold yellow]⚡ New Request[/bold yellow] [ID: {request_id}] - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} [bold blue]║[/bold blue]")
+    console.print(f"[bold blue]╚══════════════════════════════════════════════════════════════╝[/bold blue]")
+    
+    # Extract and validate request data
+    try:
+        data = request.json
+        required_fields = ['topic_name', 'no_of_days', 'start_date', 'daily_hours']
+        
+        # Log incoming request
+        console.print(Panel.fit(
+            f"[bold cyan]Request Data:[/bold cyan]\n" +
+            "\n".join([f"[yellow]{k}:[/yellow] {v}" for k, v in data.items()]),
+            title=f"Request {request_id}",
+            border_style="blue"
+        ))
+        
+        # Validate required fields
+        missing_fields = [field for field in required_fields if field not in data]
+        if missing_fields:
+            error_msg = f"Missing required fields: {', '.join(missing_fields)}"
+            console.print(f"[bold red]✗ Validation Error:[/bold red] {error_msg}")
+            return jsonify({"error": error_msg, "request_id": request_id}), 400
+        
+        # Extract fields
+        topic_name = data.get('topic_name')
+        no_of_days = data.get('no_of_days')
+        start_date = data.get('start_date')
+        daily_hours = data.get('daily_hours')
+        
+    except Exception as e:
+        console.print(f"[bold red]✗ Request Parsing Error:[/bold red] {str(e)}")
+        return jsonify({"error": f"Failed to parse request: {str(e)}", "request_id": request_id}), 400
 
     # 1. Generate study plan with Gemini
-    prompt = (
-        f"Topic: {topic_name}. Number of days: {no_of_days}. Start date: {start_date}. Daily hours: {daily_hours}. "
-        + STUDY_PLAN_PROMPT
-    )
-    start = time.time()
-    try:
-        print("Calling Gemini API with prompt:\n", prompt)
-        plan_str = call_gemini(prompt)
-        print("Gemini API raw response:", repr(plan_str))
-        cleaned = re.sub(r'^```(?:json)?\s*|\s*```$', '', plan_str.strip(), flags=re.IGNORECASE | re.MULTILINE).strip()
-        print("Cleaned Gemini response:", repr(cleaned))
-        try:
-            plan = json.loads(cleaned)
-        except Exception as e:
-            print("Failed to parse cleaned Gemini response:", cleaned)
-            return jsonify({"error": f"Failed to parse Gemini response: {e}", "gemini_response": cleaned}), 500
-    except Exception as e:
-        print(f"Error during Gemini processing after {time.time() - start:.2f}s:", e)
-        return jsonify({"error": str(e), "gemini_response": plan_str if 'plan_str' in locals() else None}), 500
-    finally:
-        print(f"Gemini call took {time.time() - start:.2f} seconds")
-
-    # In your MCP Server's generate_plan function (around line where you call video fetcher):
-
-    # In your MCP Server's generate_plan function:
-
-    # 2. Call video fetcher service with enhanced debugging
-    try:
-        video_fetcher_url = 'http://localhost:5003/fetch_videos'
-        print(f"\n=== Attempting to connect to Video Fetcher at {video_fetcher_url} ===")
+    with console.status(f"[bold green]Generating study plan with Gemini for {topic_name}...", spinner="dots") as status:
+        prompt = (
+            f"Topic: {topic_name}. Number of days: {no_of_days}. Start date: {start_date}. Daily hours: {daily_hours}. "
+            + STUDY_PLAN_PROMPT
+        )
         
+        console.print(f"[dim]API Key configured: {'YES' if os.getenv('GEMINI_API_KEY') else 'NO'}[/dim]")
+        console.print(f"[dim cyan]Gemini Prompt:[/dim cyan] {prompt}")
+        
+        start = time.time()
+        try:
+            plan_str = call_gemini(prompt)
+            elapsed = time.time() - start
+            
+            # Clean and parse the response
+            cleaned = re.sub(r'^```(?:json)?\s*|\s*```$', '', plan_str.strip(), flags=re.IGNORECASE | re.MULTILINE).strip()
+            console.print(f"[green]✓ Gemini API response received[/green] [dim]({elapsed:.2f}s)[/dim]")
+            
+            try:
+                plan = json.loads(cleaned)
+                # Display the plan in a table
+                plan_table = Table(title=f"Study Plan for {topic_name}")
+                plan_table.add_column("Date", style="cyan")
+                plan_table.add_column("Subtopic", style="green")
+                
+                for date, subtopic in plan.items():
+                    plan_table.add_row(date, subtopic)
+                
+                console.print(plan_table)
+                
+            except json.JSONDecodeError as e:
+                console.print(f"[bold red]✗ JSON Parse Error:[/bold red] {str(e)}")
+                console.print(f"[bold red]Raw response:[/bold red] {cleaned}")
+                return jsonify({"error": f"Failed to parse Gemini response: {str(e)}", 
+                               "gemini_response": cleaned, 
+                               "request_id": request_id}), 500
+                
+        except Exception as e:
+            elapsed = time.time() - start
+            console.print(f"[bold red]✗ Gemini API Error[/bold red] [dim]({elapsed:.2f}s)[/dim]: {str(e)}")
+            return jsonify({"error": f"Gemini API error: {str(e)}", 
+                           "request_id": request_id}), 500
+
+    # 2. Call video fetcher service with proper error handling and visual feedback
+    plan_with_videos = plan.copy()  # Default fallback if video fetcher fails
+    
+    with console.status("[bold yellow]Connecting to Video Fetcher service...", spinner="dots") as status:
+        video_fetcher_url = 'http://localhost:5003/fetch_videos'
         request_payload = {
             'topic_name': topic_name,
             'plan': plan,
             'daily_hours': daily_hours,
             'target_days': no_of_days
         }
-        print("Sending payload:", json.dumps(request_payload, indent=2))
         
-        # First try a simple GET to health endpoint to verify connection
+        console.print(f"[dim]Video Fetcher URL:[/dim] {video_fetcher_url}")
+        
+        # First try a health check
         try:
             health_check = requests.get('http://localhost:5003/health', timeout=5)
-            print(f"Video Fetcher health status: {health_check.status_code}")
-            print("Health response:", health_check.json())
+            if health_check.status_code == 200:
+                console.print("[green]✓ Video Fetcher service is healthy[/green]")
+            else:
+                console.print(f"[yellow]⚠ Video Fetcher health check returned status {health_check.status_code}[/yellow]")
         except Exception as health_err:
-            print(f"Health check failed: {str(health_err)}")
+            console.print(f"[yellow]⚠ Video Fetcher health check failed: {str(health_err)}[/yellow]")
         
-        # Now make the actual POST request
-        video_resp = requests.post(
-            video_fetcher_url,
-            json=request_payload,
-            timeout=30,
-            headers={'Content-Type': 'application/json'}
-        )
-        
-        print(f"Video Fetcher response status: {video_resp.status_code}")
-        
+        # Now make the actual request
         try:
-            video_data = video_resp.json()
-            print("Video Fetcher response data:", json.dumps(video_data, indent=2))
-        except json.JSONDecodeError:
-            print("Video Fetcher returned non-JSON response:", video_resp.text)
-            raise
-        
-        video_resp.raise_for_status()
-        plan_with_videos = video_data.get('plan', plan)
-        
-    except requests.exceptions.ConnectionError as e:
-        print(f"\n!!! Critical Error: Could not connect to Video Fetcher at {video_fetcher_url}")
-        print("Please ensure:")
-        print("1. Video Fetcher service is running (port 5003)")
-        print("2. No firewall blocking the connection")
-        print("3. Correct URL is being used")
-        print(f"Full error: {str(e)}")
-        plan_with_videos = plan
-        
-    except requests.exceptions.Timeout as e:
-        print("\n!!! Timeout Error: Video Fetcher took too long to respond")
-        print("Consider:")
-        print("1. Increasing timeout value (currently 30s)")
-        print("2. Checking Video Fetcher performance")
-        print(f"Full error: {str(e)}")
-        plan_with_videos = plan
-        
-    except Exception as e:
-        print("\n!!! Unexpected Error communicating with Video Fetcher")
-        print(f"Error type: {type(e).__name__}")
-        print(f"Error details: {str(e)}")
-        if hasattr(e, 'response') and e.response:
-            print("Response content:", e.response.text)
-        plan_with_videos = plan
-
-    # 3. Generate notes for each subtopic using Gemini directly (not via material generator)
-    enriched_plan = {}
-    for date, value in plan_with_videos.items():
-        # value can be a string (subtopic), or a dict (already enriched)
-        if isinstance(value, dict):
-            subtopic = value.get('subtopic') or value.get('name') or ''
-            youtube_link = value.get('youtube_link', 'No video found')
-            timestamp = value.get('timestamp', 'No timestamp')
-        else:
-            subtopic = value
-            youtube_link = 'No video found'
-            timestamp = 'No timestamp'
-        notes = None
-        quizzes = []
-        assignments = []
-        # Only generate notes if we have a subtopic
-        if subtopic:
-            prompt_parts = [
-                "Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment",
-            ]
-            if youtube_link and timestamp:
-                prompt_parts.append(f"[{timestamp}] of this YouTube video: {youtube_link}. ")
-            prompt_parts.append(f"Subtopic: {subtopic}. Respond ONLY with the notes as a string, no extra explanation.")
-            notes_prompt = " ".join(prompt_parts)
-            notes = None
-            for attempt in range(3):
-                try:
-                    print(f"[Gemini] Attempt {attempt+1} for notes on {subtopic} ({date})")
-                    print(f"[Gemini] Prompt: {notes_prompt}")
-                    notes_response = call_gemini(notes_prompt)
-                    print(f"[Gemini] Response: {notes_response[:120]}{'...' if notes_response and len(notes_response) > 120 else ''}")
-                    if notes_response and notes_response.strip() and 'no notes available' not in notes_response.lower():
-                        notes = notes_response.strip()
-                        break
-                except Exception as e:
-                    print(f"[Gemini] Error on attempt {attempt+1} for {subtopic} ({date}): {e}")
-            if not notes:
-                print(f"[Gemini] Failed to generate notes for {subtopic} ({date}) after 3 attempts.")
-                notes = 'No notes available.'
-        # 4. Call quiz generator service for each subtopic (if possible)
-        # Log all fields before quiz/assignment generation
-        print(f"[DEBUG] Day: {date}")
-        print(f"  subtopic: {repr(subtopic)}")
-        print(f"  youtube_link: {repr(youtube_link)}")
-        print(f"  timestamp: {repr(timestamp)}")
-        print(f"  notes: {repr(notes)[:80]}{'...' if notes and len(notes) > 80 else ''}")
-        # Fallback/defaults
-        if not youtube_link:
-            youtube_link = 'No video found'
-        if not timestamp:
-            timestamp = 'No timestamp'
-        if not notes:
-            notes = 'No notes available.'
-        # Try to generate quizzes/assignments anyway, but log if any field was originally missing
-        missing_fields = []
-        if not subtopic: missing_fields.append('subtopic')
-        if not youtube_link or youtube_link == 'No video found': missing_fields.append('youtube_link')
-        if not timestamp or timestamp == 'No timestamp': missing_fields.append('timestamp')
-        if not notes or notes == 'No notes available.': missing_fields.append('notes')
-        if missing_fields:
-            print(f"[WARN] Attempting quiz/assignment generation for {subtopic} ({date}) with missing: {', '.join(missing_fields)}")
-        # Replace the quiz generator call section with this improved version:
-        try:
-            print(f"Calling Quiz Generator for {subtopic} ({date})...")
-            quiz_resp = requests.post(
-                'http://localhost:5004/generate_quiz_and_assignments',
-                json={
-                    'subtopic': subtopic,
-                    'timestamp': timestamp,
-                    'youtube_link': youtube_link,
-                    'study_notes': notes
-                },
+            start = time.time()
+            video_resp = requests.post(
+                video_fetcher_url,
+                json=request_payload,
                 timeout=30,
                 headers={'Content-Type': 'application/json'}
             )
+            elapsed = time.time() - start
             
-            print(f"Quiz Generator response status: {quiz_resp.status_code}")
-            quiz_data = quiz_resp.json()
-            print("Quiz Generator response:", json.dumps(quiz_data, indent=2))
+            video_resp.raise_for_status()
+            video_data = video_resp.json()
             
-            quizzes = quiz_data.get('quizzes', [])
-            assignments = quiz_data.get('assignments', [])
+            console.print(f"[green]✓ Video Fetcher response received[/green] [dim]({elapsed:.2f}s)[/dim]")
             
-        except requests.exceptions.RequestException as e:
-            print(f"Failed to call quiz generator: {str(e)}")
-            if hasattr(e, 'response') and e.response:
-                print("Response content:", e.response.text)
-            quizzes = []
-            assignments = []
-        except json.JSONDecodeError as e:
-            print(f"Invalid JSON response from quiz generator: {str(e)}")
-            print("Raw response:", quiz_resp.text)
-            quizzes = []
-            assignments = []
+            # Display video results in a table
+            video_table = Table(title="Videos Retrieved")
+            video_table.add_column("Date", style="cyan")
+            video_table.add_column("Subtopic", style="green")
+            video_table.add_column("Video Link", style="blue")
+            
+            plan_with_videos = video_data.get('plan', plan)
+            
+            for date, value in plan_with_videos.items():
+                if isinstance(value, dict):
+                    subtopic = value.get('subtopic') or value.get('name') or ''
+                    youtube_link = value.get('youtube_link', 'No video found')
+                else:
+                    subtopic = value
+                    youtube_link = 'No video found'
+                
+                video_table.add_row(date, subtopic, youtube_link)
+            
+            console.print(video_table)
+            
+        except requests.exceptions.ConnectionError as e:
+            console.print(Panel(
+                f"[bold red]Could not connect to Video Fetcher[/bold red]\n"
+                f"[yellow]Error:[/yellow] {str(e)}\n\n"
+                "[white]Recommendations:[/white]\n"
+                "1. Ensure Video Fetcher service is running on port 5003\n"
+                "2. Check for network/firewall issues\n"
+                "3. Verify the service URL is correct",
+                title="Connection Error",
+                border_style="red"
+            ))
+            
+        except requests.exceptions.Timeout as e:
+            console.print(Panel(
+                f"[bold red]Video Fetcher Timeout[/bold red]\n"
+                f"[yellow]Error:[/yellow] {str(e)}\n\n"
+                "[white]The request timed out after 30 seconds[/white]",
+                title="Timeout Error",
+                border_style="red"
+            ))
+            
         except Exception as e:
-            print(f"Unexpected error with quiz generator: {str(e)}")
+            console.print(f"[bold red]✗ Video Fetcher Error:[/bold red] {str(e)}")
+            if hasattr(e, 'response') and e.response:
+                console.print(f"[dim]Response content:[/dim] {e.response.text[:200]}")
+
+    # 3. Process each day's content
+    enriched_plan = {}
+    
+    with Progress(
+        SpinnerColumn(),
+        TextColumn("[bold blue]{task.description}"),
+        TimeElapsedColumn(),
+    ) as progress:
+        
+        task = progress.add_task(f"[green]Enriching study plan with notes and quizzes...", total=len(plan_with_videos))
+        
+        for date, value in plan_with_videos.items():
+            # Update progress description
+            progress.update(task, description=f"[green]Processing day: {date}")
+            
+            # Extract values
+            if isinstance(value, dict):
+                subtopic = value.get('subtopic') or value.get('name') or ''
+                youtube_link = value.get('youtube_link', 'No video found')
+                timestamp = value.get('timestamp', 'No timestamp')
+            else:
+                subtopic = value
+                youtube_link = 'No video found'
+                timestamp = 'No timestamp'
+            
+            # Generate notes for the subtopic
+            notes = None
+            if subtopic:
+                prompt_parts = [
+                    "Generate concise study notes (about 150 words) for the following subtopic, focusing ONLY on the segment",
+                ]
+                if youtube_link and timestamp and youtube_link != 'No video found':
+                    prompt_parts.append(f"[{timestamp}] of this YouTube video: {youtube_link}. ")
+                prompt_parts.append(f"Subtopic: {subtopic}. Respond ONLY with the notes as a string, no extra explanation.")
+                notes_prompt = " ".join(prompt_parts)
+                
+                for attempt in range(3):
+                    try:
+                        notes_response = call_gemini(notes_prompt)
+                        if notes_response and notes_response.strip() and 'no notes available' not in notes_response.lower():
+                            notes = notes_response.strip()
+                            break
+                    except Exception as e:
+                        console.print(f"[yellow]⚠ Notes generation attempt {attempt+1} failed for {subtopic} ({date}): {str(e)}[/yellow]")
+                        time.sleep(1)  # Small delay before retry
+                
+                if not notes:
+                    console.print(f"[yellow]⚠ Failed to generate notes for {subtopic} ({date})[/yellow]")
+                    notes = 'No notes available.'
+            
+            # 4. Generate quizzes and assignments
             quizzes = []
             assignments = []
-        # Build enriched entry
-        enriched_plan[date] = {
-            'subtopic': subtopic,
-            'youtube_link': youtube_link,
-            'timestamp': timestamp,
-            'notes': notes,
-            'quizzes': quizzes if quizzes else [],  # Ensure this is always a list
-            'assignments': assignments if assignments else []  # Ensure this is always a list
-        }
+            
+            try:
+                quiz_resp = requests.post(
+                    'http://localhost:5004/generate_quiz_and_assignments',
+                    json={
+                        'subtopic': subtopic,
+                        'timestamp': timestamp,
+                        'youtube_link': youtube_link,
+                        'study_notes': notes
+                    },
+                    timeout=30,
+                    headers={'Content-Type': 'application/json'}
+                )
+                
+                quiz_data = quiz_resp.json()
+                quizzes = quiz_data.get('quizzes', [])
+                assignments = quiz_data.get('assignments', [])
+                
+            except Exception as e:
+                console.print(f"[yellow]⚠ Quiz generation failed for {subtopic} ({date}): {str(e)}[/yellow]")
+            
+            # Build enriched entry
+            enriched_plan[date] = {
+                'subtopic': subtopic,
+                'youtube_link': youtube_link,
+                'timestamp': timestamp,
+                'notes': notes,
+                'quizzes': quizzes if quizzes else [],
+                'assignments': assignments if assignments else []
+            }
+            
+            # Update progress
+            progress.update(task, advance=1)
 
+    # Format the final response
     response = {
-        'status': 'Enriched study plan generated',
+        'status': 'success',
         'topic_name': topic_name,
         'no_of_days': no_of_days,
         'start_date': start_date,
         'daily_hours': daily_hours,
-        'plan': enriched_plan
+        'plan': enriched_plan,
+        'request_id': request_id,
+        'generated_at': datetime.now().isoformat()
     }
-    print("Final enriched plan:", json.dumps(enriched_plan, indent=2))
 
-   # Save the enriched study plan to MongoDB
-    try:
-        result = learning_paths_collection.insert_one(response)
-        print("Learning path saved to MongoDB.")
-        # Add the inserted document's ID to the response
-        response['_id'] = str(result.inserted_id)
-    except Exception as e:
-        print("Error saving learning path to MongoDB:", e)
-        return jsonify({"error": "Failed to save learning path to MongoDB", "details": str(e)}), 500
+    # Save to MongoDB with proper error handling
+    if learning_paths_collection is not None:
+        console.print(f"[yellow]Saving learning path to MongoDB...[/yellow]")
+        response['created_at'] = datetime.now().isoformat()
+        response['updated_at'] = datetime.now().isoformat()
+        response['request_id'] = request_id
+        response['topic_name'] = topic_name
+        response['no_of_days'] = no_of_days
+        response['start_date'] = start_date
+        response['daily_hours'] = daily_hours
+        response['plan'] = enriched_plan
+        response['status'] = 'success'
+        response['request_id'] = request_id
+        try:
+            with console.status("[bold green]Saving to MongoDB...", spinner="dots") as status:
+                result = learning_paths_collection.insert_one(response)
+                response['_id'] = str(result.inserted_id)
+                console.print(f"[bold green]✓ Learning path saved to MongoDB[/bold green] [dim](ID: {result.inserted_id})[/dim]")
+        except OperationFailure as e:
+            console.print(f"[bold red]✗ MongoDB Operation Failed:[/bold red] {str(e)}")
+            return jsonify({"error": f"Failed to save to MongoDB: {str(e)}", "request_id": request_id}), 500
+        except Exception as e:
+            console.print(f"[bold red]✗ MongoDB Error:[/bold red] {str(e)}")
+            return jsonify({"error": f"Database error: {str(e)}", "request_id": request_id}), 500
+    else:
+        console.print("[yellow]⚠ MongoDB not available, skipping database save[/yellow]")
 
-    print("Returning enriched response:", response)
+    # Print response summary
+    console.print(Panel.fit(
+        f"[bold green]✓ Study plan generation complete[/bold green]\n" +
+        f"[cyan]Topic:[/cyan] {topic_name}\n" +
+        f"[cyan]Days:[/cyan] {no_of_days}\n" +
+        f"[cyan]Daily Hours:[/cyan] {daily_hours}\n" +
+        f"[cyan]MongoDB ID:[/cyan] {response.get('_id', 'Not saved')}",
+        title=f"Response Summary (ID: {request_id})",
+        border_style="green"
+    ))
+
     return jsonify(response)
 
-
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',port=5001, debug=True)
+    print_banner()
+    console.print(f"[bold green]Starting MCP Server on port 5001...[/bold green]")
+    app.run(host='0.0.0.0', port=5001, debug=True)
