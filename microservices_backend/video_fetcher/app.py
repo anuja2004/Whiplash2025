@@ -107,7 +107,8 @@ def find_topic_video(topic, target_sec, max_results=5):
         "q": f"{topic} course tutorial",
         "type": "video",
         "maxResults": max_results,
-        "key": YOUTUBE_API_KEY
+        "key": YOUTUBE_API_KEY,
+        "order":"viewCount"
     }
     
     try:

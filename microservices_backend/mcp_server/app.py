@@ -70,7 +70,7 @@ except Exception as e:
     learning_paths_collection = None
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}})
+CORS(app, resources={r"/*": {"origins": "http://localhost:5174"}})
 console.print("[bold green]✓[/bold green] Flask app initialized with CORS")
 
 # Improved Gemini prompt for a full study plan distributed by date
